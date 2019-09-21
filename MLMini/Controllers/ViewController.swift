@@ -30,40 +30,23 @@ class ViewController: UIViewController {
         registerTableCells()
         service = MercadolibreService()
         
-        var urlComponents = URLComponents()
-        urlComponents.scheme = "https"
-        urlComponents.host = "api.mercadolibre.com"
-        urlComponents.path = "/sites/MLA/search"
-        let queryItem = URLQueryItem(name: "q", value: toSearch)
-        urlComponents.queryItems = [queryItem]
-        var wawa = urlComponents.url
-//        service.performItemSearchByName(apiURL: (wawa)!) { [weak self] (response: APIResponse?, error: Error?) -> Void in
-//            self?.apiResp = response
-//            if self?.apiResp?.results.count == 0 {
-//                self?.showEmptyView()
-//            } else {
-//                self?.reloadView()
-//
-//            }
-//        }
         service.getItemsByName(name: toSearch) { [weak self] (error: Error?) in
             if error != nil {
-//                TODO: DO SOMETHING WITH THE ERROR 
+//                TODO: DO SOMETHING WITH THE ERROR
                 print("Error in getItemsByName")
                 return
             }
-            
+
             if self?.service.emptyResults() ?? false {
                 self?.showEmptyView()
             } else {
                 self?.reloadView()
             }
-                
         }
     }
 }
 
-
+// MARK: - TableView
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     private func registerTableCells(){
@@ -76,23 +59,26 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return apiResp?.results.count ?? 0
         return service.numberOfItems()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = productTableView.dequeueReusableCell(withIdentifier: "ProductViewCell", for: indexPath) as? ProductViewCell else { return UITableViewCell() }
-//        let result = apiResp?.results[indexPath.row]
-//        cell.productTitle.text = result?.title
-//        //        TODO: corregir el force unwrap
-//        cell.productImage.sd_setImage(with: URL(string: result!.thumbnail), placeholderImage: UIImage(named: "Placeholder"))
-//        cell.productPrice.text = "$ " + String(result!.price.formattedWithSeparator)
         let item = service.itemAt(index: indexPath.row)
         cell.configureCell(item: item)
         return cell
     }
 }
 
+// MARK: - Protocols
+protocol  ProductProtocol {
+    
+    //Access the main thread and updates the tableview
+    func reloadView()
+    
+    //Hides the tableview in order to see a view saying that there re no results available
+    func showEmptyView()
+}
 
 extension ViewController: ProductProtocol {
     func reloadView() {
@@ -108,10 +94,5 @@ extension ViewController: ProductProtocol {
     }
 }
 
-protocol  ProductProtocol {
-    
-    func reloadView()
-    
-    func showEmptyView()
-}
+
 

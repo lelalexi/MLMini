@@ -130,8 +130,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="searchButtonPressed:" destination="e8u-rg-ERM" eventType="touchUpInside" id="li1-Pr-hhK"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="pushToResultsTable" id="C6p-KJ-9YH"/>
+                                    <action selector="searchButtonPressed:" destination="e8u-rg-ERM" eventType="touchUpInside" id="HSC-DJ-6w8"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -160,6 +159,7 @@
                         <outlet property="searchTextField" destination="7VL-5L-tIR" id="DOm-AU-soE"/>
                         <outlet property="wallpaperImage" destination="C5C-Nb-cnn" id="Ejj-GX-Nwn"/>
                         <outlet property="wallpaperImageTopConstraint" destination="RDj-nh-CEH" id="YMI-uU-3kQ"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="pushToResultsTable" id="PTn-lP-pLq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tbw-XD-f6J" userLabel="First Responder" sceneMemberID="firstResponder"/>

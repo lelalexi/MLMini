@@ -40,12 +40,13 @@ class SearchViewController: UIViewController {
         
         searchButton.layer.cornerRadius = 8.0
         searchButton.backgroundColor = .activeBlue
-        
+        // TODO: Disable button if no
 //        searchButton.isEnabled = false
     }
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
         hideKeyboard()
+        performSegue(withIdentifier: "pushToResultsTable", sender: nil)
     }
     
     @IBAction func userDidTapView(_ sender: UITapGestureRecognizer) {
@@ -55,22 +56,18 @@ class SearchViewController: UIViewController {
     
     
     // MARK: - Navigation
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pushToResultsTable" {
             if let resultTableviewViewController = segue.destination as? ViewController{
-//                guard let fila = sender as? HeroTableViewCell else {return}
-//                //HE.hero = heroes[tableView.indexPath(for: fila)!.row]
-//                HE.detailViewModel = viewModel.generateDetailMVIntance(index: tableView.indexPath(for: fila)!.row)
                 resultTableviewViewController.toSearch = searchTextField.text
             }
-            print("Pase por el segue")
         }
     }
  
 
 }
 
+// MARK: - UITextField and Keyboard Events
 extension SearchViewController: UITextFieldDelegate {
     
     private func addObservers(){
