@@ -25,7 +25,7 @@ protocol APIServiceProtocol {
     
     func getItemsByName(name: String, completionHandler: @escaping (Error?) -> Void)
     
-    func getItemDescriptionByIndex(name: String, completionHandler: @escaping (Error?) -> Void) -> ItemDescription
+    func getItemDescriptionByIndex(index: Int, completionHandler: @escaping (ItemDescription?, Error?) -> Void) -> Void
     
     func emptyResults() -> Bool
     
