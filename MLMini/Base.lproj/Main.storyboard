@@ -183,10 +183,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mhl-p7-6yY">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionView key="tableHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" id="P4t-XO-92m">
+                                <collectionView key="tableHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="P4t-XO-92m">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.71764705880000002" green="0.25098039220000001" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="arg-eb-Z8A">
                                         <size key="itemSize" width="132" height="171"/>
                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -206,7 +206,6 @@
                                                     </imageView>
                                                 </subviews>
                                             </view>
-                                            <color key="backgroundColor" red="0.2274509804" green="0.51372549020000002" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstItem="A6n-Qu-fpk" firstAttribute="top" secondItem="ESb-5W-XHQ" secondAttribute="top" id="0wC-d5-htX"/>
                                                 <constraint firstAttribute="trailing" secondItem="A6n-Qu-fpk" secondAttribute="trailing" id="9YA-Ql-nh9"/>
@@ -242,6 +241,7 @@
                     </view>
                     <connections>
                         <outlet property="productDetailCarrouselCollectionView" destination="P4t-XO-92m" id="dxW-Nh-z8o"/>
+                        <outlet property="productDetailTableView" destination="mhl-p7-6yY" id="KcZ-It-aZ8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yQc-jE-P9I" userLabel="First Responder" sceneMemberID="firstResponder"/>

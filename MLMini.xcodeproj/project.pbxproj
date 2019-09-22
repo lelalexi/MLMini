@@ -153,11 +153,8 @@
 		E4D052AB2333B4CE009B4EDB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				E4D0529823331117009B4EDB /* ProductViewCell.swift */,
-				E4D0529923331117009B4EDB /* ProductViewCell.xib */,
-				E4D5D3522337BF4300883E8A /* ProductImageViewCell.swift */,
-				E4D5D3542337C94600883E8A /* MainDetailTableViewCell.swift */,
-				E4D5D3552337C94600883E8A /* MainDetailTableViewCell.xib */,
+				E4D5D3592337E51200883E8A /* ProductTableView */,
+				E4D5D3582337E4F200883E8A /* ProductDetailView */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -193,6 +190,25 @@
 				E4D052A82333B464009B4EDB /* ProductDetailViewController.swift */,
 			);
 			path = ProductDetailView;
+			sourceTree = "<group>";
+		};
+		E4D5D3582337E4F200883E8A /* ProductDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				E4D5D3522337BF4300883E8A /* ProductImageViewCell.swift */,
+				E4D5D3542337C94600883E8A /* MainDetailTableViewCell.swift */,
+				E4D5D3552337C94600883E8A /* MainDetailTableViewCell.xib */,
+			);
+			path = ProductDetailView;
+			sourceTree = "<group>";
+		};
+		E4D5D3592337E51200883E8A /* ProductTableView */ = {
+			isa = PBXGroup;
+			children = (
+				E4D0529823331117009B4EDB /* ProductViewCell.swift */,
+				E4D0529923331117009B4EDB /* ProductViewCell.xib */,
+			);
+			path = ProductTableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

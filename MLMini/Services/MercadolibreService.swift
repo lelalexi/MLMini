@@ -60,7 +60,8 @@ public class MercadolibreService: APIServiceProtocol {
                     }
                     item = ItemDescription (price: Double(response!.price),
                                             title: response!.title,
-                                            pictures: itemPictureArray)
+                                            pictures: itemPictureArray,
+                                            soldQuantity: response!.soldQuantity)
                     completionHandler(item, nil)
                 }
             }

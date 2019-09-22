@@ -11,6 +11,7 @@ import SDWebImage
 
 class ProductDetailViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     
+    @IBOutlet weak var productDetailTableView: UITableView!
     @IBOutlet weak var productDetailCarrouselCollectionView: UICollectionView!
     var collectionFlowLayout: UICollectionViewFlowLayout!
     
@@ -25,6 +26,11 @@ class ProductDetailViewController: UIViewController, UICollectionViewDelegateFlo
         
         initialiceCollectionView()
         
+        registerTableCells()
+        productDetailTableView.backgroundColor = .softGrey
+        productDetailTableView.delegate = self
+        productDetailTableView.dataSource = self
+        
         service?.getItemDescriptionByIndex(index: itemIndexPath!.row) { [weak self] (resp: ItemDescription?, error: Error?) -> Void in
             if (error != nil){
                 print("ocurrio un error")
@@ -32,10 +38,34 @@ class ProductDetailViewController: UIViewController, UICollectionViewDelegateFlo
                 self?.item = resp
                 DispatchQueue.main.async {
                     self?.productDetailCarrouselCollectionView.reloadData()
+                    self?.productDetailTableView.reloadData()
                 }
             }
         }
     }
+}
+
+extension ProductDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    private func registerTableCells(){
+        let detailCell = UINib(nibName: "MainDetailTableViewCell", bundle: nil)
+        productDetailTableView.register(detailCell, forCellReuseIdentifier: "MainDetailTableViewCell")
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = productDetailTableView.dequeueReusableCell(withIdentifier: "MainDetailTableViewCell", for: indexPath) as? MainDetailTableViewCell, let safeItem = item else { return UITableViewCell() }
+        cell.configureCell(item: safeItem)
+        return cell
+    }
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    
 }
 
 extension ProductDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {

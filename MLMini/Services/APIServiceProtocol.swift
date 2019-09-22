@@ -17,6 +17,7 @@ struct ItemDescription {
     let price: Double
     let title: String
     let pictures: [String]
+    let soldQuantity: Int
 }
 
 protocol APIServiceProtocol {
