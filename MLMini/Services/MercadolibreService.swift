@@ -40,9 +40,33 @@ public class MercadolibreService: APIServiceProtocol {
         }
     }
     
-    func getItemDescriptionByIndex(name: String, completionHandler: @escaping (Error?) -> Void) -> ItemDescription {
-        //        TODO: To Modify in the future
-        return ItemDescription(price: 0, title: "", pictures: [""])
+    func getItemDescriptionByIndex(index: Int, completionHandler: @escaping (ItemDescription?, Error?) -> Void) -> Void {
+        
+        var item: ItemDescription?
+
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "api.mercadolibre.com"
+        urlComponents.path = "/items/" + (itemListResponse?.results[index].id)! // Im always sure that if I loaded the table with info the user is going to select a valid row
+        
+        if let url = urlComponents.url {
+            performRequest(apiURL: url) { (response: ItemAPIResponseModel?, error: Error?) -> Void in
+                if (error != nil){
+                    completionHandler(nil, error)
+                } else {
+                    var itemPictureArray = [String]()
+                    for pic in response!.pictures{
+                        itemPictureArray.append(pic.url)
+                    }
+                    item = ItemDescription (price: Double(response!.price),
+                                            title: response!.title,
+                                            pictures: itemPictureArray)
+                    completionHandler(item, nil)
+                }
+            }
+        } else {
+            completionHandler(nil, UrlErrors.invalidUrl)
+        }
     }
     
     func emptyResults() -> Bool {
