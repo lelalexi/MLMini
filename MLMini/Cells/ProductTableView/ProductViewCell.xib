@@ -11,61 +11,78 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductViewCell" rowHeight="117" id="KGk-i7-Jjw" customClass="ProductViewCell" customModule="MLMini" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="465" height="118"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductViewCell" rowHeight="156" id="KGk-i7-Jjw" customClass="ProductViewCell" customModule="MLMini" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="465" height="157"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="465" height="117.5"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="465" height="156.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7o-Vj-sXZ">
-                        <rect key="frame" x="115.5" y="10" width="27.5" height="19.5"/>
+                        <rect key="frame" x="116" y="12" width="27.5" height="19.5"/>
                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                         <color key="textColor" white="0.23024579052511415" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="DPn-IK-02B">
-                        <rect key="frame" x="10" y="10" width="97.5" height="97.5"/>
+                        <rect key="frame" x="10" y="12" width="98" height="98"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="DPn-IK-02B" secondAttribute="height" multiplier="1:1" id="Ehk-cf-SkY"/>
+                            <constraint firstAttribute="width" constant="98" id="vz4-mT-NJs"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 199" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDW-sn-cbS">
-                        <rect key="frame" x="115.5" y="36.5" width="45.5" height="22"/>
+                        <rect key="frame" x="116" y="38.5" width="45.5" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="ahi-SW-kKP"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FavIcon" translatesAutoresizingMaskIntoConstraints="NO" id="fHn-Ff-Bga">
-                        <rect key="frame" x="434" y="10" width="14" height="14"/>
+                        <rect key="frame" x="434" y="12" width="14" height="14"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="37J-B9-6KH"/>
                             <constraint firstAttribute="width" secondItem="fHn-Ff-Bga" secondAttribute="height" multiplier="1:1" id="yVd-oQ-JNe"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Envío Gratis" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDZ-dV-qSo">
+                        <rect key="frame" x="116" y="67.5" width="65" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="fk6-7b-GiM"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                        <color key="textColor" red="0.15157956746035323" green="0.5777234822360392" blue="0.16848765423941217" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="RDW-sn-cbS" firstAttribute="leading" secondItem="W7o-Vj-sXZ" secondAttribute="leading" id="ERe-uX-pw5"/>
                     <constraint firstItem="W7o-Vj-sXZ" firstAttribute="leading" secondItem="DPn-IK-02B" secondAttribute="trailing" constant="8" id="Jur-nz-gje"/>
+                    <constraint firstItem="yDZ-dV-qSo" firstAttribute="top" secondItem="RDW-sn-cbS" secondAttribute="bottom" constant="7" id="KPO-6v-U0L"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="yDZ-dV-qSo" secondAttribute="bottom" constant="15" id="MIN-qu-LBz"/>
                     <constraint firstItem="DPn-IK-02B" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="NWl-JT-aKM"/>
+                    <constraint firstItem="W7o-Vj-sXZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="OVK-Nm-Gro"/>
                     <constraint firstItem="W7o-Vj-sXZ" firstAttribute="top" secondItem="DPn-IK-02B" secondAttribute="top" id="SUL-WX-7ht"/>
                     <constraint firstItem="DPn-IK-02B" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Txb-Ov-A9b"/>
                     <constraint firstItem="fHn-Ff-Bga" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="W7o-Vj-sXZ" secondAttribute="trailing" constant="16" id="VXP-uX-hiR"/>
+                    <constraint firstItem="yDZ-dV-qSo" firstAttribute="leading" secondItem="RDW-sn-cbS" secondAttribute="leading" id="Zvf-pq-7cz"/>
                     <constraint firstItem="RDW-sn-cbS" firstAttribute="top" secondItem="W7o-Vj-sXZ" secondAttribute="bottom" constant="7" id="bJm-UM-Qg2"/>
                     <constraint firstAttribute="trailing" secondItem="fHn-Ff-Bga" secondAttribute="trailing" constant="17" id="beK-eb-at0"/>
-                    <constraint firstItem="DPn-IK-02B" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="eFO-fD-EAO"/>
                     <constraint firstItem="fHn-Ff-Bga" firstAttribute="top" secondItem="W7o-Vj-sXZ" secondAttribute="top" id="kfA-BI-04b"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="RDW-sn-cbS" secondAttribute="trailing" constant="10" id="wcJ-qT-zpf"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="freeShippingLabel" destination="yDZ-dV-qSo" id="qAt-hj-Kn3"/>
                 <outlet property="productFavIcon" destination="fHn-Ff-Bga" id="zkw-jk-VMh"/>
                 <outlet property="productImage" destination="DPn-IK-02B" id="sCV-HA-7EB"/>
                 <outlet property="productPrice" destination="RDW-sn-cbS" id="WIv-9c-0jr"/>
                 <outlet property="productTitle" destination="W7o-Vj-sXZ" id="ljr-QH-EIQ"/>
             </connections>
-            <point key="canvasLocation" x="32.608695652173914" y="161.71875"/>
+            <point key="canvasLocation" x="32.608695652173914" y="174.44196428571428"/>
         </tableViewCell>
     </objects>
     <resources>

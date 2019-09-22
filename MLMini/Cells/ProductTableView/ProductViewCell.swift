@@ -14,6 +14,7 @@ class ProductViewCell: UITableViewCell {
     @IBOutlet var productImage: UIImageView!
     @IBOutlet var productPrice: UILabel!
     @IBOutlet var productFavIcon: UIImageView!
+    @IBOutlet var freeShippingLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,12 +27,15 @@ class ProductViewCell: UITableViewCell {
         productTitle.textColor = .clearGrey
         productImage.layer.cornerRadius = 6.0
         productImage.clipsToBounds = true
+        freeShippingLabel.isHidden = true
     }
     
     func configureCell(item: Item){
         productTitle.text = item.title
         productPrice.text = "$ " + String(item.price.formattedWithSeparator)
         productImage.sd_setImage(with: URL(string: item.thumbnail), placeholderImage: UIImage(named: "Placeholder"))
+        freeShippingLabel.isHidden = !item.freeShipping
+        
         
     }
 

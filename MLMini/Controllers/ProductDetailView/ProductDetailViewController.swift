@@ -13,27 +13,28 @@ class ProductDetailViewController: UIViewController, UICollectionViewDelegateFlo
     
     @IBOutlet weak var productDetailTableView: UITableView!
     @IBOutlet weak var productDetailCarrouselCollectionView: UICollectionView!
+   
     var collectionFlowLayout: UICollectionViewFlowLayout!
-    
     var itemIndexPath: IndexPath?
     var service: APIServiceProtocol?
     var item: ItemDescription?
-    
     var images: [String]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        initializeDetailTableView()
         initialiceCollectionView()
-        
-        registerTableCells()
-        productDetailTableView.backgroundColor = .softGrey
-        productDetailTableView.delegate = self
-        productDetailTableView.dataSource = self
-        
+        loadDataFromAPI()
+    }
+}
+
+// MARK: - Data Loading
+extension ProductDetailViewController {
+    
+    private func loadDataFromAPI(){
         service?.getItemDescriptionByIndex(index: itemIndexPath!.row) { [weak self] (resp: ItemDescription?, error: Error?) -> Void in
             if (error != nil){
-                print("ocurrio un error")
+                print(error)
             } else {
                 self?.item = resp
                 DispatchQueue.main.async {
@@ -45,22 +46,46 @@ class ProductDetailViewController: UIViewController, UICollectionViewDelegateFlo
     }
 }
 
+// MARK: - TableView
 extension ProductDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
+    private func initializeDetailTableView(){
+        registerTableCells()
+        productDetailTableView.backgroundColor = .softGrey
+        productDetailTableView.delegate = self
+        productDetailTableView.dataSource = self
+    }
+    
     private func registerTableCells(){
+        // Main cell
         let detailCell = UINib(nibName: "MainDetailTableViewCell", bundle: nil)
         productDetailTableView.register(detailCell, forCellReuseIdentifier: "MainDetailTableViewCell")
+        
+        //Buy cell
+        let buyCell = UINib(nibName: "BuyDetailTableViewCell", bundle: nil)
+        productDetailTableView.register(buyCell, forCellReuseIdentifier: "BuyDetailTableViewCell")
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = productDetailTableView.dequeueReusableCell(withIdentifier: "MainDetailTableViewCell", for: indexPath) as? MainDetailTableViewCell, let safeItem = item else { return UITableViewCell() }
-        cell.configureCell(item: safeItem)
-        return cell
+        switch indexPath.row {
+        case 0:
+            guard let cell = productDetailTableView.dequeueReusableCell(withIdentifier: "MainDetailTableViewCell", for: indexPath) as? MainDetailTableViewCell, let safeItem = item else { return UITableViewCell() }
+            cell.configureCell(item: safeItem)
+            return cell
+        case 1:
+            guard let cell = productDetailTableView.dequeueReusableCell(withIdentifier: "BuyDetailTableViewCell", for: indexPath) as? BuyDetailTableViewCell, let safeItem = item else { return UITableViewCell() }
+            cell.configureCell(item: safeItem)
+            return cell
+        default:
+            return UITableViewCell()
+        }
     }
+    
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return false
     }
@@ -68,6 +93,7 @@ extension ProductDetailViewController: UITableViewDelegate, UITableViewDataSourc
     
 }
 
+// MARK: - Detail Images Carroussel
 extension ProductDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func initialiceCollectionView(){
@@ -83,7 +109,6 @@ extension ProductDetailViewController: UICollectionViewDelegate, UICollectionVie
         collectionFlowLayout.itemSize = CGSize(width: view.frame.width,
                                                height: productDetailCarrouselCollectionView.frame.height)
         productDetailCarrouselCollectionView.setCollectionViewLayout(collectionFlowLayout, animated: true)
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -95,7 +120,4 @@ extension ProductDetailViewController: UICollectionViewDelegate, UICollectionVie
         cell.configureCell(image: item?.pictures[indexPath.item] ?? "")
         return cell
     }
-    
-    
-    
 }
