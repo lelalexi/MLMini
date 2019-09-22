@@ -44,6 +44,17 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toProductDetail" {
+            if let detailProductViewController = segue.destination as? ProductDetailViewController, let index = sender as? IndexPath{
+                detailProductViewController.service = service
+                detailProductViewController.itemIndexPath = index
+                print("pase por el segue \(index)")
+            }
+        }
+    }
 }
 
 // MARK: - TableView
@@ -67,6 +78,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let item = service.itemAt(index: indexPath.row)
         cell.configureCell(item: item)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toProductDetail", sender: indexPath)
     }
 }
 

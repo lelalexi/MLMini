@@ -24,6 +24,9 @@
 		E4D052A92333B464009B4EDB /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D052A82333B464009B4EDB /* ProductDetailViewController.swift */; };
 		E4D052AD2333C3EA009B4EDB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D052AC2333C3EA009B4EDB /* SearchViewController.swift */; };
 		E4D052B02333CE79009B4EDB /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D052AF2333CE79009B4EDB /* UIColorExtension.swift */; };
+		E4D5D3532337BF4300883E8A /* ProductImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5D3522337BF4300883E8A /* ProductImageViewCell.swift */; };
+		E4D5D3562337C94600883E8A /* MainDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5D3542337C94600883E8A /* MainDetailTableViewCell.swift */; };
+		E4D5D3572337C94600883E8A /* MainDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4D5D3552337C94600883E8A /* MainDetailTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -59,6 +62,9 @@
 		E4D052A82333B464009B4EDB /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		E4D052AC2333C3EA009B4EDB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		E4D052AF2333CE79009B4EDB /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		E4D5D3522337BF4300883E8A /* ProductImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImageViewCell.swift; sourceTree = "<group>"; };
+		E4D5D3542337C94600883E8A /* MainDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDetailTableViewCell.swift; sourceTree = "<group>"; };
+		E4D5D3552337C94600883E8A /* MainDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainDetailTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,9 +143,9 @@
 		E4D052AA2333B4AE009B4EDB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E4D0525C23325388009B4EDB /* ViewController.swift */,
-				E4D052A82333B464009B4EDB /* ProductDetailViewController.swift */,
-				E4D052AC2333C3EA009B4EDB /* SearchViewController.swift */,
+				E4D5D34D2336BFD700883E8A /* ProductDetailView */,
+				E4D5D34C2336BFC100883E8A /* ProductTableView */,
+				E4D5D34B2336BFAD00883E8A /* SeachView */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -149,6 +155,9 @@
 			children = (
 				E4D0529823331117009B4EDB /* ProductViewCell.swift */,
 				E4D0529923331117009B4EDB /* ProductViewCell.xib */,
+				E4D5D3522337BF4300883E8A /* ProductImageViewCell.swift */,
+				E4D5D3542337C94600883E8A /* MainDetailTableViewCell.swift */,
+				E4D5D3552337C94600883E8A /* MainDetailTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -160,6 +169,30 @@
 				E4CB24C123346642003AB3D8 /* NumberExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E4D5D34B2336BFAD00883E8A /* SeachView */ = {
+			isa = PBXGroup;
+			children = (
+				E4D052AC2333C3EA009B4EDB /* SearchViewController.swift */,
+			);
+			path = SeachView;
+			sourceTree = "<group>";
+		};
+		E4D5D34C2336BFC100883E8A /* ProductTableView */ = {
+			isa = PBXGroup;
+			children = (
+				E4D0525C23325388009B4EDB /* ViewController.swift */,
+			);
+			path = ProductTableView;
+			sourceTree = "<group>";
+		};
+		E4D5D34D2336BFD700883E8A /* ProductDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				E4D052A82333B464009B4EDB /* ProductDetailViewController.swift */,
+			);
+			path = ProductDetailView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +257,7 @@
 			files = (
 				E4D0529B23331117009B4EDB /* ProductViewCell.xib in Resources */,
 				E4D052652332538D009B4EDB /* LaunchScreen.storyboard in Resources */,
+				E4D5D3572337C94600883E8A /* MainDetailTableViewCell.xib in Resources */,
 				E4D052622332538D009B4EDB /* Assets.xcassets in Resources */,
 				E4D0526023325388009B4EDB /* Main.storyboard in Resources */,
 			);
@@ -257,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4D5D3532337BF4300883E8A /* ProductImageViewCell.swift in Sources */,
 				E4D0529A23331117009B4EDB /* ProductViewCell.swift in Sources */,
 				E4D0525D23325388009B4EDB /* ViewController.swift in Sources */,
 				E461482F23369128006080E4 /* ItemAPIResponseModel.swift in Sources */,
@@ -265,6 +300,7 @@
 				E4CB24C223346642003AB3D8 /* NumberExtension.swift in Sources */,
 				E4D0525B23325388009B4EDB /* AppDelegate.swift in Sources */,
 				E4D052B02333CE79009B4EDB /* UIColorExtension.swift in Sources */,
+				E4D5D3562337C94600883E8A /* MainDetailTableViewCell.swift in Sources */,
 				E4D0529D23331E09009B4EDB /* APIServiceProtocol.swift in Sources */,
 				E4D0529F23331EF3009B4EDB /* MercadolibreService.swift in Sources */,
 				E4D0529423328E8C009B4EDB /* APIResponse.swift in Sources */,
