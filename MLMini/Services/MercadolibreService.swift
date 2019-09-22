@@ -29,6 +29,7 @@ public class MercadolibreService: APIServiceProtocol {
         if let url = urlComponents.url {
             performRequest(apiURL: url) { [weak self] (response: APIResponse?, error: Error?) -> Void in
                 if (error != nil){
+                    print(error)
                     completionHandler(error)
                 } else {
                     self?.itemListResponse = response
@@ -61,7 +62,9 @@ public class MercadolibreService: APIServiceProtocol {
                     item = ItemDescription (price: Double(response!.price),
                                             title: response!.title,
                                             pictures: itemPictureArray,
-                                            soldQuantity: response!.soldQuantity)
+                                            soldQuantity: response!.soldQuantity,
+                                            thumbnail: response!.thumbnail,
+                                            availableItems: response!.availableQuantity)
                     completionHandler(item, nil)
                 }
             }
@@ -79,11 +82,12 @@ public class MercadolibreService: APIServiceProtocol {
     }
     
     func itemAt(index: Int) -> Item {
-        var item = Item(price: 0, title: "", thumbnail: "Placeholder")
+        var item = Item(price: 0, title: "", thumbnail: "Placeholder", freeShipping: false)
         if let resp = itemListResponse?.results[index] {
             item = Item(price: resp.price,
                         title: resp.title,
-                        thumbnail: resp.thumbnail)
+                        thumbnail: resp.thumbnail,
+                        freeShipping: resp.shipping?.freeShipping ?? false)
         }
         return item
     }
