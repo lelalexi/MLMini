@@ -40,13 +40,16 @@ class SearchViewController: UIViewController {
         
         searchButton.layer.cornerRadius = 8.0
         searchButton.backgroundColor = .activeBlue
-        // TODO: Disable button if no
+        searchTextField.enablesReturnKeyAutomatically = true
+        // TODO: Disable button if i have no text in the textfield
 //        searchButton.isEnabled = false
     }
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
         hideKeyboard()
-        performSegue(withIdentifier: "pushToResultsTable", sender: nil)
+        if searchTextField.text != "" {
+            performSegue(withIdentifier: "pushToResultsTable", sender: nil)
+        }
     }
     
     @IBAction func userDidTapView(_ sender: UITapGestureRecognizer) {
@@ -102,6 +105,9 @@ extension SearchViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         hideKeyboard()
+        if textField.text != "" {
+            performSegue(withIdentifier: "pushToResultsTable", sender: nil)
+        }
         return true
     }
     
