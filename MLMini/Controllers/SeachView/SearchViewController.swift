@@ -62,7 +62,7 @@ class SearchViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pushToResultsTable" {
             if let resultTableviewViewController = segue.destination as? ProductListViewController{
-                resultTableviewViewController.toSearch = searchTextField.text
+                resultTableviewViewController.toSearch = searchTextField.text ?? ""
             }
         }
     }

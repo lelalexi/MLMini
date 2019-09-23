@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E461482F23369128006080E4 /* ItemAPIResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E461482E23369128006080E4 /* ItemAPIResponseModel.swift */; };
+		E49F96072339108700AC4ECC /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F96062339108700AC4ECC /* SpinnerViewController.swift */; };
 		E4CB24C223346642003AB3D8 /* NumberExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB24C123346642003AB3D8 /* NumberExtension.swift */; };
 		E4D0525B23325388009B4EDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D0525A23325388009B4EDB /* AppDelegate.swift */; };
 		E4D0525D23325388009B4EDB /* ProductListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D0525C23325388009B4EDB /* ProductListViewController.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		E461482E23369128006080E4 /* ItemAPIResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemAPIResponseModel.swift; sourceTree = "<group>"; };
+		E49F96062339108700AC4ECC /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		E4CB24C123346642003AB3D8 /* NumberExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberExtension.swift; sourceTree = "<group>"; };
 		E4D0525723325388009B4EDB /* MLMini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MLMini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4D0525A23325388009B4EDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +85,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E49F96052339107500AC4ECC /* Extras */ = {
+			isa = PBXGroup;
+			children = (
+				E49F96062339108700AC4ECC /* SpinnerViewController.swift */,
+			);
+			path = Extras;
+			sourceTree = "<group>";
+		};
 		E4D0524E23325388009B4EDB = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +114,7 @@
 		E4D0525923325388009B4EDB /* MLMini */ = {
 			isa = PBXGroup;
 			children = (
+				E49F96052339107500AC4ECC /* Extras */,
 				E4D052AE2333CE51009B4EDB /* Extensions */,
 				E4D052AB2333B4CE009B4EDB /* Cells */,
 				E4D052AA2333B4AE009B4EDB /* Controllers */,
@@ -315,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4D5D3532337BF4300883E8A /* ProductImageViewCell.swift in Sources */,
+				E49F96072339108700AC4ECC /* SpinnerViewController.swift in Sources */,
 				E4D0529A23331117009B4EDB /* ProductViewCell.swift in Sources */,
 				E4D0525D23325388009B4EDB /* ProductListViewController.swift in Sources */,
 				E461482F23369128006080E4 /* ItemAPIResponseModel.swift in Sources */,
