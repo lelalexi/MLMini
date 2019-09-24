@@ -39,7 +39,6 @@ class ProductListViewController: UIViewController {
             if let detailProductViewController = segue.destination as? ProductDetailViewController, let index = sender as? IndexPath{
                 detailProductViewController.service = service
                 detailProductViewController.itemIndexPath = index
-                print("pase por el segue \(index)")
             }
         }
     }

@@ -84,15 +84,6 @@ enum Condition: String, Codable {
     case new = "new"
 }
 
-//// MARK: - DifferentialPricing
-//class DifferentialPricing: Codable {
-//    let id: Int
-//    
-//    init(id: Int) {
-//        self.id = id
-//    }
-//}
-
 // MARK: - Shipping
 class Shipping: Codable {
     let freeShipping: Bool
