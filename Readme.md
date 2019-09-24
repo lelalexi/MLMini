@@ -1,44 +1,57 @@
 # MLMini
 
-Foobar is a Python library for dealing with word pluralization.
+Esta es una mini aplicación de Mercadolibre que brinda funcionalidades básicas con respecto a la búsqueda de productos en general, muestra de resultados de una manera legible y presente una vista de detalles de los productos.
 
-## Installation
+## **Índice**   
+1. [Serialización del JSON](#id1)
+2. [Consulta a la API y el Adapter Mercadolibre](#id2)
+3. [Librerias](#id3)
+4. [Permisos](#id4)
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+## Serialización del JSON <a name="id1"></a>
 
-```bash
-pip install foobar
-```
+A partir del uso del protocolo `Codable`se construyó un modelo que permite el mapeo de una respuesta JSON a una representación interna (modelo).
 
-## Usage
+Una pregunta segura que uno mismo se puede esta haciendo es que dicho protocolo es un poco "overkill" y que solo requerimos de que nuestro modelo conforme el protocolo `Decodable` para la tarea que se quiere realizar, la respuesta es que el uso del protocolo se pensó para que en un futuro se agreguen nuevas funcionalidades, por ejemplo el uso de CoreData o la que se deba hacer un el uso de `Encodable` para generar una respuesta o convertirse a otro tipo de representación.
 
-```python
-import foobar
+En el proyecto se encuentran en la carpeta Model dos archivos:
 
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
-```
+- APIResponseModel
 
-## Librerias
+- ItemAPIResponseModel
+
+Ambos modelos son utilizados para la serialización del JSON, en un principio eran modelos demasiado grandes y posteriormente se los redució notablemente. Esto se debe a que con un modelo muy grande se deben tener en cuenta las respuestas especificas en las distintas clases que lo componen y por no poseer mayor cantidad de tiempo.
+
+## Consulta a la API y el Adapter Mercadolibre <a name="id2"></a>
+
+### API Request
+
+Dentro de este apartado como primera medida se tiene una clase que permite realizar las consultas a diversas API. No tiene en cuenta a que URL o a que API se realiza la request, solamente debemos poseer un modelo previamente que se conforme con el protocolo `Codable` y pasar una `URL` valida que nos devuelva un JSON acorde al modelo. Todo esto anterior viene al caso para explicar que esta clase es **Genérica**. 
+
+### Adapter
+
+Para el encapsulamiento de la respuesta e implementacion de la respuesta de la API de Mercadolibre, tenemos una clase que podriamos llamarla `Adapter`, ya que nos convierte la interfaz de respuesta en una mas sencilla de utilizar y manejar.
+De esta manera no tenemos que preocuparnos que el dia de mañana se cambie la forma del JSON y tener que modificar mas de medio proyecto por ello.
+
+El adapter no permite saber como se recibe la respuesta, solo nos permite obtener cierta info a través de consultas que nosotros podemos realizar. Y mucha de estas respuestas están construidas en un modelo que posee lo esencial, que son utilizados dentro del proyecto.
+
+Las implementaciones antes comentadas deben conformarse a los protocolos creados para dicho fin y nos permite que si en un futuro cambie la URL, el formato del JSON, etc, solo se vea afectada la clase adapter.
+
+## Librerias <a name="id3"></a>
 Dentro de las librerias utilizadas tenemos:
 
 - SDWebImages
 
 ### SDWebImages
-Para la carga asincrónica por demanda de las imágenes de los productos de la tabla de los resultados de productos se utilizó SDWebImages.
-Dentro de los motivos por la cual se eligió se debe a la simplicidad para cargar imagenes por URL. No mucho menos esta libreria nos facilita tener un caché de las imagenes, esto viene bien por 2 razones:
+Permite la carga asincrónica por demanda de las imágenes de los productos de la tabla de los resultados de productos se utilizó SDWebImages.
+Dentro de los motivos por la cual se eligió se debe a la simplicidad para cargar imágenes por URL. No mucho menos esta librería nos facilita tener un caché de las imágenes, esto viene bien por 2 razones:
 - No volver a descargar una imagen ya descargada, ahorrándonos una importante cantidad de datos de la red. 
 - Al reducir el consumo de datos, disminuimos la cantidad de energía que requerimos por comunicación y procesamiento.
 
-La integracion al proyecto de la libreria fue realizada mediante Carthage.
+La integración al proyecto de la librería fue realizada mediante Carthage.
 
 Link al repo de [SDWebImages](https://github.com/SDWebImage/SDWebImage).
 
-## Permisos
-Para poder realizar la descarga de las imagenes, se debio solicitar el acceso agregar una propiedad en el archivo `info.plist`. 
+## Permisos <a name="id4"></a>
+Para poder realizar la descarga de las imágenes, se debió solicitar el acceso agregar una propiedad en el archivo `info.plist`. 
 La propiedad que tenemos que agregar es  `Allow arbitrary loads` en `YES`.
-
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
