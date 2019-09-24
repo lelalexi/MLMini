@@ -15,7 +15,7 @@
 		E4D0526023325388009B4EDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4D0525E23325388009B4EDB /* Main.storyboard */; };
 		E4D052622332538D009B4EDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4D052612332538D009B4EDB /* Assets.xcassets */; };
 		E4D052652332538D009B4EDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4D052632332538D009B4EDB /* LaunchScreen.storyboard */; };
-		E4D0529423328E8C009B4EDB /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D0529323328E8C009B4EDB /* APIResponse.swift */; };
+		E4D0529423328E8C009B4EDB /* APIResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D0529323328E8C009B4EDB /* APIResponseModel.swift */; };
 		E4D0529A23331117009B4EDB /* ProductViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D0529823331117009B4EDB /* ProductViewCell.swift */; };
 		E4D0529B23331117009B4EDB /* ProductViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4D0529923331117009B4EDB /* ProductViewCell.xib */; };
 		E4D0529D23331E09009B4EDB /* APIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D0529C23331E09009B4EDB /* APIServiceProtocol.swift */; };
@@ -56,7 +56,7 @@
 		E4D052612332538D009B4EDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E4D052642332538D009B4EDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E4D052662332538D009B4EDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E4D0529323328E8C009B4EDB /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
+		E4D0529323328E8C009B4EDB /* APIResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponseModel.swift; sourceTree = "<group>"; };
 		E4D0529823331117009B4EDB /* ProductViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewCell.swift; sourceTree = "<group>"; };
 		E4D0529923331117009B4EDB /* ProductViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductViewCell.xib; sourceTree = "<group>"; };
 		E4D0529C23331E09009B4EDB /* APIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceProtocol.swift; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 		E4D0526C233265D3009B4EDB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E4D0529323328E8C009B4EDB /* APIResponse.swift */,
+				E4D0529323328E8C009B4EDB /* APIResponseModel.swift */,
 				E461482E23369128006080E4 /* ItemAPIResponseModel.swift */,
 			);
 			path = Model;
@@ -339,7 +339,7 @@
 				E4D5D3562337C94600883E8A /* MainDetailTableViewCell.swift in Sources */,
 				E4D0529D23331E09009B4EDB /* APIServiceProtocol.swift in Sources */,
 				E4D0529F23331EF3009B4EDB /* MercadolibreService.swift in Sources */,
-				E4D0529423328E8C009B4EDB /* APIResponse.swift in Sources */,
+				E4D0529423328E8C009B4EDB /* APIResponseModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

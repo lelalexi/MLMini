@@ -16,7 +16,7 @@ class ProductListViewController: UIViewController {
     @IBOutlet var noResultsView: UIView!
     
     var spinner = SpinnerViewController()
-    var apiResp: APIResponse?
+    var apiResp: APIResponseModel?
     var service: APIServiceProtocol!
     var toSearch = ""
     

@@ -2,7 +2,7 @@
 import Foundation
 
 // MARK: - APIResponse
-class APIResponse: Codable {
+class APIResponseModel: Codable {
     let query: String
     let paging: Paging
     let results: [Result]

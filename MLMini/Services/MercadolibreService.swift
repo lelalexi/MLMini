@@ -15,7 +15,7 @@ enum UrlErrors: Error {
 
 public class MercadolibreService: APIServiceProtocol {
     
-    var itemListResponse: APIResponse?
+    var itemListResponse: APIResponseModel?
     
     func getItemsByName(name: String, completionHandler: @escaping (Error?) -> Void){
         
@@ -27,7 +27,7 @@ public class MercadolibreService: APIServiceProtocol {
         urlComponents.queryItems = [queryItem]
         
         if let url = urlComponents.url {
-            performRequest(apiURL: url) { [weak self] (response: APIResponse?, error: Error?) -> Void in
+            performRequest(apiURL: url) { [weak self] (response: APIResponseModel?, error: Error?) -> Void in
                 if (error != nil){
                     print(error)
                     completionHandler(error)
