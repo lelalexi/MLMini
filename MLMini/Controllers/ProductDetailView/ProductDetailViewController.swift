@@ -16,7 +16,7 @@ class ProductDetailViewController: UIViewController, UICollectionViewDelegateFlo
    
     var collectionFlowLayout: UICollectionViewFlowLayout!
     var itemIndexPath: IndexPath?
-    var service: APIServiceProtocol?
+    var service: APIAdapterProtocol?
     var item: ItemDescription?
     var images: [String]?
 

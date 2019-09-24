@@ -17,7 +17,7 @@ class ProductListViewController: UIViewController {
     
     var spinner = SpinnerViewController()
     var apiResp: APIResponseModel?
-    var service: APIServiceProtocol!
+    var service: APIAdapterProtocol!
     var toSearch = ""
     
     override func viewDidLoad() {
@@ -85,7 +85,7 @@ extension ProductListViewController: UITableViewDelegate, UITableViewDataSource 
 //    here Im going to load data from the adapter
     private func loadData(){
         
-        service = MercadolibreService()
+        service = AdapterFactory().adapter
         
         service.getItemsByName(name: toSearch) { [weak self] (error: Error?) in
             if error != nil {
