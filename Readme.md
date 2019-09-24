@@ -3,12 +3,31 @@
 Esta es una mini aplicación de Mercadolibre que brinda funcionalidades básicas con respecto a la búsqueda de productos en general, muestra de resultados de una manera legible y presente una vista de detalles de los productos.
 
 ## **Índice**   
-1. [Serialización del JSON](#id1)
-2. [Consulta a la API y el Adapter Mercadolibre](#id2)
-3. [Librerias](#id3)
-4. [Permisos](#id4)
+1. [UI/UX](#id1)
+2. [Serialización del JSON](#id2)
+3. [Consulta a la API y el Adapter Mercadolibre](#id3)
+4. [Librerias](#id4)
+5. [Permisos](#id5)
 
-## Serialización del JSON <a name="id1"></a>
+## UI/UX <a name="id1"></a>
+
+La interfaz grafica proporciona al usuario un feedback muy importante acerca del estado de la aplicación en cada momento y la propia modificación del mismo.
+
+Para esto se diseñaron 3 pantallas:
+
+- Pantalla de búsqueda
+- Pantalla de Listado de resultados de búsqueda
+- Pantalla de descripción del ítem o producto
+
+### Paleta de colores
+
+Se definió una paleta de colores bastante simple, se encuentra situada dentro de la carpeta `Extensions` con el nombre **UIColorExtension**. Los colores definidos son los colores utilizados en las paginas o bueno lo mas parecido a estos.
+
+### Fonts
+
+
+
+## Serialización del JSON <a name="id2"></a>
 
 A partir del uso del protocolo `Codable`se construyó un modelo que permite el mapeo de una respuesta JSON a una representación interna (modelo).
 
@@ -22,9 +41,9 @@ En el proyecto se encuentran en la carpeta Model dos archivos:
 
 Ambos modelos son utilizados para la serialización del JSON, en un principio eran modelos demasiado grandes y posteriormente se los redució notablemente. Esto se debe a que con un modelo muy grande se deben tener en cuenta las respuestas especificas en las distintas clases que lo componen y por no poseer mayor cantidad de tiempo.
 
-## Consulta a la API y el Adapter Mercadolibre <a name="id2"></a>
+## Consulta a la API y el Adapter Mercadolibre <a name="id3"></a>
 
-### API Request
+### Service Manager
 
 Dentro de este apartado como primera medida se tiene una clase que permite realizar las consultas a diversas API. No tiene en cuenta a que URL o a que API se realiza la request, solamente debemos poseer un modelo previamente que se conforme con el protocolo `Codable` y pasar una `URL` valida que nos devuelva un JSON acorde al modelo. Todo esto anterior viene al caso para explicar que esta clase es **Genérica**. 
 
@@ -37,7 +56,7 @@ El adapter no permite saber como se recibe la respuesta, solo nos permite obtene
 
 Las implementaciones antes comentadas deben conformarse a los protocolos creados para dicho fin y nos permite que si en un futuro cambie la URL, el formato del JSON, etc, solo se vea afectada la clase adapter.
 
-## Librerias <a name="id3"></a>
+## Librerias <a name="id4"></a>
 Dentro de las librerias utilizadas tenemos:
 
 - SDWebImages
@@ -52,6 +71,6 @@ La integración al proyecto de la librería fue realizada mediante Carthage.
 
 Link al repo de [SDWebImages](https://github.com/SDWebImage/SDWebImage).
 
-## Permisos <a name="id4"></a>
+## Permisos <a name="id5"></a>
 Para poder realizar la descarga de las imágenes, se debió solicitar el acceso agregar una propiedad en el archivo `info.plist`. 
 La propiedad que tenemos que agregar es  `Allow arbitrary loads` en `YES`.

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E461482F23369128006080E4 /* ItemAPIResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E461482E23369128006080E4 /* ItemAPIResponseModel.swift */; };
+		E495DFC3233A4B9A00E3A4C9 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E495DFC2233A4B9A00E3A4C9 /* ServiceManager.swift */; };
 		E49F96072339108700AC4ECC /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F96062339108700AC4ECC /* SpinnerViewController.swift */; };
 		E4CB24C223346642003AB3D8 /* NumberExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB24C123346642003AB3D8 /* NumberExtension.swift */; };
 		E4D0525B23325388009B4EDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D0525A23325388009B4EDB /* AppDelegate.swift */; };
@@ -18,8 +19,8 @@
 		E4D0529423328E8C009B4EDB /* APIResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D0529323328E8C009B4EDB /* APIResponseModel.swift */; };
 		E4D0529A23331117009B4EDB /* ProductViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D0529823331117009B4EDB /* ProductViewCell.swift */; };
 		E4D0529B23331117009B4EDB /* ProductViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4D0529923331117009B4EDB /* ProductViewCell.xib */; };
-		E4D0529D23331E09009B4EDB /* APIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D0529C23331E09009B4EDB /* APIServiceProtocol.swift */; };
-		E4D0529F23331EF3009B4EDB /* MercadolibreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D0529E23331EF3009B4EDB /* MercadolibreService.swift */; };
+		E4D0529D23331E09009B4EDB /* APIAdapterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D0529C23331E09009B4EDB /* APIAdapterProtocol.swift */; };
+		E4D0529F23331EF3009B4EDB /* MercadoLibreAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D0529E23331EF3009B4EDB /* MercadoLibreAdapter.swift */; };
 		E4D052A22333356B009B4EDB /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D052A12333356B009B4EDB /* SDWebImage.framework */; };
 		E4D052A72333367A009B4EDB /* SDWebImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E4D052A62333367A009B4EDB /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E4D052A92333B464009B4EDB /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D052A82333B464009B4EDB /* ProductDetailViewController.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		E461482E23369128006080E4 /* ItemAPIResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemAPIResponseModel.swift; sourceTree = "<group>"; };
+		E495DFC2233A4B9A00E3A4C9 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		E49F96062339108700AC4ECC /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		E4CB24C123346642003AB3D8 /* NumberExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberExtension.swift; sourceTree = "<group>"; };
 		E4D0525723325388009B4EDB /* MLMini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MLMini.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,8 +61,8 @@
 		E4D0529323328E8C009B4EDB /* APIResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponseModel.swift; sourceTree = "<group>"; };
 		E4D0529823331117009B4EDB /* ProductViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewCell.swift; sourceTree = "<group>"; };
 		E4D0529923331117009B4EDB /* ProductViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductViewCell.xib; sourceTree = "<group>"; };
-		E4D0529C23331E09009B4EDB /* APIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceProtocol.swift; sourceTree = "<group>"; };
-		E4D0529E23331EF3009B4EDB /* MercadolibreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MercadolibreService.swift; sourceTree = "<group>"; };
+		E4D0529C23331E09009B4EDB /* APIAdapterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAdapterProtocol.swift; sourceTree = "<group>"; };
+		E4D0529E23331EF3009B4EDB /* MercadoLibreAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MercadoLibreAdapter.swift; sourceTree = "<group>"; };
 		E4D052A12333356B009B4EDB /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
 		E4D052A62333367A009B4EDB /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
 		E4D052A82333B464009B4EDB /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
@@ -141,8 +143,9 @@
 		E4D05295233304F8009B4EDB /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				E4D0529C23331E09009B4EDB /* APIServiceProtocol.swift */,
-				E4D0529E23331EF3009B4EDB /* MercadolibreService.swift */,
+				E4D0529C23331E09009B4EDB /* APIAdapterProtocol.swift */,
+				E4D0529E23331EF3009B4EDB /* MercadoLibreAdapter.swift */,
+				E495DFC2233A4B9A00E3A4C9 /* ServiceManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -336,9 +339,10 @@
 				E4D5D35C2337E6B200883E8A /* BuyDetailTableViewCell.swift in Sources */,
 				E4D0525B23325388009B4EDB /* AppDelegate.swift in Sources */,
 				E4D052B02333CE79009B4EDB /* UIColorExtension.swift in Sources */,
+				E495DFC3233A4B9A00E3A4C9 /* ServiceManager.swift in Sources */,
 				E4D5D3562337C94600883E8A /* MainDetailTableViewCell.swift in Sources */,
-				E4D0529D23331E09009B4EDB /* APIServiceProtocol.swift in Sources */,
-				E4D0529F23331EF3009B4EDB /* MercadolibreService.swift in Sources */,
+				E4D0529D23331E09009B4EDB /* APIAdapterProtocol.swift in Sources */,
+				E4D0529F23331EF3009B4EDB /* MercadoLibreAdapter.swift in Sources */,
 				E4D0529423328E8C009B4EDB /* APIResponseModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
