@@ -1,6 +1,6 @@
 # MLMini
 
-Esta es una mini aplicación de Mercadolibre que brinda funcionalidades básicas con respecto a la búsqueda de productos en general, muestra de resultados de una manera legible y presente una vista de detalles de los productos.
+Esta es una mini aplicación de Mercadolibre que brinda funcionalidades básicas con respecto a la búsqueda de productos en general, muestra de resultados de una manera legible y presenta una vista de detalles de los productos.
 
 ## **Índice**   
 1. [UI/UX](#id1)
@@ -19,17 +19,34 @@ Para esto se diseñaron 3 pantallas:
 - Pantalla de Listado de resultados de búsqueda
 - Pantalla de descripción del ítem o producto
 
-### Paleta de colores
+### Pantalla de búsqueda
 
-Se definió una paleta de colores bastante simple, se encuentra situada dentro de la carpeta `Extensions` con el nombre **UIColorExtension**. Los colores definidos son los colores utilizados en las paginas o bueno lo mas parecido a estos.
+Se trató de realizar una interfaz que resulte simple y amigable, que respete los colores utilizados en la app y que demuestre ser intuitiva para usar.
 
-### Fonts
+### Pantalla de Listado de resultados de búsqueda
+
+Al investigar la app existente, se llego a la conclusión de que esta pantalla consta de una tableview.
+En la app realizada también esta pantalla consta de una tableview, la cual es rellenada con celdas reusables customs. La celda custom esta diseñada e implementada usando un .xib y su controlador.
+
+### Pantalla de descripción del ítem o producto
+
+En esta pantalla, se encuentra construida a partir de una `tableview`. Donde cada una de las secciones en la descripcion representa una celda custom y que la Header View de la tableview es el carrousel de fotos de productos.
+El carrousel de las fotos del producto esta contruido a partir de una `Collection View` con paginado activo, donde el tamaño de cada celda es el de la collection view. 
+
+
+#### Paleta de colores
+
+Se definió una paleta de colores bastante simple, se encuentra situada dentro de la carpeta `Extensions` con el nombre **UIColorExtension**. Los colores definidos son los colores utilizados en las paginas o lo mas parecido que se pudo. La extensión nos permite tenes nuestros propios colores definidos en un solo lugar y si el día de mañana se cambian, no hay que realizar modificación alguna en la app.
+
+#### Fonts
+
+Encontré esta [pagina](http://ux.mercadolibre.com/brandbook/tipografia.html) que explica la tipografía utilizada en la app oficial. En el proyecto por falta de tiempo no se incluyó, sino que se optó por elegir una font lo mas similar a la que encontramos en la aplicación iOS.
 
 
 
 ## Serialización del JSON <a name="id2"></a>
 
-A partir del uso del protocolo `Codable`se construyó un modelo que permite el mapeo de una respuesta JSON a una representación interna (modelo).
+A partir del uso del protocolo `Codable` se construyó un modelo que permite el mapeo de una respuesta JSON a una representación interna (modelo).
 
 Una pregunta segura que uno mismo se puede esta haciendo es que dicho protocolo es un poco "overkill" y que solo requerimos de que nuestro modelo conforme el protocolo `Decodable` para la tarea que se quiere realizar, la respuesta es que el uso del protocolo se pensó para que en un futuro se agreguen nuevas funcionalidades, por ejemplo el uso de CoreData o la que se deba hacer un el uso de `Encodable` para generar una respuesta o convertirse a otro tipo de representación.
 
