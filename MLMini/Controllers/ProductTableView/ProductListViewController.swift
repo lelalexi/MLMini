@@ -46,8 +46,6 @@ class ProductListViewController: UIViewController {
         }
     }
     func createSpinnerView() {
-        // Add a little spinning wheel on the status bar to show that there is something happening at backgorund
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         // add the spinner to the view
         addChild(spinner)
         spinner.view.frame = view.frame
@@ -57,8 +55,6 @@ class ProductListViewController: UIViewController {
     }
     
     func removeSpinnerView() {
-        // Remove the little spinning wheel on the status bar
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         // remove the spinner from the view
         self.spinner.willMove(toParent: nil)
         self.spinner.view.removeFromSuperview()
