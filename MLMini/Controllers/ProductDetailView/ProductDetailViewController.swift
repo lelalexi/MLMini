@@ -19,7 +19,11 @@ class ProductDetailViewController: UIViewController, UICollectionViewDelegateFlo
     var service: APIAdapterProtocol?
     var item: ItemDescription?
     var images: [String]?
-
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+            return .darkContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeDetailTableView()

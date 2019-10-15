@@ -11,9 +11,12 @@ import UIKit
 class SearchViewController: UIViewController {
 
     @IBOutlet var wallpaperImage: UIImageView!
-    @IBOutlet var wallpaperImageTopConstraint: NSLayoutConstraint!
     @IBOutlet var searchTextField: UITextField!
     @IBOutlet var searchButton: UIButton!
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+            return .darkContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,7 @@ class SearchViewController: UIViewController {
     deinit {
         removeObservers()
     }
+    
     
     fileprivate func configureView() {
         

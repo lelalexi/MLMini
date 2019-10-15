@@ -16,6 +16,11 @@ class ProductListViewController: UIViewController {
     @IBOutlet var noResultsView: UIView!
     @IBOutlet var noResultViewIcon: UIImageView!
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+            return .darkContent
+    }
+    
+    
     var spinner = SpinnerViewController()
     var apiResp: APIResponseModel?
     var service: APIAdapterProtocol!
