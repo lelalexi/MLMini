@@ -14,6 +14,7 @@ class ProductListViewController: UIViewController {
     @IBOutlet var productTableView: UITableView!
     @IBOutlet var noResultsIconView: UIView!
     @IBOutlet var noResultsView: UIView!
+    @IBOutlet var noResultViewIcon: UIImageView!
     
     var spinner = SpinnerViewController()
     var apiResp: APIResponseModel?
@@ -31,6 +32,8 @@ class ProductListViewController: UIViewController {
         noResultsView.isHidden = true
         noResultsIconView.layer.cornerRadius = noResultsIconView.frame.height / 2
         noResultsIconView.clipsToBounds = true
+        noResultViewIcon.image = UIImage(named: "Search")?.withRenderingMode(.alwaysTemplate)
+        noResultViewIcon.tintColor = UIColor(named: "activeBackground")
     }
     
     // MARK: - Navigation

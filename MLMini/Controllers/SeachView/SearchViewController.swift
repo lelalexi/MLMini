@@ -39,7 +39,7 @@ class SearchViewController: UIViewController {
     fileprivate func configureView() {
         
         searchButton.layer.cornerRadius = 8.0
-        searchButton.backgroundColor = .activeBlue
+        searchButton.backgroundColor = UIColor(named: "activeBlue")
         searchTextField.enablesReturnKeyAutomatically = true
         // TODO: Disable button if i have no text in the textfield
 //        searchButton.isEnabled = false

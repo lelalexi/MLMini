@@ -24,7 +24,7 @@ class MainDetailTableViewCell: UITableViewCell {
     }
     
     private func initializeCell(){
-        backgroundColor = .softGrey
+        backgroundColor = UIColor(named: "softGrey")
     }
     
     func configureCell(item: ItemDescription){

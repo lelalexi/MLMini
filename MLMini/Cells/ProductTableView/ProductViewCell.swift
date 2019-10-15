@@ -24,7 +24,7 @@ class ProductViewCell: UITableViewCell {
     private func initCell(){
         productFavIcon.image = productFavIcon.image?.withRenderingMode(.alwaysTemplate)
         productFavIcon.tintColor = .activeBlue
-        productTitle.textColor = .clearGrey
+        productTitle.textColor = UIColor(named: "clearGrey")
         productImage.layer.cornerRadius = 6.0
         productImage.clipsToBounds = true
         freeShippingLabel.isHidden = true

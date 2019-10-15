@@ -28,24 +28,24 @@ class BuyDetailTableViewCell: UITableViewCell {
         colorAndQuantiyView.layer.cornerRadius = 4.0
         colorAndQuantiyView.clipsToBounds = true
         
-        itemColor.textColor = .intermediateGrey
-        itemQuantity.textColor = .intermediateGrey
+        itemColor.textColor = UIColor(named: "intermediateGrey")
+        itemQuantity.textColor = UIColor(named: "intermediateGrey")
         
         itemColorThumbnail.layer.borderWidth = 1.0
-        itemColorThumbnail.layer.borderColor = UIColor.intermediateGrey.cgColor
+        itemColorThumbnail.layer.borderColor = UIColor(named: "intermediateGrey")?.cgColor
         itemColorThumbnail.layer.cornerRadius = 2.0
         
-        buyButton.backgroundColor = .activeBlue
+        buyButton.backgroundColor = UIColor(named: "activeBlue")
         buyButton.layer.cornerRadius = 4.0
         buyButton.clipsToBounds = true
         
         addToCartButton.backgroundColor = .clear
         addToCartButton.layer.cornerRadius = 4.0
         addToCartButton.clipsToBounds = true
-        addToCartButton.layer.borderColor = UIColor.activeBlue.cgColor
+        addToCartButton.layer.borderColor = UIColor(named: "activeBlue")?.cgColor
         addToCartButton.layer.borderWidth = 1.0
         
-        addToCartLabel.textColor = .activeBlue
+        addToCartLabel.textColor = UIColor(named: "activeBlue")
         
     }
     
