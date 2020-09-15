@@ -10,7 +10,6 @@ import UIKit
 import SDWebImage
 
 protocol ProductListViewControllerProtocol: class {
-    
     func showSpinnerView()
     func removeSpinnerView()
     func showEmptyView()
@@ -46,7 +45,7 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
         initializeNoResultsFoundView()
         initializeProductTableView()
         presenter?.viewDidLoad()
-        
+        presenter?.onSearchTextSetted(toSearch: toSearch)
     }
     
     private func initializeNoResultsFoundView(){
@@ -61,7 +60,7 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toProductDetail" {
             if let detailProductViewController = segue.destination as? ProductDetailViewController, let index = sender as? IndexPath{
-                detailProductViewController.service = service
+//                detailProductViewController.service = service
                 detailProductViewController.itemIndexPath = index
             }
         }

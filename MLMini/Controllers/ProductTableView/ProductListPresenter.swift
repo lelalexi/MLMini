@@ -13,6 +13,7 @@ protocol ProductListPresenterProtocol {
     var view: ProductListViewControllerProtocol? { get set }
     func viewDidLoad()
     func onListItemTapped(rowIndex: Int)
+    func onSearchTextSetted(toSearch: String)
 }
 
 class ProductListPresenter: ProductListPresenterProtocol {    
@@ -21,7 +22,6 @@ class ProductListPresenter: ProductListPresenterProtocol {
     weak var view: ProductListViewControllerProtocol?
     let repository: ProductListRepositoryProtocol?
     var model: APIResponseModel?
-    var toSearch = "auriculares"
     
     //MARK: - Initializers
     required init(repository: ProductListRepositoryProtocol) {
@@ -30,7 +30,10 @@ class ProductListPresenter: ProductListPresenterProtocol {
     
     func viewDidLoad() {
         view?.showSpinnerView()
-        getListData()
+    }
+    
+    func onSearchTextSetted(toSearch: String) {
+        getListData(toSearch: toSearch)
     }
     
     func onListItemTapped(rowIndex: Int) {
@@ -52,7 +55,7 @@ class ProductListPresenter: ProductListPresenterProtocol {
         print("Error in getItemsByName")
     }
     
-    private func getListData() {
+    private func getListData(toSearch: String) {
         repository?.getProductListData(productName: toSearch, completionHandler: { [weak self] (Response, error) in
             if let _ = error {
                 self?.onGetDataError()
