@@ -1,0 +1,66 @@
+//
+//  ProductListPresenter.swift
+//  MLMini
+//
+//  Created by Alexis Garcia on 14/09/2020.
+//  Copyright © 2020 ale. All rights reserved.
+//
+
+import Foundation
+
+protocol ProductListPresenterProtocol {
+    
+    var view: ProductListViewControllerProtocol? { get set }
+    func viewDidLoad()
+    func onListItemTapped(rowIndex: Int)
+}
+
+class ProductListPresenter: ProductListPresenterProtocol {    
+    
+    //MARK: - Properties
+    weak var view: ProductListViewControllerProtocol?
+    let repository: ProductListRepositoryProtocol?
+    var model: APIResponseModel?
+    var toSearch = "auriculares"
+    
+    //MARK: - Initializers
+    required init(repository: ProductListRepositoryProtocol) {
+        self.repository = repository
+    }
+    
+    func viewDidLoad() {
+        view?.showSpinnerView()
+        getListData()
+    }
+    
+    func onListItemTapped(rowIndex: Int) {
+        view?.goToDetailScreen(rowIndex: rowIndex)
+    }
+    
+    func onGetDataSuccess(model: APIResponseModel) {
+        if model.isEmpty() {
+            view?.showEmptyView()
+        } else {
+            view?.removeSpinnerView()
+            view?.fillList(model: model)
+            self.model = model
+        }
+    }
+    
+    func onGetDataError() {
+        //                TODO: DO SOMETHING WITH THE ERROR
+        print("Error in getItemsByName")
+    }
+    
+    private func getListData() {
+        repository?.getProductListData(productName: toSearch, completionHandler: { [weak self] (Response, error) in
+            if let _ = error {
+                self?.onGetDataError()
+            }
+            guard let response = Response else { return }
+            DispatchQueue.main.async {
+                self?.onGetDataSuccess(model: response)
+            }
+        })
+    }
+}
