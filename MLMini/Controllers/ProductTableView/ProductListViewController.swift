@@ -81,7 +81,6 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
         spinner.view.frame = view.frame
         view.addSubview(spinner.view)
         spinner.didMove(toParent: self)
-
     }
     
     func removeSpinnerView() {
@@ -120,25 +119,13 @@ extension ProductListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        performSegue(withIdentifier: "toProductDetail", sender: indexPath)
         presenter?.onListItemTapped(rowIndex: indexPath.row)
     }
 }
 
-//// MARK: - Protocols
-//protocol  ProductProtocol {
-//
-//    //Access the main thread and updates the tableview
-//    func reloadView()
-//
-//    //Hides the tableview in order to see a view saying that there re no results available
-//    func showEmptyView()
-//}
-
 extension ProductListViewController {
     func reloadView() {
         DispatchQueue.main.async {
-//            self.removeSpinnerView()
             self.productTableView.isHidden = false
             self.productTableView.reloadData()
         }
