@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C6F6A7E72510476E00140EAD /* ProductListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F6A7E62510476E00140EAD /* ProductListPresenter.swift */; };
+		C6F6A7E925104FFA00140EAD /* ProductListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F6A7E825104FFA00140EAD /* ProductListRepository.swift */; };
 		E461482F23369128006080E4 /* ItemAPIResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E461482E23369128006080E4 /* ItemAPIResponseModel.swift */; };
 		E495DFC3233A4B9A00E3A4C9 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E495DFC2233A4B9A00E3A4C9 /* ServiceManager.swift */; };
 		E49F96072339108700AC4ECC /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F96062339108700AC4ECC /* SpinnerViewController.swift */; };
@@ -47,6 +49,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C6F6A7E62510476E00140EAD /* ProductListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListPresenter.swift; sourceTree = "<group>"; };
+		C6F6A7E825104FFA00140EAD /* ProductListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListRepository.swift; sourceTree = "<group>"; };
 		E461482E23369128006080E4 /* ItemAPIResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemAPIResponseModel.swift; sourceTree = "<group>"; };
 		E495DFC2233A4B9A00E3A4C9 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		E49F96062339108700AC4ECC /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +202,8 @@
 			isa = PBXGroup;
 			children = (
 				E4D0525C23325388009B4EDB /* ProductListViewController.swift */,
+				C6F6A7E62510476E00140EAD /* ProductListPresenter.swift */,
+				C6F6A7E825104FFA00140EAD /* ProductListRepository.swift */,
 			);
 			path = ProductTableView;
 			sourceTree = "<group>";
@@ -331,6 +337,7 @@
 				E4D5D3532337BF4300883E8A /* ProductImageViewCell.swift in Sources */,
 				E49F96072339108700AC4ECC /* SpinnerViewController.swift in Sources */,
 				E4D0529A23331117009B4EDB /* ProductViewCell.swift in Sources */,
+				C6F6A7E925104FFA00140EAD /* ProductListRepository.swift in Sources */,
 				E4D0525D23325388009B4EDB /* ProductListViewController.swift in Sources */,
 				E461482F23369128006080E4 /* ItemAPIResponseModel.swift in Sources */,
 				E4D052AD2333C3EA009B4EDB /* SearchViewController.swift in Sources */,
@@ -341,6 +348,7 @@
 				E4D052B02333CE79009B4EDB /* UIColorExtension.swift in Sources */,
 				E495DFC3233A4B9A00E3A4C9 /* ServiceManager.swift in Sources */,
 				E4D5D3562337C94600883E8A /* MainDetailTableViewCell.swift in Sources */,
+				C6F6A7E72510476E00140EAD /* ProductListPresenter.swift in Sources */,
 				E4D0529D23331E09009B4EDB /* APIAdapterProtocol.swift in Sources */,
 				E4D0529F23331EF3009B4EDB /* MercadoLibreAdapter.swift in Sources */,
 				E4D0529423328E8C009B4EDB /* APIResponseModel.swift in Sources */,

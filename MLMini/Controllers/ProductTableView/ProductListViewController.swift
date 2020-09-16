@@ -9,28 +9,43 @@
 import UIKit
 import SDWebImage
 
-class ProductListViewController: UIViewController {
+protocol ProductListViewControllerProtocol: class {
+    func showSpinnerView()
+    func removeSpinnerView()
+    func showEmptyView()
+    func reloadView()
+    func goToDetailScreen(rowIndex: Int)
+    func fillList(model: APIResponseModel)
+}
+
+class ProductListViewController: UIViewController, ProductListViewControllerProtocol {
     
     @IBOutlet var productTableView: UITableView!
     @IBOutlet var noResultsIconView: UIView!
     @IBOutlet var noResultsView: UIView!
     @IBOutlet var noResultViewIcon: UIImageView!
     
+    var presenter: ProductListPresenterProtocol?
+    var model: APIResponseModel?
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
             return .darkContent
     }
     
-    
-    var spinner = SpinnerViewController()
+    lazy var spinner = SpinnerViewController()
     var apiResp: APIResponseModel?
     var service: APIAdapterProtocol!
     var toSearch = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //llevar la creacion de la instancia al instance
+        presenter = ProductListPresenter(repository: ProductListRepository.init(ServiceManager()))
+        presenter?.view = self
         initializeNoResultsFoundView()
         initializeProductTableView()
-        createSpinnerView()
+        presenter?.viewDidLoad()
+        presenter?.onSearchTextSetted(toSearch: toSearch)
     }
     
     private func initializeNoResultsFoundView(){
@@ -45,25 +60,34 @@ class ProductListViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toProductDetail" {
             if let detailProductViewController = segue.destination as? ProductDetailViewController, let index = sender as? IndexPath{
-                detailProductViewController.service = service
+//                detailProductViewController.service = service
                 detailProductViewController.itemIndexPath = index
             }
         }
     }
-    func createSpinnerView() {
+    
+    func goToDetailScreen(rowIndex: Int) {
+        performSegue(withIdentifier: "toProductDetail", sender: rowIndex)
+    }
+    
+    func fillList(model: APIResponseModel) {
+        self.model = model
+        reloadView()
+    }
+    
+    func showSpinnerView() {
         // add the spinner to the view
         addChild(spinner)
         spinner.view.frame = view.frame
         view.addSubview(spinner.view)
         spinner.didMove(toParent: self)
-
     }
     
     func removeSpinnerView() {
-        // remove the spinner from the view
-        self.spinner.willMove(toParent: nil)
-        self.spinner.view.removeFromSuperview()
-        self.spinner.removeFromParent()
+            // remove the spinner from the view
+            self.spinner.willMove(toParent: nil)
+            self.spinner.view.removeFromSuperview()
+            self.spinner.removeFromParent()
     }
 }
 
@@ -76,8 +100,6 @@ extension ProductListViewController: UITableViewDelegate, UITableViewDataSource 
         //Set tableview automatic row heigth to true
         productTableView.rowHeight = UITableView.automaticDimension
         productTableView.estimatedRowHeight = 140
-        loadData()
-        
     }
     
     private func registerTableCells(){
@@ -85,56 +107,25 @@ extension ProductListViewController: UITableViewDelegate, UITableViewDataSource 
         productTableView.register(productCell, forCellReuseIdentifier: "ProductViewCell")
     }
     
-//    here Im going to load data from the adapter
-    private func loadData(){
-        
-        service = AdapterFactory().adapter
-        
-        service.getItemsByName(name: toSearch) { [weak self] (error: Error?) in
-            if error != nil {
-                //                TODO: DO SOMETHING WITH THE ERROR
-                print("Error in getItemsByName")
-                return
-            }
-            
-            if self?.service.emptyResults() ?? false {
-                self?.showEmptyView()
-            } else {
-                self?.reloadView()
-            }
-        }
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return service.numberOfItems()
+        return model?.results.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = productTableView.dequeueReusableCell(withIdentifier: "ProductViewCell", for: indexPath) as? ProductViewCell else { return UITableViewCell() }
-        let item = service.itemAt(index: indexPath.row)
+        guard let cell = productTableView.dequeueReusableCell(withIdentifier: "ProductViewCell", for: indexPath) as? ProductViewCell, let model = model else { return UITableViewCell() }
+        let item = model.itemAt(index: indexPath.row)
         cell.configureCell(item: item)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "toProductDetail", sender: indexPath)
+        presenter?.onListItemTapped(rowIndex: indexPath.row)
     }
 }
 
-// MARK: - Protocols
-protocol  ProductProtocol {
-    
-    //Access the main thread and updates the tableview
-    func reloadView()
-    
-    //Hides the tableview in order to see a view saying that there re no results available
-    func showEmptyView()
-}
-
-extension ProductListViewController: ProductProtocol {
+extension ProductListViewController {
     func reloadView() {
         DispatchQueue.main.async {
-            self.removeSpinnerView()
             self.productTableView.isHidden = false
             self.productTableView.reloadData()
         }
