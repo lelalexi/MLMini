@@ -27,7 +27,7 @@ class MainDetailTableViewCell: UITableViewCell {
         backgroundColor = UIColor(named: "softGrey")
     }
     
-    func configureCell(item: ItemDescription){
+    func configureCell(item: ItemDescriptionModel){
 
         title.text = item.title
         price.text = "$ " + String(item.price.formattedWithSeparator)

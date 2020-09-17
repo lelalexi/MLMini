@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ProductDetailRepositoryProtocol {
-    func getItemDescription(itemId: String, completionHandler: @escaping (ItemDescription?, Error?) -> Void)
+    func getItemDescription(itemId: String, completionHandler: @escaping (ItemDescriptionModel?, Error?) -> Void)
 }
 
 class ProductDetailRepository: ProductDetailRepositoryProtocol {
@@ -28,7 +28,7 @@ class ProductDetailRepository: ProductDetailRepositoryProtocol {
         self.service = service
     }
     
-    func getItemDescription(itemId: String, completionHandler: @escaping (ItemDescription?, Error?) -> Void) {
+    func getItemDescription(itemId: String, completionHandler: @escaping (ItemDescriptionModel?, Error?) -> Void) {
         urlComponents.path = "/items/\(itemId)"
         
         if let url = urlComponents.url {

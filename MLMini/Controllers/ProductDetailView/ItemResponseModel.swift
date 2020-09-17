@@ -64,18 +64,18 @@ class ItemResponseModel: Codable {
 }
 //MARK: - ToModel
 extension ItemResponseModel {
-    func toModel() -> ItemDescription {
+    func toModel() -> ItemDescriptionModel {
         var itemImageArray = [String]()
         for pic in pictures{
             itemImageArray.append(pic.url)
         }
-        return ItemDescription(id: id,
-                               price: Double(price),
-                               title: title,
-                               pictures: itemImageArray,
-                               soldQuantity: soldQuantity,
-                               thumbnail: thumbnail,
-                               availableItems: availableQuantity)
+        return ItemDescriptionModel(id: id,
+                                    price: Double(price),
+                                    title: title,
+                                    pictures: itemImageArray,
+                                    soldQuantity: soldQuantity,
+                                    thumbnail: thumbnail,
+                                    availableItems: availableQuantity)
     }
 }
 

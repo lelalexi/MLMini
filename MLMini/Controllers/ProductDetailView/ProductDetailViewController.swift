@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 
 protocol ProductDetailViewControllerProtocol: class {
-    func updateModelAndReloadData(model: ItemDescription)
+    func updateModelAndReloadData(model: ItemDescriptionModel)
 }
 
 class ProductDetailViewController: UIViewController, UICollectionViewDelegateFlowLayout {
@@ -22,7 +22,7 @@ class ProductDetailViewController: UIViewController, UICollectionViewDelegateFlo
    
     var collectionFlowLayout: UICollectionViewFlowLayout!
     var images: [String]?
-    var model: ItemDescription?
+    var model: ItemDescriptionModel?
     var itemId = ""
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -43,7 +43,7 @@ class ProductDetailViewController: UIViewController, UICollectionViewDelegateFlo
 // MARK: - Protocol
 extension ProductDetailViewController: ProductDetailViewControllerProtocol {
     
-    func updateModelAndReloadData(model: ItemDescription) {
+    func updateModelAndReloadData(model: ItemDescriptionModel) {
         self.model = model
         productDetailCarrouselCollectionView.reloadData()
         productDetailTableView.reloadData()

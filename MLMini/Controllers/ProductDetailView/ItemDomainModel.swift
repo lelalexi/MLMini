@@ -6,7 +6,7 @@
 //  Copyright © 2020 ale. All rights reserved.
 //
 
-struct Item {
+struct ItemModel {
     let id: String
     let price: Double
     let title: String
@@ -14,7 +14,7 @@ struct Item {
     let freeShipping: Bool
 }
 
-struct ItemDescription {
+struct ItemDescriptionModel {
     let id: String
     let price: Double
     let title: String

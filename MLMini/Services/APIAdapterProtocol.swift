@@ -7,31 +7,13 @@
 //
 import UIKit
 
-//struct Item {
-//    let id: String
-//    let price: Double
-//    let title: String
-//    let thumbnail: String
-//    let freeShipping: Bool
-//}
-//
-//struct ItemDescription {
-//    let id: String
-//    let price: Double
-//    let title: String
-//    let pictures: [String]
-//    let soldQuantity: Int
-//    let thumbnail: String
-//    let availableItems: Int
-//}
-
 protocol APIAdapterProtocol {
     
     /// Request to the API data about an item name
     func getItemsByName(name: String, completionHandler: @escaping (Error?) -> Void)
     
     /// Request to the API data about an item at a determined index
-    func getItemDescriptionByIndex(index: Int, completionHandler: @escaping (ItemDescription?, Error?) -> Void) -> Void
+    func getItemDescriptionByIndex(index: Int, completionHandler: @escaping (ItemDescriptionModel?, Error?) -> Void) -> Void
     
     /// Returns true if no results are available
     func emptyResults() -> Bool
@@ -40,6 +22,6 @@ protocol APIAdapterProtocol {
     func numberOfItems() -> Int
     
     /// Returns an item at an specific index
-    func itemAt(index: Int) -> Item
+    func itemAt(index: Int) -> ItemModel
 }
 

@@ -55,9 +55,9 @@ class MercadoLibreAdapter: APIAdapterProtocol {
         }
     }
     
-    func getItemDescriptionByIndex(index: Int, completionHandler: @escaping (ItemDescription?, Error?) -> Void) -> Void {
+    func getItemDescriptionByIndex(index: Int, completionHandler: @escaping (ItemDescriptionModel?, Error?) -> Void) -> Void {
         
-        var item: ItemDescription?
+        var item: ItemDescriptionModel?
 
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
@@ -73,13 +73,13 @@ class MercadoLibreAdapter: APIAdapterProtocol {
                     for pic in response!.pictures{
                         itemPictureArray.append(pic.url)
                     }
-                    item = ItemDescription (id: response!.id,
-                                            price: Double(response!.price),
-                                            title: response!.title,
-                                            pictures: itemPictureArray,
-                                            soldQuantity: response!.soldQuantity,
-                                            thumbnail: response!.thumbnail,
-                                            availableItems: response!.availableQuantity)
+                    item = ItemDescriptionModel(id: response!.id,
+                                                price: Double(response!.price),
+                                                title: response!.title,
+                                                pictures: itemPictureArray,
+                                                soldQuantity: response!.soldQuantity,
+                                                thumbnail: response!.thumbnail,
+                                                availableItems: response!.availableQuantity)
                     completionHandler(item, nil)
                 }
             }
@@ -96,14 +96,14 @@ class MercadoLibreAdapter: APIAdapterProtocol {
         return itemListResponse?.results.count ?? 0
     }
     
-    func itemAt(index: Int) -> Item {
-        var item = Item(id: "", price: 0, title: "", thumbnail: "Placeholder", freeShipping: false)
+    func itemAt(index: Int) -> ItemModel {
+        var item = ItemModel(id: "", price: 0, title: "", thumbnail: "Placeholder", freeShipping: false)
         if let resp = itemListResponse?.results[index] {
-            item = Item(id: resp.id,
-                        price: resp.price,
-                        title: resp.title,
-                        thumbnail: resp.thumbnail,
-                        freeShipping: resp.shipping?.freeShipping ?? false)
+            item = ItemModel(id: resp.id,
+                             price: resp.price,
+                             title: resp.title,
+                             thumbnail: resp.thumbnail,
+                             freeShipping: resp.shipping?.freeShipping ?? false)
         }
         return item
     }

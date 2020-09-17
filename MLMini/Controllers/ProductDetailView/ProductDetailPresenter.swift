@@ -20,7 +20,7 @@ class ProductDetailPresenter: ProductDetailPresenterProtocol {
     //MARK: - Properties
     weak var view: ProductDetailViewControllerProtocol?
     let repository: ProductDetailRepositoryProtocol?
-    var model: ItemDescription?
+    var model: ItemDescriptionModel?
     
     //MARK: - Initializers
     required init(repository: ProductDetailRepositoryProtocol) {
@@ -35,7 +35,7 @@ class ProductDetailPresenter: ProductDetailPresenterProtocol {
         getItemDescription(itemId: itemId)
     }
     
-    func onGetDataSuccess(model: ItemDescription) {
+    func onGetDataSuccess(model: ItemDescriptionModel) {
         view?.updateModelAndReloadData(model: model)
         self.model = model
     }

@@ -20,10 +20,10 @@ class APIResponseModel: Codable {
         return results.isEmpty
     }
     
-    func itemAt(index: Int) -> Item {
-        var item = Item(id: "", price: 0, title: "", thumbnail: "Placeholder", freeShipping: false)
+    func itemAt(index: Int) -> ItemModel {
+        var item = ItemModel(id: "", price: 0, title: "", thumbnail: "Placeholder", freeShipping: false)
         let resp = results[index]
-        item = Item(id: resp.id,
+        item = ItemModel(id: resp.id,
                     price: resp.price,
                     title: resp.title,
                     thumbnail: resp.thumbnail,
