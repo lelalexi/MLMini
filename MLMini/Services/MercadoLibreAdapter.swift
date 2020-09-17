@@ -65,7 +65,7 @@ class MercadoLibreAdapter: APIAdapterProtocol {
         urlComponents.path = "/items/" + (itemListResponse?.results[index].id)! // Im always sure that if I loaded the table with info the user is going to select a valid row
         
         if let url = urlComponents.url {
-            serviceManager.performRequest(apiURL: url) { (response: ItemAPIResponseModel?, error: Error?) -> Void in
+            serviceManager.performRequest(apiURL: url) { (response: ItemResponseModel?, error: Error?) -> Void in
                 if (error != nil){
                     completionHandler(nil, error)
                 } else {
@@ -73,7 +73,8 @@ class MercadoLibreAdapter: APIAdapterProtocol {
                     for pic in response!.pictures{
                         itemPictureArray.append(pic.url)
                     }
-                    item = ItemDescription (price: Double(response!.price),
+                    item = ItemDescription (id: response!.id,
+                                            price: Double(response!.price),
                                             title: response!.title,
                                             pictures: itemPictureArray,
                                             soldQuantity: response!.soldQuantity,
@@ -96,9 +97,10 @@ class MercadoLibreAdapter: APIAdapterProtocol {
     }
     
     func itemAt(index: Int) -> Item {
-        var item = Item(price: 0, title: "", thumbnail: "Placeholder", freeShipping: false)
+        var item = Item(id: "", price: 0, title: "", thumbnail: "Placeholder", freeShipping: false)
         if let resp = itemListResponse?.results[index] {
-            item = Item(price: resp.price,
+            item = Item(id: resp.id,
+                        price: resp.price,
                         title: resp.title,
                         thumbnail: resp.thumbnail,
                         freeShipping: resp.shipping?.freeShipping ?? false)

@@ -12,7 +12,7 @@ protocol ProductListPresenterProtocol {
     
     var view: ProductListViewControllerProtocol? { get set }
     func viewDidLoad()
-    func onListItemTapped(rowIndex: Int)
+    func onListItemTapped(itemId: String)
     func onSearchTextSetted(toSearch: String)
 }
 
@@ -36,8 +36,8 @@ class ProductListPresenter: ProductListPresenterProtocol {
         getListData(toSearch: toSearch)
     }
     
-    func onListItemTapped(rowIndex: Int) {
-        view?.goToDetailScreen(rowIndex: rowIndex)
+    func onListItemTapped(itemId: String) {
+        view?.goToDetailScreen(itemId: itemId)
     }
     
     func onGetDataSuccess(model: APIResponseModel) {

@@ -21,9 +21,10 @@ class APIResponseModel: Codable {
     }
     
     func itemAt(index: Int) -> Item {
-        var item = Item(price: 0, title: "", thumbnail: "Placeholder", freeShipping: false)
+        var item = Item(id: "", price: 0, title: "", thumbnail: "Placeholder", freeShipping: false)
         let resp = results[index]
-        item = Item(price: resp.price,
+        item = Item(id: resp.id,
+                    price: resp.price,
                     title: resp.title,
                     thumbnail: resp.thumbnail,
                     freeShipping: resp.shipping?.freeShipping ?? false)

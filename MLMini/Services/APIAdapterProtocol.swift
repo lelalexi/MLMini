@@ -7,21 +7,23 @@
 //
 import UIKit
 
-struct Item {
-    let price: Double
-    let title: String
-    let thumbnail: String
-    let freeShipping: Bool
-}
-
-struct ItemDescription {
-    let price: Double
-    let title: String
-    let pictures: [String]
-    let soldQuantity: Int
-    let thumbnail: String
-    let availableItems: Int
-}
+//struct Item {
+//    let id: String
+//    let price: Double
+//    let title: String
+//    let thumbnail: String
+//    let freeShipping: Bool
+//}
+//
+//struct ItemDescription {
+//    let id: String
+//    let price: Double
+//    let title: String
+//    let pictures: [String]
+//    let soldQuantity: Int
+//    let thumbnail: String
+//    let availableItems: Int
+//}
 
 protocol APIAdapterProtocol {
     

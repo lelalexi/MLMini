@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - ItemAPIResponseModel
-class ItemAPIResponseModel: Codable {
+class ItemResponseModel: Codable {
     let id, title: String
     let sellerID: Int
     let categoryID: String
@@ -62,7 +62,22 @@ class ItemAPIResponseModel: Codable {
         self.status = status
     }
 }
-
+//MARK: - ToModel
+extension ItemResponseModel {
+    func toModel() -> ItemDescription {
+        var itemImageArray = [String]()
+        for pic in pictures{
+            itemImageArray.append(pic.url)
+        }
+        return ItemDescription(id: id,
+                               price: Double(price),
+                               title: title,
+                               pictures: itemImageArray,
+                               soldQuantity: soldQuantity,
+                               thumbnail: thumbnail,
+                               availableItems: availableQuantity)
+    }
+}
 
 // MARK: - Description
 class Description: Codable {
@@ -72,7 +87,6 @@ class Description: Codable {
         self.id = id
     }
 }
-
 
 // MARK: - Picture
 class Picture: Codable {
