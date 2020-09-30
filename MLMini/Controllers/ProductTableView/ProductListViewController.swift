@@ -14,7 +14,7 @@ protocol ProductListViewControllerProtocol: class {
     func removeSpinnerView()
     func showEmptyView()
     func reloadView()
-    func goToDetailScreen(rowIndex: Int)
+    func goToDetailScreen(itemId: String)
     func fillList(model: APIResponseModel)
 }
 
@@ -34,7 +34,6 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
     
     lazy var spinner = SpinnerViewController()
     var apiResp: APIResponseModel?
-    var service: APIAdapterProtocol!
     var toSearch = ""
     
     override func viewDidLoad() {
@@ -59,15 +58,14 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toProductDetail" {
-            if let detailProductViewController = segue.destination as? ProductDetailViewController, let index = sender as? IndexPath{
-//                detailProductViewController.service = service
-                detailProductViewController.itemIndexPath = index
+            if let detailProductViewController = segue.destination as? ProductDetailViewController, let itemId = sender as? String{
+                detailProductViewController.itemId = itemId
             }
         }
     }
     
-    func goToDetailScreen(rowIndex: Int) {
-        performSegue(withIdentifier: "toProductDetail", sender: rowIndex)
+    func goToDetailScreen(itemId: String) {
+        performSegue(withIdentifier: "toProductDetail", sender: itemId)
     }
     
     func fillList(model: APIResponseModel) {
@@ -119,7 +117,8 @@ extension ProductListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter?.onListItemTapped(rowIndex: indexPath.row)
+        guard let itemId = model?.itemAt(index: indexPath.row).id else { return }
+        presenter?.onListItemTapped(itemId: itemId)
     }
 }
 

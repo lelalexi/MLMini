@@ -9,16 +9,21 @@
 import UIKit
 import SDWebImage
 
+protocol ProductDetailViewControllerProtocol: class {
+    func updateModelAndReloadData(model: ItemDescriptionModel)
+}
+
 class ProductDetailViewController: UIViewController, UICollectionViewDelegateFlowLayout {
-    
+    //MARK: - IBOutlets
     @IBOutlet weak var productDetailTableView: UITableView!
     @IBOutlet weak var productDetailCarrouselCollectionView: UICollectionView!
-   
+    
+    //MARK: - Properties
+    var presenter: ProductDetailPresenterProtocol?
     var collectionFlowLayout: UICollectionViewFlowLayout!
-    var itemIndexPath: IndexPath?
-    var service: APIAdapterProtocol?
-    var item: ItemDescription?
     var images: [String]?
+    var model: ItemDescriptionModel?
+    var itemId = ""
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
             return .darkContent
@@ -26,27 +31,22 @@ class ProductDetailViewController: UIViewController, UICollectionViewDelegateFlo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter = ProductDetailPresenter(repository: ProductDetailRepository.init(ServiceManager()))
+        presenter?.view = self
         initializeDetailTableView()
         initialiceCollectionView()
-        loadDataFromAPI()
+        presenter?.viewDidLoad()
+        presenter?.onItemIdSetted(itemId: itemId)
     }
 }
 
-// MARK: - Data Loading
-extension ProductDetailViewController {
+// MARK: - Protocol
+extension ProductDetailViewController: ProductDetailViewControllerProtocol {
     
-    private func loadDataFromAPI(){
-        service?.getItemDescriptionByIndex(index: itemIndexPath!.row) { [weak self] (resp: ItemDescription?, error: Error?) -> Void in
-            if (error != nil){
-                print(error)
-            } else {
-                self?.item = resp
-                DispatchQueue.main.async {
-                    self?.productDetailCarrouselCollectionView.reloadData()
-                    self?.productDetailTableView.reloadData()
-                }
-            }
-        }
+    func updateModelAndReloadData(model: ItemDescriptionModel) {
+        self.model = model
+        productDetailCarrouselCollectionView.reloadData()
+        productDetailTableView.reloadData()
     }
 }
 
@@ -78,12 +78,12 @@ extension ProductDetailViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            guard let cell = productDetailTableView.dequeueReusableCell(withIdentifier: "MainDetailTableViewCell", for: indexPath) as? MainDetailTableViewCell, let safeItem = item else { return UITableViewCell() }
-            cell.configureCell(item: safeItem)
+            guard let cell = productDetailTableView.dequeueReusableCell(withIdentifier: "MainDetailTableViewCell", for: indexPath) as? MainDetailTableViewCell, let model = model else { return UITableViewCell() }
+            cell.configureCell(item: model)
             return cell
         case 1:
-            guard let cell = productDetailTableView.dequeueReusableCell(withIdentifier: "BuyDetailTableViewCell", for: indexPath) as? BuyDetailTableViewCell, let safeItem = item else { return UITableViewCell() }
-            cell.configureCell(item: safeItem)
+            guard let cell = productDetailTableView.dequeueReusableCell(withIdentifier: "BuyDetailTableViewCell", for: indexPath) as? BuyDetailTableViewCell, let model = model else { return UITableViewCell() }
+            cell.configureCell(item: model)
             return cell
         default:
             return UITableViewCell()
@@ -93,35 +93,6 @@ extension ProductDetailViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return false
     }
-    
-    
 }
 
-// MARK: - Detail Images Carroussel
-extension ProductDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func initialiceCollectionView(){
-        setCollectionViewLayout()
-        productDetailCarrouselCollectionView.delegate = self
-        productDetailCarrouselCollectionView.dataSource = self
-    }
-    
-    private func setCollectionViewLayout(){
-        collectionFlowLayout = UICollectionViewFlowLayout()
-        collectionFlowLayout.scrollDirection = .horizontal
-        collectionFlowLayout.minimumLineSpacing = 0.0
-        collectionFlowLayout.itemSize = CGSize(width: view.frame.width,
-                                               height: productDetailCarrouselCollectionView.frame.height)
-        productDetailCarrouselCollectionView.setCollectionViewLayout(collectionFlowLayout, animated: true)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return item?.pictures.count ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = productDetailCarrouselCollectionView.dequeueReusableCell(withReuseIdentifier: "ProductImageCell", for: indexPath ) as? ProductImageViewCell else { return UICollectionViewCell() }
-        cell.configureCell(image: item?.pictures[indexPath.item] ?? "")
-        return cell
-    }
-}
+

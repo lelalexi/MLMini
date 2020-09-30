@@ -20,10 +20,11 @@ class APIResponseModel: Codable {
         return results.isEmpty
     }
     
-    func itemAt(index: Int) -> Item {
-        var item = Item(price: 0, title: "", thumbnail: "Placeholder", freeShipping: false)
+    func itemAt(index: Int) -> ItemModel {
+        var item = ItemModel(id: "", price: 0, title: "", thumbnail: "Placeholder", freeShipping: false)
         let resp = results[index]
-        item = Item(price: resp.price,
+        item = ItemModel(id: resp.id,
+                    price: resp.price,
                     title: resp.title,
                     thumbnail: resp.thumbnail,
                     freeShipping: resp.shipping?.freeShipping ?? false)
@@ -92,10 +93,6 @@ class Result: Codable {
         self.officialStoreID = officialStoreID
         self.catalogProductID = catalogProductID
     }
-}
-
-enum Condition: String, Codable {
-    case new = "new"
 }
 
 // MARK: - Shipping

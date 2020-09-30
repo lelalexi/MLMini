@@ -30,7 +30,7 @@ class ProductViewCell: UITableViewCell {
         freeShippingLabel.isHidden = true
     }
     
-    func configureCell(item: Item){
+    func configureCell(item: ItemModel){
         productTitle.text = item.title
         productPrice.text = "$ " + String(item.price.formattedWithSeparator)
         productImage.sd_setImage(with: URL(string: item.thumbnail), placeholderImage: UIImage(named: "Placeholder"))
