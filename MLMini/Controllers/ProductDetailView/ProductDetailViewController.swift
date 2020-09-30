@@ -14,12 +14,12 @@ protocol ProductDetailViewControllerProtocol: class {
 }
 
 class ProductDetailViewController: UIViewController, UICollectionViewDelegateFlowLayout {
-    
+    //MARK: - IBOutlets
     @IBOutlet weak var productDetailTableView: UITableView!
     @IBOutlet weak var productDetailCarrouselCollectionView: UICollectionView!
     
+    //MARK: - Properties
     var presenter: ProductDetailPresenterProtocol?
-   
     var collectionFlowLayout: UICollectionViewFlowLayout!
     var images: [String]?
     var model: ItemDescriptionModel?
@@ -95,31 +95,4 @@ extension ProductDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
 }
 
-// MARK: - Detail Images Carroussel
-extension ProductDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func initialiceCollectionView(){
-        setCollectionViewLayout()
-        productDetailCarrouselCollectionView.delegate = self
-        productDetailCarrouselCollectionView.dataSource = self
-    }
-    
-    private func setCollectionViewLayout(){
-        collectionFlowLayout = UICollectionViewFlowLayout()
-        collectionFlowLayout.scrollDirection = .horizontal
-        collectionFlowLayout.minimumLineSpacing = 0.0
-        collectionFlowLayout.itemSize = CGSize(width: view.frame.width,
-                                               height: productDetailCarrouselCollectionView.frame.height)
-        productDetailCarrouselCollectionView.setCollectionViewLayout(collectionFlowLayout, animated: true)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model?.pictures.count ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = productDetailCarrouselCollectionView.dequeueReusableCell(withReuseIdentifier: "ProductImageCell", for: indexPath ) as? ProductImageViewCell else { return UICollectionViewCell() }
-        cell.configureCell(image: model?.pictures[indexPath.item] ?? "")
-        return cell
-    }
-}
+

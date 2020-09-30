@@ -95,10 +95,6 @@ class Result: Codable {
     }
 }
 
-enum Condition: String, Codable {
-    case new = "new"
-}
-
 // MARK: - Shipping
 class Shipping: Codable {
     let freeShipping: Bool

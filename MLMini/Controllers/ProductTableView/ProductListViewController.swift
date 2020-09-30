@@ -34,7 +34,6 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
     
     lazy var spinner = SpinnerViewController()
     var apiResp: APIResponseModel?
-    var service: APIAdapterProtocol!
     var toSearch = ""
     
     override func viewDidLoad() {
