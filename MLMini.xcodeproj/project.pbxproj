@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C6037D3D25254A6C000EB082 /* ProductDetailViewControllerCarrouselExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6037D3C25254A6C000EB082 /* ProductDetailViewControllerCarrouselExtension.swift */; };
+		C6037D3F252559D3000EB082 /* SearchViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6037D3E252559D3000EB082 /* SearchViewPresenter.swift */; };
 		C6E2C8122512E86E009687CC /* ItemDomainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E2C8112512E86E009687CC /* ItemDomainModel.swift */; };
 		C6F6A7E72510476E00140EAD /* ProductListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F6A7E62510476E00140EAD /* ProductListPresenter.swift */; };
 		C6F6A7E925104FFA00140EAD /* ProductListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F6A7E825104FFA00140EAD /* ProductListRepository.swift */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		C6037D3C25254A6C000EB082 /* ProductDetailViewControllerCarrouselExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewControllerCarrouselExtension.swift; sourceTree = "<group>"; };
+		C6037D3E252559D3000EB082 /* SearchViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewPresenter.swift; sourceTree = "<group>"; };
 		C6E2C8112512E86E009687CC /* ItemDomainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDomainModel.swift; sourceTree = "<group>"; };
 		C6F6A7E62510476E00140EAD /* ProductListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListPresenter.swift; sourceTree = "<group>"; };
 		C6F6A7E825104FFA00140EAD /* ProductListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListRepository.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				E4D052AC2333C3EA009B4EDB /* SearchViewController.swift */,
+				C6037D3E252559D3000EB082 /* SearchViewPresenter.swift */,
 			);
 			path = SeachView;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				E4D0525B23325388009B4EDB /* AppDelegate.swift in Sources */,
 				C6F6A7FE2512C7F400140EAD /* ProductDetailRepository.swift in Sources */,
 				E4D052B02333CE79009B4EDB /* UIColorExtension.swift in Sources */,
+				C6037D3F252559D3000EB082 /* SearchViewPresenter.swift in Sources */,
 				E495DFC3233A4B9A00E3A4C9 /* ServiceManager.swift in Sources */,
 				E4D5D3562337C94600883E8A /* MainDetailTableViewCell.swift in Sources */,
 				C6F6A7E72510476E00140EAD /* ProductListPresenter.swift in Sources */,
