@@ -14,8 +14,7 @@ protocol SearchViewControllerProtocol: UIViewController {
     func hideKeyboard()
     func pushNextViewController()
     func getSearchText() -> String
-    func getButtonBottomPosition() -> CGFloat
-    func setViewYOffset(offset: CGFloat)
+    func keyboardWillChange(notification: Notification)
 }
 
 class SearchViewController: UIViewController, SearchViewControllerProtocol {
@@ -63,10 +62,6 @@ class SearchViewController: UIViewController, SearchViewControllerProtocol {
         return searchTextField.text ?? ""
     }
     
-    func getButtonBottomPosition() -> CGFloat {
-        return searchButton.frame.maxY
-    }
-    
     @IBAction func searchButtonPressed(_ sender: UIButton) {
         presenter?.onSearchButtonTap()
     }
@@ -94,8 +89,19 @@ extension SearchViewController {
 // MARK: - UITextField and Keyboard Events
 extension SearchViewController: UITextFieldDelegate {
     
-    func setViewYOffset(offset: CGFloat) {
-        view.frame.origin.y = offset
+    func keyboardWillChange(notification: Notification){
+    //        We need to obtain the height of the keyboard
+        guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+        
+        if notification.name == UIResponder.keyboardWillShowNotification || notification.name ==  UIResponder.keyboardWillChangeFrameNotification {
+//            We need to do some math here and calculate the right displacement for Y axis
+            let yDisplacement = abs(keyboardRect.origin.y - searchButton.frame.maxY)
+            view.frame.origin.y = -yDisplacement - 16.0
+        } else {
+            view.frame.origin.y = 0.0
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

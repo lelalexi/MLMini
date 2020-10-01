@@ -57,18 +57,7 @@ extension SearchViewPresenter {
     }
     
     @objc func keyboardWillChange(notification: Notification){
-//        We need to obtain the height of the keyboard
-        guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-            return
-        }
-        
-        if notification.name == UIResponder.keyboardWillShowNotification || notification.name ==  UIResponder.keyboardWillChangeFrameNotification {
-//            We need to do some math here and calculate the right displacement for Y axis
-            let yDisplacement = abs(keyboardRect.origin.y - (view?.getButtonBottomPosition())!)
-            view?.setViewYOffset(offset: -yDisplacement - 16.0)
-        } else {
-            view?.setViewYOffset(offset: 0.0)
-        }
+        view?.keyboardWillChange(notification: notification)
     }
     
     private func removeObservers(){
