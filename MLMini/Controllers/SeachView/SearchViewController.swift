@@ -8,11 +8,22 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+protocol SearchViewControllerProtocol: UIViewController {
+    
+    func configureView()
+    func hideKeyboard()
+    func pushNextViewController()
+    func getSearchText() -> String
+    func keyboardWillChange(notification: Notification)
+}
+
+class SearchViewController: UIViewController, SearchViewControllerProtocol {
 
     @IBOutlet var wallpaperImage: UIImageView!
     @IBOutlet var searchTextField: UITextField!
     @IBOutlet var searchButton: UIButton!
+    
+    var presenter: SearchViewPresenterProtocol?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
             return .darkContent
@@ -20,9 +31,9 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addObservers()
-        configureView()
-
+        presenter = SearchViewPresenter()
+        presenter?.view = self
+        presenter?.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,12 +47,10 @@ class SearchViewController: UIViewController {
     }
     
     deinit {
-        removeObservers()
+        presenter?.onViewDeInit()
     }
     
-    
-    fileprivate func configureView() {
-        
+    func configureView() {
         searchButton.layer.cornerRadius = 8.0
         searchButton.backgroundColor = UIColor(named: "activeBlue")
         searchTextField.enablesReturnKeyAutomatically = true
@@ -49,20 +58,25 @@ class SearchViewController: UIViewController {
 //        searchButton.isEnabled = false
     }
     
+    func getSearchText() -> String {
+        return searchTextField.text ?? ""
+    }
+    
     @IBAction func searchButtonPressed(_ sender: UIButton) {
-        hideKeyboard()
-        if searchTextField.text != "" {
-            performSegue(withIdentifier: "pushToResultsTable", sender: nil)
-        }
+        presenter?.onSearchButtonTap()
     }
     
     @IBAction func userDidTapView(_ sender: UITapGestureRecognizer) {
-        hideKeyboard()
+        presenter?.onUserViewTap()
+    }
+}
+
+// MARK: - Navigation
+extension SearchViewController {
+    func pushNextViewController() {
+        performSegue(withIdentifier: "pushToResultsTable", sender: nil)
     }
     
-    
-    
-    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pushToResultsTable" {
             if let resultTableviewViewController = segue.destination as? ProductListViewController{
@@ -70,48 +84,28 @@ class SearchViewController: UIViewController {
             }
         }
     }
- 
-
 }
 
 // MARK: - UITextField and Keyboard Events
 extension SearchViewController: UITextFieldDelegate {
     
-    private func addObservers(){
-//        Start listening keyboard events
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-    }
-    
-    private func removeObservers(){
-//        Stop listening keyboard events
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-    }
-    
-    @objc func keyboardWillChange(notification: Notification){
-//        We need to obtain the height of the keyboard
+    func keyboardWillChange(notification: Notification){
+    //        We need to obtain the height of the keyboard
         guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
             return
         }
         
         if notification.name == UIResponder.keyboardWillShowNotification || notification.name ==  UIResponder.keyboardWillChangeFrameNotification {
-//            We need to do some math here and calculate the right displacement for y axis
+//            We need to do some math here and calculate the right displacement for Y axis
             let yDisplacement = abs(keyboardRect.origin.y - searchButton.frame.maxY)
-            view.frame.origin.y = -yDisplacement
+            view.frame.origin.y = -yDisplacement - 16.0
         } else {
-            view.frame.origin.y = 0
+            view.frame.origin.y = 0.0
         }
-        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        hideKeyboard()
-        if textField.text != "" {
-            performSegue(withIdentifier: "pushToResultsTable", sender: nil)
-        }
+        presenter?.onSearchButtonTap()
         return true
     }
     
