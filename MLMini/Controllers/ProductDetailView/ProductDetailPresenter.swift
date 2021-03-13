@@ -28,7 +28,6 @@ class ProductDetailPresenter: ProductDetailPresenterProtocol {
     }
     
     func viewDidLoad() {
-        
     }
     
     func onItemIdSetted(itemId: String) {
@@ -41,7 +40,7 @@ class ProductDetailPresenter: ProductDetailPresenterProtocol {
     }
     
     func onGetDataError() {
-        //                TODO: DO SOMETHING WITH THE ERROR
+        //TODO: SHOW THE USER AN ERROR SCREEN
         print("Error in getItemDescription")
     }
     

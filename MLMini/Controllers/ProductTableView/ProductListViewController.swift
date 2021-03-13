@@ -27,6 +27,7 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
     
     var presenter: ProductListPresenterProtocol?
     var model: APIResponseModel?
+    let productDetailSegueIdentifier = "toProductDetail"
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
             return .darkContent
@@ -51,13 +52,13 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
         noResultsView.isHidden = true
         noResultsIconView.layer.cornerRadius = noResultsIconView.frame.height / 2
         noResultsIconView.clipsToBounds = true
-        noResultViewIcon.image = UIImage(named: "Search")?.withRenderingMode(.alwaysTemplate)
-        noResultViewIcon.tintColor = UIColor(named: "activeBackground")
+        noResultViewIcon.image = UIImage(named: MLMiniConstants.Images.SEARCH_ICON)?.withRenderingMode(.alwaysTemplate)
+        noResultViewIcon.tintColor = UIColor(named: MLMiniConstants.Color.ACTIVE_BACKGROUND)
     }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toProductDetail" {
+        if segue.identifier == productDetailSegueIdentifier {
             if let detailProductViewController = segue.destination as? ProductDetailViewController, let itemId = sender as? String{
                 detailProductViewController.itemId = itemId
             }
@@ -65,7 +66,7 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
     }
     
     func goToDetailScreen(itemId: String) {
-        performSegue(withIdentifier: "toProductDetail", sender: itemId)
+        performSegue(withIdentifier: productDetailSegueIdentifier, sender: itemId)
     }
     
     func fillList(model: APIResponseModel) {
@@ -101,8 +102,8 @@ extension ProductListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     private func registerTableCells(){
-        let productCell = UINib(nibName: "ProductViewCell", bundle: nil)
-        productTableView.register(productCell, forCellReuseIdentifier: "ProductViewCell")
+        let productCell = UINib(nibName: MLMiniConstants.Xibs.PRODUCT_VIEW_CELL, bundle: nil)
+        productTableView.register(productCell, forCellReuseIdentifier: MLMiniConstants.Xibs.PRODUCT_VIEW_CELL)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -110,7 +111,7 @@ extension ProductListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = productTableView.dequeueReusableCell(withIdentifier: "ProductViewCell", for: indexPath) as? ProductViewCell, let model = model else { return UITableViewCell() }
+        guard let cell = productTableView.dequeueReusableCell(withIdentifier: MLMiniConstants.Xibs.PRODUCT_VIEW_CELL, for: indexPath) as? ProductViewCell, let model = model else { return UITableViewCell() }
         let item = model.itemAt(index: indexPath.row)
         cell.configureCell(item: item)
         return cell

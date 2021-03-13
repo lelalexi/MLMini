@@ -28,30 +28,30 @@ class BuyDetailTableViewCell: UITableViewCell {
         colorAndQuantiyView.layer.cornerRadius = 4.0
         colorAndQuantiyView.clipsToBounds = true
         
-        itemColor.textColor = UIColor(named: "intermediateGrey")
-        itemQuantity.textColor = UIColor(named: "intermediateGrey")
+        itemColor.textColor = UIColor(named: MLMiniConstants.Color.INTERMEDIATE_GREY)
+        itemQuantity.textColor = UIColor(named: MLMiniConstants.Color.INTERMEDIATE_GREY)
         
         itemColorThumbnail.layer.borderWidth = 1.0
-        itemColorThumbnail.layer.borderColor = UIColor(named: "intermediateGrey")?.cgColor
+        itemColorThumbnail.layer.borderColor = UIColor(named: MLMiniConstants.Color.INTERMEDIATE_GREY)?.cgColor
         itemColorThumbnail.layer.cornerRadius = 2.0
         
-        buyButton.backgroundColor = UIColor(named: "activeBlue")
+        buyButton.backgroundColor = UIColor(named: MLMiniConstants.Color.ACTIVE_BLUE)
         buyButton.layer.cornerRadius = 4.0
         buyButton.clipsToBounds = true
         
         addToCartButton.backgroundColor = .clear
         addToCartButton.layer.cornerRadius = 4.0
         addToCartButton.clipsToBounds = true
-        addToCartButton.layer.borderColor = UIColor(named: "activeBlue")?.cgColor
+        addToCartButton.layer.borderColor = UIColor(named: MLMiniConstants.Color.ACTIVE_BLUE)?.cgColor
         addToCartButton.layer.borderWidth = 1.0
         
-        addToCartLabel.textColor = UIColor(named: "activeBlue")
+        addToCartLabel.textColor = UIColor(named: MLMiniConstants.Color.ACTIVE_BLUE)
         
     }
     
     func configureCell(item: ItemDescriptionModel){
         
-        itemColorThumbnail.sd_setImage(with: URL(string: item.thumbnail), placeholderImage: UIImage(named: "Placeholder"))
+        itemColorThumbnail.sd_setImage(with: URL(string: item.thumbnail), placeholderImage: UIImage(named: MLMiniConstants.Images.PLACEHOLDER_ICON))
     }
     
 }

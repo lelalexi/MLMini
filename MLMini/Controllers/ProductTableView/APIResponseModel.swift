@@ -21,7 +21,7 @@ class APIResponseModel: Codable {
     }
     
     func itemAt(index: Int) -> ItemModel {
-        var item = ItemModel(id: "", price: 0, title: "", thumbnail: "Placeholder", freeShipping: false)
+        var item = ItemModel(id: "", price: 0, title: "", thumbnail: MLMiniConstants.Images.PLACEHOLDER_ICON, freeShipping: false)
         let resp = results[index]
         item = ItemModel(id: resp.id,
                     price: resp.price,

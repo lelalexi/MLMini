@@ -17,9 +17,9 @@ class ProductDetailRepository: ProductDetailRepositoryProtocol {
     //MARK: - Properties
     var urlComponents: URLComponents = {
         var urlComponents = URLComponents()
-        urlComponents.scheme = "https"
-        urlComponents.host = "api.mercadolibre.com"
-        urlComponents.path = "/items/"
+        urlComponents.scheme = MLMiniConstants.API.SCHEME
+        urlComponents.host = MLMiniConstants.API.ML_HOST
+        urlComponents.path = MLMiniConstants.API.ML_MLA_DETAIL_PRODUCT_PATH
         return urlComponents
     }()
     let service: ServiceManagerProtocol?
@@ -29,7 +29,7 @@ class ProductDetailRepository: ProductDetailRepositoryProtocol {
     }
     
     func getItemDescription(itemId: String, completionHandler: @escaping (ItemDescriptionModel?, Error?) -> Void) {
-        urlComponents.path = "/items/\(itemId)"
+        urlComponents.path = "\(MLMiniConstants.API.ML_MLA_DETAIL_PRODUCT_PATH)\(itemId)"
         
         if let url = urlComponents.url {
             service?.performRequest(apiURL: url) { (response: ItemResponseModel?, error: Error?) -> Void in

@@ -22,8 +22,9 @@ class SearchViewController: UIViewController, SearchViewControllerProtocol {
     @IBOutlet var wallpaperImage: UIImageView!
     @IBOutlet var searchTextField: UITextField!
     @IBOutlet var searchButton: UIButton!
-    
     var presenter: SearchViewPresenterProtocol?
+    let resultTableSegueIdentifier = "pushToResultsTable"
+    
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
             return .darkContent
@@ -52,7 +53,7 @@ class SearchViewController: UIViewController, SearchViewControllerProtocol {
     
     func configureView() {
         searchButton.layer.cornerRadius = 8.0
-        searchButton.backgroundColor = UIColor(named: "activeBlue")
+        searchButton.backgroundColor = UIColor(named: MLMiniConstants.Color.ACTIVE_BLUE)
         searchTextField.enablesReturnKeyAutomatically = true
         // TODO: Disable button if i have no text in the textfield
 //        searchButton.isEnabled = false
@@ -74,11 +75,11 @@ class SearchViewController: UIViewController, SearchViewControllerProtocol {
 // MARK: - Navigation
 extension SearchViewController {
     func pushNextViewController() {
-        performSegue(withIdentifier: "pushToResultsTable", sender: nil)
+        performSegue(withIdentifier: resultTableSegueIdentifier, sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "pushToResultsTable" {
+        if segue.identifier == resultTableSegueIdentifier {
             if let resultTableviewViewController = segue.destination as? ProductListViewController{
                 resultTableviewViewController.toSearch = searchTextField.text ?? ""
             }

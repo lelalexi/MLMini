@@ -31,7 +31,7 @@ extension ProductDetailViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = productDetailCarrouselCollectionView.dequeueReusableCell(withReuseIdentifier: "ProductImageCell", for: indexPath ) as? ProductImageViewCell else { return UICollectionViewCell() }
+        guard let cell = productDetailCarrouselCollectionView.dequeueReusableCell(withReuseIdentifier: MLMiniConstants.Xibs.DETAIL_PRODUCT_IMAGE_CELL, for: indexPath ) as? ProductImageViewCell else { return UICollectionViewCell() }
         cell.configureCell(image: model?.pictures[indexPath.item] ?? "")
         return cell
     }

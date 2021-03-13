@@ -55,19 +55,19 @@ extension ProductDetailViewController: UITableViewDelegate, UITableViewDataSourc
     
     private func initializeDetailTableView(){
         registerTableCells()
-        productDetailTableView.backgroundColor = UIColor(named: "softGrey")
+        productDetailTableView.backgroundColor = UIColor(named: MLMiniConstants.Color.SOFT_GREY)
         productDetailTableView.delegate = self
         productDetailTableView.dataSource = self
     }
     
     private func registerTableCells(){
         // Main cell
-        let detailCell = UINib(nibName: "MainDetailTableViewCell", bundle: nil)
-        productDetailTableView.register(detailCell, forCellReuseIdentifier: "MainDetailTableViewCell")
+        let detailCell = UINib(nibName: MLMiniConstants.Xibs.DETAIL_MAIN_TABLE_VIEW_CELL, bundle: nil)
+        productDetailTableView.register(detailCell, forCellReuseIdentifier: MLMiniConstants.Xibs.DETAIL_MAIN_TABLE_VIEW_CELL)
         
         //Buy cell
-        let buyCell = UINib(nibName: "BuyDetailTableViewCell", bundle: nil)
-        productDetailTableView.register(buyCell, forCellReuseIdentifier: "BuyDetailTableViewCell")
+        let buyCell = UINib(nibName: MLMiniConstants.Xibs.DETAIL_BUY_TABLE_VIEW_CELL, bundle: nil)
+        productDetailTableView.register(buyCell, forCellReuseIdentifier: MLMiniConstants.Xibs.DETAIL_BUY_TABLE_VIEW_CELL)
         
     }
     
@@ -78,11 +78,11 @@ extension ProductDetailViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            guard let cell = productDetailTableView.dequeueReusableCell(withIdentifier: "MainDetailTableViewCell", for: indexPath) as? MainDetailTableViewCell, let model = model else { return UITableViewCell() }
+            guard let cell = productDetailTableView.dequeueReusableCell(withIdentifier: MLMiniConstants.Xibs.DETAIL_MAIN_TABLE_VIEW_CELL, for: indexPath) as? MainDetailTableViewCell, let model = model else { return UITableViewCell() }
             cell.configureCell(item: model)
             return cell
         case 1:
-            guard let cell = productDetailTableView.dequeueReusableCell(withIdentifier: "BuyDetailTableViewCell", for: indexPath) as? BuyDetailTableViewCell, let model = model else { return UITableViewCell() }
+            guard let cell = productDetailTableView.dequeueReusableCell(withIdentifier: MLMiniConstants.Xibs.DETAIL_BUY_TABLE_VIEW_CELL, for: indexPath) as? BuyDetailTableViewCell, let model = model else { return UITableViewCell() }
             cell.configureCell(item: model)
             return cell
         default:

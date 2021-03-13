@@ -51,7 +51,7 @@ class ProductListPresenter: ProductListPresenterProtocol {
     }
     
     func onGetDataError() {
-        //                TODO: DO SOMETHING WITH THE ERROR
+        //TODO: SHOW THE USER A SCREEN WITH THE ERROR
         print("Error in getItemsByName")
     }
     

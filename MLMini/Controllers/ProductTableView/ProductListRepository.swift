@@ -17,9 +17,9 @@ class ProductListRepository: ProductListRepositoryProtocol {
     //MARK: - Properties
     var urlComponents: URLComponents = {
         var urlComponents = URLComponents()
-        urlComponents.scheme = "https"
-        urlComponents.host = "api.mercadolibre.com"
-        urlComponents.path = "/sites/MLA/search"
+        urlComponents.scheme = MLMiniConstants.API.SCHEME
+        urlComponents.host = MLMiniConstants.API.ML_HOST
+        urlComponents.path = MLMiniConstants.API.ML_MLA_PRODUCT_PATH
         return urlComponents
     }()
     let service: ServiceManagerProtocol?
@@ -29,7 +29,7 @@ class ProductListRepository: ProductListRepositoryProtocol {
     }
     
     func getProductListData(productName: String, completionHandler: @escaping (APIResponseModel?, Error?) -> Void) {
-        addQueryParam(queryParams: ["q": productName])
+        addQueryParam(queryParams: [MLMiniConstants.API.ML_QUERY_PARAM: productName])
         
         if let url = urlComponents.url {
             service?.performRequest(apiURL: url) { (response: APIResponseModel?, error: Error?) -> Void in
