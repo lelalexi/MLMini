@@ -20,6 +20,9 @@
 		C6F0130625FE41E000BBE3CC /* ProductListRepositoryStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0130525FE41E000BBE3CC /* ProductListRepositoryStub.swift */; };
 		C6F0130925FE46B900BBE3CC /* ApiResponseModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0130825FE46B900BBE3CC /* ApiResponseModelMock.swift */; };
 		C6F0130C25FE473000BBE3CC /* ProductListRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0130B25FE473000BBE3CC /* ProductListRepositoryMock.swift */; };
+		C6F0131025FE687300BBE3CC /* ProductListModel.json in Resources */ = {isa = PBXBuildFile; fileRef = C6F0130F25FE687300BBE3CC /* ProductListModel.json */; };
+		C6F0131425FE6A3F00BBE3CC /* APIResponseModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0131325FE6A3F00BBE3CC /* APIResponseModelTests.swift */; };
+		C6F0131625FE6FA100BBE3CC /* ProductListModel.json in Resources */ = {isa = PBXBuildFile; fileRef = C6F0130F25FE687300BBE3CC /* ProductListModel.json */; };
 		C6F6A7E72510476E00140EAD /* ProductListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F6A7E62510476E00140EAD /* ProductListPresenter.swift */; };
 		C6F6A7E925104FFA00140EAD /* ProductListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F6A7E825104FFA00140EAD /* ProductListRepository.swift */; };
 		C6F6A7FC2512C7E700140EAD /* ProductDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F6A7FB2512C7E700140EAD /* ProductDetailPresenter.swift */; };
@@ -90,6 +93,8 @@
 		C6F0130525FE41E000BBE3CC /* ProductListRepositoryStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListRepositoryStub.swift; sourceTree = "<group>"; };
 		C6F0130825FE46B900BBE3CC /* ApiResponseModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponseModelMock.swift; sourceTree = "<group>"; };
 		C6F0130B25FE473000BBE3CC /* ProductListRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListRepositoryMock.swift; sourceTree = "<group>"; };
+		C6F0130F25FE687300BBE3CC /* ProductListModel.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ProductListModel.json; sourceTree = "<group>"; };
+		C6F0131325FE6A3F00BBE3CC /* APIResponseModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponseModelTests.swift; sourceTree = "<group>"; };
 		C6F6A7E62510476E00140EAD /* ProductListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListPresenter.swift; sourceTree = "<group>"; };
 		C6F6A7E825104FFA00140EAD /* ProductListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListRepository.swift; sourceTree = "<group>"; };
 		C6F6A7FB2512C7E700140EAD /* ProductDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailPresenter.swift; sourceTree = "<group>"; };
@@ -163,6 +168,7 @@
 		C6F012DB25FDC76C00BBE3CC /* MLMiniTests */ = {
 			isa = PBXGroup;
 			children = (
+				C6F0130E25FE682E00BBE3CC /* Resources */,
 				C6F012F625FE3B0700BBE3CC /* ProductTableView */,
 				C6F012F125FE336900BBE3CC /* Commons */,
 				C6F012DC25FDC76C00BBE3CC /* MLMiniTests.swift */,
@@ -185,6 +191,7 @@
 			children = (
 				C6F0130025FE3F4A00BBE3CC /* Mocks */,
 				C6F012F725FE3B1B00BBE3CC /* ProductListPresenterTests.swift */,
+				C6F0131325FE6A3F00BBE3CC /* APIResponseModelTests.swift */,
 			);
 			path = ProductTableView;
 			sourceTree = "<group>";
@@ -198,6 +205,14 @@
 				C6F0130B25FE473000BBE3CC /* ProductListRepositoryMock.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		C6F0130E25FE682E00BBE3CC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C6F0130F25FE687300BBE3CC /* ProductListModel.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		E49F96052339107500AC4ECC /* Extras */ = {
@@ -434,6 +449,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6F0131025FE687300BBE3CC /* ProductListModel.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +459,7 @@
 			files = (
 				E4D0529B23331117009B4EDB /* ProductViewCell.xib in Resources */,
 				E4D052652332538D009B4EDB /* LaunchScreen.storyboard in Resources */,
+				C6F0131625FE6FA100BBE3CC /* ProductListModel.json in Resources */,
 				E4D5D3572337C94600883E8A /* MainDetailTableViewCell.xib in Resources */,
 				E4D5D35D2337E6B200883E8A /* BuyDetailTableViewCell.xib in Resources */,
 				E4D052622332538D009B4EDB /* Assets.xcassets in Resources */,
@@ -558,6 +575,7 @@
 			files = (
 				C6F012DD25FDC76C00BBE3CC /* MLMiniTests.swift in Sources */,
 				C6F0130C25FE473000BBE3CC /* ProductListRepositoryMock.swift in Sources */,
+				C6F0131425FE6A3F00BBE3CC /* APIResponseModelTests.swift in Sources */,
 				C6F0130225FE3F5900BBE3CC /* ProductListViewProtocolMock.swift in Sources */,
 				C6F012FD25FE3C4000BBE3CC /* MockSwift.swift in Sources */,
 				C6F012F325FE33A700BBE3CC /* MLMiniConstantsTests.swift in Sources */,
