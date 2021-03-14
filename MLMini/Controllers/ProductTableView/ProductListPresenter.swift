@@ -52,7 +52,7 @@ class ProductListPresenter: ProductListPresenterProtocol {
     
     func onGetDataError() {
         //TODO: SHOW THE USER A SCREEN WITH THE ERROR
-        print("Error in getItemsByName")
+        view?.showErrorView()
     }
     
     private func getListData(toSearch: String) {

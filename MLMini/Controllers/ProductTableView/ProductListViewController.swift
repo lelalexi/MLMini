@@ -13,6 +13,7 @@ protocol ProductListViewControllerProtocol: class {
     func showSpinnerView()
     func removeSpinnerView()
     func showEmptyView()
+    func showErrorView()
     func reloadView()
     func goToDetailScreen(itemId: String)
     func fillList(model: APIResponseModel)
@@ -136,6 +137,10 @@ extension ProductListViewController {
             self.removeSpinnerView()
             self.noResultsView.isHidden = false
         }
+    }
+    
+    func showErrorView() {
+        //TODO
     }
 }
 

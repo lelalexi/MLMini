@@ -10,4 +10,5 @@ import UIKit
 
 enum UrlErrors: Error {
     case invalidUrl
+    case someError //Expand this errors to be able to handle different situations at UI or code
 }

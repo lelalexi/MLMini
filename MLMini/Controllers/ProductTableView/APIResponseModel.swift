@@ -16,19 +16,28 @@ class APIResponseModel: Codable {
         self.results = results
     }
     
-    func isEmpty() -> Bool{
+    func isEmpty() -> Bool {
         return results.isEmpty
     }
     
     func itemAt(index: Int) -> ItemModel {
-        var item = ItemModel(id: "", price: 0, title: "", thumbnail: MLMiniConstants.Images.PLACEHOLDER_ICON, freeShipping: false)
-        let resp = results[index]
-        item = ItemModel(id: resp.id,
-                    price: resp.price,
-                    title: resp.title,
-                    thumbnail: resp.thumbnail,
-                    freeShipping: resp.shipping?.freeShipping ?? false)
-        return item
+        if index < results.count && index >= 0 {
+            let resp = results[index]
+            return ItemModel(id: resp.id,
+                        price: resp.price,
+                        title: resp.title,
+                        thumbnail: resp.thumbnail,
+                        freeShipping: resp.shipping?.freeShipping ?? false)
+        } else {
+            return ItemModel(id: "", price: 0, title: "", thumbnail: MLMiniConstants.Images.PLACEHOLDER_ICON, freeShipping: false)
+        }
+    }
+}
+
+extension APIResponseModel: Equatable {
+    static func == (lhs: APIResponseModel, rhs: APIResponseModel) -> Bool {
+        return lhs.query == rhs.query &&
+                lhs.results == rhs.results
     }
 }
 
@@ -93,6 +102,14 @@ class Result: Codable {
         self.officialStoreID = officialStoreID
         self.catalogProductID = catalogProductID
     }
+}
+
+extension Result: Equatable {
+    static func == (lhs: Result, rhs: Result) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    
 }
 
 // MARK: - Shipping
