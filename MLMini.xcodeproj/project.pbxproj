@@ -14,6 +14,12 @@
 		C6E2C8122512E86E009687CC /* ItemDomainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E2C8112512E86E009687CC /* ItemDomainModel.swift */; };
 		C6F012DD25FDC76C00BBE3CC /* MLMiniTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F012DC25FDC76C00BBE3CC /* MLMiniTests.swift */; };
 		C6F012F325FE33A700BBE3CC /* MLMiniConstantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F012F225FE33A700BBE3CC /* MLMiniConstantsTests.swift */; };
+		C6F012F825FE3B1B00BBE3CC /* ProductListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F012F725FE3B1B00BBE3CC /* ProductListPresenterTests.swift */; };
+		C6F012FD25FE3C4000BBE3CC /* MockSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F012FC25FE3C4000BBE3CC /* MockSwift.swift */; };
+		C6F0130225FE3F5900BBE3CC /* ProductListViewProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0130125FE3F5900BBE3CC /* ProductListViewProtocolMock.swift */; };
+		C6F0130625FE41E000BBE3CC /* ProductListRepositoryStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0130525FE41E000BBE3CC /* ProductListRepositoryStub.swift */; };
+		C6F0130925FE46B900BBE3CC /* ApiResponseModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0130825FE46B900BBE3CC /* ApiResponseModelMock.swift */; };
+		C6F0130C25FE473000BBE3CC /* ProductListRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0130B25FE473000BBE3CC /* ProductListRepositoryMock.swift */; };
 		C6F6A7E72510476E00140EAD /* ProductListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F6A7E62510476E00140EAD /* ProductListPresenter.swift */; };
 		C6F6A7E925104FFA00140EAD /* ProductListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F6A7E825104FFA00140EAD /* ProductListRepository.swift */; };
 		C6F6A7FC2512C7E700140EAD /* ProductDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F6A7FB2512C7E700140EAD /* ProductDetailPresenter.swift */; };
@@ -78,6 +84,12 @@
 		C6F012DC25FDC76C00BBE3CC /* MLMiniTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMiniTests.swift; sourceTree = "<group>"; };
 		C6F012DE25FDC76C00BBE3CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6F012F225FE33A700BBE3CC /* MLMiniConstantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMiniConstantsTests.swift; sourceTree = "<group>"; };
+		C6F012F725FE3B1B00BBE3CC /* ProductListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListPresenterTests.swift; sourceTree = "<group>"; };
+		C6F012FC25FE3C4000BBE3CC /* MockSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSwift.swift; sourceTree = "<group>"; };
+		C6F0130125FE3F5900BBE3CC /* ProductListViewProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewProtocolMock.swift; sourceTree = "<group>"; };
+		C6F0130525FE41E000BBE3CC /* ProductListRepositoryStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListRepositoryStub.swift; sourceTree = "<group>"; };
+		C6F0130825FE46B900BBE3CC /* ApiResponseModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponseModelMock.swift; sourceTree = "<group>"; };
+		C6F0130B25FE473000BBE3CC /* ProductListRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListRepositoryMock.swift; sourceTree = "<group>"; };
 		C6F6A7E62510476E00140EAD /* ProductListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListPresenter.swift; sourceTree = "<group>"; };
 		C6F6A7E825104FFA00140EAD /* ProductListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListRepository.swift; sourceTree = "<group>"; };
 		C6F6A7FB2512C7E700140EAD /* ProductDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailPresenter.swift; sourceTree = "<group>"; };
@@ -151,6 +163,7 @@
 		C6F012DB25FDC76C00BBE3CC /* MLMiniTests */ = {
 			isa = PBXGroup;
 			children = (
+				C6F012F625FE3B0700BBE3CC /* ProductTableView */,
 				C6F012F125FE336900BBE3CC /* Commons */,
 				C6F012DC25FDC76C00BBE3CC /* MLMiniTests.swift */,
 				C6F012DE25FDC76C00BBE3CC /* Info.plist */,
@@ -162,8 +175,29 @@
 			isa = PBXGroup;
 			children = (
 				C6F012F225FE33A700BBE3CC /* MLMiniConstantsTests.swift */,
+				C6F012FC25FE3C4000BBE3CC /* MockSwift.swift */,
 			);
 			path = Commons;
+			sourceTree = "<group>";
+		};
+		C6F012F625FE3B0700BBE3CC /* ProductTableView */ = {
+			isa = PBXGroup;
+			children = (
+				C6F0130025FE3F4A00BBE3CC /* Mocks */,
+				C6F012F725FE3B1B00BBE3CC /* ProductListPresenterTests.swift */,
+			);
+			path = ProductTableView;
+			sourceTree = "<group>";
+		};
+		C6F0130025FE3F4A00BBE3CC /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				C6F0130125FE3F5900BBE3CC /* ProductListViewProtocolMock.swift */,
+				C6F0130525FE41E000BBE3CC /* ProductListRepositoryStub.swift */,
+				C6F0130825FE46B900BBE3CC /* ApiResponseModelMock.swift */,
+				C6F0130B25FE473000BBE3CC /* ProductListRepositoryMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		E49F96052339107500AC4ECC /* Extras */ = {
@@ -523,7 +557,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6F012DD25FDC76C00BBE3CC /* MLMiniTests.swift in Sources */,
+				C6F0130C25FE473000BBE3CC /* ProductListRepositoryMock.swift in Sources */,
+				C6F0130225FE3F5900BBE3CC /* ProductListViewProtocolMock.swift in Sources */,
+				C6F012FD25FE3C4000BBE3CC /* MockSwift.swift in Sources */,
 				C6F012F325FE33A700BBE3CC /* MLMiniConstantsTests.swift in Sources */,
+				C6F012F825FE3B1B00BBE3CC /* ProductListPresenterTests.swift in Sources */,
+				C6F0130625FE41E000BBE3CC /* ProductListRepositoryStub.swift in Sources */,
+				C6F0130925FE46B900BBE3CC /* ApiResponseModelMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
