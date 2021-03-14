@@ -15,6 +15,7 @@
 		C6F6A7E925104FFA00140EAD /* ProductListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F6A7E825104FFA00140EAD /* ProductListRepository.swift */; };
 		C6F6A7FC2512C7E700140EAD /* ProductDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F6A7FB2512C7E700140EAD /* ProductDetailPresenter.swift */; };
 		C6F6A7FE2512C7F400140EAD /* ProductDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F6A7FD2512C7F400140EAD /* ProductDetailRepository.swift */; };
+		D01454B5BE47C76FC4DDA453 /* Pods_MLMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACADDCECD3DE60D361464AED /* Pods_MLMini.framework */; };
 		E461482F23369128006080E4 /* ItemResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E461482E23369128006080E4 /* ItemResponseModel.swift */; };
 		E495DFC3233A4B9A00E3A4C9 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E495DFC2233A4B9A00E3A4C9 /* ServiceManager.swift */; };
 		E49F96072339108700AC4ECC /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F96062339108700AC4ECC /* SpinnerViewController.swift */; };
@@ -28,8 +29,6 @@
 		E4D0529A23331117009B4EDB /* ProductViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D0529823331117009B4EDB /* ProductViewCell.swift */; };
 		E4D0529B23331117009B4EDB /* ProductViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4D0529923331117009B4EDB /* ProductViewCell.xib */; };
 		E4D0529F23331EF3009B4EDB /* UrlErrorsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D0529E23331EF3009B4EDB /* UrlErrorsEnum.swift */; };
-		E4D052A22333356B009B4EDB /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D052A12333356B009B4EDB /* SDWebImage.framework */; };
-		E4D052A72333367A009B4EDB /* SDWebImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E4D052A62333367A009B4EDB /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E4D052A92333B464009B4EDB /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D052A82333B464009B4EDB /* ProductDetailViewController.swift */; };
 		E4D052AD2333C3EA009B4EDB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D052AC2333C3EA009B4EDB /* SearchViewController.swift */; };
 		E4D052B02333CE79009B4EDB /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D052AF2333CE79009B4EDB /* UIColorExtension.swift */; };
@@ -47,13 +46,14 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E4D052A72333367A009B4EDB /* SDWebImage.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0928AF62A7DB132977922ED7 /* Pods-MLMini.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLMini.debug.xcconfig"; path = "Target Support Files/Pods-MLMini/Pods-MLMini.debug.xcconfig"; sourceTree = "<group>"; };
+		ACADDCECD3DE60D361464AED /* Pods_MLMini.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MLMini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6037D3C25254A6C000EB082 /* ProductDetailViewControllerCarrouselExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewControllerCarrouselExtension.swift; sourceTree = "<group>"; };
 		C6037D3E252559D3000EB082 /* SearchViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewPresenter.swift; sourceTree = "<group>"; };
 		C621ACA525FD7917007DB918 /* MLMiniConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMiniConstants.swift; sourceTree = "<group>"; };
@@ -62,6 +62,7 @@
 		C6F6A7E825104FFA00140EAD /* ProductListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListRepository.swift; sourceTree = "<group>"; };
 		C6F6A7FB2512C7E700140EAD /* ProductDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailPresenter.swift; sourceTree = "<group>"; };
 		C6F6A7FD2512C7F400140EAD /* ProductDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailRepository.swift; sourceTree = "<group>"; };
+		C77EC6A917CC1879832F37B6 /* Pods-MLMini.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLMini.release.xcconfig"; path = "Target Support Files/Pods-MLMini/Pods-MLMini.release.xcconfig"; sourceTree = "<group>"; };
 		E461482E23369128006080E4 /* ItemResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemResponseModel.swift; sourceTree = "<group>"; };
 		E495DFC2233A4B9A00E3A4C9 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		E49F96062339108700AC4ECC /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
@@ -78,7 +79,6 @@
 		E4D0529923331117009B4EDB /* ProductViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductViewCell.xib; sourceTree = "<group>"; };
 		E4D0529E23331EF3009B4EDB /* UrlErrorsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlErrorsEnum.swift; sourceTree = "<group>"; };
 		E4D052A12333356B009B4EDB /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
-		E4D052A62333367A009B4EDB /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
 		E4D052A82333B464009B4EDB /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		E4D052AC2333C3EA009B4EDB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		E4D052AF2333CE79009B4EDB /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -94,13 +94,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4D052A22333356B009B4EDB /* SDWebImage.framework in Frameworks */,
+				D01454B5BE47C76FC4DDA453 /* Pods_MLMini.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA18E5CAE7B6FB57C1DFF62C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0928AF62A7DB132977922ED7 /* Pods-MLMini.debug.xcconfig */,
+				C77EC6A917CC1879832F37B6 /* Pods-MLMini.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		C621ACA425FD78ED007DB918 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,10 +131,10 @@
 		E4D0524E23325388009B4EDB = {
 			isa = PBXGroup;
 			children = (
-				E4D052A62333367A009B4EDB /* SDWebImage.framework */,
 				E4D0525923325388009B4EDB /* MLMini */,
 				E4D0525823325388009B4EDB /* Products */,
 				E4D052A02333356B009B4EDB /* Frameworks */,
+				AA18E5CAE7B6FB57C1DFF62C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -166,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				E4D052A12333356B009B4EDB /* SDWebImage.framework */,
+				ACADDCECD3DE60D361464AED /* Pods_MLMini.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -259,11 +270,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E4D052692332538D009B4EDB /* Build configuration list for PBXNativeTarget "MLMini" */;
 			buildPhases = (
+				7924445671A80371F5BB0539 /* [CP] Check Pods Manifest.lock */,
 				E4D0525323325388009B4EDB /* Sources */,
 				E4D0525423325388009B4EDB /* Frameworks */,
 				E4D0525523325388009B4EDB /* Resources */,
 				E4D052A323333587009B4EDB /* ShellScript */,
 				E4D052A523333646009B4EDB /* CopyFiles */,
+				10E66963D7C020983A7FE7B8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -324,6 +337,45 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		10E66963D7C020983A7FE7B8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MLMini/Pods-MLMini-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MLMini/Pods-MLMini-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MLMini/Pods-MLMini-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7924445671A80371F5BB0539 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MLMini-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E4D052A323333587009B4EDB /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 8;
@@ -515,6 +567,7 @@
 		};
 		E4D0526A2332538D009B4EDB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0928AF62A7DB132977922ED7 /* Pods-MLMini.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -537,6 +590,7 @@
 		};
 		E4D0526B2332538D009B4EDB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C77EC6A917CC1879832F37B6 /* Pods-MLMini.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
