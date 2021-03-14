@@ -8,14 +8,16 @@
 
 import Foundation
 
+//TODO: Implement better error management (400, 500, urlerrors, etc)
+
 protocol ServiceManagerProtocol {
     
-    func performRequest<T>(apiURL: URL, completionHandler: @escaping (T?, Error?) -> Void) where T: Decodable, T: Encodable
+    func performRequest<T>(apiURL: URL, completionHandler: @escaping (T?, UrlErrors?) -> Void) where T: Decodable, T: Encodable
 }
 
 class ServiceManager: ServiceManagerProtocol {
     
-    func performRequest<T>(apiURL: URL, completionHandler: @escaping (T?, Error?) -> Void) where T: Decodable, T: Encodable {
+    func performRequest<T>(apiURL: URL, completionHandler: @escaping (T?, UrlErrors?) -> Void) where T: Decodable, T: Encodable {
         
         let sharedSession = URLSession.shared
         
@@ -24,8 +26,8 @@ class ServiceManager: ServiceManagerProtocol {
                 do {
                     let resp = try JSONDecoder().decode(T.self, from: data)
                     completionHandler(resp, nil)
-                } catch let error {
-                    completionHandler(nil, error)
+                } catch let error { //TODO: handle error here
+                    completionHandler(nil, .someError)
                 }
             }
             }.resume()

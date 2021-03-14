@@ -34,6 +34,13 @@ class APIResponseModel: Codable {
     }
 }
 
+extension APIResponseModel: Equatable {
+    static func == (lhs: APIResponseModel, rhs: APIResponseModel) -> Bool {
+        return lhs.query == rhs.query &&
+                lhs.results == rhs.results
+    }
+}
+
 // MARK: - Paging
 class Paging: Codable {
     let total, offset, limit, primaryResults: Int
@@ -95,6 +102,14 @@ class Result: Codable {
         self.officialStoreID = officialStoreID
         self.catalogProductID = catalogProductID
     }
+}
+
+extension Result: Equatable {
+    static func == (lhs: Result, rhs: Result) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    
 }
 
 // MARK: - Shipping

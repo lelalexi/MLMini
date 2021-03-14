@@ -9,7 +9,7 @@
 import Foundation
  
 protocol ProductListRepositoryProtocol {
-    func getProductListData(productName: String, completionHandler: @escaping (APIResponseModel?, Error?) -> Void)
+    func getProductListData(productName: String, completionHandler: @escaping (APIResponseModel?, UrlErrors?) -> Void)
 }
 
 class ProductListRepository: ProductListRepositoryProtocol {
@@ -28,19 +28,19 @@ class ProductListRepository: ProductListRepositoryProtocol {
         self.service = service
     }
     
-    func getProductListData(productName: String, completionHandler: @escaping (APIResponseModel?, Error?) -> Void) {
+    func getProductListData(productName: String, completionHandler: @escaping (APIResponseModel?, UrlErrors?) -> Void) {
         addQueryParam(queryParams: [MLMiniConstants.API.ML_QUERY_PARAM: productName])
         
         if let url = urlComponents.url {
-            service?.performRequest(apiURL: url) { (response: APIResponseModel?, error: Error?) -> Void in
+            service?.performRequest(apiURL: url) { (response: APIResponseModel?, error: UrlErrors?) -> Void in
                 if (error != nil){
-                    completionHandler(nil, error)
+                    completionHandler(nil, .someError)
                 } else {
                     completionHandler(response, nil)
                 }
             }
         } else {
-            completionHandler(nil,UrlErrors.invalidUrl)
+            completionHandler(nil, .invalidUrl)
         }
     }
     
