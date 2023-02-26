@@ -20,9 +20,9 @@ class APIResponseModelTests: QuickSpec {
             }
             context("Json Serialization") {
                 it("Should parse correctly") {
-                    expect(parsedModel.query).to(equal("auriculares"))
-                    expect(parsedModel.paging).notTo(beNil())
-                    expect(parsedModel.results.count).to(equal(3))
+                    await expect(parsedModel.query).to(equal("auriculares"))
+                    await expect(parsedModel.paging).notTo(beNil())
+                    await expect(parsedModel.results.count).to(equal(3))
                     //TODO: To be completed (should match every json value with parsedModel)
                 }
             }
@@ -39,11 +39,11 @@ class APIResponseModelTests: QuickSpec {
                 it("Should test itemAt when model is empty and return an emptyItem") {
                     let parsedModel = ApiResponseModelMock.resolveModel(testCase: .emptyResults)
                     let item = parsedModel.itemAt(index: 2)
-                    expect(item.id).to(equal(""))
-                    expect(item.price).to(equal(0))
-                    expect(item.title).to(equal(""))
-                    expect(item.freeShipping).to(beFalse())
-                    expect(item.thumbnail).to(equal(MLMiniConstants.Images.PLACEHOLDER_ICON))
+                    await expect(item.id).to(equal(""))
+                    await expect(item.price).to(equal(0))
+                    await expect(item.title).to(equal(""))
+                    await expect(item.freeShipping).to(beFalse())
+                    await expect(item.thumbnail).to(equal(MLMiniConstants.Images.PLACEHOLDER_ICON))
                 }
                 it("Should test itemAt with a fully initialized model and return the item") {
                     let itemIndex: Int = 2
@@ -52,11 +52,11 @@ class APIResponseModelTests: QuickSpec {
                         fail()
                         return
                     }
-                    expect(item.id).to(equal(parsedModel.results[itemIndex].id))
-                    expect(item.price).to(equal(parsedModel.results[itemIndex].price))
-                    expect(item.title).to(equal(parsedModel.results[itemIndex].title))
-                    expect(item.freeShipping).to(equal(freeShipping))
-                    expect(item.thumbnail).to(equal(parsedModel.results[itemIndex].thumbnail))
+                    await expect(item.id).to(equal(parsedModel.results[itemIndex].id))
+                    await expect(item.price).to(equal(parsedModel.results[itemIndex].price))
+                    await expect(item.title).to(equal(parsedModel.results[itemIndex].title))
+                    await expect(item.freeShipping).to(equal(freeShipping))
+                    await expect(item.thumbnail).to(equal(parsedModel.results[itemIndex].thumbnail))
                 }
                 
             }
