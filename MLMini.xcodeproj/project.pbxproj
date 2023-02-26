@@ -51,6 +51,7 @@
 		E4D5D3572337C94600883E8A /* MainDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4D5D3552337C94600883E8A /* MainDetailTableViewCell.xib */; };
 		E4D5D35C2337E6B200883E8A /* BuyDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5D35A2337E6B200883E8A /* BuyDetailTableViewCell.swift */; };
 		E4D5D35D2337E6B200883E8A /* BuyDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4D5D35B2337E6B200883E8A /* BuyDetailTableViewCell.xib */; };
+		E4FB0DFC29ABD3AB004DE58F /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FB0DFB29ABD3AB004DE58F /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,7 @@
 		E4D5D3552337C94600883E8A /* MainDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainDetailTableViewCell.xib; sourceTree = "<group>"; };
 		E4D5D35A2337E6B200883E8A /* BuyDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyDetailTableViewCell.swift; sourceTree = "<group>"; };
 		E4D5D35B2337E6B200883E8A /* BuyDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyDetailTableViewCell.xib; sourceTree = "<group>"; };
+		E4FB0DFB29ABD3AB004DE58F /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +320,7 @@
 			children = (
 				E4D052AF2333CE79009B4EDB /* UIColorExtension.swift */,
 				E4CB24C123346642003AB3D8 /* NumberExtension.swift */,
+				E4FB0DFB29ABD3AB004DE58F /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4FB0DFC29ABD3AB004DE58F /* UIViewController+Extension.swift in Sources */,
 				E4D5D3532337BF4300883E8A /* ProductImageViewCell.swift in Sources */,
 				E49F96072339108700AC4ECC /* SpinnerViewController.swift in Sources */,
 				C6E2C8122512E86E009687CC /* ItemDomainModel.swift in Sources */,
@@ -842,7 +846,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ale.MLMini;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -865,7 +869,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ale.MLMini;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
