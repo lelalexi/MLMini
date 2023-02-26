@@ -9,7 +9,7 @@ target 'MLMini' do
 
 	target 'MLMiniTests' do
     		inherit! :search_paths
-    	pod 'Quick'
-    	pod 'Nimble'
+    	pod 'Quick', '6.0.0'
+    	pod 'Nimble', '11.0.0'
   end
 end

@@ -22,8 +22,8 @@ class ProductListPresenterTests: QuickSpec {
                     presenter.view = view
                     presenter.viewDidLoad()
                     
-                    expect(presenter.repository).to(be(repository))
-                    expect(presenter.model).to(beNil())
+                    await expect(presenter.repository as? ProductListRepositoryStub).to(beIdenticalTo(repository))
+                    await expect(presenter.model).to(beNil())
                     MockSwift.verify(view.didCallShowSpinner)
                     MockSwift.verify(view)
                 }
@@ -41,7 +41,7 @@ class ProductListPresenterTests: QuickSpec {
                     MockSwift.verify(repository)
                     
                     //This tasks runs asynchronously
-                    waitUntil(timeout: DispatchTimeInterval.milliseconds(20)) { done in
+                    await waitUntil(timeout: DispatchTimeInterval.milliseconds(20)) { done in
                         MockSwift.verify(view.didCallRemoveSpinner)
                         MockSwift.verify(view.didCallFillList)
                         MockSwift.verify(view, wasCalledTimes: 2)
@@ -62,7 +62,7 @@ class ProductListPresenterTests: QuickSpec {
                     MockSwift.verify(repository)
                     
                     //This tasks runs asynchronously
-                    waitUntil(timeout: DispatchTimeInterval.milliseconds(20)) { done in
+                    await waitUntil(timeout: DispatchTimeInterval.milliseconds(20)) { done in
                         MockSwift.verify(view.didCallShowEmptyView)
                         MockSwift.verify(view)
                         done()
@@ -79,7 +79,7 @@ class ProductListPresenterTests: QuickSpec {
                     MockSwift.verify(repository)
                     
                     //This tasks runs asynchronously
-                    waitUntil(timeout: DispatchTimeInterval.milliseconds(20)) { done in
+                    await waitUntil(timeout: DispatchTimeInterval.milliseconds(20)) { done in
                         MockSwift.verify(view.didCallShowErrorView)
                         MockSwift.verify(view)
                         done()
