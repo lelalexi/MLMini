@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-protocol ProductDetailViewControllerProtocol: class {
+protocol ProductDetailViewControllerProtocol: AnyObject {
     func updateModelAndReloadData(model: ItemDescriptionModel)
 }
 
@@ -33,6 +33,7 @@ class ProductDetailViewController: UIViewController, UICollectionViewDelegateFlo
         super.viewDidLoad()
         presenter = ProductDetailPresenter(repository: ProductDetailRepository.init(ServiceManager()))
         presenter?.view = self
+        setupNavBarAppearance()
         initializeDetailTableView()
         initialiceCollectionView()
         presenter?.viewDidLoad()
@@ -94,5 +95,3 @@ extension ProductDetailViewController: UITableViewDelegate, UITableViewDataSourc
         return false
     }
 }
-
-

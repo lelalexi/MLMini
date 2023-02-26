@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-protocol ProductListViewControllerProtocol: class {
+protocol ProductListViewControllerProtocol: AnyObject {
     func showSpinnerView()
     func removeSpinnerView()
     func showEmptyView()
@@ -45,6 +45,7 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
         presenter?.view = self
         initializeNoResultsFoundView()
         initializeProductTableView()
+        setupNavBarAppearance()
         presenter?.viewDidLoad()
         presenter?.onSearchTextSetted(toSearch: toSearch)
     }
@@ -143,6 +144,3 @@ extension ProductListViewController {
         //TODO
     }
 }
-
-
-

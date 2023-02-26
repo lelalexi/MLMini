@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol SearchViewPresenterProtocol: class {
+protocol SearchViewPresenterProtocol: AnyObject {
     
     var view: SearchViewControllerProtocol? { get set }
     func viewDidLoad()
