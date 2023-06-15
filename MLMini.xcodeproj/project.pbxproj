@@ -37,6 +37,8 @@
 		D953FBD12A36C55000D2C775 /* SearchViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBD02A36C55000D2C775 /* SearchViewCoordinator.swift */; };
 		D953FBD42A36C71300D2C775 /* MLMiniTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBD32A36C71300D2C775 /* MLMiniTextField.swift */; };
 		D953FBD72A36C77B00D2C775 /* MLPrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBD62A36C77B00D2C775 /* MLPrimaryButton.swift */; };
+		D953FBD92A37E49500D2C775 /* MLGenericErrorScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBD82A37E49500D2C775 /* MLGenericErrorScreen.swift */; };
+		D953FBDE2A3A7AF400D2C775 /* MLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBDD2A3A7AF400D2C775 /* MLImage.swift */; };
 		E461482F23369128006080E4 /* ItemResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E461482E23369128006080E4 /* ItemResponseModel.swift */; };
 		E495DFC3233A4B9A00E3A4C9 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E495DFC2233A4B9A00E3A4C9 /* ServiceManager.swift */; };
 		E49F96072339108700AC4ECC /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F96062339108700AC4ECC /* SpinnerViewController.swift */; };
@@ -118,6 +120,8 @@
 		D953FBD02A36C55000D2C775 /* SearchViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCoordinator.swift; sourceTree = "<group>"; };
 		D953FBD32A36C71300D2C775 /* MLMiniTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMiniTextField.swift; sourceTree = "<group>"; };
 		D953FBD62A36C77B00D2C775 /* MLPrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLPrimaryButton.swift; sourceTree = "<group>"; };
+		D953FBD82A37E49500D2C775 /* MLGenericErrorScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLGenericErrorScreen.swift; sourceTree = "<group>"; };
+		D953FBDD2A3A7AF400D2C775 /* MLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLImage.swift; sourceTree = "<group>"; };
 		E461482E23369128006080E4 /* ItemResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemResponseModel.swift; sourceTree = "<group>"; };
 		E495DFC2233A4B9A00E3A4C9 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		E49F96062339108700AC4ECC /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
@@ -264,6 +268,7 @@
 		D953FBCF2A36C46E00D2C775 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				D953FBDF2A3AA24E00D2C775 /* GenericErrorScreen */,
 				E4D052AB2333B4CE009B4EDB /* Cells */,
 			);
 			path = UIKit;
@@ -283,6 +288,23 @@
 				D953FBD62A36C77B00D2C775 /* MLPrimaryButton.swift */,
 			);
 			path = Button;
+			sourceTree = "<group>";
+		};
+		D953FBDC2A3A7AD100D2C775 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E4D052612332538D009B4EDB /* Assets.xcassets */,
+				D953FBDD2A3A7AF400D2C775 /* MLImage.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D953FBDF2A3AA24E00D2C775 /* GenericErrorScreen */ = {
+			isa = PBXGroup;
+			children = (
+				D953FBD82A37E49500D2C775 /* MLGenericErrorScreen.swift */,
+			);
+			path = GenericErrorScreen;
 			sourceTree = "<group>";
 		};
 		E49F96052339107500AC4ECC /* Extras */ = {
@@ -317,6 +339,7 @@
 		E4D0525923325388009B4EDB /* MLMini */ = {
 			isa = PBXGroup;
 			children = (
+				D953FBDC2A3A7AD100D2C775 /* Resources */,
 				D953FBCD2A36C44900D2C775 /* UIComponents */,
 				C621ACA425FD78ED007DB918 /* Commons */,
 				E49F96052339107500AC4ECC /* Extras */,
@@ -325,7 +348,6 @@
 				E4D05295233304F8009B4EDB /* Services */,
 				E4D0525A23325388009B4EDB /* AppDelegate.swift */,
 				E4D0525E23325388009B4EDB /* Main.storyboard */,
-				E4D052612332538D009B4EDB /* Assets.xcassets */,
 				E4D052632332538D009B4EDB /* LaunchScreen.storyboard */,
 				E4D052662332538D009B4EDB /* Info.plist */,
 			);
@@ -670,6 +692,7 @@
 				E4D5D3532337BF4300883E8A /* ProductImageViewCell.swift in Sources */,
 				E49F96072339108700AC4ECC /* SpinnerViewController.swift in Sources */,
 				D953FBD12A36C55000D2C775 /* SearchViewCoordinator.swift in Sources */,
+				D953FBDE2A3A7AF400D2C775 /* MLImage.swift in Sources */,
 				C6E2C8122512E86E009687CC /* ItemDomainModel.swift in Sources */,
 				E4D0529A23331117009B4EDB /* ProductViewCell.swift in Sources */,
 				D953FBD42A36C71300D2C775 /* MLMiniTextField.swift in Sources */,
@@ -687,6 +710,7 @@
 				E4D5D35C2337E6B200883E8A /* BuyDetailTableViewCell.swift in Sources */,
 				E4D0525B23325388009B4EDB /* AppDelegate.swift in Sources */,
 				D953FBC42A3527ED00D2C775 /* SearchView.swift in Sources */,
+				D953FBD92A37E49500D2C775 /* MLGenericErrorScreen.swift in Sources */,
 				C6F6A7FE2512C7F400140EAD /* ProductDetailRepository.swift in Sources */,
 				E4D052B02333CE79009B4EDB /* UIColorExtension.swift in Sources */,
 				D953FBC82A36858100D2C775 /* SearchViewBuilder.swift in Sources */,

@@ -17,6 +17,7 @@ protocol ProductListViewControllerProtocol: AnyObject {
     func reloadView()
     func goToDetailScreen(itemId: String)
     func fillList(model: APIResponseModel)
+    func onDataErrorRetry()
 }
 
 class ProductListViewController: UIViewController, ProductListViewControllerProtocol {
@@ -25,6 +26,15 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
     @IBOutlet var noResultsIconView: UIView!
     @IBOutlet var noResultsView: UIView!
     @IBOutlet var noResultViewIcon: UIImageView!
+    
+    
+    private lazy var errorView: MLGenericErrorScreen = {
+        let view = MLGenericErrorScreen { [unowned self] in
+            self.presenter?.onErrorScreenRetryTapped()
+        }
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     var presenter: ProductListPresenterProtocol?
     var model: APIResponseModel?
@@ -41,13 +51,14 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
     override func viewDidLoad() {
         super.viewDidLoad()
         //llevar la creacion de la instancia al instance
-        presenter = ProductListPresenter(repository: ProductListRepository.init(ServiceManager()))
+        presenter = ProductListPresenter(repository: ProductListRepository.init(ServiceManager()),
+                                         productToSearch: toSearch)
         presenter?.view = self
         initializeNoResultsFoundView()
         initializeProductTableView()
         setupNavBarAppearance()
         presenter?.viewDidLoad()
-        presenter?.onSearchTextSetted(toSearch: toSearch)
+        presenter?.onSearchTextSetted()
     }
     
     private func initializeNoResultsFoundView(){
@@ -89,6 +100,11 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
             self.spinner.willMove(toParent: nil)
             self.spinner.view.removeFromSuperview()
             self.spinner.removeFromParent()
+    }
+    
+    func onDataErrorRetry() {
+        errorView.removeFromSuperview()
+        
     }
 }
 
@@ -141,6 +157,15 @@ extension ProductListViewController {
     }
     
     func showErrorView() {
-        //TODO
+        DispatchQueue.main.async {
+            self.removeSpinnerView()
+            self.view.addSubview(self.errorView)
+            NSLayoutConstraint.activate([
+                self.errorView.topAnchor.constraint(equalTo: self.view.topAnchor),
+                self.errorView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+                self.errorView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+                self.errorView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            ])
+        }
     }
 }

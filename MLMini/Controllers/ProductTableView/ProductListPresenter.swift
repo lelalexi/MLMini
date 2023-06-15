@@ -13,7 +13,8 @@ protocol ProductListPresenterProtocol {
     var view: ProductListViewControllerProtocol? { get set }
     func viewDidLoad()
     func onListItemTapped(itemId: String)
-    func onSearchTextSetted(toSearch: String)
+    func onSearchTextSetted()
+    func onErrorScreenRetryTapped()
 }
 
 class ProductListPresenter: ProductListPresenterProtocol {    
@@ -22,22 +23,30 @@ class ProductListPresenter: ProductListPresenterProtocol {
     weak var view: ProductListViewControllerProtocol?
     let repository: ProductListRepositoryProtocol?
     var model: APIResponseModel?
+    var productToSearch: String = ""
     
     //MARK: - Initializers
-    required init(repository: ProductListRepositoryProtocol) {
+    required init(repository: ProductListRepositoryProtocol, productToSearch: String) {
         self.repository = repository
+        self.productToSearch = productToSearch
     }
     
     func viewDidLoad() {
         view?.showSpinnerView()
     }
     
-    func onSearchTextSetted(toSearch: String) {
-        getListData(toSearch: toSearch)
+    func onSearchTextSetted() {
+        getListData()
     }
     
     func onListItemTapped(itemId: String) {
         view?.goToDetailScreen(itemId: itemId)
+    }
+    
+    func onErrorScreenRetryTapped() {
+        view?.showSpinnerView()
+        view?.onDataErrorRetry()
+        getListData()
     }
     
     func onGetDataSuccess(model: APIResponseModel) {
@@ -51,18 +60,18 @@ class ProductListPresenter: ProductListPresenterProtocol {
     }
     
     func onGetDataError() {
-        //TODO: SHOW THE USER A SCREEN WITH THE ERROR
         view?.showErrorView()
     }
     
-    private func getListData(toSearch: String) {
-        repository?.getProductListData(productName: toSearch, completionHandler: { [weak self] (Response, error) in
+    private func getListData() {
+        repository?.getProductListData(productName: productToSearch, completionHandler: { [weak self] (Response, error) in
             if let _ = error {
                 self?.onGetDataError()
             }
             guard let response = Response else { return }
             DispatchQueue.main.async {
                 self?.onGetDataSuccess(model: response)
+                //self?.onGetDataError()
             }
         })
     }
