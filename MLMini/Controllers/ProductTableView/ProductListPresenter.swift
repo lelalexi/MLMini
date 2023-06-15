@@ -45,7 +45,6 @@ class ProductListPresenter: ProductListPresenterProtocol {
     
     func onErrorScreenRetryTapped() {
         view?.showSpinnerView()
-        view?.onDataErrorRetry()
         getListData()
     }
     
@@ -65,11 +64,11 @@ class ProductListPresenter: ProductListPresenterProtocol {
     
     private func getListData() {
         repository?.getProductListData(productName: productToSearch, completionHandler: { [weak self] (Response, error) in
-            if let _ = error {
-                self?.onGetDataError()
-            }
-            guard let response = Response else { return }
             DispatchQueue.main.async {
+                if let _ = error {
+                    self?.onGetDataError()
+                }
+                guard let response = Response else { self?.onGetDataError(); return }
                 self?.onGetDataSuccess(model: response)
                 //self?.onGetDataError()
             }

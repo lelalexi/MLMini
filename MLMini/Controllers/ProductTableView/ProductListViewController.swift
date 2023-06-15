@@ -17,21 +17,14 @@ protocol ProductListViewControllerProtocol: AnyObject {
     func reloadView()
     func goToDetailScreen(itemId: String)
     func fillList(model: APIResponseModel)
-    func onDataErrorRetry()
 }
 
 class ProductListViewController: UIViewController, ProductListViewControllerProtocol {
     
     @IBOutlet var productTableView: UITableView!
-    @IBOutlet var noResultsIconView: UIView!
-    @IBOutlet var noResultsView: UIView!
-    @IBOutlet var noResultViewIcon: UIImageView!
     
-    
-    private lazy var errorView: MLGenericErrorScreen = {
-        let view = MLGenericErrorScreen { [unowned self] in
-            self.presenter?.onErrorScreenRetryTapped()
-        }
+    private lazy var feedbackView: MLGenericFeedbackScreenComponent = {
+        let view = MLGenericFeedbackScreenComponent()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -54,19 +47,10 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
         presenter = ProductListPresenter(repository: ProductListRepository.init(ServiceManager()),
                                          productToSearch: toSearch)
         presenter?.view = self
-        initializeNoResultsFoundView()
         initializeProductTableView()
         setupNavBarAppearance()
         presenter?.viewDidLoad()
         presenter?.onSearchTextSetted()
-    }
-    
-    private func initializeNoResultsFoundView(){
-        noResultsView.isHidden = true
-        noResultsIconView.layer.cornerRadius = noResultsIconView.frame.height / 2
-        noResultsIconView.clipsToBounds = true
-        noResultViewIcon.image = UIImage(named: MLMiniConstants.Images.SEARCH_ICON)?.withRenderingMode(.alwaysTemplate)
-        noResultViewIcon.tintColor = UIColor(named: MLMiniConstants.Color.ACTIVE_BACKGROUND)
     }
     
     // MARK: - Navigation
@@ -89,6 +73,7 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
     
     func showSpinnerView() {
         // add the spinner to the view
+        feedbackView.removeFromSuperview()
         addChild(spinner)
         spinner.view.frame = view.frame
         view.addSubview(spinner.view)
@@ -100,11 +85,6 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
             self.spinner.willMove(toParent: nil)
             self.spinner.view.removeFromSuperview()
             self.spinner.removeFromParent()
-    }
-    
-    func onDataErrorRetry() {
-        errorView.removeFromSuperview()
-        
     }
 }
 
@@ -143,29 +123,35 @@ extension ProductListViewController: UITableViewDelegate, UITableViewDataSource 
 
 extension ProductListViewController {
     func reloadView() {
-        DispatchQueue.main.async {
-            self.productTableView.isHidden = false
-            self.productTableView.reloadData()
-        }
+        self.productTableView.isHidden = false
+        self.productTableView.reloadData()
     }
     
     func showEmptyView() {
-        DispatchQueue.main.async {
-            self.removeSpinnerView()
-            self.noResultsView.isHidden = false
+        feedbackView.type = .itemNotFound
+        feedbackView.callback = { [unowned self] in
+            self.navigationController?.popViewController(animated: true)
         }
+        showFeedbackView()
     }
     
     func showErrorView() {
-        DispatchQueue.main.async {
-            self.removeSpinnerView()
-            self.view.addSubview(self.errorView)
-            NSLayoutConstraint.activate([
-                self.errorView.topAnchor.constraint(equalTo: self.view.topAnchor),
-                self.errorView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-                self.errorView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-                self.errorView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            ])
+        feedbackView.type = .miscError
+        feedbackView.callback = { [unowned self] in
+            self.presenter?.onErrorScreenRetryTapped()
         }
+        showFeedbackView()
+    }
+    
+    private func showFeedbackView() {
+        self.feedbackView.removeFromSuperview()
+        self.removeSpinnerView()
+        self.view.addSubview(self.feedbackView)
+        NSLayoutConstraint.activate([
+            self.feedbackView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.feedbackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.feedbackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.feedbackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+        ])
     }
 }
