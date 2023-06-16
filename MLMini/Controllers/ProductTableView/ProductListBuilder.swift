@@ -9,12 +9,15 @@
 import UIKit
 
 struct ProductListBuilder {
-    func getView(forProductToSearch product: String) -> UIViewController {
+    func getView(forItemToSearch product: String) -> UIViewController {
         let service = NetworkServiceManager()
         let repository = ProductListRepository(service)
+        
         let presenter = ProductListPresenter(repository: repository, productToSearch: product)
-        #warning("Add presenter to vc init")
-        let view = ProductListViewController()
+        let view = ProductListViewController(presenter: presenter)
+        let coordinator = ProductListCoordinator(controller: view)
+        presenter.view = view
+        presenter.coordinator = coordinator
         return view
     }
 }

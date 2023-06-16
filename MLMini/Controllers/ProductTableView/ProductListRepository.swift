@@ -28,5 +28,3 @@ class ProductListRepository: ProductListRepositoryProtocol {
         return service.performRequest(endpoint: endpoint)
     }
 }
-
-

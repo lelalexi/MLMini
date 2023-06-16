@@ -16,7 +16,7 @@ class SearchViewViewModel {
     func onSearchButtonTap(textToSearch: String) {
         // TODO: Add logic to filter invalid text imputs (spaces cases)
         if !textToSearch.isEmpty {
-            coordinator.navigateToProductListScreen(textToSearch: textToSearch)
+            coordinator.navigateToProductListScreen(itemToSearch: textToSearch)
         }
     }
 }

@@ -6,7 +6,7 @@
 import UIKit
 
 protocol SearchViewCoordinatorProtocol: AnyObject {
-    func navigateToProductListScreen(textToSearch: String)
+    func navigateToProductListScreen(itemToSearch: String)
 }
 
 class SearchViewCoordinator: SearchViewCoordinatorProtocol {
@@ -16,10 +16,8 @@ class SearchViewCoordinator: SearchViewCoordinatorProtocol {
         self.controller = controller
     }
     
-    func navigateToProductListScreen(textToSearch: String) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let productListVC = storyboard.instantiateViewController(withIdentifier: "ProductListViewControllerID") as! ProductListViewController
-        productListVC.toSearch = textToSearch
+    func navigateToProductListScreen(itemToSearch item: String) {
+        let productListVC = ProductListBuilder().getView(forItemToSearch: item)
         controller.navigationController?.pushViewController(productListVC, animated: true)
     }
 }

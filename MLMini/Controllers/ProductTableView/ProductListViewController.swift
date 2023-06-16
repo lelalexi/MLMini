@@ -15,13 +15,17 @@ protocol ProductListViewControllerProtocol: AnyObject {
     func showEmptyView()
     func showErrorView()
     func reloadView()
-    func goToDetailScreen(itemId: String)
     func fillList(model: APIResponseModel)
 }
 
 class ProductListViewController: UIViewController, ProductListViewControllerProtocol {
-    
-    @IBOutlet var productTableView: UITableView!
+    lazy var productTableView: UITableView = {
+        let table = UITableView(frame: .zero)
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.isHidden = true
+        table.backgroundColor = .white
+        return table
+    }()
     
     private lazy var feedbackView: MLGenericFeedbackScreenComponent = {
         let view = MLGenericFeedbackScreenComponent()
@@ -30,43 +34,31 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
     }()
     
     var presenter: ProductListPresenterProtocol?
-    var model: APIResponseModel?
-    let productDetailSegueIdentifier = "toProductDetail"
+    var model: APIResponseModel? //The view should not have a model reference
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
             return .darkContent
     }
     
     lazy var spinner = SpinnerViewController()
-    var apiResp: APIResponseModel?
-    var toSearch = ""
+    
+    init(presenter: ProductListPresenterProtocol) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        return nil
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //llevar la creacion de la instancia al instance
-        presenter = ProductListPresenter(repository: ProductListRepository.init(NetworkServiceManager()),
-                                         productToSearch: toSearch)
-        presenter?.view = self
         initializeProductTableView()
         setupNavBarAppearance()
         presenter?.viewDidLoad()
         presenter?.onSearchTextSetted()
     }
-    
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == productDetailSegueIdentifier {
-            if let detailProductViewController = segue.destination as? ProductDetailViewController, let itemId = sender as? String{
-                detailProductViewController.itemId = itemId
-            }
-        }
-    }
-    
-    #warning("take this away")
-    func goToDetailScreen(itemId: String) {
-        performSegue(withIdentifier: productDetailSegueIdentifier, sender: itemId)
-    }
-    
+
     func fillList(model: APIResponseModel) {
         self.model = model
         reloadView()
@@ -93,11 +85,24 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
 extension ProductListViewController: UITableViewDelegate, UITableViewDataSource {
     
     private func initializeProductTableView(){
-        productTableView.isHidden = true
+        productTableView.delegate = self
+        productTableView.dataSource = self
+        setupTableviewConstraints()
         registerTableCells()
         //Set tableview automatic row heigth to true
         productTableView.rowHeight = UITableView.automaticDimension
         productTableView.estimatedRowHeight = 140
+    }
+    
+    private func setupTableviewConstraints() {
+        view.addSubview(productTableView)
+        
+        NSLayoutConstraint.activate([
+            self.productTableView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.productTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.productTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.productTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+        ])
     }
     
     private func registerTableCells(){
@@ -152,7 +157,7 @@ extension ProductListViewController {
             self.feedbackView.topAnchor.constraint(equalTo: self.view.topAnchor),
             self.feedbackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             self.feedbackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            self.feedbackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            self.feedbackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
     }
 }

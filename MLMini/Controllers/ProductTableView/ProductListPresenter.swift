@@ -25,6 +25,7 @@ class ProductListPresenter: ProductListPresenterProtocol {
     var model: APIResponseModel?
     var productToSearch: String = ""
     private var cancellables = Set<AnyCancellable>()
+    var coordinator: ProductListCoordinatorProtocol?
     
     //MARK: - Initializers
     required init(repository: ProductListRepositoryProtocol, productToSearch: String) {
@@ -41,7 +42,7 @@ class ProductListPresenter: ProductListPresenterProtocol {
     }
     
     func onListItemTapped(itemId: String) {
-        view?.goToDetailScreen(itemId: itemId)
+        coordinator?.navigateToItemDetailView(itemID: itemId)
     }
     
     func onErrorScreenRetryTapped() {
