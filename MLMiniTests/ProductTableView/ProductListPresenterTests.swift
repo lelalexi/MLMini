@@ -17,7 +17,7 @@ class ProductListPresenterTests: QuickSpec {
             context("Init Test") {
                 it("Presenter init Should initialize correctly") {
                     let view = ProductListViewProtocolMock()
-                    let repository = ProductListRepositoryStub(ServiceManager())
+                    let repository = ProductListRepositoryStub(NetworkServiceManager())
                     let presenter = ProductListPresenter(repository: repository)
                     presenter.view = view
                     presenter.viewDidLoad()
@@ -31,7 +31,7 @@ class ProductListPresenterTests: QuickSpec {
             context("Screen Test cases") {
                 it("should get SUCCESS data from repository and fill the list") {
                     let view = ProductListViewProtocolMock()
-                    let repository = ProductListRepositoryStub(ServiceManager())
+                    let repository = ProductListRepositoryStub(NetworkServiceManager())
                     repository.apiResponseModel = ApiResponseModelMock.resolveModel()
                     let presenter = ProductListPresenter(repository: repository)
                     presenter.view = view
@@ -52,7 +52,7 @@ class ProductListPresenterTests: QuickSpec {
                 
                 it("should get SUCCESS empty data from repository and show showEmptyView") {
                     let view = ProductListViewProtocolMock()
-                    let repository = ProductListRepositoryStub(ServiceManager())
+                    let repository = ProductListRepositoryStub(NetworkServiceManager())
                     repository.apiResponseModel = ApiResponseModelMock.resolveModel(testCase: .emptyResults)
                     let presenter = ProductListPresenter(repository: repository)
                     presenter.view = view
@@ -70,7 +70,7 @@ class ProductListPresenterTests: QuickSpec {
                 }
                 it("should get ERROR data from repository and show showErrorView") {
                     let view = ProductListViewProtocolMock()
-                    let repository = ProductListRepositoryStub(ServiceManager())
+                    let repository = ProductListRepositoryStub(NetworkServiceManager())
                     let presenter = ProductListPresenter(repository: repository)
                     presenter.view = view
                     presenter.onSearchTextSetted(toSearch: "something")
@@ -89,7 +89,7 @@ class ProductListPresenterTests: QuickSpec {
             context("User interactions cases") {
                 it("should go to product detail when user taps an item") {
                     let view = ProductListViewProtocolMock()
-                    let repository = ProductListRepositoryStub(ServiceManager())
+                    let repository = ProductListRepositoryStub(NetworkServiceManager())
                     let presenter = ProductListPresenter(repository: repository)
                     presenter.view = view
                     presenter.onListItemTapped(itemId: "01")

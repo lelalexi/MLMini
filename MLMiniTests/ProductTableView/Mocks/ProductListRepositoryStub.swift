@@ -14,10 +14,10 @@ class ProductListRepositoryStub: ProductListRepository, Mock {
     var apiResponseModel: APIResponseModel?
     var didCallGeetProductListData = MockCounter()
     
-    override func getProductListData(productName: String, completionHandler: @escaping (APIResponseModel?, UrlErrors?) -> Void) {
+    override func getProductListData(productName: String, completionHandler: @escaping (APIResponseModel?, NetworkError?) -> Void) {
         didCallGeetProductListData.wasCalled()
         guard let apiResponseModel = apiResponseModel else {
-            return completionHandler(nil, UrlErrors.invalidUrl)
+            return completionHandler(nil, NetworkError.invalidUrl)
         }
         return completionHandler(apiResponseModel, nil)
     }

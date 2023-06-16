@@ -6,10 +6,10 @@
 //  Copyright © 2020 ale. All rights reserved.
 //
 
+import Combine
 import Foundation
 
 protocol ProductListPresenterProtocol {
-    
     var view: ProductListViewControllerProtocol? { get set }
     func viewDidLoad()
     func onListItemTapped(itemId: String)
@@ -21,9 +21,10 @@ class ProductListPresenter: ProductListPresenterProtocol {
     
     //MARK: - Properties
     weak var view: ProductListViewControllerProtocol?
-    let repository: ProductListRepositoryProtocol?
+    private let repository: ProductListRepositoryProtocol
     var model: APIResponseModel?
     var productToSearch: String = ""
+    private var cancellables = Set<AnyCancellable>()
     
     //MARK: - Initializers
     required init(repository: ProductListRepositoryProtocol, productToSearch: String) {
@@ -63,15 +64,17 @@ class ProductListPresenter: ProductListPresenterProtocol {
     }
     
     private func getListData() {
-        repository?.getProductListData(productName: productToSearch, completionHandler: { [weak self] (Response, error) in
-            DispatchQueue.main.async {
-                if let _ = error {
-                    self?.onGetDataError()
+        repository.getProductListData(productName: productToSearch)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .failure:
+                    self.onGetDataError()
+                case .finished:
+                    break
                 }
-                guard let response = Response else { self?.onGetDataError(); return }
-                self?.onGetDataSuccess(model: response)
-                //self?.onGetDataError()
-            }
-        })
+            }, receiveValue: { response in
+                self.onGetDataSuccess(model: response)
+            }).store(in: &cancellables)
     }
 }

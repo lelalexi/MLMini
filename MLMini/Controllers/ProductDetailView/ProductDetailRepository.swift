@@ -40,7 +40,7 @@ class ProductDetailRepository: ProductDetailRepositoryProtocol {
                 }
             }
         } else {
-            completionHandler(nil,UrlErrors.invalidUrl)
+            completionHandler(nil,NetworkError.invalidUrl)
         }
     }
 }

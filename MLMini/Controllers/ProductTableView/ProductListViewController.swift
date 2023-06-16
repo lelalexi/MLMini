@@ -44,7 +44,7 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
     override func viewDidLoad() {
         super.viewDidLoad()
         //llevar la creacion de la instancia al instance
-        presenter = ProductListPresenter(repository: ProductListRepository.init(ServiceManager()),
+        presenter = ProductListPresenter(repository: ProductListRepository.init(NetworkServiceManager()),
                                          productToSearch: toSearch)
         presenter?.view = self
         initializeProductTableView()
@@ -62,6 +62,7 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
         }
     }
     
+    #warning("take this away")
     func goToDetailScreen(itemId: String) {
         performSegue(withIdentifier: productDetailSegueIdentifier, sender: itemId)
     }

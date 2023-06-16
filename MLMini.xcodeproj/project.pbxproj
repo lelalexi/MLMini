@@ -41,8 +41,13 @@
 		D953FBDE2A3A7AF400D2C775 /* MLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBDD2A3A7AF400D2C775 /* MLImage.swift */; };
 		D953FBE12A3ABDAA00D2C775 /* MLGenericFeedbackScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBE02A3ABDAA00D2C775 /* MLGenericFeedbackScreenFactory.swift */; };
 		D953FBE32A3BC75A00D2C775 /* MLGenericFeedbackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBE22A3BC75A00D2C775 /* MLGenericFeedbackModel.swift */; };
+		D953FBE62A3BFF0100D2C775 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBE52A3BFF0100D2C775 /* HTTPMethod.swift */; };
+		D953FBE82A3BFF2F00D2C775 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBE72A3BFF2F00D2C775 /* Endpoint.swift */; };
+		D953FBEA2A3C0D2100D2C775 /* MLEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBE92A3C0D2100D2C775 /* MLEnvironment.swift */; };
+		D953FBEC2A3C0D4400D2C775 /* MLPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBEB2A3C0D4400D2C775 /* MLPath.swift */; };
+		D953FBEE2A3C250900D2C775 /* ProductListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBED2A3C250900D2C775 /* ProductListBuilder.swift */; };
 		E461482F23369128006080E4 /* ItemResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E461482E23369128006080E4 /* ItemResponseModel.swift */; };
-		E495DFC3233A4B9A00E3A4C9 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E495DFC2233A4B9A00E3A4C9 /* ServiceManager.swift */; };
+		E495DFC3233A4B9A00E3A4C9 /* NetworkServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E495DFC2233A4B9A00E3A4C9 /* NetworkServiceManager.swift */; };
 		E49F96072339108700AC4ECC /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F96062339108700AC4ECC /* SpinnerViewController.swift */; };
 		E4CB24C223346642003AB3D8 /* NumberExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB24C123346642003AB3D8 /* NumberExtension.swift */; };
 		E4D0525B23325388009B4EDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D0525A23325388009B4EDB /* AppDelegate.swift */; };
@@ -126,8 +131,13 @@
 		D953FBDD2A3A7AF400D2C775 /* MLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLImage.swift; sourceTree = "<group>"; };
 		D953FBE02A3ABDAA00D2C775 /* MLGenericFeedbackScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLGenericFeedbackScreenFactory.swift; sourceTree = "<group>"; };
 		D953FBE22A3BC75A00D2C775 /* MLGenericFeedbackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLGenericFeedbackModel.swift; sourceTree = "<group>"; };
+		D953FBE52A3BFF0100D2C775 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		D953FBE72A3BFF2F00D2C775 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		D953FBE92A3C0D2100D2C775 /* MLEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLEnvironment.swift; sourceTree = "<group>"; };
+		D953FBEB2A3C0D4400D2C775 /* MLPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLPath.swift; sourceTree = "<group>"; };
+		D953FBED2A3C250900D2C775 /* ProductListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListBuilder.swift; sourceTree = "<group>"; };
 		E461482E23369128006080E4 /* ItemResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemResponseModel.swift; sourceTree = "<group>"; };
-		E495DFC2233A4B9A00E3A4C9 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		E495DFC2233A4B9A00E3A4C9 /* NetworkServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceManager.swift; sourceTree = "<group>"; };
 		E49F96062339108700AC4ECC /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		E4CB24C123346642003AB3D8 /* NumberExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberExtension.swift; sourceTree = "<group>"; };
 		E4D0525723325388009B4EDB /* MLMini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MLMini.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -313,6 +323,18 @@
 			path = GenericErrorScreen;
 			sourceTree = "<group>";
 		};
+		D953FBE42A3BFBF100D2C775 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				E495DFC2233A4B9A00E3A4C9 /* NetworkServiceManager.swift */,
+				D953FBE52A3BFF0100D2C775 /* HTTPMethod.swift */,
+				D953FBE72A3BFF2F00D2C775 /* Endpoint.swift */,
+				D953FBE92A3C0D2100D2C775 /* MLEnvironment.swift */,
+				D953FBEB2A3C0D4400D2C775 /* MLPath.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
 		E49F96052339107500AC4ECC /* Extras */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,7 +385,7 @@
 		E4D05295233304F8009B4EDB /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				E495DFC2233A4B9A00E3A4C9 /* ServiceManager.swift */,
+				D953FBE42A3BFBF100D2C775 /* NetworkService */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -427,6 +449,7 @@
 				C6F6A7E62510476E00140EAD /* ProductListPresenter.swift */,
 				C6F6A7E825104FFA00140EAD /* ProductListRepository.swift */,
 				E4D0529323328E8C009B4EDB /* APIResponseModel.swift */,
+				D953FBED2A3C250900D2C775 /* ProductListBuilder.swift */,
 			);
 			path = ProductTableView;
 			sourceTree = "<group>";
@@ -698,11 +721,14 @@
 				E4D5D3532337BF4300883E8A /* ProductImageViewCell.swift in Sources */,
 				E49F96072339108700AC4ECC /* SpinnerViewController.swift in Sources */,
 				D953FBE32A3BC75A00D2C775 /* MLGenericFeedbackModel.swift in Sources */,
+				D953FBEA2A3C0D2100D2C775 /* MLEnvironment.swift in Sources */,
 				D953FBD12A36C55000D2C775 /* SearchViewCoordinator.swift in Sources */,
 				D953FBDE2A3A7AF400D2C775 /* MLImage.swift in Sources */,
+				D953FBEE2A3C250900D2C775 /* ProductListBuilder.swift in Sources */,
 				C6E2C8122512E86E009687CC /* ItemDomainModel.swift in Sources */,
 				E4D0529A23331117009B4EDB /* ProductViewCell.swift in Sources */,
 				D953FBD42A36C71300D2C775 /* MLMiniTextField.swift in Sources */,
+				D953FBE82A3BFF2F00D2C775 /* Endpoint.swift in Sources */,
 				D953FBC62A36711F00D2C775 /* SearchViewViewModel.swift in Sources */,
 				C6F6A7E925104FFA00140EAD /* ProductListRepository.swift in Sources */,
 				D953FBD72A36C77B00D2C775 /* MLPrimaryButton.swift in Sources */,
@@ -711,6 +737,7 @@
 				D953FBE12A3ABDAA00D2C775 /* MLGenericFeedbackScreenFactory.swift in Sources */,
 				C621ACA625FD7917007DB918 /* MLMiniConstants.swift in Sources */,
 				E461482F23369128006080E4 /* ItemResponseModel.swift in Sources */,
+				D953FBEC2A3C0D4400D2C775 /* MLPath.swift in Sources */,
 				D953FBCA2A36B5A400D2C775 /* SearchViewControllerSwiftUIBridge.swift in Sources */,
 				E4D052A92333B464009B4EDB /* ProductDetailViewController.swift in Sources */,
 				D953FBCC2A36C3CC00D2C775 /* View+Extension.swift in Sources */,
@@ -722,8 +749,9 @@
 				C6F6A7FE2512C7F400140EAD /* ProductDetailRepository.swift in Sources */,
 				E4D052B02333CE79009B4EDB /* UIColorExtension.swift in Sources */,
 				D953FBC82A36858100D2C775 /* SearchViewBuilder.swift in Sources */,
-				E495DFC3233A4B9A00E3A4C9 /* ServiceManager.swift in Sources */,
+				E495DFC3233A4B9A00E3A4C9 /* NetworkServiceManager.swift in Sources */,
 				E4D5D3562337C94600883E8A /* MainDetailTableViewCell.swift in Sources */,
+				D953FBE62A3BFF0100D2C775 /* HTTPMethod.swift in Sources */,
 				C6F6A7E72510476E00140EAD /* ProductListPresenter.swift in Sources */,
 				C6F6A7FC2512C7E700140EAD /* ProductDetailPresenter.swift in Sources */,
 				E4D0529F23331EF3009B4EDB /* UrlErrorsEnum.swift in Sources */,

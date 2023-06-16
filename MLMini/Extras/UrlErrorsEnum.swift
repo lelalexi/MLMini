@@ -8,7 +8,9 @@
 
 import UIKit
 
-enum UrlErrors: Error {
+enum NetworkError: Error {
     case invalidUrl
+    case decodingError(errorDescription: String)
+    case serverError(errorCode: Int, errorDescription: String)
     case someError //Expand this errors to be able to handle different situations at UI or code
 }

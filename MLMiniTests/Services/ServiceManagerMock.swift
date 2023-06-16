@@ -12,9 +12,9 @@ import Foundation
 class ServiceManagerMock<T>: ServiceManagerProtocol {
     
     var requestResponse: T?
-    var errorType: UrlErrors?
+    var errorType: NetworkError?
     
-    func performRequest<T>(apiURL: URL, completionHandler: @escaping (T?, UrlErrors?) -> Void) where T : Decodable, T : Encodable {
+    func performRequest<T>(apiURL: URL, completionHandler: @escaping (T?, NetworkError?) -> Void) where T : Decodable, T : Encodable {
         if let response = requestResponse as? T {
             completionHandler(response, nil)
         } else {

@@ -37,7 +37,7 @@ class ProductListRepositoryTests: QuickSpec {
                     repository.getProductListData(productName: "auriculares") { (model, error) in
                         expect(model).to(beNil())
                         expect(error).notTo(beNil())
-                        expect(error).to(equal(UrlErrors.someError))
+                        expect(error).to(equal(NetworkError.someError))
                     }
                 }
             }
