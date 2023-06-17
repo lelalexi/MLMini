@@ -6,24 +6,31 @@
 //  Copyright © 2023 ale. All rights reserved.
 //
 
+import UIKit
+import SnapshotTesting
 @testable import MLMini
 
 class MLGenericFeedbackScreenComponentSnapshotTests: MLBaseSnapshotTests {
     var feedbackView: MLGenericFeedbackScreenComponent!
+    var feedbackViewController: UIViewController!
     
     override func setUp() {
         super.setUp()
+        isRecording = false
         feedbackView = MLGenericFeedbackScreenComponent()
-        viewController.view = feedbackView
+        feedbackViewController = UIViewController()
+        feedbackViewController.view = feedbackView
     }
     
     func testFeedback_ItemNotFound_Screen() {
         feedbackView.type = .itemNotFound
-        verifyFeedbackViewSnapshot(withName: "FeedbackItemNotFoundViewSnapshot")
+        verifySnapshotfor(viewController: feedbackViewController,
+                          withName: "FeedbackItemNotFoundViewSnapshot")
     }
     
     func testFeedback_Error_Screen() {
         feedbackView.type = .miscError
-        verifyFeedbackViewSnapshot(withName: "FeedbackErrorViewSnapshot")
+        verifySnapshotfor(viewController: feedbackViewController,
+                          withName: "FeedbackErrorViewSnapshot")
     }
 }

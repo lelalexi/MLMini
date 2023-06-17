@@ -27,7 +27,7 @@ class NetworkServiceManager: ServiceManagerProtocol {
                 do {
                     let resp = try JSONDecoder().decode(T.self, from: data)
                     completionHandler(resp, nil)
-                } catch let error { //TODO: handle error here
+                } catch {
                     completionHandler(nil, .someError)
                 }
             }

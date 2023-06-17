@@ -7,17 +7,21 @@
 //
 
 import SwiftUI
+import SnapshotTesting
 @testable import MLMini
 
 class SearchViewSnapshotTests: MLBaseSnapshotTests {
+    var searchViewController: UIViewController!
+
     override func setUp() {
         super.setUp()
+        isRecording = false
         let searchView = SearchViewBuilder().getView(forController: UIViewController())
-        let searchViewController = UIHostingController(rootView: searchView)
-        viewController = searchViewController
+        searchViewController = UIHostingController(rootView: searchView)
     }
     
     func testSearchScreen() {
-        verifyFeedbackViewSnapshot(withName: "SearchScreenSnapshot")
+        verifySnapshotfor(viewController: searchViewController,
+                          withName: "SearchScreenSnapshot")
     }
 }

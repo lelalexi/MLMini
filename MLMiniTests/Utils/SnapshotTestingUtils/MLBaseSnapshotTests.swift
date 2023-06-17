@@ -10,18 +10,26 @@ import XCTest
 import SnapshotTesting
 
 class MLBaseSnapshotTests: XCTestCase {
-    var viewController: UIViewController!
     var snapshotTestTargetDevices: [String : ViewImageConfig] = [ "iPhone 8" :.iPhone8,
                                                                   "iPhone Xs Max" :.iPhoneXsMax,
                                                                   "iPad Pro 11" :.iPadPro11 ]
-    override func setUp() {
-        viewController = UIViewController()
+    
+    func verifySnapshotfor(viewController: UIViewController,
+                           withName: String) {
+        let result = snapshotTestTargetDevices.map { device in
+            SnapshotTesting.verifySnapshot(matching: viewController,
+                           as: .image(on: device.value),
+                           named: "\(withName)_\(device.key)",
+                           record: isRecording)
+        }
+        result.forEach { XCTAssertNil($0) }
     }
     
-    func verifyFeedbackViewSnapshot(withName: String) {
+    func verifySnapshotfor(view: UIView,
+                           withName: String) {
         let result = snapshotTestTargetDevices.map { device in
-            verifySnapshot(matching: viewController,
-                           as: .image(on: device.value),
+            SnapshotTesting.verifySnapshot(matching: view,
+                           as: .image(precision: 0.99),
                            named: "\(withName)_\(device.key)",
                            record: isRecording)
         }
