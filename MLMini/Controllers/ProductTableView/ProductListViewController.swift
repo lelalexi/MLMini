@@ -9,61 +9,86 @@
 import UIKit
 import SDWebImage
 
-class ProductListViewController: UIViewController {
+protocol ProductListViewControllerProtocol: AnyObject {
+    func showSpinnerView()
+    func removeSpinnerView()
+    func showEmptyView()
+    func showErrorView()
+    func reloadView()
+    func goToDetailScreen(itemId: String)
+    func fillList(model: APIResponseModel)
+}
+
+class ProductListViewController: UIViewController, ProductListViewControllerProtocol {
     
     @IBOutlet var productTableView: UITableView!
     @IBOutlet var noResultsIconView: UIView!
     @IBOutlet var noResultsView: UIView!
     @IBOutlet var noResultViewIcon: UIImageView!
     
+    var presenter: ProductListPresenterProtocol?
+    var model: APIResponseModel?
+    let productDetailSegueIdentifier = "toProductDetail"
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
             return .darkContent
     }
     
-    
-    var spinner = SpinnerViewController()
+    lazy var spinner = SpinnerViewController()
     var apiResp: APIResponseModel?
-    var service: APIAdapterProtocol!
     var toSearch = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //llevar la creacion de la instancia al instance
+        presenter = ProductListPresenter(repository: ProductListRepository.init(ServiceManager()))
+        presenter?.view = self
         initializeNoResultsFoundView()
         initializeProductTableView()
-        createSpinnerView()
+        setupNavBarAppearance()
+        presenter?.viewDidLoad()
+        presenter?.onSearchTextSetted(toSearch: toSearch)
     }
     
     private func initializeNoResultsFoundView(){
         noResultsView.isHidden = true
         noResultsIconView.layer.cornerRadius = noResultsIconView.frame.height / 2
         noResultsIconView.clipsToBounds = true
-        noResultViewIcon.image = UIImage(named: "Search")?.withRenderingMode(.alwaysTemplate)
-        noResultViewIcon.tintColor = UIColor(named: "activeBackground")
+        noResultViewIcon.image = UIImage(named: MLMiniConstants.Images.SEARCH_ICON)?.withRenderingMode(.alwaysTemplate)
+        noResultViewIcon.tintColor = UIColor(named: MLMiniConstants.Color.ACTIVE_BACKGROUND)
     }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toProductDetail" {
-            if let detailProductViewController = segue.destination as? ProductDetailViewController, let index = sender as? IndexPath{
-                detailProductViewController.service = service
-                detailProductViewController.itemIndexPath = index
+        if segue.identifier == productDetailSegueIdentifier {
+            if let detailProductViewController = segue.destination as? ProductDetailViewController, let itemId = sender as? String{
+                detailProductViewController.itemId = itemId
             }
         }
     }
-    func createSpinnerView() {
+    
+    func goToDetailScreen(itemId: String) {
+        performSegue(withIdentifier: productDetailSegueIdentifier, sender: itemId)
+    }
+    
+    func fillList(model: APIResponseModel) {
+        self.model = model
+        reloadView()
+    }
+    
+    func showSpinnerView() {
         // add the spinner to the view
         addChild(spinner)
         spinner.view.frame = view.frame
         view.addSubview(spinner.view)
         spinner.didMove(toParent: self)
-
     }
     
     func removeSpinnerView() {
-        // remove the spinner from the view
-        self.spinner.willMove(toParent: nil)
-        self.spinner.view.removeFromSuperview()
-        self.spinner.removeFromParent()
+            // remove the spinner from the view
+            self.spinner.willMove(toParent: nil)
+            self.spinner.view.removeFromSuperview()
+            self.spinner.removeFromParent()
     }
 }
 
@@ -76,65 +101,33 @@ extension ProductListViewController: UITableViewDelegate, UITableViewDataSource 
         //Set tableview automatic row heigth to true
         productTableView.rowHeight = UITableView.automaticDimension
         productTableView.estimatedRowHeight = 140
-        loadData()
-        
     }
     
     private func registerTableCells(){
-        let productCell = UINib(nibName: "ProductViewCell", bundle: nil)
-        productTableView.register(productCell, forCellReuseIdentifier: "ProductViewCell")
-    }
-    
-//    here Im going to load data from the adapter
-    private func loadData(){
-        
-        service = AdapterFactory().adapter
-        
-        service.getItemsByName(name: toSearch) { [weak self] (error: Error?) in
-            if error != nil {
-                //                TODO: DO SOMETHING WITH THE ERROR
-                print("Error in getItemsByName")
-                return
-            }
-            
-            if self?.service.emptyResults() ?? false {
-                self?.showEmptyView()
-            } else {
-                self?.reloadView()
-            }
-        }
+        let productCell = UINib(nibName: MLMiniConstants.Xibs.PRODUCT_VIEW_CELL, bundle: nil)
+        productTableView.register(productCell, forCellReuseIdentifier: MLMiniConstants.Xibs.PRODUCT_VIEW_CELL)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return service.numberOfItems()
+        return model?.results.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = productTableView.dequeueReusableCell(withIdentifier: "ProductViewCell", for: indexPath) as? ProductViewCell else { return UITableViewCell() }
-        let item = service.itemAt(index: indexPath.row)
+        guard let cell = productTableView.dequeueReusableCell(withIdentifier: MLMiniConstants.Xibs.PRODUCT_VIEW_CELL, for: indexPath) as? ProductViewCell, let model = model else { return UITableViewCell() }
+        let item = model.itemAt(index: indexPath.row)
         cell.configureCell(item: item)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "toProductDetail", sender: indexPath)
+        guard let itemId = model?.itemAt(index: indexPath.row).id else { return }
+        presenter?.onListItemTapped(itemId: itemId)
     }
 }
 
-// MARK: - Protocols
-protocol  ProductProtocol {
-    
-    //Access the main thread and updates the tableview
-    func reloadView()
-    
-    //Hides the tableview in order to see a view saying that there re no results available
-    func showEmptyView()
-}
-
-extension ProductListViewController: ProductProtocol {
+extension ProductListViewController {
     func reloadView() {
         DispatchQueue.main.async {
-            self.removeSpinnerView()
             self.productTableView.isHidden = false
             self.productTableView.reloadData()
         }
@@ -146,7 +139,8 @@ extension ProductListViewController: ProductProtocol {
             self.noResultsView.isHidden = false
         }
     }
+    
+    func showErrorView() {
+        //TODO
+    }
 }
-
-
-

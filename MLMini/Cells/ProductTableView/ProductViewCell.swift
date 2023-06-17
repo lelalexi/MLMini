@@ -24,25 +24,21 @@ class ProductViewCell: UITableViewCell {
     private func initCell(){
         productFavIcon.image = productFavIcon.image?.withRenderingMode(.alwaysTemplate)
         productFavIcon.tintColor = .activeBlue
-        productTitle.textColor = UIColor(named: "clearGrey")
+        productTitle.textColor = UIColor(named: MLMiniConstants.Color.CLEAR_GREY)
         productImage.layer.cornerRadius = 6.0
         productImage.clipsToBounds = true
         freeShippingLabel.isHidden = true
     }
     
-    func configureCell(item: Item){
+    func configureCell(item: ItemModel){
         productTitle.text = item.title
         productPrice.text = "$ " + String(item.price.formattedWithSeparator)
-        productImage.sd_setImage(with: URL(string: item.thumbnail), placeholderImage: UIImage(named: "Placeholder"))
+        productImage.sd_setImage(with: URL(string: item.thumbnail), placeholderImage: UIImage(named: MLMiniConstants.Images.PLACEHOLDER_ICON))
         freeShippingLabel.isHidden = !item.freeShipping
-        
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

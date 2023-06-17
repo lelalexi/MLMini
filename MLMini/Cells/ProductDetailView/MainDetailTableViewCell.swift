@@ -10,13 +10,10 @@ import UIKit
 
 class MainDetailTableViewCell: UITableViewCell {
     
-    
     @IBOutlet var soldItems: UILabel!
     @IBOutlet var title: UILabel!
     @IBOutlet var seller: UILabel!
     @IBOutlet var price: UILabel!
-    
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,10 +21,10 @@ class MainDetailTableViewCell: UITableViewCell {
     }
     
     private func initializeCell(){
-        backgroundColor = UIColor(named: "softGrey")
+        backgroundColor = UIColor(named: MLMiniConstants.Color.SOFT_GREY)
     }
     
-    func configureCell(item: ItemDescription){
+    func configureCell(item: ItemDescriptionModel){
 
         title.text = item.title
         price.text = "$ " + String(item.price.formattedWithSeparator)
