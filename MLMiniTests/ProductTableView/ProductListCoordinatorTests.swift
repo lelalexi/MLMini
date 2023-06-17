@@ -31,7 +31,7 @@ class ProductListCoordinatorTests: QuickSpec {
                     }
                     // Then
                     MockSwift.verify(navControllerSpy)
-                    await expect(await navControllerSpy.pushViewControllerParams?.viewController as? ProductDetailViewController).notTo(beNil())
+                    await expect(await navControllerSpy.pushViewControllerParams?.viewController).to(beAKindOf(ProductDetailViewController.self))
                 }
             }
         }
