@@ -14,12 +14,13 @@ class MLPrimaryButtonSnapshotTests: MLBaseSnapshotTests {
     var buttonView: UIView!
     override func setUp() {
         super.setUp()
+        isRecording = false
         let button = PrimaryButton(label: "Search", onButtonTapped: { print("Button Tapped") })
         buttonView = UIHostingController(rootView: button).view
         buttonView.frame = CGRect(x: 0, y: 0, width: 260, height: 50)
     }
     
-    func testSearchScreen() {
-        assertSnapshot(matching: buttonView, as: .image(drawHierarchyInKeyWindow: true), record: false)
+    func testPrimaryButton() {
+        verifySnapshotfor(view: buttonView)
     }
 }
