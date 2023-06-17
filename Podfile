@@ -10,6 +10,6 @@ target 'MLMini' do
     		inherit! :search_paths
     	pod 'Quick', '6.0.0'
     	pod 'Nimble', '11.0.0'
-	pod 'SnapshotTesting', '~> 1.0'
+		pod 'SnapshotTesting', '~> 1.0'
   end
 end
