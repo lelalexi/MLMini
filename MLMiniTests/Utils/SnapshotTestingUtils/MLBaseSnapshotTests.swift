@@ -11,8 +11,8 @@ import SnapshotTesting
 
 class MLBaseSnapshotTests: XCTestCase {
     static let snapshotTestTargetDevices: [String : ViewImageConfig] = [ "iPhone 8" :.iPhone8,
-                                                                  "iPhone Xs Max" :.iPhoneXsMax,
-                                                                  "iPad Pro 11" :.iPadPro11 ]
+                                                                         "iPhone Xs Max" :.iPhoneXsMax,
+                                                                         "iPad Pro 11" :.iPadPro11 ]
     
     func verifySnapshotfor(viewController: UIViewController,
                            withName: String = #function,
