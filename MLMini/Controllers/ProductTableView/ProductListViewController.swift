@@ -19,7 +19,7 @@ protocol ProductListViewControllerProtocol: AnyObject {
 }
 
 class ProductListViewController: UIViewController, ProductListViewControllerProtocol {
-    lazy var productTableView: UITableView = {
+    private lazy var productTableView: UITableView = {
         let table = UITableView(frame: .zero)
         table.translatesAutoresizingMaskIntoConstraints = false
         table.isHidden = true
@@ -33,14 +33,14 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
         return view
     }()
     
-    var presenter: ProductListPresenterProtocol?
-    var model: APIResponseModel? //The view should not have a model reference
+    private var presenter: ProductListPresenterProtocol?
+    private var model: APIResponseModel? //The view should not have a model reference
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
             return .darkContent
     }
     
-    lazy var spinner = SpinnerViewController()
+    private lazy var spinner = SpinnerViewController()
     
     init(presenter: ProductListPresenterProtocol) {
         self.presenter = presenter
@@ -56,7 +56,6 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
         initializeProductTableView()
         setupNavBarAppearance()
         presenter?.viewDidLoad()
-        presenter?.onSearchTextSetted()
     }
 
     func fillList(model: APIResponseModel) {
@@ -74,10 +73,10 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
     }
     
     func removeSpinnerView() {
-            // remove the spinner from the view
-            self.spinner.willMove(toParent: nil)
-            self.spinner.view.removeFromSuperview()
-            self.spinner.removeFromParent()
+        // remove the spinner from the view
+        self.spinner.willMove(toParent: nil)
+        self.spinner.view.removeFromSuperview()
+        self.spinner.removeFromParent()
     }
 }
 

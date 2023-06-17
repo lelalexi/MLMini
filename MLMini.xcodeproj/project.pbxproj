@@ -16,7 +16,7 @@
 		C6F012F825FE3B1B00BBE3CC /* ProductListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F012F725FE3B1B00BBE3CC /* ProductListPresenterTests.swift */; };
 		C6F012FD25FE3C4000BBE3CC /* MockSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F012FC25FE3C4000BBE3CC /* MockSwift.swift */; };
 		C6F0130225FE3F5900BBE3CC /* ProductListViewProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0130125FE3F5900BBE3CC /* ProductListViewProtocolMock.swift */; };
-		C6F0130625FE41E000BBE3CC /* ProductListRepositoryStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0130525FE41E000BBE3CC /* ProductListRepositoryStub.swift */; };
+		C6F0130625FE41E000BBE3CC /* ProductListRepositorySpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0130525FE41E000BBE3CC /* ProductListRepositorySpy.swift */; };
 		C6F0130925FE46B900BBE3CC /* ApiResponseModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0130825FE46B900BBE3CC /* ApiResponseModelMock.swift */; };
 		C6F0130C25FE473000BBE3CC /* ProductListRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0130B25FE473000BBE3CC /* ProductListRepositoryMock.swift */; };
 		C6F0131025FE687300BBE3CC /* ProductListModel.json in Resources */ = {isa = PBXBuildFile; fileRef = C6F0130F25FE687300BBE3CC /* ProductListModel.json */; };
@@ -47,6 +47,8 @@
 		D953FBEC2A3C0D4400D2C775 /* MLPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBEB2A3C0D4400D2C775 /* MLPath.swift */; };
 		D953FBEE2A3C250900D2C775 /* ProductListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBED2A3C250900D2C775 /* ProductListBuilder.swift */; };
 		D953FBF02A3C2E7700D2C775 /* ProductListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBEF2A3C2E7700D2C775 /* ProductListCoordinator.swift */; };
+		D953FBF22A3D23DF00D2C775 /* ProductListCoordinatorSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBF12A3D23DF00D2C775 /* ProductListCoordinatorSpy.swift */; };
+		D953FBF42A3D339800D2C775 /* ProductListCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBF32A3D339800D2C775 /* ProductListCoordinatorTests.swift */; };
 		E461482F23369128006080E4 /* ItemResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E461482E23369128006080E4 /* ItemResponseModel.swift */; };
 		E495DFC3233A4B9A00E3A4C9 /* NetworkServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E495DFC2233A4B9A00E3A4C9 /* NetworkServiceManager.swift */; };
 		E49F96072339108700AC4ECC /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F96062339108700AC4ECC /* SpinnerViewController.swift */; };
@@ -108,7 +110,7 @@
 		C6F012F725FE3B1B00BBE3CC /* ProductListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListPresenterTests.swift; sourceTree = "<group>"; };
 		C6F012FC25FE3C4000BBE3CC /* MockSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSwift.swift; sourceTree = "<group>"; };
 		C6F0130125FE3F5900BBE3CC /* ProductListViewProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewProtocolMock.swift; sourceTree = "<group>"; };
-		C6F0130525FE41E000BBE3CC /* ProductListRepositoryStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListRepositoryStub.swift; sourceTree = "<group>"; };
+		C6F0130525FE41E000BBE3CC /* ProductListRepositorySpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListRepositorySpy.swift; sourceTree = "<group>"; };
 		C6F0130825FE46B900BBE3CC /* ApiResponseModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponseModelMock.swift; sourceTree = "<group>"; };
 		C6F0130B25FE473000BBE3CC /* ProductListRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListRepositoryMock.swift; sourceTree = "<group>"; };
 		C6F0130F25FE687300BBE3CC /* ProductListModel.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ProductListModel.json; sourceTree = "<group>"; };
@@ -138,6 +140,8 @@
 		D953FBEB2A3C0D4400D2C775 /* MLPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLPath.swift; sourceTree = "<group>"; };
 		D953FBED2A3C250900D2C775 /* ProductListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListBuilder.swift; sourceTree = "<group>"; };
 		D953FBEF2A3C2E7700D2C775 /* ProductListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListCoordinator.swift; sourceTree = "<group>"; };
+		D953FBF12A3D23DF00D2C775 /* ProductListCoordinatorSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListCoordinatorSpy.swift; sourceTree = "<group>"; };
+		D953FBF32A3D339800D2C775 /* ProductListCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListCoordinatorTests.swift; sourceTree = "<group>"; };
 		E461482E23369128006080E4 /* ItemResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemResponseModel.swift; sourceTree = "<group>"; };
 		E495DFC2233A4B9A00E3A4C9 /* NetworkServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceManager.swift; sourceTree = "<group>"; };
 		E49F96062339108700AC4ECC /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 				C6F012F725FE3B1B00BBE3CC /* ProductListPresenterTests.swift */,
 				C6F0131325FE6A3F00BBE3CC /* APIResponseModelTests.swift */,
 				C6F0131E25FE955700BBE3CC /* ProductListRepositoryTests.swift */,
+				D953FBF32A3D339800D2C775 /* ProductListCoordinatorTests.swift */,
 			);
 			path = ProductTableView;
 			sourceTree = "<group>";
@@ -240,9 +245,10 @@
 			isa = PBXGroup;
 			children = (
 				C6F0130125FE3F5900BBE3CC /* ProductListViewProtocolMock.swift */,
-				C6F0130525FE41E000BBE3CC /* ProductListRepositoryStub.swift */,
+				C6F0130525FE41E000BBE3CC /* ProductListRepositorySpy.swift */,
 				C6F0130825FE46B900BBE3CC /* ApiResponseModelMock.swift */,
 				C6F0130B25FE473000BBE3CC /* ProductListRepositoryMock.swift */,
+				D953FBF12A3D23DF00D2C775 /* ProductListCoordinatorSpy.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -705,12 +711,14 @@
 				C6F012DD25FDC76C00BBE3CC /* MLMiniTests.swift in Sources */,
 				C6F0130C25FE473000BBE3CC /* ProductListRepositoryMock.swift in Sources */,
 				C6F0131425FE6A3F00BBE3CC /* APIResponseModelTests.swift in Sources */,
+				D953FBF22A3D23DF00D2C775 /* ProductListCoordinatorSpy.swift in Sources */,
 				C6F0130225FE3F5900BBE3CC /* ProductListViewProtocolMock.swift in Sources */,
 				C6F0131F25FE955700BBE3CC /* ProductListRepositoryTests.swift in Sources */,
 				C6F012FD25FE3C4000BBE3CC /* MockSwift.swift in Sources */,
+				D953FBF42A3D339800D2C775 /* ProductListCoordinatorTests.swift in Sources */,
 				C6F012F325FE33A700BBE3CC /* MLMiniConstantsTests.swift in Sources */,
 				C6F012F825FE3B1B00BBE3CC /* ProductListPresenterTests.swift in Sources */,
-				C6F0130625FE41E000BBE3CC /* ProductListRepositoryStub.swift in Sources */,
+				C6F0130625FE41E000BBE3CC /* ProductListRepositorySpy.swift in Sources */,
 				C6F0130925FE46B900BBE3CC /* ApiResponseModelMock.swift in Sources */,
 				C6F0132325FE988600BBE3CC /* ServiceManagerMock.swift in Sources */,
 			);
@@ -802,7 +810,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9F49N853DV;
 				INFOPLIST_FILE = MLMiniTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -825,7 +833,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9F49N853DV;
 				INFOPLIST_FILE = MLMiniTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -890,7 +898,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -945,7 +953,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

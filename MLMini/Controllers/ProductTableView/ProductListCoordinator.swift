@@ -13,16 +13,16 @@ protocol ProductListCoordinatorProtocol: AnyObject {
 }
 
 class ProductListCoordinator: ProductListCoordinatorProtocol {
-    private let controller: UIViewController
+    private weak var navController: UINavigationController?
     
-    init(controller: UIViewController) {
-        self.controller = controller
+    init(navController: UINavigationController?) {
+        self.navController = navController
     }
     
     func navigateToItemDetailView(itemID: String) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let productDetailVC = storyboard.instantiateViewController(withIdentifier: "ProductDetailViewControllerID") as! ProductDetailViewController
         productDetailVC.itemId = itemID
-        controller.navigationController?.pushViewController(productDetailVC, animated: true)
+        navController?.pushViewController(productDetailVC, animated: true)
     }
 }

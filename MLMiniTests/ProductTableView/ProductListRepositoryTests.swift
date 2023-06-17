@@ -11,34 +11,53 @@ import Quick
 import Nimble
 @testable import MLMini
 
-//TODO: Test repository error cases after error management is done
-
 class ProductListRepositoryTests: QuickSpec {
     override func spec() {
         describe("ProductListRepositoryTests") {
-            context("PerformReques test") {
+            var serviceMock: ServiceManagerMock<APIResponseModel>!
+            var SUT: ProductListRepository!
+
+            beforeEach {
+                serviceMock = ServiceManagerMock<APIResponseModel>()
+                serviceMock.errorType = .someError
+                SUT = ProductListRepository(serviceMock)
+            }
+            
+            context("PerformRequest test") {
                 it("Should retreive data correctly") {
-                    let mockedService = ServiceManagerMock<APIResponseModel>()
-                    mockedService.errorType = nil
-                    mockedService.requestResponse = ApiResponseModelMock.resolveModel()
+                    serviceMock.requestResponse = ApiResponseModelMock.resolveModel()
                     
-                    let repository = ProductListRepository(mockedService)
-                    repository.getProductListData(productName: "auriculares") { (model, error) in
-                        expect(model).notTo(beNil())
-                        expect(error).to(beNil())
-                        expect(model).to(equal(mockedService.requestResponse))
-                    }
+                    let expectation = XCTestExpectation()
+                    _ = SUT.getProductListData(productName: "headphones")
+                        .sink(receiveCompletion: { completion in
+                            switch completion {
+                            case .failure:
+                                XCTFail("Should not return an error")
+                            case .finished:
+                                break
+                            }
+                        }, receiveValue: { response in
+                            expect(response).to(equal(serviceMock.requestResponse))
+                            expectation.fulfill()
+                        })
+                    self.wait(for: [expectation], timeout: 0.1)
                 }
+                
                 it("Should retreive error when something has gone wrong") {
-                    let mockedService = ServiceManagerMock<APIResponseModel>()
-                    mockedService.errorType = .invalidUrl
                     
-                    let repository = ProductListRepository(mockedService)
-                    repository.getProductListData(productName: "auriculares") { (model, error) in
-                        expect(model).to(beNil())
-                        expect(error).notTo(beNil())
-                        expect(error).to(equal(NetworkError.someError))
-                    }
+                    let expectation = XCTestExpectation()
+                    _ = SUT.getProductListData(productName: "headphones")
+                        .sink(receiveCompletion: { completion in
+                            switch completion {
+                            case .failure:
+                                expectation.fulfill()
+                            case .finished:
+                                break
+                            }
+                        }, receiveValue: { response in
+                            XCTFail("Should fail")
+                        })
+                    self.wait(for: [expectation], timeout: 0.1)
                 }
             }
         }

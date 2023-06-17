@@ -15,7 +15,6 @@ class ProductListViewProtocolMock: ProductListViewControllerProtocol, Mock {
     var didCallRemoveSpinner = MockCounter()
     var didCallShowEmptyView = MockCounter()
     var didCallReloadView = MockCounter()
-    var didCallGoToDetailScreen = MockCounter()
     var didCallFillList = MockCounter()
     var didCallShowErrorView = MockCounter()
     
@@ -37,10 +36,6 @@ class ProductListViewProtocolMock: ProductListViewControllerProtocol, Mock {
     
     func reloadView() {
         didCallReloadView.wasCalled()
-    }
-    
-    func goToDetailScreen(itemId: String) {
-        didCallGoToDetailScreen.wasCalled()
     }
     
     func fillList(model: APIResponseModel) {

@@ -15,7 +15,7 @@ struct ProductListBuilder {
         
         let presenter = ProductListPresenter(repository: repository, productToSearch: product)
         let view = ProductListViewController(presenter: presenter)
-        let coordinator = ProductListCoordinator(controller: view)
+        let coordinator = ProductListCoordinator(navController: view.navigationController)
         presenter.view = view
         presenter.coordinator = coordinator
         return view

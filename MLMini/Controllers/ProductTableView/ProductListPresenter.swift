@@ -13,7 +13,6 @@ protocol ProductListPresenterProtocol {
     var view: ProductListViewControllerProtocol? { get set }
     func viewDidLoad()
     func onListItemTapped(itemId: String)
-    func onSearchTextSetted()
     func onErrorScreenRetryTapped()
 }
 
@@ -22,8 +21,8 @@ class ProductListPresenter: ProductListPresenterProtocol {
     //MARK: - Properties
     weak var view: ProductListViewControllerProtocol?
     private let repository: ProductListRepositoryProtocol
-    var model: APIResponseModel?
-    var productToSearch: String = ""
+    private var model: APIResponseModel?
+    private var productToSearch: String = ""
     private var cancellables = Set<AnyCancellable>()
     var coordinator: ProductListCoordinatorProtocol?
     
@@ -34,10 +33,11 @@ class ProductListPresenter: ProductListPresenterProtocol {
     }
     
     func viewDidLoad() {
-        view?.showSpinnerView()
+        searchForItem()
     }
     
-    func onSearchTextSetted() {
+    private func searchForItem() {
+        view?.showSpinnerView()
         getListData()
     }
     
@@ -46,21 +46,21 @@ class ProductListPresenter: ProductListPresenterProtocol {
     }
     
     func onErrorScreenRetryTapped() {
-        view?.showSpinnerView()
-        getListData()
+        searchForItem()
     }
     
-    func onGetDataSuccess(model: APIResponseModel) {
+    private func onGetDataSuccess(model: APIResponseModel) {
+        view?.removeSpinnerView()
         if model.isEmpty() {
             view?.showEmptyView()
         } else {
-            view?.removeSpinnerView()
             view?.fillList(model: model)
             self.model = model
         }
     }
     
-    func onGetDataError() {
+    private func onGetDataError() {
+        view?.removeSpinnerView()
         view?.showErrorView()
     }
     

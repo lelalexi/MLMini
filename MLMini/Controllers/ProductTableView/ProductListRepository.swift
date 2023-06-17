@@ -15,8 +15,8 @@ protocol ProductListRepositoryProtocol {
 
 class ProductListRepository: ProductListRepositoryProtocol {
     
-    //MARK: - Properties
-    let service: ServiceManagerProtocol
+    // MARK: - Properties
+    private let service: ServiceManagerProtocol
     
     required init(_ service: ServiceManagerProtocol){
         self.service = service
