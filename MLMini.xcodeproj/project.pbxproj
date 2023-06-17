@@ -52,6 +52,7 @@
 		D953FBF62A3D452C00D2C775 /* ProductListBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBF52A3D452C00D2C775 /* ProductListBuilderTests.swift */; };
 		D953FBFB2A3D4A1100D2C775 /* MLGenericFeedbackScreenComponentSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBFA2A3D4A1100D2C775 /* MLGenericFeedbackScreenComponentSnapshotTests.swift */; };
 		D953FBFF2A3D558800D2C775 /* MLBaseSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBFE2A3D558800D2C775 /* MLBaseSnapshotTests.swift */; };
+		D953FC032A3D654000D2C775 /* SearchViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FC022A3D654000D2C775 /* SearchViewSnapshotTests.swift */; };
 		E461482F23369128006080E4 /* ItemResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E461482E23369128006080E4 /* ItemResponseModel.swift */; };
 		E495DFC3233A4B9A00E3A4C9 /* NetworkServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E495DFC2233A4B9A00E3A4C9 /* NetworkServiceManager.swift */; };
 		E49F96072339108700AC4ECC /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F96062339108700AC4ECC /* SpinnerViewController.swift */; };
@@ -148,6 +149,7 @@
 		D953FBF52A3D452C00D2C775 /* ProductListBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListBuilderTests.swift; sourceTree = "<group>"; };
 		D953FBFA2A3D4A1100D2C775 /* MLGenericFeedbackScreenComponentSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLGenericFeedbackScreenComponentSnapshotTests.swift; sourceTree = "<group>"; };
 		D953FBFE2A3D558800D2C775 /* MLBaseSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLBaseSnapshotTests.swift; sourceTree = "<group>"; };
+		D953FC022A3D654000D2C775 /* SearchViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewSnapshotTests.swift; sourceTree = "<group>"; };
 		E461482E23369128006080E4 /* ItemResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemResponseModel.swift; sourceTree = "<group>"; };
 		E495DFC2233A4B9A00E3A4C9 /* NetworkServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceManager.swift; sourceTree = "<group>"; };
 		E49F96062339108700AC4ECC /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
@@ -216,11 +218,11 @@
 		C6F012DB25FDC76C00BBE3CC /* MLMiniTests */ = {
 			isa = PBXGroup;
 			children = (
+				D953FC012A3D634B00D2C775 /* Screens */,
 				D953FBFC2A3D556D00D2C775 /* Utils */,
 				D953FBF72A3D49B800D2C775 /* UIComponents */,
 				C6F0132125FE987400BBE3CC /* Services */,
 				C6F0130E25FE682E00BBE3CC /* Resources */,
-				C6F012F625FE3B0700BBE3CC /* ProductTableView */,
 				C6F012F125FE336900BBE3CC /* Commons */,
 				C6F012DC25FDC76C00BBE3CC /* MLMiniTests.swift */,
 				C6F012DE25FDC76C00BBE3CC /* Info.plist */,
@@ -390,6 +392,23 @@
 				D953FBFE2A3D558800D2C775 /* MLBaseSnapshotTests.swift */,
 			);
 			path = SnapshotTestingUtils;
+			sourceTree = "<group>";
+		};
+		D953FC002A3D634000D2C775 /* SeachView */ = {
+			isa = PBXGroup;
+			children = (
+				D953FC022A3D654000D2C775 /* SearchViewSnapshotTests.swift */,
+			);
+			path = SeachView;
+			sourceTree = "<group>";
+		};
+		D953FC012A3D634B00D2C775 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				C6F012F625FE3B0700BBE3CC /* ProductTableView */,
+				D953FC002A3D634000D2C775 /* SeachView */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		E49F96052339107500AC4ECC /* Extras */ = {
@@ -757,6 +776,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D953FC032A3D654000D2C775 /* SearchViewSnapshotTests.swift in Sources */,
 				C6F012DD25FDC76C00BBE3CC /* MLMiniTests.swift in Sources */,
 				C6F0130C25FE473000BBE3CC /* ProductListRepositoryMock.swift in Sources */,
 				C6F0131425FE6A3F00BBE3CC /* APIResponseModelTests.swift in Sources */,
