@@ -53,6 +53,8 @@
 		D953FBFB2A3D4A1100D2C775 /* MLGenericFeedbackScreenComponentSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBFA2A3D4A1100D2C775 /* MLGenericFeedbackScreenComponentSnapshotTests.swift */; };
 		D953FBFF2A3D558800D2C775 /* MLBaseSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBFE2A3D558800D2C775 /* MLBaseSnapshotTests.swift */; };
 		D953FC032A3D654000D2C775 /* SearchViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FC022A3D654000D2C775 /* SearchViewSnapshotTests.swift */; };
+		D953FC072A3D694200D2C775 /* MLPrimaryButtonSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FC062A3D694200D2C775 /* MLPrimaryButtonSnapshotTests.swift */; };
+		D953FC0A2A3D6F8000D2C775 /* MLMiniTextFieldSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FC092A3D6F8000D2C775 /* MLMiniTextFieldSnapshotTests.swift */; };
 		E461482F23369128006080E4 /* ItemResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E461482E23369128006080E4 /* ItemResponseModel.swift */; };
 		E495DFC3233A4B9A00E3A4C9 /* NetworkServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E495DFC2233A4B9A00E3A4C9 /* NetworkServiceManager.swift */; };
 		E49F96072339108700AC4ECC /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F96062339108700AC4ECC /* SpinnerViewController.swift */; };
@@ -150,6 +152,8 @@
 		D953FBFA2A3D4A1100D2C775 /* MLGenericFeedbackScreenComponentSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLGenericFeedbackScreenComponentSnapshotTests.swift; sourceTree = "<group>"; };
 		D953FBFE2A3D558800D2C775 /* MLBaseSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLBaseSnapshotTests.swift; sourceTree = "<group>"; };
 		D953FC022A3D654000D2C775 /* SearchViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewSnapshotTests.swift; sourceTree = "<group>"; };
+		D953FC062A3D694200D2C775 /* MLPrimaryButtonSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLPrimaryButtonSnapshotTests.swift; sourceTree = "<group>"; };
+		D953FC092A3D6F8000D2C775 /* MLMiniTextFieldSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMiniTextFieldSnapshotTests.swift; sourceTree = "<group>"; };
 		E461482E23369128006080E4 /* ItemResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemResponseModel.swift; sourceTree = "<group>"; };
 		E495DFC2233A4B9A00E3A4C9 /* NetworkServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceManager.swift; sourceTree = "<group>"; };
 		E49F96062339108700AC4ECC /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
@@ -357,6 +361,7 @@
 		D953FBF72A3D49B800D2C775 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				D953FC042A3D688700D2C775 /* SwiftUI */,
 				D953FBF82A3D49CC00D2C775 /* UIkit */,
 			);
 			path = UIComponents;
@@ -409,6 +414,31 @@
 				D953FC002A3D634000D2C775 /* SeachView */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		D953FC042A3D688700D2C775 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				D953FC082A3D6F6800D2C775 /* TextField */,
+				D953FC052A3D68C100D2C775 /* Button */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		D953FC052A3D68C100D2C775 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				D953FC062A3D694200D2C775 /* MLPrimaryButtonSnapshotTests.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		D953FC082A3D6F6800D2C775 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				D953FC092A3D6F8000D2C775 /* MLMiniTextFieldSnapshotTests.swift */,
+			);
+			path = TextField;
 			sourceTree = "<group>";
 		};
 		E49F96052339107500AC4ECC /* Extras */ = {
@@ -787,12 +817,14 @@
 				D953FBF62A3D452C00D2C775 /* ProductListBuilderTests.swift in Sources */,
 				D953FBF42A3D339800D2C775 /* ProductListCoordinatorTests.swift in Sources */,
 				C6F012F325FE33A700BBE3CC /* MLMiniConstantsTests.swift in Sources */,
+				D953FC0A2A3D6F8000D2C775 /* MLMiniTextFieldSnapshotTests.swift in Sources */,
 				C6F012F825FE3B1B00BBE3CC /* ProductListPresenterTests.swift in Sources */,
 				D953FBFF2A3D558800D2C775 /* MLBaseSnapshotTests.swift in Sources */,
 				C6F0130625FE41E000BBE3CC /* ProductListRepositorySpy.swift in Sources */,
 				C6F0130925FE46B900BBE3CC /* ApiResponseModelMock.swift in Sources */,
 				C6F0132325FE988600BBE3CC /* ServiceManagerMock.swift in Sources */,
 				D953FBFB2A3D4A1100D2C775 /* MLGenericFeedbackScreenComponentSnapshotTests.swift in Sources */,
+				D953FC072A3D694200D2C775 /* MLPrimaryButtonSnapshotTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

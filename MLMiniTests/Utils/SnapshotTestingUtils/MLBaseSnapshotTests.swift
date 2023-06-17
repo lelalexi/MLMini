@@ -10,7 +10,6 @@ import XCTest
 import SnapshotTesting
 
 class MLBaseSnapshotTests: XCTestCase {
-    public var isRecording: Bool = false
     var viewController: UIViewController!
     var snapshotTestTargetDevices: [String : ViewImageConfig] = [ "iPhone 8" :.iPhone8,
                                                                   "iPhone Xs Max" :.iPhoneXsMax,
