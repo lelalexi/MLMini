@@ -7,8 +7,7 @@ import SwiftUI
 import UIKit
 
 struct SearchViewBuilder {
-    func getView(forController controller: UIViewController) -> SearchView {
-        let coordinator = SearchViewCoordinator(controller: controller)
+    func getView(coordinator: ProductListCoordinatorProtocol?) -> SearchView {
         let viewModel = SearchViewViewModel(coordinator: coordinator)
         let view = SearchView(viewModel: viewModel)
         return view

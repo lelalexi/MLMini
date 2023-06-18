@@ -11,13 +11,14 @@ import SwiftUI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    var coordinator: MLMiniMainCoordinator?
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let rootVC = SearchViewControllerSwiftUIBridge()
-        let navigationController = UINavigationController(rootViewController: rootVC)
+        let navigationController = UINavigationController()
+        coordinator = MLMiniMainCoordinator(navController: navigationController)
+        coordinator?.start()
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
         return true

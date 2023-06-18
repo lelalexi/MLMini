@@ -16,7 +16,7 @@ class SearchViewSnapshotTests: MLBaseSnapshotTests {
     override func setUp() {
         super.setUp()
         isRecording = false
-        let searchView = SearchViewBuilder().getView(forController: UIViewController())
+        let searchView = SearchViewBuilder().getView(coordinator: nil)
         searchViewController = UIHostingController(rootView: searchView)
     }
     

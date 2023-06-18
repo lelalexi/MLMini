@@ -29,12 +29,14 @@
 		C6F6A7FC2512C7E700140EAD /* ProductDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F6A7FB2512C7E700140EAD /* ProductDetailPresenter.swift */; };
 		C6F6A7FE2512C7F400140EAD /* ProductDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F6A7FD2512C7F400140EAD /* ProductDetailRepository.swift */; };
 		D01454B5BE47C76FC4DDA453 /* Pods_MLMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACADDCECD3DE60D361464AED /* Pods_MLMini.framework */; };
+		D94DCC6C2A3F9FFE00E559AD /* MLMiniMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94DCC6B2A3F9FFE00E559AD /* MLMiniMainCoordinator.swift */; };
+		D94DCC6F2A3FA0EE00E559AD /* MLMiniMainCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94DCC6E2A3FA0EE00E559AD /* MLMiniMainCoordinatorTests.swift */; };
+		D94DCC712A3FABF800E559AD /* MLMiniMainCoordinatorSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94DCC702A3FABF800E559AD /* MLMiniMainCoordinatorSpy.swift */; };
 		D953FBC42A3527ED00D2C775 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBC32A3527ED00D2C775 /* SearchView.swift */; };
 		D953FBC62A36711F00D2C775 /* SearchViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBC52A36711F00D2C775 /* SearchViewViewModel.swift */; };
 		D953FBC82A36858100D2C775 /* SearchViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBC72A36858100D2C775 /* SearchViewBuilder.swift */; };
 		D953FBCA2A36B5A400D2C775 /* SearchViewControllerSwiftUIBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBC92A36B5A400D2C775 /* SearchViewControllerSwiftUIBridge.swift */; };
 		D953FBCC2A36C3CC00D2C775 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBCB2A36C3CC00D2C775 /* View+Extension.swift */; };
-		D953FBD12A36C55000D2C775 /* SearchViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBD02A36C55000D2C775 /* SearchViewCoordinator.swift */; };
 		D953FBD42A36C71300D2C775 /* MLMiniTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBD32A36C71300D2C775 /* MLMiniTextField.swift */; };
 		D953FBD72A36C77B00D2C775 /* MLPrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBD62A36C77B00D2C775 /* MLPrimaryButton.swift */; };
 		D953FBD92A37E49500D2C775 /* MLGenericFeedbackScreenComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBD82A37E49500D2C775 /* MLGenericFeedbackScreenComponent.swift */; };
@@ -46,8 +48,6 @@
 		D953FBEA2A3C0D2100D2C775 /* MLEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBE92A3C0D2100D2C775 /* MLEnvironment.swift */; };
 		D953FBEC2A3C0D4400D2C775 /* MLPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBEB2A3C0D4400D2C775 /* MLPath.swift */; };
 		D953FBEE2A3C250900D2C775 /* ProductListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBED2A3C250900D2C775 /* ProductListBuilder.swift */; };
-		D953FBF02A3C2E7700D2C775 /* ProductListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBEF2A3C2E7700D2C775 /* ProductListCoordinator.swift */; };
-		D953FBF22A3D23DF00D2C775 /* ProductListCoordinatorSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBF12A3D23DF00D2C775 /* ProductListCoordinatorSpy.swift */; };
 		D953FBF42A3D339800D2C775 /* ProductListCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBF32A3D339800D2C775 /* ProductListCoordinatorTests.swift */; };
 		D953FBF62A3D452C00D2C775 /* ProductListBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBF52A3D452C00D2C775 /* ProductListBuilderTests.swift */; };
 		D953FBFB2A3D4A1100D2C775 /* MLGenericFeedbackScreenComponentSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBFA2A3D4A1100D2C775 /* MLGenericFeedbackScreenComponentSnapshotTests.swift */; };
@@ -128,12 +128,14 @@
 		C6F6A7FB2512C7E700140EAD /* ProductDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailPresenter.swift; sourceTree = "<group>"; };
 		C6F6A7FD2512C7F400140EAD /* ProductDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailRepository.swift; sourceTree = "<group>"; };
 		C77EC6A917CC1879832F37B6 /* Pods-MLMini.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLMini.release.xcconfig"; path = "Target Support Files/Pods-MLMini/Pods-MLMini.release.xcconfig"; sourceTree = "<group>"; };
+		D94DCC6B2A3F9FFE00E559AD /* MLMiniMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMiniMainCoordinator.swift; sourceTree = "<group>"; };
+		D94DCC6E2A3FA0EE00E559AD /* MLMiniMainCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMiniMainCoordinatorTests.swift; sourceTree = "<group>"; };
+		D94DCC702A3FABF800E559AD /* MLMiniMainCoordinatorSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMiniMainCoordinatorSpy.swift; sourceTree = "<group>"; };
 		D953FBC32A3527ED00D2C775 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		D953FBC52A36711F00D2C775 /* SearchViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewViewModel.swift; sourceTree = "<group>"; };
 		D953FBC72A36858100D2C775 /* SearchViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewBuilder.swift; sourceTree = "<group>"; };
 		D953FBC92A36B5A400D2C775 /* SearchViewControllerSwiftUIBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerSwiftUIBridge.swift; sourceTree = "<group>"; };
 		D953FBCB2A36C3CC00D2C775 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
-		D953FBD02A36C55000D2C775 /* SearchViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCoordinator.swift; sourceTree = "<group>"; };
 		D953FBD32A36C71300D2C775 /* MLMiniTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMiniTextField.swift; sourceTree = "<group>"; };
 		D953FBD62A36C77B00D2C775 /* MLPrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLPrimaryButton.swift; sourceTree = "<group>"; };
 		D953FBD82A37E49500D2C775 /* MLGenericFeedbackScreenComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLGenericFeedbackScreenComponent.swift; sourceTree = "<group>"; };
@@ -145,8 +147,6 @@
 		D953FBE92A3C0D2100D2C775 /* MLEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLEnvironment.swift; sourceTree = "<group>"; };
 		D953FBEB2A3C0D4400D2C775 /* MLPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLPath.swift; sourceTree = "<group>"; };
 		D953FBED2A3C250900D2C775 /* ProductListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListBuilder.swift; sourceTree = "<group>"; };
-		D953FBEF2A3C2E7700D2C775 /* ProductListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListCoordinator.swift; sourceTree = "<group>"; };
-		D953FBF12A3D23DF00D2C775 /* ProductListCoordinatorSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListCoordinatorSpy.swift; sourceTree = "<group>"; };
 		D953FBF32A3D339800D2C775 /* ProductListCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListCoordinatorTests.swift; sourceTree = "<group>"; };
 		D953FBF52A3D452C00D2C775 /* ProductListBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListBuilderTests.swift; sourceTree = "<group>"; };
 		D953FBFA2A3D4A1100D2C775 /* MLGenericFeedbackScreenComponentSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLGenericFeedbackScreenComponentSnapshotTests.swift; sourceTree = "<group>"; };
@@ -222,6 +222,7 @@
 		C6F012DB25FDC76C00BBE3CC /* MLMiniTests */ = {
 			isa = PBXGroup;
 			children = (
+				D94DCC6D2A3FA0E000E559AD /* Core */,
 				D953FC012A3D634B00D2C775 /* Screens */,
 				D953FBFC2A3D556D00D2C775 /* Utils */,
 				D953FBF72A3D49B800D2C775 /* UIComponents */,
@@ -263,7 +264,6 @@
 				C6F0130525FE41E000BBE3CC /* ProductListRepositorySpy.swift */,
 				C6F0130825FE46B900BBE3CC /* ApiResponseModelMock.swift */,
 				C6F0130B25FE473000BBE3CC /* ProductListRepositoryMock.swift */,
-				D953FBF12A3D23DF00D2C775 /* ProductListCoordinatorSpy.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -282,6 +282,31 @@
 				C6F0132225FE988600BBE3CC /* ServiceManagerMock.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		D94DCC692A3F9FDC00E559AD /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				D94DCC6A2A3F9FE800E559AD /* MainCoordinator */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		D94DCC6A2A3F9FE800E559AD /* MainCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				D94DCC6B2A3F9FFE00E559AD /* MLMiniMainCoordinator.swift */,
+			);
+			path = MainCoordinator;
+			sourceTree = "<group>";
+		};
+		D94DCC6D2A3FA0E000E559AD /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				D94DCC6E2A3FA0EE00E559AD /* MLMiniMainCoordinatorTests.swift */,
+				D94DCC702A3FABF800E559AD /* MLMiniMainCoordinatorSpy.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		D953FBCD2A36C44900D2C775 /* UIComponents */ = {
@@ -473,6 +498,7 @@
 		E4D0525923325388009B4EDB /* MLMini */ = {
 			isa = PBXGroup;
 			children = (
+				D94DCC692A3F9FDC00E559AD /* Core */,
 				D953FBDC2A3A7AD100D2C775 /* Resources */,
 				D953FBCD2A36C44900D2C775 /* UIComponents */,
 				C621ACA425FD78ED007DB918 /* Commons */,
@@ -543,7 +569,6 @@
 				D953FBC52A36711F00D2C775 /* SearchViewViewModel.swift */,
 				D953FBC72A36858100D2C775 /* SearchViewBuilder.swift */,
 				D953FBC92A36B5A400D2C775 /* SearchViewControllerSwiftUIBridge.swift */,
-				D953FBD02A36C55000D2C775 /* SearchViewCoordinator.swift */,
 			);
 			path = SeachView;
 			sourceTree = "<group>";
@@ -556,7 +581,6 @@
 				C6F6A7E825104FFA00140EAD /* ProductListRepository.swift */,
 				E4D0529323328E8C009B4EDB /* APIResponseModel.swift */,
 				D953FBED2A3C250900D2C775 /* ProductListBuilder.swift */,
-				D953FBEF2A3C2E7700D2C775 /* ProductListCoordinator.swift */,
 			);
 			path = ProductTableView;
 			sourceTree = "<group>";
@@ -810,8 +834,8 @@
 				C6F012DD25FDC76C00BBE3CC /* MLMiniTests.swift in Sources */,
 				C6F0130C25FE473000BBE3CC /* ProductListRepositoryMock.swift in Sources */,
 				C6F0131425FE6A3F00BBE3CC /* APIResponseModelTests.swift in Sources */,
-				D953FBF22A3D23DF00D2C775 /* ProductListCoordinatorSpy.swift in Sources */,
 				C6F0130225FE3F5900BBE3CC /* ProductListViewProtocolMock.swift in Sources */,
+				D94DCC712A3FABF800E559AD /* MLMiniMainCoordinatorSpy.swift in Sources */,
 				C6F0131F25FE955700BBE3CC /* ProductListRepositoryTests.swift in Sources */,
 				C6F012FD25FE3C4000BBE3CC /* MockSwift.swift in Sources */,
 				D953FBF62A3D452C00D2C775 /* ProductListBuilderTests.swift in Sources */,
@@ -820,6 +844,7 @@
 				D953FC0A2A3D6F8000D2C775 /* MLMiniTextFieldSnapshotTests.swift in Sources */,
 				C6F012F825FE3B1B00BBE3CC /* ProductListPresenterTests.swift in Sources */,
 				D953FBFF2A3D558800D2C775 /* MLBaseSnapshotTests.swift in Sources */,
+				D94DCC6F2A3FA0EE00E559AD /* MLMiniMainCoordinatorTests.swift in Sources */,
 				C6F0130625FE41E000BBE3CC /* ProductListRepositorySpy.swift in Sources */,
 				C6F0130925FE46B900BBE3CC /* ApiResponseModelMock.swift in Sources */,
 				C6F0132325FE988600BBE3CC /* ServiceManagerMock.swift in Sources */,
@@ -837,10 +862,9 @@
 				E49F96072339108700AC4ECC /* SpinnerViewController.swift in Sources */,
 				D953FBE32A3BC75A00D2C775 /* MLGenericFeedbackModel.swift in Sources */,
 				D953FBEA2A3C0D2100D2C775 /* MLEnvironment.swift in Sources */,
-				D953FBD12A36C55000D2C775 /* SearchViewCoordinator.swift in Sources */,
+				D94DCC6C2A3F9FFE00E559AD /* MLMiniMainCoordinator.swift in Sources */,
 				D953FBDE2A3A7AF400D2C775 /* MLImage.swift in Sources */,
 				D953FBEE2A3C250900D2C775 /* ProductListBuilder.swift in Sources */,
-				D953FBF02A3C2E7700D2C775 /* ProductListCoordinator.swift in Sources */,
 				C6E2C8122512E86E009687CC /* ItemDomainModel.swift in Sources */,
 				E4D0529A23331117009B4EDB /* ProductViewCell.swift in Sources */,
 				D953FBD42A36C71300D2C775 /* MLMiniTextField.swift in Sources */,

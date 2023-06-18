@@ -11,34 +11,8 @@ import Quick
 import Nimble
 @testable import MLMini
 
-class ProductListCoordinatorTests: QuickSpec {
-    override func spec() {
-        describe("ProductListCoordinatorTests") {
-            let itemID = "Some Item ID"
-            var navControllerSpy: navigationControllerSpy!
-            var SUT: ProductListCoordinatorProtocol!
-            
-            beforeEach {
-                navControllerSpy = navigationControllerSpy()
-                SUT = ProductListCoordinator(navController: navControllerSpy)
-            }
-            
-            context("Navigation Tests") {
-                it("Should push ProductDetail VC") {
-                    // When
-                    DispatchQueue.main.sync { [weak SUT] in
-                        SUT?.navigateToItemDetailView(itemID: itemID)
-                    }
-                    // Then
-                    MockSwift.verify(navControllerSpy)
-                    await expect(await navControllerSpy.pushViewControllerParams?.viewController).to(beAKindOf(ProductDetailViewController.self))
-                }
-            }
-        }
-    }
-}
 
-class navigationControllerSpy: UINavigationController, Mock {
+class NavigationControllerSpy: UINavigationController, Mock {
     var didCallPushViewController = MockCounter()
     var pushViewControllerParams: (viewController: UIViewController, animated: Bool)?
     

@@ -24,12 +24,13 @@ class ProductListPresenter: ProductListPresenterProtocol {
     private var model: APIResponseModel?
     private var productToSearch: String = ""
     private var cancellables = Set<AnyCancellable>()
-    var coordinator: ProductListCoordinatorProtocol?
+    private weak var coordinator: ProductDetailCoordinatorProtocol?
     
     //MARK: - Initializers
-    required init(repository: ProductListRepositoryProtocol, productToSearch: String) {
+    required init(repository: ProductListRepositoryProtocol, productToSearch: String, coordinator: ProductDetailCoordinatorProtocol?) {
         self.repository = repository
         self.productToSearch = productToSearch
+        self.coordinator = coordinator
     }
     
     func viewDidLoad() {
@@ -42,7 +43,7 @@ class ProductListPresenter: ProductListPresenterProtocol {
     }
     
     func onListItemTapped(itemId: String) {
-        coordinator?.navigateToItemDetailView(itemID: itemId)
+        coordinator?.navigateToProductDetail(itemId: itemId)
     }
     
     func onErrorScreenRetryTapped() {

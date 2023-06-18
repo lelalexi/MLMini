@@ -18,11 +18,15 @@ class ProductListPresenterTests: QuickSpec {
             var view: ProductListViewProtocolMock!
             var repository: ProductListRepositorySpy!
             var SUT: ProductListPresenter!
+            var coordinatorSpy: MLMiniMainCoordinatorSpy!
+            var navigationControllerSpy: NavigationControllerSpy!
             
             beforeEach {
                 view = ProductListViewProtocolMock()
                 repository = ProductListRepositorySpy()
-                SUT = ProductListPresenter(repository: repository, productToSearch: itemName)
+                navigationControllerSpy = NavigationControllerSpy()
+                coordinatorSpy = MLMiniMainCoordinatorSpy(navController: navigationControllerSpy)
+                SUT = ProductListPresenter(repository: repository, productToSearch: itemName, coordinator: coordinatorSpy)
                 SUT.view = view
             }
             
@@ -89,16 +93,13 @@ class ProductListPresenterTests: QuickSpec {
             }
             context("User interactions cases") {
                 it("should go to product detail when user taps an item") {
-                    // Given
-                    let coordinator = ProductListCoordinatorSpy()
-                    SUT.coordinator = coordinator
                     let itemID = "Some ID"
                     // When
                     SUT.onListItemTapped(itemId: itemID)
                     // Then
-                    expect(coordinator.itemIDParam).to(equal(itemID))
-                    MockSwift.verify(coordinator.didCallNavigateToItemDetailView)
-                    MockSwift.verify(coordinator)
+                    expect(coordinatorSpy.itemIDParam).to(equal(itemID))
+                    MockSwift.verify(coordinatorSpy.didCallNavigateToProductDetail)
+                    MockSwift.verify(coordinatorSpy)
                 }
             }
         }

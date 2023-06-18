@@ -7,6 +7,16 @@ import SwiftUI
 import UIKit
 
 class SearchViewControllerSwiftUIBridge: UIViewController, ObservableObject {
+    weak var coordinator: ProductListCoordinatorProtocol?
+    
+    init(coordinator: ProductListCoordinatorProtocol?) {
+        self.coordinator = coordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +35,7 @@ class SearchViewControllerSwiftUIBridge: UIViewController, ObservableObject {
 
     
     func addView() {
-        let searchView = SearchViewBuilder().getView(forController: self)
+        let searchView = SearchViewBuilder().getView(coordinator: coordinator)
         let controller = UIHostingController(rootView: searchView.environmentObject(self))
         addChild(controller)
         controller.view.translatesAutoresizingMaskIntoConstraints = false

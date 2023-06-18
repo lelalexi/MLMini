@@ -6,17 +6,17 @@
 import Foundation
 
 class SearchViewViewModel {
-    private var coordinator: SearchViewCoordinatorProtocol
+    private weak var coordinator: ProductListCoordinatorProtocol?
     
     //MARK: - Initializers
-    init(coordinator: SearchViewCoordinatorProtocol) {
+    init(coordinator: ProductListCoordinatorProtocol?) {
         self.coordinator = coordinator
     }
     
     func onSearchButtonTap(textToSearch: String) {
         // TODO: Add logic to filter invalid text imputs (spaces cases)
         if !textToSearch.isEmpty {
-            coordinator.navigateToProductListScreen(itemToSearch: textToSearch)
+            coordinator?.navigateToProductList(itemToSearch: textToSearch)
         }
     }
 }
