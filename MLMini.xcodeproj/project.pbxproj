@@ -67,7 +67,7 @@
 		E4D0529423328E8C009B4EDB /* APIResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D0529323328E8C009B4EDB /* APIResponseModel.swift */; };
 		E4D0529A23331117009B4EDB /* ProductViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D0529823331117009B4EDB /* ProductViewCell.swift */; };
 		E4D0529B23331117009B4EDB /* ProductViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4D0529923331117009B4EDB /* ProductViewCell.xib */; };
-		E4D0529F23331EF3009B4EDB /* UrlErrorsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D0529E23331EF3009B4EDB /* UrlErrorsEnum.swift */; };
+		E4D0529F23331EF3009B4EDB /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D0529E23331EF3009B4EDB /* NetworkError.swift */; };
 		E4D052A92333B464009B4EDB /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D052A82333B464009B4EDB /* ProductDetailViewController.swift */; };
 		E4D052B02333CE79009B4EDB /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D052AF2333CE79009B4EDB /* UIColorExtension.swift */; };
 		E4D5D3532337BF4300883E8A /* ProductImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5D3522337BF4300883E8A /* ProductImageViewCell.swift */; };
@@ -168,7 +168,7 @@
 		E4D0529323328E8C009B4EDB /* APIResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponseModel.swift; sourceTree = "<group>"; };
 		E4D0529823331117009B4EDB /* ProductViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewCell.swift; sourceTree = "<group>"; };
 		E4D0529923331117009B4EDB /* ProductViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductViewCell.xib; sourceTree = "<group>"; };
-		E4D0529E23331EF3009B4EDB /* UrlErrorsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlErrorsEnum.swift; sourceTree = "<group>"; };
+		E4D0529E23331EF3009B4EDB /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		E4D052A12333356B009B4EDB /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
 		E4D052A82333B464009B4EDB /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		E4D052AF2333CE79009B4EDB /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -470,7 +470,7 @@
 			isa = PBXGroup;
 			children = (
 				E49F96062339108700AC4ECC /* SpinnerViewController.swift */,
-				E4D0529E23331EF3009B4EDB /* UrlErrorsEnum.swift */,
+				E4D0529E23331EF3009B4EDB /* NetworkError.swift */,
 			);
 			path = Extras;
 			sourceTree = "<group>";
@@ -894,7 +894,7 @@
 				D953FBE62A3BFF0100D2C775 /* HTTPMethod.swift in Sources */,
 				C6F6A7E72510476E00140EAD /* ProductListPresenter.swift in Sources */,
 				C6F6A7FC2512C7E700140EAD /* ProductDetailPresenter.swift in Sources */,
-				E4D0529F23331EF3009B4EDB /* UrlErrorsEnum.swift in Sources */,
+				E4D0529F23331EF3009B4EDB /* NetworkError.swift in Sources */,
 				E4D0529423328E8C009B4EDB /* APIResponseModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
