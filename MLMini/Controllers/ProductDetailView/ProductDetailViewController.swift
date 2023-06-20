@@ -31,7 +31,7 @@ class ProductDetailViewController: UIViewController, UICollectionViewDelegateFlo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = ProductDetailPresenter(repository: ProductDetailRepository.init(ServiceManager()))
+        presenter = ProductDetailPresenter(repository: ProductDetailRepository.init(NetworkServiceManager()))
         presenter?.view = self
         setupNavBarAppearance()
         initializeDetailTableView()

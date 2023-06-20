@@ -6,64 +6,77 @@
 //  Copyright © 2020 ale. All rights reserved.
 //
 
+import Combine
 import Foundation
 
 protocol ProductListPresenterProtocol {
-    
     var view: ProductListViewControllerProtocol? { get set }
     func viewDidLoad()
     func onListItemTapped(itemId: String)
-    func onSearchTextSetted(toSearch: String)
+    func onErrorScreenRetryTapped()
 }
 
 class ProductListPresenter: ProductListPresenterProtocol {    
     
     //MARK: - Properties
     weak var view: ProductListViewControllerProtocol?
-    let repository: ProductListRepositoryProtocol?
-    var model: APIResponseModel?
+    private let repository: ProductListRepositoryProtocol
+    private var model: APIResponseModel?
+    private var productToSearch: String = ""
+    private var cancellables = Set<AnyCancellable>()
+    private weak var coordinator: ProductDetailCoordinatorProtocol?
     
     //MARK: - Initializers
-    required init(repository: ProductListRepositoryProtocol) {
+    required init(repository: ProductListRepositoryProtocol, productToSearch: String, coordinator: ProductDetailCoordinatorProtocol?) {
         self.repository = repository
+        self.productToSearch = productToSearch
+        self.coordinator = coordinator
     }
     
     func viewDidLoad() {
-        view?.showSpinnerView()
+        searchForItem()
     }
     
-    func onSearchTextSetted(toSearch: String) {
-        getListData(toSearch: toSearch)
+    private func searchForItem() {
+        view?.showSpinnerView()
+        getListData()
     }
     
     func onListItemTapped(itemId: String) {
-        view?.goToDetailScreen(itemId: itemId)
+        coordinator?.navigateToProductDetail(itemId: itemId)
     }
     
-    func onGetDataSuccess(model: APIResponseModel) {
+    func onErrorScreenRetryTapped() {
+        searchForItem()
+    }
+    
+    private func onGetDataSuccess(model: APIResponseModel) {
+        view?.removeSpinnerView()
         if model.isEmpty() {
             view?.showEmptyView()
         } else {
-            view?.removeSpinnerView()
             view?.fillList(model: model)
             self.model = model
         }
     }
     
-    func onGetDataError() {
-        //TODO: SHOW THE USER A SCREEN WITH THE ERROR
+    private func onGetDataError() {
+        view?.removeSpinnerView()
         view?.showErrorView()
     }
     
-    private func getListData(toSearch: String) {
-        repository?.getProductListData(productName: toSearch, completionHandler: { [weak self] (Response, error) in
-            if let _ = error {
-                self?.onGetDataError()
-            }
-            guard let response = Response else { return }
-            DispatchQueue.main.async {
-                self?.onGetDataSuccess(model: response)
-            }
-        })
+    private func getListData() {
+        repository.getProductListData(productName: productToSearch)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .failure:
+                    self.onGetDataError()
+                case .finished:
+                    break
+                }
+            }, receiveValue: { response in
+                self.onGetDataSuccess(model: response)
+            }).store(in: &cancellables)
     }
 }

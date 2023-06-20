@@ -15,62 +15,49 @@ protocol ProductListViewControllerProtocol: AnyObject {
     func showEmptyView()
     func showErrorView()
     func reloadView()
-    func goToDetailScreen(itemId: String)
     func fillList(model: APIResponseModel)
 }
 
 class ProductListViewController: UIViewController, ProductListViewControllerProtocol {
+    private lazy var productTableView: UITableView = {
+        let table = UITableView(frame: .zero)
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.isHidden = true
+        table.backgroundColor = .white
+        return table
+    }()
     
-    @IBOutlet var productTableView: UITableView!
-    @IBOutlet var noResultsIconView: UIView!
-    @IBOutlet var noResultsView: UIView!
-    @IBOutlet var noResultViewIcon: UIImageView!
+    private lazy var feedbackView: MLGenericFeedbackScreenComponent = {
+        let view = MLGenericFeedbackScreenComponent()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
-    var presenter: ProductListPresenterProtocol?
-    var model: APIResponseModel?
-    let productDetailSegueIdentifier = "toProductDetail"
+    private var presenter: ProductListPresenterProtocol?
+    private var model: APIResponseModel? //The view should not have a model reference
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
             return .darkContent
     }
     
-    lazy var spinner = SpinnerViewController()
-    var apiResp: APIResponseModel?
-    var toSearch = ""
+    private lazy var spinner = SpinnerViewController()
+    
+    init(presenter: ProductListPresenterProtocol) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        return nil
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //llevar la creacion de la instancia al instance
-        presenter = ProductListPresenter(repository: ProductListRepository.init(ServiceManager()))
-        presenter?.view = self
-        initializeNoResultsFoundView()
         initializeProductTableView()
         setupNavBarAppearance()
         presenter?.viewDidLoad()
-        presenter?.onSearchTextSetted(toSearch: toSearch)
     }
-    
-    private func initializeNoResultsFoundView(){
-        noResultsView.isHidden = true
-        noResultsIconView.layer.cornerRadius = noResultsIconView.frame.height / 2
-        noResultsIconView.clipsToBounds = true
-        noResultViewIcon.image = UIImage(named: MLMiniConstants.Images.SEARCH_ICON)?.withRenderingMode(.alwaysTemplate)
-        noResultViewIcon.tintColor = UIColor(named: MLMiniConstants.Color.ACTIVE_BACKGROUND)
-    }
-    
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == productDetailSegueIdentifier {
-            if let detailProductViewController = segue.destination as? ProductDetailViewController, let itemId = sender as? String{
-                detailProductViewController.itemId = itemId
-            }
-        }
-    }
-    
-    func goToDetailScreen(itemId: String) {
-        performSegue(withIdentifier: productDetailSegueIdentifier, sender: itemId)
-    }
-    
+
     func fillList(model: APIResponseModel) {
         self.model = model
         reloadView()
@@ -78,6 +65,7 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
     
     func showSpinnerView() {
         // add the spinner to the view
+        feedbackView.removeFromSuperview()
         addChild(spinner)
         spinner.view.frame = view.frame
         view.addSubview(spinner.view)
@@ -85,10 +73,10 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
     }
     
     func removeSpinnerView() {
-            // remove the spinner from the view
-            self.spinner.willMove(toParent: nil)
-            self.spinner.view.removeFromSuperview()
-            self.spinner.removeFromParent()
+        // remove the spinner from the view
+        self.spinner.willMove(toParent: nil)
+        self.spinner.view.removeFromSuperview()
+        self.spinner.removeFromParent()
     }
 }
 
@@ -96,11 +84,24 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
 extension ProductListViewController: UITableViewDelegate, UITableViewDataSource {
     
     private func initializeProductTableView(){
-        productTableView.isHidden = true
+        productTableView.delegate = self
+        productTableView.dataSource = self
+        setupTableviewConstraints()
         registerTableCells()
         //Set tableview automatic row heigth to true
         productTableView.rowHeight = UITableView.automaticDimension
         productTableView.estimatedRowHeight = 140
+    }
+    
+    private func setupTableviewConstraints() {
+        view.addSubview(productTableView)
+        
+        NSLayoutConstraint.activate([
+            self.productTableView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.productTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.productTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.productTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+        ])
     }
     
     private func registerTableCells(){
@@ -127,20 +128,35 @@ extension ProductListViewController: UITableViewDelegate, UITableViewDataSource 
 
 extension ProductListViewController {
     func reloadView() {
-        DispatchQueue.main.async {
-            self.productTableView.isHidden = false
-            self.productTableView.reloadData()
-        }
+        self.productTableView.isHidden = false
+        self.productTableView.reloadData()
     }
     
     func showEmptyView() {
-        DispatchQueue.main.async {
-            self.removeSpinnerView()
-            self.noResultsView.isHidden = false
+        feedbackView.type = .itemNotFound
+        feedbackView.callback = { [unowned self] in
+            self.navigationController?.popViewController(animated: true)
         }
+        showFeedbackView()
     }
     
     func showErrorView() {
-        //TODO
+        feedbackView.type = .miscError
+        feedbackView.callback = { [unowned self] in
+            self.presenter?.onErrorScreenRetryTapped()
+        }
+        showFeedbackView()
+    }
+    
+    private func showFeedbackView() {
+        self.feedbackView.removeFromSuperview()
+        self.removeSpinnerView()
+        self.view.addSubview(self.feedbackView)
+        NSLayoutConstraint.activate([
+            self.feedbackView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.feedbackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.feedbackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.feedbackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+        ])
     }
 }

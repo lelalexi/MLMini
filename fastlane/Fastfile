@@ -1,0 +1,18 @@
+# fastlane/Fastfile
+default_platform :ios
+
+platform :ios do
+  before_all do
+    setup_circle_ci
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    scan(
+         workspace: "MLMini.xcworkspace",
+         scheme: "MLMini",
+         devices: [ "iPhone 13 mini (16.2)" ],
+         clean: true
+    )
+  end
+end
