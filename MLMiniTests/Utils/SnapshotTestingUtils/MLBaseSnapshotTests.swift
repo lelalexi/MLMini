@@ -15,11 +15,12 @@ class MLBaseSnapshotTests: XCTestCase {
                                                                          "iPad Pro 11" :.iPadPro11 ]
     
     func verifySnapshotfor(viewController: UIViewController,
+                           withDelay delay: TimeInterval = 0,
                            withName: String = #function,
                            devices: [String : ViewImageConfig] = snapshotTestTargetDevices) {
         let result = MLBaseSnapshotTests.snapshotTestTargetDevices.map { device in
             verifySnapshot(matching: viewController,
-                           as: .wait(for: 0.1, on: .image(on: device.value)),
+                           as: .wait(for: delay, on: .image(on: device.value)),
                            named: "\(withName)_\(device.key)",
                            record: isRecording)
         }
