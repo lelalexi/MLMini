@@ -40,7 +40,7 @@ class NetworkServiceManager: ServiceManagerProtocol {
         let sessionConfig = URLSessionConfiguration.default
         sessionConfig.timeoutIntervalForRequest = TimeInterval(endpoint.timeout)
         
-        guard let _ = endpoint.path.url else {
+        if endpoint.path.url == nil {
             return AnyPublisher(Fail<T, NetworkError>(error: NetworkError.invalidUrl))
         }
         

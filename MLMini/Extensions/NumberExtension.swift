@@ -7,7 +7,6 @@
 //
 import UIKit
 
-
 extension Formatter {
     static let withSeparator: NumberFormatter = {
         let formatter = NumberFormatter()

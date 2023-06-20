@@ -41,7 +41,6 @@ class ProductDetailPresenter: ProductDetailPresenterProtocol {
     
     func onGetDataError() {
         //TODO: SHOW THE USER AN ERROR SCREEN
-        print("Error in getItemDescription")
     }
     
     private func getItemDescription(itemId: String) {

@@ -7,7 +7,22 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/configuration-reference/#jobs
 jobs:
-  build-and-test:
+  Run-linter:
+    macos:
+      xcode: 14.2.0
+    steps:
+      - checkout
+      - run: 
+          name: Install Gems
+          command: bundle install
+      - run: 
+          name: Install SwiftLint
+          command: HOMEBREW_NO_AUTO_UPDATE=1 brew install swiftlint
+      - run:
+          name: Swiftlint Code Linting
+          command: bundle exec fastlane ios code_linting
+
+  Build-and-test:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/configuration-reference/#docker-machine-macos-windows-executor
     macos:
@@ -17,10 +32,14 @@ jobs:
     # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
       - checkout
-      - run: bundle install
-      - run: pod install
+      - run: 
+          name: Install Gems
+          command: bundle install
+      - run: 
+          name: Install Pods
+          command: pod install 
       - run:
-          name: Fastlane
+          name: Code Build and Test
           command: bundle exec fastlane ios test
 
       # Collect XML test results data to show in the UI, and save the same XML
@@ -37,4 +56,5 @@ workflows:
   CheckPR: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
-      - build-and-test
+      - Run-linter
+      - Build-and-test

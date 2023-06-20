@@ -7,7 +7,7 @@ import SwiftUI
 
 struct PrimaryButton: View {
     var label: String
-    var onButtonTapped: () -> ()
+    var onButtonTapped: () -> Void
     var body: some View {
         Button {
             onButtonTapped()

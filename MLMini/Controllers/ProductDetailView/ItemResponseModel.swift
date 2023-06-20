@@ -24,7 +24,6 @@ class ItemResponseModel: Codable {
     let acceptsMercadopago: Bool
     let status: String
     
-    
     enum CodingKeys: String, CodingKey {
         case id
         case title
@@ -103,7 +102,3 @@ class Picture: Codable {
         self.secureURL = secureURL
     }
 }
-
-
-
-

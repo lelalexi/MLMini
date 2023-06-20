@@ -60,15 +60,15 @@ class MLGenericFeedbackScreenComponent: UIView {
         return button
     }()
     
-    var callback: (() -> ())?
+    var callback: (() -> Void)?
     
-    var type: FeedbackCase! {
+    var type: FeedbackCase = .itemNotFound {
         didSet {
             updateComponent()
         }
     }
     
-    required convenience init(type: FeedbackCase, callback: @escaping () -> ()) {
+    required convenience init(type: FeedbackCase, callback: @escaping () -> Void) {
         self.init(frame: .zero)
         self.type = type
         self.callback = callback
