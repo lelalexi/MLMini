@@ -11,7 +11,8 @@ platform :ios do
     scan(
          workspace: "MLMini.xcworkspace",
          scheme: "MLMini",
-         devices: [ "iPhone 13 mini (16.2)" ]
+         devices: [ "iPhone 13 mini (16.2)" ],
+         clean: true
     )
   end
 end
