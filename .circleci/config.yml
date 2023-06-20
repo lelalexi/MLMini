@@ -12,6 +12,7 @@ jobs:
       xcode: 14.2.0
     steps:
       - checkout
+      - run: bundle install
       - run:
           name: Fastlane
           command: bundle exec fastlane ios code_linting
