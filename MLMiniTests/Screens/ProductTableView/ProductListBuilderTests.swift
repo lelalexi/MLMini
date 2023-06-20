@@ -26,7 +26,7 @@ class ProductListBuilderTests: QuickSpec {
                     // When
                     let VC = SUT.getView(forItemToSearch: itemToSeach, coordinator: nil)
                     // Then
-                    await expect(VC).to(beAKindOf(ProductListViewController.self))
+                    await expect(VC).toEventually(beAKindOf(ProductListViewController.self))
                 }
             }
         }

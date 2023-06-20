@@ -20,7 +20,7 @@ struct SearchView: View {
                 MLMiniTextField(text: $textFieldText, placeholder: "Search on Mercadolibre")
                     .focused($focusedField)
                     .padding(.bottom, 8)
-                PrimaryButton(label: "Buscar") {
+                PrimaryButton(label: "Search") {
                     searchForItems()
                 }
             }
@@ -31,7 +31,7 @@ struct SearchView: View {
         }
         .padding(.horizontal, 20.0)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color("activeYellow"))
+        .background(Color(uiColor: .activeYellow))
         .onTapGesture {
             focusedField = false
         }

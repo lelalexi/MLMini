@@ -19,7 +19,7 @@ struct PrimaryButton: View {
         }
         .frame(height: 50)
         .frame(maxWidth: .infinity)
-        .background(Color("activeBlue"))
+        .background(Color(uiColor: .activeBlue))
         .cornerRadius(8)
     }
 }
