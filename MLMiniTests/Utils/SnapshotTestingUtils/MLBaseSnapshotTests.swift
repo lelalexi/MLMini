@@ -19,7 +19,7 @@ class MLBaseSnapshotTests: XCTestCase {
                            devices: [String : ViewImageConfig] = snapshotTestTargetDevices) {
         let result = MLBaseSnapshotTests.snapshotTestTargetDevices.map { device in
             verifySnapshot(matching: viewController,
-                           as: .image(on: device.value),
+                           as: .wait(for: 0.1, on: .image(on: device.value)),
                            named: "\(withName)_\(device.key)",
                            record: isRecording)
         }
