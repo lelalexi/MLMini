@@ -21,7 +21,7 @@ platform :ios do
          workspace: "MLMini.xcworkspace",
          scheme: "MLMini",
          devices: [ "iPhone 13 mini (16.2)" ],
-         clean: true
+         clean: false
     )
   end
 end
