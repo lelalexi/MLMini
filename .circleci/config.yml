@@ -7,6 +7,15 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/configuration-reference/#jobs
 jobs:
+  run-linter:
+    macos:
+      xcode: 14.2.0
+    steps:
+      - checkout
+      - run:
+          name: Fastlane
+          command: bundle exec fastlane ios code_linting
+
   build-and-test:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/configuration-reference/#docker-machine-macos-windows-executor
@@ -34,6 +43,9 @@ jobs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
+  Run SwiftLint:
+    jobs:
+      - run-linter
   CheckPR: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:

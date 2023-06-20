@@ -6,6 +6,15 @@ platform :ios do
     setup_circle_ci
   end
 
+  desc "Pass SwiftLint"
+  lane :code_linting do
+    swiftlint(
+        mode: :lint,
+        config_file: ".swiftlint.yml",
+        raise_if_swiftlint_error: true
+    )
+  end
+
   desc "Runs all the tests"
   lane :test do
     scan(
