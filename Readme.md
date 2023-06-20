@@ -1,4 +1,5 @@
-# MLMini
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/lelalexi/MLMini/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/lelalexi/MLMini/tree/master)
+# MLMini (Deprecated doc!!)
 
 Esta es una mini aplicación de Mercadolibre que brinda funcionalidades básicas con respecto a la búsqueda de productos en general, muestra de resultados de una manera legible y presenta una vista de detalles de los productos.
 
