@@ -32,7 +32,6 @@ class SearchViewControllerSwiftUIBridge: UIViewController, ObservableObject {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-
     
     func addView() {
         let searchView = SearchViewBuilder().getView(coordinator: coordinator)

@@ -15,7 +15,7 @@ public struct MLPath {
     
     public init(environment: MLEnvironment = .production,
                 path: String,
-                parameters: [String : String]) {
+                parameters: [String: String]) {
         self.baseURL = environment.baseURL
         self.path = path
         self.parameters = parameters

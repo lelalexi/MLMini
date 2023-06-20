@@ -29,14 +29,14 @@ extension Endpoint {
 struct MLEndpoint: Endpoint {
     var path: MLPath
     var method: HTTPMethod
-    var headers: [String : String]
+    var headers: [String: String]
     var body: Data?
     var timeout: Float
     var environment: MLEnvironment
     
     init(path: MLPath,
          method: HTTPMethod = .GET,
-         headers: [String :String] = [:],
+         headers: [String: String] = [:],
          body: Data? = nil,
          timeout: Float = 5,
          environment: MLEnvironment = .production) {

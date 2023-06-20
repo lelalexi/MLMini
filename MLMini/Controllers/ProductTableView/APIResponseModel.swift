@@ -109,7 +109,6 @@ extension Result: Equatable {
         lhs.id == rhs.id
     }
     
-    
 }
 
 // MARK: - Shipping
