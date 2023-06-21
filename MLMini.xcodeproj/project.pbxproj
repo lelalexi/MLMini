@@ -135,8 +135,6 @@
 		D94DCC6E2A3FA0EE00E559AD /* MLMiniMainCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMiniMainCoordinatorTests.swift; sourceTree = "<group>"; };
 		D94DCC702A3FABF800E559AD /* MLMiniMainCoordinatorSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMiniMainCoordinatorSpy.swift; sourceTree = "<group>"; };
 		D94DCC7C2A43A3B000E559AD /* StringLocalizables+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringLocalizables+Extension.swift"; sourceTree = "<group>"; };
-		D94DCC8C2A43A98700E559AD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D94DCC8D2A43A98700E559AD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D94DCC912A43AA0F00E559AD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D94DCC932A43AA2000E559AD /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D94DCC942A43AAA500E559AD /* MLLocalizables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLLocalizables.swift; sourceTree = "<group>"; };
