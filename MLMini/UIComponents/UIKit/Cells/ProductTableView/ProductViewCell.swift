@@ -28,6 +28,7 @@ class ProductViewCell: UITableViewCell {
         productImage.layer.cornerRadius = 6.0
         productImage.clipsToBounds = true
         freeShippingLabel.isHidden = true
+        freeShippingLabel.text = MLLocalizables.ProductListView.freeShippingLabel
     }
     
     func configureCell(item: ItemModel){

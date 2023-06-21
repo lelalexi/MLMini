@@ -32,6 +32,9 @@
 		D94DCC6C2A3F9FFE00E559AD /* MLMiniMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94DCC6B2A3F9FFE00E559AD /* MLMiniMainCoordinator.swift */; };
 		D94DCC6F2A3FA0EE00E559AD /* MLMiniMainCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94DCC6E2A3FA0EE00E559AD /* MLMiniMainCoordinatorTests.swift */; };
 		D94DCC712A3FABF800E559AD /* MLMiniMainCoordinatorSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94DCC702A3FABF800E559AD /* MLMiniMainCoordinatorSpy.swift */; };
+		D94DCC7D2A43A3B000E559AD /* StringLocalizables+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94DCC7C2A43A3B000E559AD /* StringLocalizables+Extension.swift */; };
+		D94DCC902A43AA0F00E559AD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D94DCC922A43AA0F00E559AD /* Localizable.strings */; };
+		D94DCC952A43AAA500E559AD /* MLLocalizables.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94DCC942A43AAA500E559AD /* MLLocalizables.swift */; };
 		D953FBC42A3527ED00D2C775 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBC32A3527ED00D2C775 /* SearchView.swift */; };
 		D953FBC62A36711F00D2C775 /* SearchViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBC52A36711F00D2C775 /* SearchViewViewModel.swift */; };
 		D953FBC82A36858100D2C775 /* SearchViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBC72A36858100D2C775 /* SearchViewBuilder.swift */; };
@@ -131,6 +134,10 @@
 		D94DCC6B2A3F9FFE00E559AD /* MLMiniMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMiniMainCoordinator.swift; sourceTree = "<group>"; };
 		D94DCC6E2A3FA0EE00E559AD /* MLMiniMainCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMiniMainCoordinatorTests.swift; sourceTree = "<group>"; };
 		D94DCC702A3FABF800E559AD /* MLMiniMainCoordinatorSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMiniMainCoordinatorSpy.swift; sourceTree = "<group>"; };
+		D94DCC7C2A43A3B000E559AD /* StringLocalizables+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringLocalizables+Extension.swift"; sourceTree = "<group>"; };
+		D94DCC912A43AA0F00E559AD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D94DCC932A43AA2000E559AD /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D94DCC942A43AAA500E559AD /* MLLocalizables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLLocalizables.swift; sourceTree = "<group>"; };
 		D953FBC32A3527ED00D2C775 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		D953FBC52A36711F00D2C775 /* SearchViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewViewModel.swift; sourceTree = "<group>"; };
 		D953FBC72A36858100D2C775 /* SearchViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewBuilder.swift; sourceTree = "<group>"; };
@@ -309,6 +316,15 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		D94DCC772A439F4E00E559AD /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				D94DCC922A43AA0F00E559AD /* Localizable.strings */,
+				D94DCC942A43AAA500E559AD /* MLLocalizables.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		D953FBCD2A36C44900D2C775 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -355,6 +371,7 @@
 		D953FBDC2A3A7AD100D2C775 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D94DCC772A439F4E00E559AD /* Localization */,
 				E4D052612332538D009B4EDB /* Assets.xcassets */,
 				D953FBDD2A3A7AF400D2C775 /* MLImage.swift */,
 			);
@@ -558,6 +575,7 @@
 				E4CB24C123346642003AB3D8 /* NumberExtension.swift */,
 				E4FB0DFB29ABD3AB004DE58F /* UIViewController+Extension.swift */,
 				D953FBCB2A36C3CC00D2C775 /* View+Extension.swift */,
+				D94DCC7C2A43A3B000E559AD /* StringLocalizables+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -689,6 +707,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = E4D0524E23325388009B4EDB;
 			productRefGroup = E4D0525823325388009B4EDB /* Products */;
@@ -717,6 +736,7 @@
 				E4D0529B23331117009B4EDB /* ProductViewCell.xib in Resources */,
 				E4D052652332538D009B4EDB /* LaunchScreen.storyboard in Resources */,
 				C6F0131625FE6FA100BBE3CC /* ProductListModel.json in Resources */,
+				D94DCC902A43AA0F00E559AD /* Localizable.strings in Resources */,
 				E4D5D3572337C94600883E8A /* MainDetailTableViewCell.xib in Resources */,
 				E4D5D35D2337E6B200883E8A /* BuyDetailTableViewCell.xib in Resources */,
 				E4D052622332538D009B4EDB /* Assets.xcassets in Resources */,
@@ -862,6 +882,7 @@
 				D953FBE32A3BC75A00D2C775 /* MLGenericFeedbackModel.swift in Sources */,
 				D953FBEA2A3C0D2100D2C775 /* MLEnvironment.swift in Sources */,
 				D94DCC6C2A3F9FFE00E559AD /* MLMiniMainCoordinator.swift in Sources */,
+				D94DCC952A43AAA500E559AD /* MLLocalizables.swift in Sources */,
 				D953FBDE2A3A7AF400D2C775 /* MLImage.swift in Sources */,
 				D953FBEE2A3C250900D2C775 /* ProductListBuilder.swift in Sources */,
 				C6E2C8122512E86E009687CC /* ItemDomainModel.swift in Sources */,
@@ -885,6 +906,7 @@
 				E4D0525B23325388009B4EDB /* AppDelegate.swift in Sources */,
 				D953FBC42A3527ED00D2C775 /* SearchView.swift in Sources */,
 				D953FBD92A37E49500D2C775 /* MLGenericFeedbackScreenComponent.swift in Sources */,
+				D94DCC7D2A43A3B000E559AD /* StringLocalizables+Extension.swift in Sources */,
 				C6F6A7FE2512C7F400140EAD /* ProductDetailRepository.swift in Sources */,
 				E4D052B02333CE79009B4EDB /* UIColorExtension.swift in Sources */,
 				D953FBC82A36858100D2C775 /* SearchViewBuilder.swift in Sources */,
@@ -909,6 +931,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		D94DCC922A43AA0F00E559AD /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D94DCC912A43AA0F00E559AD /* en */,
+				D94DCC932A43AA2000E559AD /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		E4D0525E23325388009B4EDB /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -978,6 +1009,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1040,6 +1072,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
