@@ -17,10 +17,10 @@ struct SearchView: View {
             Spacer()
             Spacer()
             Group {
-                MLMiniTextField(text: $textFieldText, placeholder: "Search on Mercadolibre")
+                MLMiniTextField(text: $textFieldText, placeholder: MLLocalizables.SearchView.searchTextFieldHint)
                     .focused($focusedField)
                     .padding(.bottom, 8)
-                PrimaryButton(label: "Search") {
+                PrimaryButton(label: MLLocalizables.SearchView.buttonTitle.localized()) {
                     searchForItems()
                 }
             }

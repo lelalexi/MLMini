@@ -20,15 +20,15 @@ struct MLGenericFeedbackModelFactory {
     
     private func createMiscErrorScreenModel() -> MLGenericFeedbackModel {
         MLGenericFeedbackModel(image: MLImage.damagedPackage,
-                               title: "Oops!",
-                               subtitle: "Something went wrong, try again later or in a couple of minutes.",
-                               ctaTitle: "Retry")
+                               title: MLLocalizables.ComponentFeedbackView.errorTitle,
+                               subtitle: MLLocalizables.ComponentFeedbackView.errorSubtitle,
+                               ctaTitle: MLLocalizables.ComponentFeedbackView.errorButtonTitle)
     }
     
     private func createItemNotFoundScreenModel() -> MLGenericFeedbackModel {
         MLGenericFeedbackModel(image: MLImage.attentionMagnifierglasses,
-                               title: "We could not find any match for your search",
-                               subtitle: "Check if your search is corect and try again, You can also try with less or more general words.",
-                               ctaTitle: "Go Back")
+                               title: MLLocalizables.ComponentFeedbackView.notFoundTitle,
+                               subtitle: MLLocalizables.ComponentFeedbackView.notFoundSubtitle,
+                               ctaTitle: MLLocalizables.ComponentFeedbackView.notFoundButtonTitle)
     }
 }

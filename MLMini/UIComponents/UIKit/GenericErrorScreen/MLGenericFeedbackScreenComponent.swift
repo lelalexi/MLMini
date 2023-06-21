@@ -52,7 +52,6 @@ class MLGenericFeedbackScreenComponent: UIView {
     
     private lazy var cta: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Retry", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.activeBlue, for: .normal)
         button.addTarget(self, action: #selector(onButtonTapped), for: .touchUpInside)

@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  MLMini
+
+  Created by Alexis Garcia Carli on 21/06/2023.
+  Copyright © 2023 ale. All rights reserved.
+*/
+
+// Search Screen
+"SearchScreenMainButton" = "Search";
+"SearchScreenTextFieldHint" = "Search on Mercadolibre";
+
+// ProductList Screen
+"FreeShippingLabel" = "Free Shipping";
+
+// ProductDetail Screen
+
+// Feedback Screen
+"FeedbackNotFoundTitle" = "We could not find any match for your search";
+"FeedbackNotFoundSubtitle" = "Check if your search is corect and try again, You can also try with less or more general words.";
+"FeedbackNotFoundButton" = "Go Back";
+
+"FeedbackErrorTitle" = "Oops!";
+"FeedbackErrorSubtitle" = "Something went wrong, try again later or in a couple of minutes.";
+"FeedbackErrorButton" = "Retry";

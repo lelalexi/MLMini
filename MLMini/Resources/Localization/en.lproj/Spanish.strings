@@ -1,0 +1,24 @@
+/* 
+  Spanish.strings
+  MLMini
+
+  Created by Alexis Garcia Carli on 21/06/2023.
+  Copyright © 2023 ale. All rights reserved.
+*/
+
+// Search Screen
+"SearchScreenMainButton" = "Buscar";
+"SearchScreenTextFieldHint" = "Buscar en Mercadolibre";
+
+// ProductList Screen
+
+// ProductDetail Screen
+
+// Feedback Screen
+"FeedbackNotFoundTitle" = "No pudimos encontrar resultados para tu busqueda";
+"FeedbackNotFoundSubtitle" = "Verifica que tu busqueda este bien escrita y prueba de nuevo, Tambien puedes probar con menos terminos o mas generales.";
+"FeedbackNotFoundButton" = "Atras";
+
+"FeedbackErrorTitle" = "Oops!";
+"FeedbackErrorSubtitle" = "Algo salió mal, intentalo nuevamente dentro de unos minutos.";
+"FeedbackErrorButton" = "Reintentar";

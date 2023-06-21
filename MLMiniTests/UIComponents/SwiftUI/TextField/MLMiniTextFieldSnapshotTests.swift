@@ -17,7 +17,7 @@ class MLMiniTextFieldSnapshotTests: MLBaseSnapshotTests {
     override func setUp() {
         super.setUp()
         isRecording = false
-        let button = MLMiniTextField(text: $text, placeholder: "Search on Mercadolibre")
+        let button = MLMiniTextField(text: $text, placeholder: MLLocalizables.SearchView.searchTextFieldHint)
         textFieldView = UIHostingController(rootView: button).view
         textFieldView.frame = CGRect(x: 0, y: 0, width: 260, height: 50)
     }
