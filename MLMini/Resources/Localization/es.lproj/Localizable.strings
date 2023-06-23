@@ -14,6 +14,8 @@
 "FreeShippingLabel" = "Envío Gratis";
 
 // ProductDetail Screen
+"SoldItemsLabel" = "vendidos";
+"SoldByItemsLabel" = "por";
 
 // Feedback Screen
 "FeedbackNotFoundTitle" = "No encontramos resultados";
