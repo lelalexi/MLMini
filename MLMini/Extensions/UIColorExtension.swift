@@ -48,6 +48,10 @@ public extension UIColor {
     static var primaryBackground: UIColor {
         return UIColor(red: 240.0 / 255.0, green: 240.0 / 255.0, blue: 240.0 / 255.0, alpha: 1.0)
     }
+    
+    static var secondaryBackground: UIColor {
+        return softGrey
+    }
 }
 
 import SwiftUI
@@ -91,5 +95,9 @@ public extension Color {
 
     static var primaryBackground: Color {
         return Color(uiColor: .primaryBackground)
+    }
+    
+    static var secondaryBackground: Color {
+        return Color(uiColor: .secondaryBackground)
     }
 }

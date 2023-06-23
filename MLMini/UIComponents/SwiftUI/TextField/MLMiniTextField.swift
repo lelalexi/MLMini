@@ -13,7 +13,8 @@ struct MLMiniTextField: View {
             TextField("", text: $text)
               .padding(10)
               .placeholder(when: text.isEmpty) {
-                  Text(placeholder).foregroundColor(.gray)
+                  Text(placeholder)
+                      .foregroundColor(.secondaryText)
               }
         }
           .frame(height: 50)

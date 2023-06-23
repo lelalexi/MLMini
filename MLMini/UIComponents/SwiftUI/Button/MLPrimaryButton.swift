@@ -15,7 +15,7 @@ struct PrimaryButton: View {
             Text(label)
                 .font(.title2)
                 .bold()
-                .foregroundColor(.primaryBackground)
+                .foregroundColor(.invertedText)
         }
         .frame(height: 50)
         .frame(maxWidth: .infinity)
