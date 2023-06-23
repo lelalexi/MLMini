@@ -18,7 +18,7 @@ public extension UIColor {
     }
     
     static var activeGreen: UIColor {
-        return UIColor(red: 58.0 / 255.0, green: 131.0 / 255.0, blue: 247.0 / 255.0, alpha: 1.0)
+        return UIColor(red: 62.0 / 255.0, green: 123.0 / 255.0, blue: 49.0 / 255.0, alpha: 1.0)
     }
     
     static var softGrey: UIColor {
@@ -33,11 +33,19 @@ public extension UIColor {
         return UIColor(red: 45.0 / 255.0, green: 45.0 / 255.0, blue: 45.0 / 255.0, alpha: 1.0)
     }
     
+    static var nightBlack: UIColor {
+        return UIColor(red: 15.0 / 255.0, green: 15.0 / 255.0, blue: 25.0 / 255.0, alpha: 1.0)
+    }
+    
     static var primaryText: UIColor {
-        return darkGrey
+        return nightBlack
     }
     
     static var secondaryText: UIColor {
+        return darkGrey
+    }
+    
+    static var terciaryText: UIColor {
         return intermediateGrey
     }
     
@@ -81,12 +89,20 @@ public extension Color {
         return Color(uiColor: .darkGrey)
     }
     
+    static var nightBlack: Color {
+        return Color(uiColor: .nightBlack)
+    }
+    
     static var primaryText: Color {
         return Color(uiColor: .primaryText)
     }
     
     static var secondaryText: Color {
         return Color(uiColor: .secondaryText)
+    }
+    
+    static var terciaryText: Color {
+        return Color(uiColor: .terciaryText)
     }
     
     static var invertedText: Color {

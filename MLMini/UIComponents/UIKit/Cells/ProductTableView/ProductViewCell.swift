@@ -21,14 +21,33 @@ class ProductViewCell: UITableViewCell {
     }
     
     private func initCell(){
-        productFavIcon.image = productFavIcon.image?.withRenderingMode(.alwaysTemplate)
-        productFavIcon.tintColor = .activeBlue
+        contentView.backgroundColor = .primaryBackground
+        configureLabels()
+        configureCellImage()
+        configureFreeShippingLabels()
+        configureCellFavIcon()
+    }
+    
+    private func configureLabels() {
         productTitle.textColor = .secondaryText
         productPrice.textColor = .primaryText
+    }
+    
+    private func configureCellImage() {
+        productImage.backgroundColor = .clear
         productImage.layer.cornerRadius = 6.0
         productImage.clipsToBounds = true
+    }
+    
+    private func configureFreeShippingLabels() {
+        freeShippingLabel.textColor = .activeGreen
         freeShippingLabel.isHidden = true
         freeShippingLabel.text = MLLocalizables.ProductListView.freeShippingLabel
+    }
+    
+    private func configureCellFavIcon() {
+        productFavIcon.image = productFavIcon.image?.withRenderingMode(.alwaysTemplate)
+        productFavIcon.tintColor = .activeBlue
     }
     
     func configureCell(item: ItemModel){

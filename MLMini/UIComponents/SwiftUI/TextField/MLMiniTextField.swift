@@ -11,11 +11,12 @@ struct MLMiniTextField: View {
     var body: some View {
         ZStack {
             TextField("", text: $text)
-              .padding(10)
-              .placeholder(when: text.isEmpty) {
-                  Text(placeholder)
-                      .foregroundColor(.secondaryText)
-              }
+                .foregroundColor(.primaryText)
+                .padding(10)
+                .placeholder(when: text.isEmpty) {
+                    Text(placeholder)
+                        .foregroundColor(.terciaryText)
+                }
         }
           .frame(height: 50)
           .background(Color.primaryBackground)
