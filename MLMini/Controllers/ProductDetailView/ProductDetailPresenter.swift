@@ -6,6 +6,7 @@
 //  Copyright © 2020 ale. All rights reserved.
 //
 
+import Combine
 import Foundation
 
 protocol ProductDetailPresenterProtocol {
@@ -19,8 +20,9 @@ class ProductDetailPresenter: ProductDetailPresenterProtocol {
     
     //MARK: - Properties
     weak var view: ProductDetailViewControllerProtocol?
-    let repository: ProductDetailRepositoryProtocol?
+    private let repository: ProductDetailRepositoryProtocol?
     var model: ItemDescriptionModel?
+    private var cancellables = Set<AnyCancellable>()
     
     //MARK: - Initializers
     required init(repository: ProductDetailRepositoryProtocol) {
@@ -44,15 +46,18 @@ class ProductDetailPresenter: ProductDetailPresenterProtocol {
     }
     
     private func getItemDescription(itemId: String) {
-        repository?.getItemDescription(itemId: itemId, completionHandler: { [weak self] (Response, error) in
-            if let _ = error {
-                self?.onGetDataError()
-            }
-            guard let response = Response else { return }
-            DispatchQueue.main.async {
-                self?.onGetDataSuccess(model: response)
-            }
-        })
+        repository?.getItemDescription(itemId: itemId)
+            .receive(on: DispatchQueue.main)
+            .map { $0.toModel() }
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .failure:
+                    self.onGetDataError()
+                case .finished:
+                    break
+                }
+            }, receiveValue: { response in
+                self.onGetDataSuccess(model: response)
+            }).store(in: &cancellables)
     }
-    
 }
