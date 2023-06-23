@@ -9,10 +9,10 @@
 [//]: # (MANDATORY)
 [//]: # (Did you run tests successfully, updated snapshots, etc?)
 
-- [] Code Builds?
-- [] Tests runs?
-- [] Have you updated the Snapshots?
-- [] Have you Updated the CHANGELOG?
+- [ ] Code Builds?
+- [ ] Tests runs?
+- [ ] Have you updated the Snapshots?
+- [ ] Have you Updated the CHANGELOG?
 
 ## Images 📸
 [//]: # (OPTIONAL)
