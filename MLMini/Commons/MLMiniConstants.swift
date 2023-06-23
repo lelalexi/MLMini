@@ -10,7 +10,6 @@ import Foundation
 
 struct MLMiniConstants {
     struct Images {
-        static let SEARCH_ICON = "Search"
         static let PLACEHOLDER_ICON = "Placeholder"
     }
     struct Xibs {
