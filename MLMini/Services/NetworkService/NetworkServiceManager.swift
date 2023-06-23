@@ -10,30 +10,10 @@ import Combine
 import Foundation
 
 protocol ServiceManagerProtocol {
-    @available(*, deprecated, message: "Use combine newest version of performRequest<T>")
-    func performRequest<T>(apiURL: URL, completionHandler: @escaping (T?, NetworkError?) -> Void) where T: Decodable, T: Encodable
-    
     func performRequest<T: Decodable>(endpoint: Endpoint) -> AnyPublisher<T, NetworkError>
 }
 
-class NetworkServiceManager: ServiceManagerProtocol {
-    
-    func performRequest<T>(apiURL: URL, completionHandler: @escaping (T?, NetworkError?) -> Void) where T: Decodable, T: Encodable {
-        
-        let sharedSession = URLSession.shared
-        
-        sharedSession.dataTask(with: apiURL) { data, response, error in
-            if let data = data {
-                do {
-                    let resp = try JSONDecoder().decode(T.self, from: data)
-                    completionHandler(resp, nil)
-                } catch {
-                    completionHandler(nil, .someError)
-                }
-            }
-            }.resume()
-    }
-    
+class NetworkServiceManager: ServiceManagerProtocol {    
     func performRequest<T: Decodable>(endpoint: Endpoint) -> AnyPublisher<T, NetworkError> {
         let sharedSession = URLSession.shared
         
