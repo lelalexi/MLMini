@@ -9,9 +9,9 @@
 import UIKit
 
 class MainDetailTableViewCell: UITableViewCell {
-    
     @IBOutlet var soldItems: UILabel!
     @IBOutlet var title: UILabel!
+    @IBOutlet var soldByLabel: UILabel!
     @IBOutlet var seller: UILabel!
     @IBOutlet var price: UILabel!
     
@@ -21,20 +21,27 @@ class MainDetailTableViewCell: UITableViewCell {
     }
     
     private func initializeCell(){
-        backgroundColor = UIColor(named: MLMiniConstants.Color.SOFT_GREY)
+        contentView.backgroundColor = .primaryBackground
+        configureLabels()
+    }
+    
+    private func configureLabels() {
+        // TODO: Create a Font definition and update labels
+        soldItems.textColor = .terciaryText
+        title.textColor = .primaryText
+        price.textColor = .primaryText
+        soldByLabel.textColor = .terciaryText
+        soldByLabel.text = MLLocalizables.ProductDetailView.soldByItemsLabel
+        seller.textColor = .secondaryText
     }
     
     func configureCell(item: ItemDescriptionModel){
-
         title.text = item.title
         price.text = "$ " + String(item.price.formattedWithSeparator)
-        soldItems.text = String(item.soldQuantity) + " vendidos"
+        soldItems.text = String(item.soldQuantity) + " " + MLLocalizables.ProductDetailView.soldItemsLabel
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-    
 }

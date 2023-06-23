@@ -31,7 +31,7 @@ struct SearchView: View {
         }
         .padding(.horizontal, 20.0)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(uiColor: .activeYellow))
+        .background(Color.activeYellow)
         .onTapGesture {
             focusedField = false
         }

@@ -11,13 +11,15 @@ struct MLMiniTextField: View {
     var body: some View {
         ZStack {
             TextField("", text: $text)
-              .padding(10)
-              .placeholder(when: text.isEmpty) {
-                  Text(placeholder).foregroundColor(.gray)
-              }
+                .foregroundColor(.primaryText)
+                .padding(10)
+                .placeholder(when: text.isEmpty) {
+                    Text(placeholder)
+                        .foregroundColor(.terciaryText)
+                }
         }
           .frame(height: 50)
-          .background(Color.white)
+          .background(Color.primaryBackground)
           .overlay {
              RoundedRectangle(cornerRadius: 8)
                 .stroke(.blue, lineWidth: 2)

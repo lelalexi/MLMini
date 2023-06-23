@@ -10,11 +10,9 @@ import UIKit
 import SDWebImage
 
 class ProductImageViewCell: UICollectionViewCell {
-    
     @IBOutlet weak var productImage: UIImageView!
     
     func configureCell(image: String){
         productImage.sd_setImage(with: URL(string: image), placeholderImage: UIImage(named: MLMiniConstants.Images.PLACEHOLDER_ICON))
     }
-    
 }

@@ -22,7 +22,9 @@ class SearchViewSnapshotTests: MLBaseSnapshotTests {
     
     func testSearchScreen() {
         // TODO: Fix the issue with fastlane, on xcode works great
-        //verifySnapshotfor(viewController: searchViewController,
-        //                  withName: "SearchScreenSnapshot")
+        /*
+        verifySnapshotfor(viewController: searchViewController,
+                          withName: "SearchScreenSnapshot")
+         */
     }
 }

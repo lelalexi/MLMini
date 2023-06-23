@@ -36,7 +36,7 @@ class MLGenericFeedbackScreenComponent: UIView {
         label.font = UIFont(name: "Avenir-Heavy", size: 28)
         label.textAlignment = .center
         label.numberOfLines = 2
-        label.textColor = .intermediateGrey
+        label.textColor = .terciaryText
         return label
     }()
     
@@ -46,7 +46,7 @@ class MLGenericFeedbackScreenComponent: UIView {
         label.font = UIFont(name: "Avenir-Light", size: 16)
         label.textAlignment = .center
         label.numberOfLines = 3
-        label.textColor = .intermediateGrey
+        label.textColor = .terciaryText
         return label
     }()
     
@@ -96,7 +96,7 @@ class MLGenericFeedbackScreenComponent: UIView {
     }
     
     private func setupView() {
-        backgroundColor = .softGrey
+        backgroundColor = .secondaryBackground
         
         addSubview(containerView)
         containerView.addSubview(feedbackImage)

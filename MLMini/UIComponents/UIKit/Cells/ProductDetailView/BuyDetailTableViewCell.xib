@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -133,12 +134,16 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="addToCartButton" destination="bvL-PL-oeQ" id="Z9O-Go-n3r"/>
+                <outlet property="addToCartButtonLabel" destination="tI8-06-lQN" id="XzK-AH-Ekm"/>
                 <outlet property="addToCartLabel" destination="tI8-06-lQN" id="K2x-Ym-Ydc"/>
                 <outlet property="buyButton" destination="GVO-pP-JDc" id="Kc2-ZX-ddh"/>
+                <outlet property="buyButtonLabel" destination="Jze-wA-4my" id="9V6-3w-KaI"/>
                 <outlet property="colorAndQuantiyView" destination="Gk8-Qu-43i" id="psM-de-9Bl"/>
+                <outlet property="colorTitleLabel" destination="NqK-cJ-5Bh" id="fkB-e8-tc6"/>
                 <outlet property="itemColor" destination="gZB-R1-UPS" id="etG-58-fAT"/>
                 <outlet property="itemColorThumbnail" destination="8JZ-jl-3lA" id="GVd-vH-MgU"/>
                 <outlet property="itemQuantity" destination="CKo-4I-qzS" id="tuI-v5-C59"/>
+                <outlet property="quantityTitleLabel" destination="IOI-cv-ECY" id="Hbi-M3-nyq"/>
             </connections>
             <point key="canvasLocation" x="136.95652173913044" y="125.89285714285714"/>
         </tableViewCell>
@@ -146,7 +151,7 @@
     <resources>
         <image name="Search" width="25" height="25"/>
         <namedColor name="activeBackground">
-            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.35999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="activeBlue">
             <color red="0.22745098039215686" green="0.51372549019607838" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -155,7 +160,7 @@
             <color red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="softGrey">
-            <color red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.88235294117647056" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

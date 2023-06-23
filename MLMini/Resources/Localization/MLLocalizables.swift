@@ -18,6 +18,15 @@ struct MLLocalizables {
         static var freeShippingLabel: String { "FreeShippingLabel".localized() }
     }
     
+    struct ProductDetailView {
+        static var soldItemsLabel: String { "SoldItemsLabel".localized() }
+        static var soldByItemsLabel: String { "SoldByItemsLabel".localized() }
+        static var buyButtonLabel: String { "BuyButtonLabel".localized() }
+        static var addToCartButtonLabel: String { "AddToCartButtonLabel".localized() }
+        static var itemColorLabel: String { "ItemColorLabel".localized() }
+        static var availableItemQuantityLabel: String { "AvailableItemQuantityLabel".localized() }
+    }
+    
     struct ComponentFeedbackView {
         // Not Found
         static var notFoundTitle: String { "FeedbackNotFoundTitle".localized() }
