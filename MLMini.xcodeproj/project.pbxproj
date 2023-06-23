@@ -35,6 +35,8 @@
 		D94DCC7D2A43A3B000E559AD /* StringLocalizables+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94DCC7C2A43A3B000E559AD /* StringLocalizables+Extension.swift */; };
 		D94DCC902A43AA0F00E559AD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D94DCC922A43AA0F00E559AD /* Localizable.strings */; };
 		D94DCC952A43AAA500E559AD /* MLLocalizables.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94DCC942A43AAA500E559AD /* MLLocalizables.swift */; };
+		D94DCC982A43C6AD00E559AD /* ProductDetailCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94DCC972A43C6AD00E559AD /* ProductDetailCarouselView.swift */; };
+		D94DCC9A2A43F84B00E559AD /* ImageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94DCC992A43F84B00E559AD /* ImageCardView.swift */; };
 		D953FBC42A3527ED00D2C775 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBC32A3527ED00D2C775 /* SearchView.swift */; };
 		D953FBC62A36711F00D2C775 /* SearchViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBC52A36711F00D2C775 /* SearchViewViewModel.swift */; };
 		D953FBC82A36858100D2C775 /* SearchViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBC72A36858100D2C775 /* SearchViewBuilder.swift */; };
@@ -138,6 +140,8 @@
 		D94DCC912A43AA0F00E559AD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D94DCC932A43AA2000E559AD /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D94DCC942A43AAA500E559AD /* MLLocalizables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLLocalizables.swift; sourceTree = "<group>"; };
+		D94DCC972A43C6AD00E559AD /* ProductDetailCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailCarouselView.swift; sourceTree = "<group>"; };
+		D94DCC992A43F84B00E559AD /* ImageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCardView.swift; sourceTree = "<group>"; };
 		D953FBC32A3527ED00D2C775 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		D953FBC52A36711F00D2C775 /* SearchViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewViewModel.swift; sourceTree = "<group>"; };
 		D953FBC72A36858100D2C775 /* SearchViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewBuilder.swift; sourceTree = "<group>"; };
@@ -323,6 +327,15 @@
 				D94DCC942A43AAA500E559AD /* MLLocalizables.swift */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		D94DCC962A43C67300E559AD /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				D94DCC972A43C6AD00E559AD /* ProductDetailCarouselView.swift */,
+				D94DCC992A43F84B00E559AD /* ImageCardView.swift */,
+			);
+			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 		D953FBCD2A36C44900D2C775 /* UIComponents */ = {
@@ -606,6 +619,7 @@
 		E4D5D34D2336BFD700883E8A /* ProductDetailView */ = {
 			isa = PBXGroup;
 			children = (
+				D94DCC962A43C67300E559AD /* SwiftUI */,
 				E4D052A82333B464009B4EDB /* ProductDetailViewController.swift */,
 				C6037D3C25254A6C000EB082 /* ProductDetailViewControllerCarrouselExtension.swift */,
 				C6F6A7FB2512C7E700140EAD /* ProductDetailPresenter.swift */,
@@ -915,6 +929,8 @@
 				D953FBE62A3BFF0100D2C775 /* HTTPMethod.swift in Sources */,
 				C6F6A7E72510476E00140EAD /* ProductListPresenter.swift in Sources */,
 				C6F6A7FC2512C7E700140EAD /* ProductDetailPresenter.swift in Sources */,
+				D94DCC982A43C6AD00E559AD /* ProductDetailCarouselView.swift in Sources */,
+				D94DCC9A2A43F84B00E559AD /* ImageCardView.swift in Sources */,
 				E4D0529F23331EF3009B4EDB /* NetworkError.swift in Sources */,
 				E4D0529423328E8C009B4EDB /* APIResponseModel.swift in Sources */,
 			);

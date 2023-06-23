@@ -35,11 +35,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="118" y="126"/>
         </scene>
     </scenes>
     <resources>
-        <image name="MLLogo" width="128" height="128"/>
+        <image name="MLLogo" width="400" height="362.66665649414062"/>
         <namedColor name="activeYellow">
             <color red="0.95686274509803926" green="0.88235294117647056" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
