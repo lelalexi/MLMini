@@ -19,9 +19,9 @@ class ProductDetailViewController: UIViewController, UICollectionViewDelegateFlo
     @IBOutlet weak var productDetailCarrouselCollectionView: UICollectionView!
     
     //MARK: - Properties
-    var presenter: ProductDetailPresenterProtocol?
-    var collectionFlowLayout: UICollectionViewFlowLayout!
-    var images: [String]?
+    private var presenter: ProductDetailPresenterProtocol?
+    internal var collectionFlowLayout: UICollectionViewFlowLayout!
+    private var images: [String]?
     var model: ItemDescriptionModel?
     var itemId = ""
     
