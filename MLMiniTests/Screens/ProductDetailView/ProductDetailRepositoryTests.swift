@@ -1,9 +1,9 @@
 //
-//  ProductListRepositoryTests.swift
+//  ProductDetailRepositoryTests.swift
 //  MLMiniTests
 //
-//  Created by Alexis Garcia on 14/03/2021.
-//  Copyright © 2021 ale. All rights reserved.
+//  Created by Alexis Garcia Carli on 23/06/2023.
+//  Copyright © 2023 ale. All rights reserved.
 //
 
 import Foundation
@@ -11,24 +11,25 @@ import Quick
 import Nimble
 @testable import MLMini
 
-class ProductListRepositoryTests: QuickSpec {
+class ProductDetailRepositoryTests: QuickSpec {
     override func spec() {
-        describe("ProductListRepositoryTests") {
-            var serviceMock: ServiceManagerMock<APIResponseModel>!
-            var SUT: ProductListRepositoryProtocol!
+        describe("ProductDetailRepositoryTests") {
+            var serviceMock: ServiceManagerMock<ItemResponseModel>!
+            var SUT: ProductDetailRepositoryProtocol!
 
             beforeEach {
-                serviceMock = ServiceManagerMock<APIResponseModel>()
+                serviceMock = ServiceManagerMock<ItemResponseModel>()
                 serviceMock.errorType = .someError
-                SUT = ProductListRepository(serviceMock)
+                SUT = ProductDetailRepository(serviceMock)
             }
             
             context("PerformRequest test") {
                 it("Should retreive data correctly") {
-                    serviceMock.requestResponse = ApiResponseModelMock.resolveModel()
-                    
+                    // Given
+                    serviceMock.requestResponse = ItemResponseModelMock.resolveModel()
+                    // When
                     let expectation = XCTestExpectation()
-                    _ = SUT.getProductListData(productName: "headphones")
+                    _ = SUT.getItemDescription(itemId: "headphones")
                         .sink(receiveCompletion: { completion in
                             switch completion {
                             case .failure:
@@ -44,9 +45,9 @@ class ProductListRepositoryTests: QuickSpec {
                 }
                 
                 it("Should retreive error when something has gone wrong") {
-                    
+                    // When
                     let expectation = XCTestExpectation()
-                    _ = SUT.getProductListData(productName: "headphones")
+                    _ = SUT.getItemDescription(itemId: "headphones")
                         .sink(receiveCompletion: { completion in
                             switch completion {
                             case .failure:

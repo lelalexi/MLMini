@@ -12,7 +12,7 @@ import SDWebImage
 protocol ProductDetailViewControllerProtocol: AnyObject {
     func updateModelAndReloadData(model: ItemDescriptionModel)
 }
-
+// swiftlint: disable implicitly_unwrapped_optional
 class ProductDetailViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     //MARK: - IBOutlets
     @IBOutlet weak var productDetailTableView: UITableView!

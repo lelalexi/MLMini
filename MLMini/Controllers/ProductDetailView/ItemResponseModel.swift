@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - ItemAPIResponseModel
-class ItemResponseModel: Codable {
+struct ItemResponseModel: Codable {
     let id, title: String
     let sellerID: Int
     let categoryID: String
@@ -78,8 +78,14 @@ extension ItemResponseModel {
     }
 }
 
+extension ItemResponseModel: Equatable {
+    static func == (lhs: ItemResponseModel, rhs: ItemResponseModel) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
+
 // MARK: - Description
-class Description: Codable {
+struct Description: Codable {
     let id: String
     
     init(id: String) {
@@ -88,7 +94,7 @@ class Description: Codable {
 }
 
 // MARK: - Picture
-class Picture: Codable {
+struct Picture: Codable {
     let url: String
     let secureURL: String
     

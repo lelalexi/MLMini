@@ -58,6 +58,8 @@
 		D953FC032A3D654000D2C775 /* SearchViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FC022A3D654000D2C775 /* SearchViewSnapshotTests.swift */; };
 		D953FC072A3D694200D2C775 /* MLPrimaryButtonSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FC062A3D694200D2C775 /* MLPrimaryButtonSnapshotTests.swift */; };
 		D953FC0A2A3D6F8000D2C775 /* MLMiniTextFieldSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FC092A3D6F8000D2C775 /* MLMiniTextFieldSnapshotTests.swift */; };
+		D97D62712A465B5300A81D6B /* ProductDetailRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97D62702A465B5300A81D6B /* ProductDetailRepositoryTests.swift */; };
+		D97D62742A465C5E00A81D6B /* ItemResponseModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97D62732A465C5E00A81D6B /* ItemResponseModelMock.swift */; };
 		E461482F23369128006080E4 /* ItemResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E461482E23369128006080E4 /* ItemResponseModel.swift */; };
 		E495DFC3233A4B9A00E3A4C9 /* NetworkServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E495DFC2233A4B9A00E3A4C9 /* NetworkServiceManager.swift */; };
 		E49F96072339108700AC4ECC /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F96062339108700AC4ECC /* SpinnerViewController.swift */; };
@@ -161,6 +163,8 @@
 		D953FC022A3D654000D2C775 /* SearchViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewSnapshotTests.swift; sourceTree = "<group>"; };
 		D953FC062A3D694200D2C775 /* MLPrimaryButtonSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLPrimaryButtonSnapshotTests.swift; sourceTree = "<group>"; };
 		D953FC092A3D6F8000D2C775 /* MLMiniTextFieldSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMiniTextFieldSnapshotTests.swift; sourceTree = "<group>"; };
+		D97D62702A465B5300A81D6B /* ProductDetailRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailRepositoryTests.swift; sourceTree = "<group>"; };
+		D97D62732A465C5E00A81D6B /* ItemResponseModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemResponseModelMock.swift; sourceTree = "<group>"; };
 		E461482E23369128006080E4 /* ItemResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemResponseModel.swift; sourceTree = "<group>"; };
 		E495DFC2233A4B9A00E3A4C9 /* NetworkServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceManager.swift; sourceTree = "<group>"; };
 		E49F96062339108700AC4ECC /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
@@ -452,6 +456,7 @@
 		D953FC012A3D634B00D2C775 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				D97D626F2A465B0900A81D6B /* ProductDetailView */,
 				C6F012F625FE3B0700BBE3CC /* ProductTableView */,
 				D953FC002A3D634000D2C775 /* SeachView */,
 			);
@@ -481,6 +486,23 @@
 				D953FC092A3D6F8000D2C775 /* MLMiniTextFieldSnapshotTests.swift */,
 			);
 			path = TextField;
+			sourceTree = "<group>";
+		};
+		D97D626F2A465B0900A81D6B /* ProductDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				D97D62722A465C5100A81D6B /* Mocks */,
+				D97D62702A465B5300A81D6B /* ProductDetailRepositoryTests.swift */,
+			);
+			path = ProductDetailView;
+			sourceTree = "<group>";
+		};
+		D97D62722A465C5100A81D6B /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				D97D62732A465C5E00A81D6B /* ItemResponseModelMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		E49F96052339107500AC4ECC /* Extras */ = {
@@ -856,12 +878,14 @@
 				C6F0130225FE3F5900BBE3CC /* ProductListViewProtocolMock.swift in Sources */,
 				D94DCC712A3FABF800E559AD /* MLMiniMainCoordinatorSpy.swift in Sources */,
 				C6F0131F25FE955700BBE3CC /* ProductListRepositoryTests.swift in Sources */,
+				D97D62742A465C5E00A81D6B /* ItemResponseModelMock.swift in Sources */,
 				C6F012FD25FE3C4000BBE3CC /* MockSwift.swift in Sources */,
 				D953FBF62A3D452C00D2C775 /* ProductListBuilderTests.swift in Sources */,
 				D953FBF42A3D339800D2C775 /* ProductListCoordinatorTests.swift in Sources */,
 				C6F012F325FE33A700BBE3CC /* MLMiniConstantsTests.swift in Sources */,
 				D953FC0A2A3D6F8000D2C775 /* MLMiniTextFieldSnapshotTests.swift in Sources */,
 				C6F012F825FE3B1B00BBE3CC /* ProductListPresenterTests.swift in Sources */,
+				D97D62712A465B5300A81D6B /* ProductDetailRepositoryTests.swift in Sources */,
 				D953FBFF2A3D558800D2C775 /* MLBaseSnapshotTests.swift in Sources */,
 				D94DCC6F2A3FA0EE00E559AD /* MLMiniMainCoordinatorTests.swift in Sources */,
 				C6F0130625FE41E000BBE3CC /* ProductListRepositorySpy.swift in Sources */,

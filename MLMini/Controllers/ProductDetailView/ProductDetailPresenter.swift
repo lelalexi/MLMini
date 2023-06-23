@@ -36,12 +36,12 @@ class ProductDetailPresenter: ProductDetailPresenterProtocol {
         getItemDescription(itemId: itemId)
     }
     
-    func onGetDataSuccess(model: ItemDescriptionModel) {
+    private func onGetDataSuccess(model: ItemDescriptionModel) {
         view?.updateModelAndReloadData(model: model)
         self.model = model
     }
     
-    func onGetDataError() {
+    private func onGetDataError() {
         //TODO: SHOW THE USER AN ERROR SCREEN
     }
     
