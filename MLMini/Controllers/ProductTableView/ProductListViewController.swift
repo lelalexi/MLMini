@@ -23,7 +23,7 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
         let table = UITableView(frame: .zero)
         table.translatesAutoresizingMaskIntoConstraints = false
         table.isHidden = true
-        table.backgroundColor = .white
+        table.backgroundColor = .primaryBackground
         return table
     }()
     

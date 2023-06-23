@@ -21,7 +21,7 @@ class MainDetailTableViewCell: UITableViewCell {
     }
     
     private func initializeCell(){
-        backgroundColor = UIColor(named: MLMiniConstants.Color.SOFT_GREY)
+        backgroundColor = .softGrey
     }
     
     func configureCell(item: ItemDescriptionModel){

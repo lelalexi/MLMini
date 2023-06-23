@@ -17,7 +17,7 @@ struct MLMiniTextField: View {
               }
         }
           .frame(height: 50)
-          .background(Color.white)
+          .background(Color.primaryBackground)
           .overlay {
              RoundedRectangle(cornerRadius: 8)
                 .stroke(.blue, lineWidth: 2)

@@ -15,11 +15,11 @@ struct PrimaryButton: View {
             Text(label)
                 .font(.title2)
                 .bold()
-                .foregroundColor(.white)
+                .foregroundColor(.primaryBackground)
         }
         .frame(height: 50)
         .frame(maxWidth: .infinity)
-        .background(Color(uiColor: .activeBlue))
+        .background(Color.activeBlue)
         .cornerRadius(8)
     }
 }

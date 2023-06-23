@@ -9,7 +9,6 @@
 import UIKit
 
 class ProductViewCell: UITableViewCell {
-
     @IBOutlet var productTitle: UILabel!
     @IBOutlet var productImage: UIImageView!
     @IBOutlet var productPrice: UILabel!
@@ -24,7 +23,8 @@ class ProductViewCell: UITableViewCell {
     private func initCell(){
         productFavIcon.image = productFavIcon.image?.withRenderingMode(.alwaysTemplate)
         productFavIcon.tintColor = .activeBlue
-        productTitle.textColor = UIColor(named: MLMiniConstants.Color.CLEAR_GREY)
+        productTitle.textColor = .secondaryText
+        productPrice.textColor = .primaryText
         productImage.layer.cornerRadius = 6.0
         productImage.clipsToBounds = true
         freeShippingLabel.isHidden = true
@@ -41,5 +41,4 @@ class ProductViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
 }

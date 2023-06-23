@@ -28,24 +28,24 @@ class BuyDetailTableViewCell: UITableViewCell {
         colorAndQuantiyView.layer.cornerRadius = 4.0
         colorAndQuantiyView.clipsToBounds = true
         
-        itemColor.textColor = UIColor(named: MLMiniConstants.Color.INTERMEDIATE_GREY)
-        itemQuantity.textColor = UIColor(named: MLMiniConstants.Color.INTERMEDIATE_GREY)
+        itemColor.textColor = .intermediateGrey
+        itemQuantity.textColor = .intermediateGrey
         
         itemColorThumbnail.layer.borderWidth = 1.0
-        itemColorThumbnail.layer.borderColor = UIColor(named: MLMiniConstants.Color.INTERMEDIATE_GREY)?.cgColor
+        itemColorThumbnail.layer.borderColor = UIColor.intermediateGrey.cgColor
         itemColorThumbnail.layer.cornerRadius = 2.0
         
-        buyButton.backgroundColor = UIColor(named: MLMiniConstants.Color.ACTIVE_BLUE)
+        buyButton.backgroundColor = .activeBlue
         buyButton.layer.cornerRadius = 4.0
         buyButton.clipsToBounds = true
         
         addToCartButton.backgroundColor = .clear
         addToCartButton.layer.cornerRadius = 4.0
         addToCartButton.clipsToBounds = true
-        addToCartButton.layer.borderColor = UIColor(named: MLMiniConstants.Color.ACTIVE_BLUE)?.cgColor
+        addToCartButton.layer.borderColor = UIColor.activeBlue.cgColor
         addToCartButton.layer.borderWidth = 1.0
         
-        addToCartLabel.textColor = UIColor(named: MLMiniConstants.Color.ACTIVE_BLUE)
+        addToCartLabel.textColor = .activeBlue
         
     }
     

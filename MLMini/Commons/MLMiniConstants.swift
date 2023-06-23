@@ -9,13 +9,6 @@
 import Foundation
 
 struct MLMiniConstants {
-    struct Color {
-        static let ACTIVE_BLUE = "activeBlue"
-        static let ACTIVE_BACKGROUND = "activeBackground"
-        static let SOFT_GREY = "softGrey"
-        static let CLEAR_GREY = "clearGrey"
-        static let INTERMEDIATE_GREY = "intermediateGrey"
-    }
     struct Images {
         static let SEARCH_ICON = "Search"
         static let PLACEHOLDER_ICON = "Placeholder"
