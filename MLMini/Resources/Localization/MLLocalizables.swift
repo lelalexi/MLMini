@@ -21,6 +21,10 @@ struct MLLocalizables {
     struct ProductDetailView {
         static var soldItemsLabel: String { "SoldItemsLabel".localized() }
         static var soldByItemsLabel: String { "SoldByItemsLabel".localized() }
+        static var buyButtonLabel: String { "BuyButtonLabel".localized() }
+        static var addToCartButtonLabel: String { "AddToCartButtonLabel".localized() }
+        static var itemColorLabel: String { "ItemColorLabel".localized() }
+        static var availableItemQuantityLabel: String { "AvailableItemQuantityLabel".localized() }
     }
     
     struct ComponentFeedbackView {

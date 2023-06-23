@@ -135,6 +135,7 @@ extension ProductListViewController {
     func showEmptyView() {
         feedbackView.type = .itemNotFound
         feedbackView.callback = { [unowned self] in
+            // TODO: This Should go on a coordinator
             self.navigationController?.popViewController(animated: true)
         }
         showFeedbackView()

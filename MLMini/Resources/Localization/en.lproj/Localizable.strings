@@ -16,6 +16,10 @@
 // ProductDetail Screen
 "SoldItemsLabel" = "sold";
 "SoldByItemsLabel" = "by";
+"ItemColorLabel" = "Color:";
+"AvailableItemQuantityLabel" = "Quantity:";
+"BuyButtonLabel" = "Buy";
+"AddToCartButtonLabel" = "Add to cart";
 
 // Feedback Screen
 "FeedbackNotFoundTitle" = "We could not find any match for your search";

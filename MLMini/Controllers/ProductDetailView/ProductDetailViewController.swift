@@ -56,7 +56,7 @@ extension ProductDetailViewController: UITableViewDelegate, UITableViewDataSourc
     
     private func initializeDetailTableView(){
         registerTableCells()
-        productDetailTableView.backgroundColor = .softGrey
+        productDetailTableView.backgroundColor = .primaryBackground
         productDetailTableView.delegate = self
         productDetailTableView.dataSource = self
     }
