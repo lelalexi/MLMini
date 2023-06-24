@@ -27,16 +27,8 @@ struct ProductListRepositoryMock {
             ProductResult(id: "01",
                    title: "Headset1",
                    price: 43.0,
-                   availableQuantity: 5,
-                   soldQuantity: 2,
-                   stopTime: "23/05/2021",
-                   permalink: "https:/something.com",
                    thumbnail: "SampleImage",
-                   acceptsMercadopago: true,
-                   shipping: Shipping(freeShipping: true),
-                   originalPrice: 45.40,
-                   officialStoreID: nil,
-                   catalogProductID: nil)
+                   shipping: Shipping(freeShipping: true))
         ]
         
         return ProductListInfraestructureModel(query: "headsets", paging: paging, results: results)
