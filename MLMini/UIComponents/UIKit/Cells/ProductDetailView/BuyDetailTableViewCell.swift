@@ -72,7 +72,7 @@ class BuyDetailTableViewCell: UITableViewCell {
         addToCartLabel.text = MLLocalizables.ProductDetailView.addToCartButtonLabel
     }
     
-    func configureCell(item: ItemDescriptionModel){
+    func configureCell(item: ItemDetailDomainModel){
         itemColorThumbnail.sd_setImage(with: URL(string: item.thumbnail), placeholderImage: MLImage.imagePlaceholder)
     }
 }

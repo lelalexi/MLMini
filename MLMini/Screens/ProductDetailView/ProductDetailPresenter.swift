@@ -10,18 +10,15 @@ import Combine
 import Foundation
 
 protocol ProductDetailPresenterProtocol {
-    
-    var view: ProductDetailViewControllerProtocol? { get set }
-    func viewDidLoad()
-    func onItemIdSetted(itemId: String)
+    func onViewLoaded()
 }
 
 class ProductDetailPresenter: ProductDetailPresenterProtocol {
     
     //MARK: - Properties
-    weak var view: ProductDetailViewControllerProtocol?
+    private weak var view: ProductDetailViewControllerProtocol?
     private let repository: ProductDetailRepositoryProtocol?
-    private var model: ItemDescriptionModel?
+    private var model: ItemDetailDomainModel?
     private var cancellables = Set<AnyCancellable>()
     private let itemId: String
     
@@ -34,15 +31,11 @@ class ProductDetailPresenter: ProductDetailPresenterProtocol {
         self.view = view
     }
     
-    func viewDidLoad() {
+    func onViewLoaded() {
         getItemDescription(itemId: itemId)
     }
     
-    func onItemIdSetted(itemId: String) {
-        getItemDescription(itemId: itemId)
-    }
-    
-    private func onGetDataSuccess(model: ItemDescriptionModel) {
+    private func onGetDataSuccess(model: ItemDetailDomainModel) {
         view?.updateModelAndReloadData(model: model)
         self.model = model
     }

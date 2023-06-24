@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - ItemAPIResponseModel
-struct ItemResponseModel: Codable {
+struct ItemDetailInfraestructureModel: Codable {
     let id, title: String
     let sellerID: Int
     let categoryID: String
@@ -62,13 +62,13 @@ struct ItemResponseModel: Codable {
     }
 }
 //MARK: - ToModel
-extension ItemResponseModel {
-    func toModel() -> ItemDescriptionModel {
+extension ItemDetailInfraestructureModel {
+    func toModel() -> ItemDetailDomainModel {
         var itemImageArray = [String]()
         for pic in pictures{
             itemImageArray.append(pic.url)
         }
-        return ItemDescriptionModel(id: id,
+        return ItemDetailDomainModel(id: id,
                                     price: Double(price),
                                     title: title,
                                     pictures: itemImageArray,
@@ -78,8 +78,8 @@ extension ItemResponseModel {
     }
 }
 
-extension ItemResponseModel: Equatable {
-    static func == (lhs: ItemResponseModel, rhs: ItemResponseModel) -> Bool {
+extension ItemDetailInfraestructureModel: Equatable {
+    static func == (lhs: ItemDetailInfraestructureModel, rhs: ItemDetailInfraestructureModel) -> Bool {
         return lhs.id == rhs.id
     }
 }

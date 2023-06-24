@@ -10,7 +10,7 @@ import Combine
 import Foundation
 
 protocol ProductDetailRepositoryProtocol {
-    func getItemDescription(itemId: String) -> AnyPublisher<ItemResponseModel, NetworkError>
+    func getItemDescription(itemId: String) -> AnyPublisher<ItemDetailInfraestructureModel, NetworkError>
 }
 
 class ProductDetailRepository: ProductDetailRepositoryProtocol {
@@ -24,7 +24,7 @@ class ProductDetailRepository: ProductDetailRepositoryProtocol {
         self.service = service
     }
     
-    func getItemDescription(itemId: String) -> AnyPublisher<ItemResponseModel, NetworkError> {
+    func getItemDescription(itemId: String) -> AnyPublisher<ItemDetailInfraestructureModel, NetworkError> {
         let endpoint = MLEndpoint(path: MLPath(path: Constants.ML_MLA_DETAIL_PRODUCT_PATH + itemId, parameters: [:]))
         return service.performRequest(endpoint: endpoint)
     }

@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 
 protocol ProductDetailViewControllerProtocol: AnyObject {
-    func updateModelAndReloadData(model: ItemDescriptionModel)
+    func updateModelAndReloadData(model: ItemDetailDomainModel)
 }
 // swiftlint: disable implicitly_unwrapped_optional
 class ProductDetailViewController: UIViewController, UICollectionViewDelegateFlowLayout {
@@ -22,7 +22,7 @@ class ProductDetailViewController: UIViewController, UICollectionViewDelegateFlo
     var presenter: ProductDetailPresenterProtocol?
     internal var collectionFlowLayout: UICollectionViewFlowLayout!
     private var images: [String]?
-    var model: ItemDescriptionModel?
+    var model: ItemDetailDomainModel?
     
     struct Constants {
         static let DETAIL_MAIN_TABLE_VIEW_CELL = "MainDetailTableViewCell"
@@ -42,14 +42,14 @@ class ProductDetailViewController: UIViewController, UICollectionViewDelegateFlo
         setupNavBarAppearance()
         initializeDetailTableView()
         initialiceCollectionView()
-        presenter?.viewDidLoad()
+        presenter?.onViewLoaded()
     }
 }
 
 // MARK: - Protocol
 extension ProductDetailViewController: ProductDetailViewControllerProtocol {
     
-    func updateModelAndReloadData(model: ItemDescriptionModel) {
+    func updateModelAndReloadData(model: ItemDetailDomainModel) {
         self.model = model
         productDetailCarrouselCollectionView.reloadData()
         productDetailTableView.reloadData()

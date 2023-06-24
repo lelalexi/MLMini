@@ -1,5 +1,5 @@
 //
-//  ProductDetailDomainModel.swift
+//  ItemDetailDomainModel.swift
 //  MLMini
 //
 //  Created by Alexis Garcia on 16/09/2020.
@@ -14,7 +14,7 @@ struct ItemModel {
     let freeShipping: Bool
 }
 
-struct ItemDescriptionModel {
+struct ItemDetailDomainModel {
     let id: String
     let price: Double
     let title: String

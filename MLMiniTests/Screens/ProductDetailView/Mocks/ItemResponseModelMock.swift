@@ -10,8 +10,8 @@ import Foundation
 @testable import MLMini
 
 struct ItemResponseModelMock {
-    static func resolveModel() -> ItemResponseModel {
-        ItemResponseModel(id: "Some ID",
+    static func resolveModel() -> ItemDetailInfraestructureModel {
+        ItemDetailInfraestructureModel(id: "Some ID",
                           title: "Some Title",
                           sellerID: 43847,
                           categoryID: "Some Category",
