@@ -29,8 +29,12 @@ class APIResponseModel: Codable {
                         thumbnail: resp.thumbnail,
                         freeShipping: resp.shipping?.freeShipping ?? false)
         } else {
-            return ItemModel(id: "", price: 0, title: "", thumbnail: MLMiniConstants.Images.PLACEHOLDER_ICON, freeShipping: false)
+            return getDefaultModel()
         }
+    }
+    
+    private func getDefaultModel() -> ItemModel {
+        return ItemModel(id: "", price: 0, title: "", thumbnail: "Placeholder", freeShipping: false)
     }
 }
 

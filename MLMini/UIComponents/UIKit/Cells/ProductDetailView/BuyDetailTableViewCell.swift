@@ -73,6 +73,6 @@ class BuyDetailTableViewCell: UITableViewCell {
     }
     
     func configureCell(item: ItemDescriptionModel){
-        itemColorThumbnail.sd_setImage(with: URL(string: item.thumbnail), placeholderImage: UIImage(named: MLMiniConstants.Images.PLACEHOLDER_ICON))
+        itemColorThumbnail.sd_setImage(with: URL(string: item.thumbnail), placeholderImage: MLImage.imagePlaceholder)
     }
 }
