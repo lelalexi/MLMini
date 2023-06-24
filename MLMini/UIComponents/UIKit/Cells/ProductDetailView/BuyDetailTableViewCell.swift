@@ -61,6 +61,7 @@ class BuyDetailTableViewCell: UITableViewCell {
         
         buyButtonLabel.textColor = .invertedText
         buyButtonLabel.text = MLLocalizables.ProductDetailView.buyButtonLabel
+        buyButtonLabel.font = UIFont(name: "Avenir-Medium", size: 20)
         
         addToCartButton.backgroundColor = .clear
         addToCartButton.layer.cornerRadius = 4.0
@@ -70,6 +71,7 @@ class BuyDetailTableViewCell: UITableViewCell {
         
         addToCartLabel.textColor = .activeBlue
         addToCartLabel.text = MLLocalizables.ProductDetailView.addToCartButtonLabel
+        addToCartLabel.font = UIFont(name: "Avenir-Medium", size: 20)
     }
     
     func configureCell(item: ItemDetailDomainModel){

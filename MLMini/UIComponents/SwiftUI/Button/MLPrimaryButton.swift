@@ -13,7 +13,7 @@ struct PrimaryButton: View {
             onButtonTapped()
         } label: {
             Text(label)
-                .font(.custom("Avenir-Heavy", size: 20))
+                .font(.custom("Avenir-Medium", size: 20))
                 .multilineTextAlignment(.center)
                 .lineLimit(1)
                 .foregroundColor(.invertedText)
@@ -31,6 +31,7 @@ struct PrimaryButton_Previews: PreviewProvider {
         PrimaryButton(label: MLLocalizables.SearchView.buttonTitle) {
             print("Button Was Pressed")
         }
+        .previewLayout(.sizeThatFits)
         .padding()
     }
 }
