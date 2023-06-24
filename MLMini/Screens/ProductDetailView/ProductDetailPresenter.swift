@@ -10,33 +10,32 @@ import Combine
 import Foundation
 
 protocol ProductDetailPresenterProtocol {
-    
-    var view: ProductDetailViewControllerProtocol? { get set }
-    func viewDidLoad()
-    func onItemIdSetted(itemId: String)
+    func onViewLoaded()
 }
 
 class ProductDetailPresenter: ProductDetailPresenterProtocol {
     
     //MARK: - Properties
-    weak var view: ProductDetailViewControllerProtocol?
+    private weak var view: ProductDetailViewControllerProtocol?
     private let repository: ProductDetailRepositoryProtocol?
-    var model: ItemDescriptionModel?
+    private var model: ItemDetailDomainModel?
     private var cancellables = Set<AnyCancellable>()
+    private let itemId: String
     
     //MARK: - Initializers
-    required init(repository: ProductDetailRepositoryProtocol) {
+    required init(repository: ProductDetailRepositoryProtocol,
+                  view: ProductDetailViewControllerProtocol,
+                  itemId: String) {
         self.repository = repository
+        self.itemId = itemId
+        self.view = view
     }
     
-    func viewDidLoad() {
-    }
-    
-    func onItemIdSetted(itemId: String) {
+    func onViewLoaded() {
         getItemDescription(itemId: itemId)
     }
     
-    private func onGetDataSuccess(model: ItemDescriptionModel) {
+    private func onGetDataSuccess(model: ItemDetailDomainModel) {
         view?.updateModelAndReloadData(model: model)
         self.model = model
     }

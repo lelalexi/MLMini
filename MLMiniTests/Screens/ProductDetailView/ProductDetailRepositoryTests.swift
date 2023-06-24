@@ -14,11 +14,11 @@ import Nimble
 class ProductDetailRepositoryTests: QuickSpec {
     override func spec() {
         describe("ProductDetailRepositoryTests") {
-            var serviceMock: ServiceManagerMock<ItemResponseModel>!
+            var serviceMock: ServiceManagerMock<ItemDetailInfraestructureModel>!
             var SUT: ProductDetailRepositoryProtocol!
 
             beforeEach {
-                serviceMock = ServiceManagerMock<ItemResponseModel>()
+                serviceMock = ServiceManagerMock<ItemDetailInfraestructureModel>()
                 serviceMock.errorType = .someError
                 SUT = ProductDetailRepository(serviceMock)
             }

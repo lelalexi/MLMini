@@ -14,11 +14,11 @@ import Nimble
 class ProductListRepositoryTests: QuickSpec {
     override func spec() {
         describe("ProductListRepositoryTests") {
-            var serviceMock: ServiceManagerMock<APIResponseModel>!
+            var serviceMock: ServiceManagerMock<ProductListInfraestructureModel>!
             var SUT: ProductListRepositoryProtocol!
 
             beforeEach {
-                serviceMock = ServiceManagerMock<APIResponseModel>()
+                serviceMock = ServiceManagerMock<ProductListInfraestructureModel>()
                 serviceMock.errorType = .someError
                 SUT = ProductListRepository(serviceMock)
             }

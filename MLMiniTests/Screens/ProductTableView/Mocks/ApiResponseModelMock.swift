@@ -14,7 +14,7 @@ enum ApiResponseTestCase: String {
     case emptyResults = "empty_results"
 }
 struct ApiResponseModelMock {
-    static func resolveModel(testCase: ApiResponseTestCase = .normal) -> APIResponseModel {
+    static func resolveModel(testCase: ApiResponseTestCase = .normal) -> ProductListInfraestructureModel {
         switch testCase {
         case .normal:
             return ProductListRepositoryMock.normalApiModel()

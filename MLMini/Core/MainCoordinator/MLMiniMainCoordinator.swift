@@ -21,7 +21,7 @@ protocol ProductDetailCoordinatorProtocol: AnyObject {
 }
 
 protocol Coordinator: AnyObject {
-    var navController: UINavigationController { get set }
+    var navController: UINavigationController { get }
     
     func start()
 }
@@ -51,9 +51,7 @@ class MLMiniMainCoordinator: Coordinator,
     }
     
     func navigateToProductDetail(itemId: String) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let productDetailVC = storyboard.instantiateViewController(withIdentifier: "ProductDetailViewControllerID") as! ProductDetailViewController
-        productDetailVC.itemId = itemId
+        let productDetailVC = ProductDetailBuilder().getView(forItemId: itemId)
         navController.pushViewController(productDetailVC, animated: true)
     }
 }

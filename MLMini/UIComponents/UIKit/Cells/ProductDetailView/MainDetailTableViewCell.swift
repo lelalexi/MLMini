@@ -35,7 +35,7 @@ class MainDetailTableViewCell: UITableViewCell {
         seller.textColor = .secondaryText
     }
     
-    func configureCell(item: ItemDescriptionModel){
+    func configureCell(item: ItemDetailDomainModel){
         title.text = item.title
         price.text = "$ " + String(item.price.formattedWithSeparator)
         soldItems.text = String(item.soldQuantity) + " " + MLLocalizables.ProductDetailView.soldItemsLabel

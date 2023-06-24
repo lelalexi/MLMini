@@ -15,10 +15,14 @@ protocol ProductListViewControllerProtocol: AnyObject {
     func showEmptyView()
     func showErrorView()
     func reloadView()
-    func fillList(model: APIResponseModel)
+    func fillList(model: ProductListInfraestructureModel)
 }
 
 class ProductListViewController: UIViewController, ProductListViewControllerProtocol {
+    private struct Constants {
+        static let PRODUCT_VIEW_CELL = "ProductViewCell"
+    }
+    
     private lazy var productTableView: UITableView = {
         let table = UITableView(frame: .zero)
         table.translatesAutoresizingMaskIntoConstraints = false
@@ -34,7 +38,7 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
     }()
     
     private var presenter: ProductListPresenterProtocol?
-    private var model: APIResponseModel? //The view should not have a model reference
+    private var model: ProductListInfraestructureModel? //The view should not have a model reference
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
             return .darkContent
@@ -58,7 +62,7 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
         presenter?.viewDidLoad()
     }
 
-    func fillList(model: APIResponseModel) {
+    func fillList(model: ProductListInfraestructureModel) {
         self.model = model
         reloadView()
     }
@@ -105,8 +109,8 @@ extension ProductListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     private func registerTableCells(){
-        let productCell = UINib(nibName: MLMiniConstants.Xibs.PRODUCT_VIEW_CELL, bundle: nil)
-        productTableView.register(productCell, forCellReuseIdentifier: MLMiniConstants.Xibs.PRODUCT_VIEW_CELL)
+        let productCell = UINib(nibName: Constants.PRODUCT_VIEW_CELL, bundle: nil)
+        productTableView.register(productCell, forCellReuseIdentifier: Constants.PRODUCT_VIEW_CELL)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -114,7 +118,7 @@ extension ProductListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = productTableView.dequeueReusableCell(withIdentifier: MLMiniConstants.Xibs.PRODUCT_VIEW_CELL, for: indexPath) as? ProductViewCell, let model = model else { return UITableViewCell() }
+        guard let cell = productTableView.dequeueReusableCell(withIdentifier: Constants.PRODUCT_VIEW_CELL, for: indexPath) as? ProductViewCell, let model = model else { return UITableViewCell() }
         let item = model.itemAt(index: indexPath.row)
         cell.configureCell(item: item)
         return cell

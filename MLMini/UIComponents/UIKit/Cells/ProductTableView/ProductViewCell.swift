@@ -50,10 +50,10 @@ class ProductViewCell: UITableViewCell {
         productFavIcon.tintColor = .activeBlue
     }
     
-    func configureCell(item: ItemModel){
+    func configureCell(item: ItemRowDomainModel){
         productTitle.text = item.title
         productPrice.text = "$ " + String(item.price.formattedWithSeparator)
-        productImage.sd_setImage(with: URL(string: item.thumbnail), placeholderImage: UIImage(named: MLMiniConstants.Images.PLACEHOLDER_ICON))
+        productImage.sd_setImage(with: URL(string: item.thumbnail), placeholderImage: MLImage.imagePlaceholder)
         freeShippingLabel.isHidden = !item.freeShipping
     }
 

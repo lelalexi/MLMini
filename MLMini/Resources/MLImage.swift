@@ -16,6 +16,7 @@ struct MLImage {
         static let FAV_ICON = "FavIcon"
         static let MELI_LOGO = "MLLogo"
         static let ATTENTION_MAGNIFIER_GLASSES = "AttentionMagnifierglasses"
+        static let IMAGE_PLACEHOLDER = "Placeholder"
     }
     
     // Icons
@@ -30,6 +31,8 @@ struct MLImage {
     static let SUIdamagedPackage: Image = Image(uiImage: damagedPackage)
     static let attentionMagnifierglasses: UIImage = image(named: ConstantsNames.ATTENTION_MAGNIFIER_GLASSES)
     static let SUIAttentionMagnifierglasses: Image = Image(uiImage: attentionMagnifierglasses)
+    static let imagePlaceholder: UIImage = image(named: ConstantsNames.IMAGE_PLACEHOLDER)
+    static let SUIImagePlaceholder: Image = Image(uiImage: imagePlaceholder)
     
     private static func image(named: String) -> UIImage {
         return UIImage(named: named) ?? UIImage()
