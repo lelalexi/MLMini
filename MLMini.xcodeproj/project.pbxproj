@@ -337,7 +337,7 @@
 		D953FBCF2A36C46E00D2C775 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				D953FBDF2A3AA24E00D2C775 /* GenericErrorScreen */,
+				D953FBDF2A3AA24E00D2C775 /* GenericFeedbackScreen */,
 				E4D052AB2333B4CE009B4EDB /* Cells */,
 			);
 			path = UIKit;
@@ -369,14 +369,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		D953FBDF2A3AA24E00D2C775 /* GenericErrorScreen */ = {
+		D953FBDF2A3AA24E00D2C775 /* GenericFeedbackScreen */ = {
 			isa = PBXGroup;
 			children = (
 				D953FBD82A37E49500D2C775 /* MLGenericFeedbackScreenComponent.swift */,
 				D953FBE02A3ABDAA00D2C775 /* MLGenericFeedbackScreenFactory.swift */,
 				D953FBE22A3BC75A00D2C775 /* MLGenericFeedbackModel.swift */,
 			);
-			path = GenericErrorScreen;
+			path = GenericFeedbackScreen;
 			sourceTree = "<group>";
 		};
 		D953FBE42A3BFBF100D2C775 /* NetworkService */ = {
@@ -403,17 +403,17 @@
 		D953FBF82A3D49CC00D2C775 /* UIkit */ = {
 			isa = PBXGroup;
 			children = (
-				D953FBF92A3D49D300D2C775 /* GenericErrorScreen */,
+				D953FBF92A3D49D300D2C775 /* GenericFeedbackScreen */,
 			);
 			path = UIkit;
 			sourceTree = "<group>";
 		};
-		D953FBF92A3D49D300D2C775 /* GenericErrorScreen */ = {
+		D953FBF92A3D49D300D2C775 /* GenericFeedbackScreen */ = {
 			isa = PBXGroup;
 			children = (
 				D953FBFA2A3D4A1100D2C775 /* MLGenericFeedbackScreenComponentSnapshotTests.swift */,
 			);
-			path = GenericErrorScreen;
+			path = GenericFeedbackScreen;
 			sourceTree = "<group>";
 		};
 		D953FBFC2A3D556D00D2C775 /* Utils */ = {
