@@ -13,8 +13,9 @@ struct PrimaryButton: View {
             onButtonTapped()
         } label: {
             Text(label)
-                .font(.title2)
-                .bold()
+                .font(.custom("Avenir-Heavy", size: 20))
+                .multilineTextAlignment(.center)
+                .lineLimit(1)
                 .foregroundColor(.invertedText)
         }
         .frame(height: 50)
@@ -23,3 +24,14 @@ struct PrimaryButton: View {
         .cornerRadius(8)
     }
 }
+
+// swiftlint: disable no_direct_standard_out_logs
+struct PrimaryButton_Previews: PreviewProvider {
+    static var previews: some View {
+        PrimaryButton(label: MLLocalizables.SearchView.buttonTitle) {
+            print("Button Was Pressed")
+        }
+        .padding()
+    }
+}
+// swiftlint: enable no_direct_standard_out_logs
