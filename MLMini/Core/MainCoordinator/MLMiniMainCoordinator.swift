@@ -31,8 +31,8 @@ class MLMiniMainCoordinator: Coordinator,
                              ProductListCoordinatorProtocol,
                              ProductDetailCoordinatorProtocol {
     private struct Constants {
-        static let STORYBOARD_NAME = "/items/"
-        static let STORYBOARD_PRODUCT_DETAIL_VC_XIB_NAME = "/items/"
+        static let STORYBOARD_NAME = "Main"
+        static let STORYBOARD_PRODUCT_DETAIL_VC_XIB_NAME = "ProductDetailViewControllerID"
     }
     var navController: UINavigationController
     
