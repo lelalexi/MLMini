@@ -6,14 +6,6 @@
 //  Copyright © 2020 ale. All rights reserved.
 //
 
-struct ItemModel {
-    let id: String
-    let price: Double
-    let title: String
-    let thumbnail: String
-    let freeShipping: Bool
-}
-
 struct ItemDetailDomainModel {
     let id: String
     let price: Double

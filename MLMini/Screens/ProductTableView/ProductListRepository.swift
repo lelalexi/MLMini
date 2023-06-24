@@ -10,7 +10,7 @@ import Combine
 import Foundation
  
 protocol ProductListRepositoryProtocol {
-    func getProductListData(productName: String) -> AnyPublisher<APIResponseModel, NetworkError>
+    func getProductListData(productName: String) -> AnyPublisher<ProductListInfraestructureModel, NetworkError>
 }
 
 class ProductListRepository: ProductListRepositoryProtocol {
@@ -26,7 +26,7 @@ class ProductListRepository: ProductListRepositoryProtocol {
         self.service = service
     }
     
-    func getProductListData(productName: String) -> AnyPublisher<APIResponseModel, NetworkError> {
+    func getProductListData(productName: String) -> AnyPublisher<ProductListInfraestructureModel, NetworkError> {
         let parameters = [Constants.ML_QUERY_PARAM: productName]
         let endpoint = MLEndpoint(path: MLPath(path: Constants.ML_MLA_PRODUCT_PATH, parameters: parameters))
         return service.performRequest(endpoint: endpoint)

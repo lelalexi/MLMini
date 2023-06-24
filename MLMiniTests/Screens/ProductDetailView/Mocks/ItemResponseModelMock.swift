@@ -16,7 +16,6 @@ struct ItemResponseModelMock {
                           sellerID: 43847,
                           categoryID: "Some Category",
                           price: 23.45,
-                          initialQuantity: 2,
                           availableQuantity: 1,
                           soldQuantity: 1,
                           condition: "New",

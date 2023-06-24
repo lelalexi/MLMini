@@ -21,7 +21,7 @@ class ProductListPresenter: ProductListPresenterProtocol {
     //MARK: - Properties
     weak var view: ProductListViewControllerProtocol?
     private let repository: ProductListRepositoryProtocol
-    private var model: APIResponseModel?
+    private var model: ProductListInfraestructureModel?
     private var productToSearch: String = ""
     private var cancellables = Set<AnyCancellable>()
     private weak var coordinator: ProductDetailCoordinatorProtocol?
@@ -50,7 +50,7 @@ class ProductListPresenter: ProductListPresenterProtocol {
         searchForItem()
     }
     
-    private func onGetDataSuccess(model: APIResponseModel) {
+    private func onGetDataSuccess(model: ProductListInfraestructureModel) {
         view?.removeSpinnerView()
         if model.isEmpty() {
             view?.showEmptyView()

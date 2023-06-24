@@ -50,7 +50,7 @@ class ProductViewCell: UITableViewCell {
         productFavIcon.tintColor = .activeBlue
     }
     
-    func configureCell(item: ItemModel){
+    func configureCell(item: ItemRowDomainModel){
         productTitle.text = item.title
         productPrice.text = "$ " + String(item.price.formattedWithSeparator)
         productImage.sd_setImage(with: URL(string: item.thumbnail), placeholderImage: MLImage.imagePlaceholder)

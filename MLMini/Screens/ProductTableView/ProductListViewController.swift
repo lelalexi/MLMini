@@ -15,7 +15,7 @@ protocol ProductListViewControllerProtocol: AnyObject {
     func showEmptyView()
     func showErrorView()
     func reloadView()
-    func fillList(model: APIResponseModel)
+    func fillList(model: ProductListInfraestructureModel)
 }
 
 class ProductListViewController: UIViewController, ProductListViewControllerProtocol {
@@ -38,7 +38,7 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
     }()
     
     private var presenter: ProductListPresenterProtocol?
-    private var model: APIResponseModel? //The view should not have a model reference
+    private var model: ProductListInfraestructureModel? //The view should not have a model reference
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
             return .darkContent
@@ -62,7 +62,7 @@ class ProductListViewController: UIViewController, ProductListViewControllerProt
         presenter?.viewDidLoad()
     }
 
-    func fillList(model: APIResponseModel) {
+    func fillList(model: ProductListInfraestructureModel) {
         self.model = model
         reloadView()
     }

@@ -10,6 +10,7 @@ import UIKit
 import SDWebImage
 
 protocol ProductDetailViewControllerProtocol: AnyObject {
+    var presenter: ProductDetailPresenterProtocol? { get set }
     func updateModelAndReloadData(model: ItemDetailDomainModel)
 }
 // swiftlint: disable implicitly_unwrapped_optional
