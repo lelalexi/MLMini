@@ -21,7 +21,7 @@ protocol ProductDetailCoordinatorProtocol: AnyObject {
 }
 
 protocol Coordinator: AnyObject {
-    var navController: UINavigationController { get set }
+    var navController: UINavigationController { get }
     
     func start()
 }
@@ -30,6 +30,10 @@ class MLMiniMainCoordinator: Coordinator,
                              SearchViewCoordinatorProtocol,
                              ProductListCoordinatorProtocol,
                              ProductDetailCoordinatorProtocol {
+    private struct Constants {
+        static let STORYBOARD_NAME = "/items/"
+        static let STORYBOARD_PRODUCT_DETAIL_VC_XIB_NAME = "/items/"
+    }
     var navController: UINavigationController
     
     init(navController: UINavigationController) {
@@ -51,8 +55,8 @@ class MLMiniMainCoordinator: Coordinator,
     }
     
     func navigateToProductDetail(itemId: String) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let productDetailVC = storyboard.instantiateViewController(withIdentifier: "ProductDetailViewControllerID") as! ProductDetailViewController
+        let storyboard = UIStoryboard(name: Constants.STORYBOARD_NAME, bundle: nil)
+        let productDetailVC = storyboard.instantiateViewController(withIdentifier: Constants.STORYBOARD_PRODUCT_DETAIL_VC_XIB_NAME) as! ProductDetailViewController
         productDetailVC.itemId = itemId
         navController.pushViewController(productDetailVC, animated: true)
     }

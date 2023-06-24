@@ -529,7 +529,7 @@
 				D953FBCD2A36C44900D2C775 /* UIComponents */,
 				E49F96052339107500AC4ECC /* Extras */,
 				E4D052AE2333CE51009B4EDB /* Extensions */,
-				E4D052AA2333B4AE009B4EDB /* Controllers */,
+				E4D052AA2333B4AE009B4EDB /* Screens */,
 				E4D05295233304F8009B4EDB /* Services */,
 				E4D0525A23325388009B4EDB /* AppDelegate.swift */,
 				E4D0525E23325388009B4EDB /* Main.storyboard */,
@@ -557,14 +557,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E4D052AA2333B4AE009B4EDB /* Controllers */ = {
+		E4D052AA2333B4AE009B4EDB /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				E4D5D34D2336BFD700883E8A /* ProductDetailView */,
 				E4D5D34C2336BFC100883E8A /* ProductTableView */,
 				E4D5D34B2336BFAD00883E8A /* SeachView */,
 			);
-			path = Controllers;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		E4D052AB2333B4CE009B4EDB /* Cells */ = {
