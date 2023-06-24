@@ -21,15 +21,21 @@ class ProductDetailPresenter: ProductDetailPresenterProtocol {
     //MARK: - Properties
     weak var view: ProductDetailViewControllerProtocol?
     private let repository: ProductDetailRepositoryProtocol?
-    var model: ItemDescriptionModel?
+    private var model: ItemDescriptionModel?
     private var cancellables = Set<AnyCancellable>()
+    private let itemId: String
     
     //MARK: - Initializers
-    required init(repository: ProductDetailRepositoryProtocol) {
+    required init(repository: ProductDetailRepositoryProtocol,
+                  view: ProductDetailViewControllerProtocol,
+                  itemId: String) {
         self.repository = repository
+        self.itemId = itemId
+        self.view = view
     }
     
     func viewDidLoad() {
+        getItemDescription(itemId: itemId)
     }
     
     func onItemIdSetted(itemId: String) {

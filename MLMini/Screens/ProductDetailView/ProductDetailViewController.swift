@@ -19,11 +19,10 @@ class ProductDetailViewController: UIViewController, UICollectionViewDelegateFlo
     @IBOutlet weak var productDetailCarrouselCollectionView: UICollectionView!
     
     //MARK: - Properties
-    private var presenter: ProductDetailPresenterProtocol?
+    var presenter: ProductDetailPresenterProtocol?
     internal var collectionFlowLayout: UICollectionViewFlowLayout!
     private var images: [String]?
     var model: ItemDescriptionModel?
-    var itemId = ""
     
     struct Constants {
         static let DETAIL_MAIN_TABLE_VIEW_CELL = "MainDetailTableViewCell"
@@ -40,13 +39,10 @@ class ProductDetailViewController: UIViewController, UICollectionViewDelegateFlo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = ProductDetailPresenter(repository: ProductDetailRepository.init(NetworkServiceManager()))
-        presenter?.view = self
         setupNavBarAppearance()
         initializeDetailTableView()
         initialiceCollectionView()
         presenter?.viewDidLoad()
-        presenter?.onItemIdSetted(itemId: itemId)
     }
 }
 

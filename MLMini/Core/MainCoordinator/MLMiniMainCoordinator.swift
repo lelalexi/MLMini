@@ -30,10 +30,6 @@ class MLMiniMainCoordinator: Coordinator,
                              SearchViewCoordinatorProtocol,
                              ProductListCoordinatorProtocol,
                              ProductDetailCoordinatorProtocol {
-    private struct Constants {
-        static let STORYBOARD_NAME = "Main"
-        static let STORYBOARD_PRODUCT_DETAIL_VC_XIB_NAME = "ProductDetailViewControllerID"
-    }
     var navController: UINavigationController
     
     init(navController: UINavigationController) {
@@ -55,9 +51,7 @@ class MLMiniMainCoordinator: Coordinator,
     }
     
     func navigateToProductDetail(itemId: String) {
-        let storyboard = UIStoryboard(name: Constants.STORYBOARD_NAME, bundle: nil)
-        let productDetailVC = storyboard.instantiateViewController(withIdentifier: Constants.STORYBOARD_PRODUCT_DETAIL_VC_XIB_NAME) as! ProductDetailViewController
-        productDetailVC.itemId = itemId
+        let productDetailVC = ProductDetailBuilder().getView(forItemId: itemId)
         navController.pushViewController(productDetailVC, animated: true)
     }
 }
