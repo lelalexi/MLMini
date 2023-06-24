@@ -25,6 +25,15 @@ class ProductDetailViewController: UIViewController, UICollectionViewDelegateFlo
     var model: ItemDescriptionModel?
     var itemId = ""
     
+    struct Constants {
+        static let DETAIL_MAIN_TABLE_VIEW_CELL = "MainDetailTableViewCell"
+        static let DETAIL_BUY_TABLE_VIEW_CELL = "BuyDetailTableViewCell"
+        static let DETAIL_PRODUCT_IMAGE_CELL = "ProductImageCell"
+        static let TOTAL_NUMBER_OF_CELLS_IN_DETAIL_SCREEN = 2
+        static let MAIN_TABLEVIEW_CELL_POSITION = 0
+        static let BUY_TABLEVIEW_CELL_POSITION = 1
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
             return .darkContent
     }
@@ -63,27 +72,27 @@ extension ProductDetailViewController: UITableViewDelegate, UITableViewDataSourc
     
     private func registerTableCells(){
         // Main cell
-        let detailCell = UINib(nibName: MLMiniConstants.Xibs.DETAIL_MAIN_TABLE_VIEW_CELL, bundle: nil)
-        productDetailTableView.register(detailCell, forCellReuseIdentifier: MLMiniConstants.Xibs.DETAIL_MAIN_TABLE_VIEW_CELL)
+        let detailCell = UINib(nibName: Constants.DETAIL_MAIN_TABLE_VIEW_CELL, bundle: nil)
+        productDetailTableView.register(detailCell, forCellReuseIdentifier: Constants.DETAIL_MAIN_TABLE_VIEW_CELL)
         
         //Buy cell
-        let buyCell = UINib(nibName: MLMiniConstants.Xibs.DETAIL_BUY_TABLE_VIEW_CELL, bundle: nil)
-        productDetailTableView.register(buyCell, forCellReuseIdentifier: MLMiniConstants.Xibs.DETAIL_BUY_TABLE_VIEW_CELL)
+        let buyCell = UINib(nibName: Constants.DETAIL_BUY_TABLE_VIEW_CELL, bundle: nil)
+        productDetailTableView.register(buyCell, forCellReuseIdentifier: Constants.DETAIL_BUY_TABLE_VIEW_CELL)
         
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return Constants.TOTAL_NUMBER_OF_CELLS_IN_DETAIL_SCREEN
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
-        case 0:
-            guard let cell = productDetailTableView.dequeueReusableCell(withIdentifier: MLMiniConstants.Xibs.DETAIL_MAIN_TABLE_VIEW_CELL, for: indexPath) as? MainDetailTableViewCell, let model = model else { return UITableViewCell() }
+        case Constants.MAIN_TABLEVIEW_CELL_POSITION:
+            guard let cell = productDetailTableView.dequeueReusableCell(withIdentifier: Constants.DETAIL_MAIN_TABLE_VIEW_CELL, for: indexPath) as? MainDetailTableViewCell, let model = model else { return UITableViewCell() }
             cell.configureCell(item: model)
             return cell
-        case 1:
-            guard let cell = productDetailTableView.dequeueReusableCell(withIdentifier: MLMiniConstants.Xibs.DETAIL_BUY_TABLE_VIEW_CELL, for: indexPath) as? BuyDetailTableViewCell, let model = model else { return UITableViewCell() }
+        case Constants.BUY_TABLEVIEW_CELL_POSITION:
+            guard let cell = productDetailTableView.dequeueReusableCell(withIdentifier: Constants.DETAIL_BUY_TABLE_VIEW_CELL, for: indexPath) as? BuyDetailTableViewCell, let model = model else { return UITableViewCell() }
             cell.configureCell(item: model)
             return cell
         default:

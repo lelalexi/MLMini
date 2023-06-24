@@ -14,6 +14,10 @@ protocol ProductDetailRepositoryProtocol {
 }
 
 class ProductDetailRepository: ProductDetailRepositoryProtocol {
+    private struct Constants {
+        static let ML_MLA_DETAIL_PRODUCT_PATH = "/items/"
+    }
+
     private let service: ServiceManagerProtocol
     
     required init(_ service: ServiceManagerProtocol){
@@ -21,7 +25,7 @@ class ProductDetailRepository: ProductDetailRepositoryProtocol {
     }
     
     func getItemDescription(itemId: String) -> AnyPublisher<ItemResponseModel, NetworkError> {
-        let endpoint = MLEndpoint(path: MLPath(path: MLMiniConstants.API.ML_MLA_DETAIL_PRODUCT_PATH + itemId, parameters: [:]))
+        let endpoint = MLEndpoint(path: MLPath(path: Constants.ML_MLA_DETAIL_PRODUCT_PATH + itemId, parameters: [:]))
         return service.performRequest(endpoint: endpoint)
     }
 }

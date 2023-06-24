@@ -19,6 +19,10 @@ protocol ProductListViewControllerProtocol: AnyObject {
 }
 
 class ProductListViewController: UIViewController, ProductListViewControllerProtocol {
+    private struct Constants {
+        static let PRODUCT_VIEW_CELL = "ProductViewCell"
+    }
+    
     private lazy var productTableView: UITableView = {
         let table = UITableView(frame: .zero)
         table.translatesAutoresizingMaskIntoConstraints = false
@@ -105,8 +109,8 @@ extension ProductListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     private func registerTableCells(){
-        let productCell = UINib(nibName: MLMiniConstants.Xibs.PRODUCT_VIEW_CELL, bundle: nil)
-        productTableView.register(productCell, forCellReuseIdentifier: MLMiniConstants.Xibs.PRODUCT_VIEW_CELL)
+        let productCell = UINib(nibName: Constants.PRODUCT_VIEW_CELL, bundle: nil)
+        productTableView.register(productCell, forCellReuseIdentifier: Constants.PRODUCT_VIEW_CELL)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -114,7 +118,7 @@ extension ProductListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = productTableView.dequeueReusableCell(withIdentifier: MLMiniConstants.Xibs.PRODUCT_VIEW_CELL, for: indexPath) as? ProductViewCell, let model = model else { return UITableViewCell() }
+        guard let cell = productTableView.dequeueReusableCell(withIdentifier: Constants.PRODUCT_VIEW_CELL, for: indexPath) as? ProductViewCell, let model = model else { return UITableViewCell() }
         let item = model.itemAt(index: indexPath.row)
         cell.configureCell(item: item)
         return cell

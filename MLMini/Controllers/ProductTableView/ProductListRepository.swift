@@ -14,6 +14,10 @@ protocol ProductListRepositoryProtocol {
 }
 
 class ProductListRepository: ProductListRepositoryProtocol {
+    private struct Constants {
+        static let ML_MLA_PRODUCT_PATH = "/sites/MLA/search"
+        static let ML_QUERY_PARAM = "q"
+    }
     
     // MARK: - Properties
     private let service: ServiceManagerProtocol
@@ -23,8 +27,8 @@ class ProductListRepository: ProductListRepositoryProtocol {
     }
     
     func getProductListData(productName: String) -> AnyPublisher<APIResponseModel, NetworkError> {
-        let parameters = [MLMiniConstants.API.ML_QUERY_PARAM: productName]
-        let endpoint = MLEndpoint(path: MLPath(path: MLMiniConstants.API.ML_MLA_PRODUCT_PATH, parameters: parameters))
+        let parameters = [Constants.ML_QUERY_PARAM: productName]
+        let endpoint = MLEndpoint(path: MLPath(path: Constants.ML_MLA_PRODUCT_PATH, parameters: parameters))
         return service.performRequest(endpoint: endpoint)
     }
 }
