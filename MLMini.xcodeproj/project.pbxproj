@@ -54,7 +54,7 @@
 		D953FBFB2A3D4A1100D2C775 /* MLGenericFeedbackScreenComponentSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBFA2A3D4A1100D2C775 /* MLGenericFeedbackScreenComponentSnapshotTests.swift */; };
 		D953FBFF2A3D558800D2C775 /* MLBaseSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FBFE2A3D558800D2C775 /* MLBaseSnapshotTests.swift */; };
 		D953FC032A3D654000D2C775 /* SearchViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FC022A3D654000D2C775 /* SearchViewSnapshotTests.swift */; };
-		D953FC072A3D694200D2C775 /* MLPrimaryButtonSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FC062A3D694200D2C775 /* MLPrimaryButtonSnapshotTests.swift */; };
+		D953FC072A3D694200D2C775 /* MLButtonSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FC062A3D694200D2C775 /* MLButtonSnapshotTests.swift */; };
 		D953FC0A2A3D6F8000D2C775 /* MLMiniTextFieldSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FC092A3D6F8000D2C775 /* MLMiniTextFieldSnapshotTests.swift */; };
 		D97D62712A465B5300A81D6B /* ProductDetailRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97D62702A465B5300A81D6B /* ProductDetailRepositoryTests.swift */; };
 		D97D62742A465C5E00A81D6B /* ItemResponseModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97D62732A465C5E00A81D6B /* ItemResponseModelMock.swift */; };
@@ -160,7 +160,7 @@
 		D953FBFA2A3D4A1100D2C775 /* MLGenericFeedbackScreenComponentSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLGenericFeedbackScreenComponentSnapshotTests.swift; sourceTree = "<group>"; };
 		D953FBFE2A3D558800D2C775 /* MLBaseSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLBaseSnapshotTests.swift; sourceTree = "<group>"; };
 		D953FC022A3D654000D2C775 /* SearchViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewSnapshotTests.swift; sourceTree = "<group>"; };
-		D953FC062A3D694200D2C775 /* MLPrimaryButtonSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLPrimaryButtonSnapshotTests.swift; sourceTree = "<group>"; };
+		D953FC062A3D694200D2C775 /* MLButtonSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLButtonSnapshotTests.swift; sourceTree = "<group>"; };
 		D953FC092A3D6F8000D2C775 /* MLMiniTextFieldSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMiniTextFieldSnapshotTests.swift; sourceTree = "<group>"; };
 		D97D62702A465B5300A81D6B /* ProductDetailRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailRepositoryTests.swift; sourceTree = "<group>"; };
 		D97D62732A465C5E00A81D6B /* ItemResponseModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemResponseModelMock.swift; sourceTree = "<group>"; };
@@ -469,7 +469,7 @@
 		D953FC052A3D68C100D2C775 /* Button */ = {
 			isa = PBXGroup;
 			children = (
-				D953FC062A3D694200D2C775 /* MLPrimaryButtonSnapshotTests.swift */,
+				D953FC062A3D694200D2C775 /* MLButtonSnapshotTests.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -902,7 +902,7 @@
 				C6F0130925FE46B900BBE3CC /* ApiResponseModelMock.swift in Sources */,
 				C6F0132325FE988600BBE3CC /* ServiceManagerMock.swift in Sources */,
 				D953FBFB2A3D4A1100D2C775 /* MLGenericFeedbackScreenComponentSnapshotTests.swift in Sources */,
-				D953FC072A3D694200D2C775 /* MLPrimaryButtonSnapshotTests.swift in Sources */,
+				D953FC072A3D694200D2C775 /* MLButtonSnapshotTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

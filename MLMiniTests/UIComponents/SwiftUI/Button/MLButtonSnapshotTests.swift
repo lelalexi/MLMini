@@ -1,5 +1,5 @@
 //
-//  MLPrimaryButtonSnapshotTests.swift
+//  MLButtonSnapshotTests.swift
 //  MLMiniTests
 //
 //  Created by Alexis Garcia Carli on 17/06/2023.
@@ -10,7 +10,7 @@ import SnapshotTesting
 import SwiftUI
 @testable import MLMini
 
-class MLPrimaryButtonSnapshotTests: MLBaseSnapshotTests {
+class MLButtonSnapshotTests: MLBaseSnapshotTests {
     private var viewWidth: CGFloat { ViewImageConfig.iPhoneXr.size?.width ?? 260 }
     private var buttonView: UIView!
     override func setUp() {
@@ -21,12 +21,12 @@ class MLPrimaryButtonSnapshotTests: MLBaseSnapshotTests {
         buttonView.frame = CGRect(x: 0, y: 0, width: viewWidth, height: buttonView.frame.height)
     }
     
-    func testPrimaryButton() {
+    func testButtons() {
         verifySnapshotfor(view: buttonView)
     }
 }
 
-extension MLPrimaryButtonSnapshotTests {
+extension MLButtonSnapshotTests {
     private struct MultipleButtonsTestView: View {
         private let buttonLabel = MLLocalizables.SearchView.buttonTitle.localized()
         private var onButtonPressed: (() -> Void)?
