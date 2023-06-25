@@ -11,16 +11,41 @@ import SwiftUI
 @testable import MLMini
 
 class MLPrimaryButtonSnapshotTests: MLBaseSnapshotTests {
-    var buttonView: UIView!
+    private var viewWidth: CGFloat { ViewImageConfig.iPhoneXr.size?.width ?? 260 }
+    private var buttonView: UIView!
     override func setUp() {
         super.setUp()
         isRecording = false
-        let button = PrimaryButton(label: "Search", onButtonTapped: { print("Button Tapped") })
-        buttonView = UIHostingController(rootView: button).view
-        buttonView.frame = CGRect(x: 0, y: 0, width: 260, height: 50)
+        let buttonsSwiftUIView = MultipleButtonsTestView()
+        buttonView = UIHostingController(rootView: buttonsSwiftUIView).view
+        buttonView.frame = CGRect(x: 0, y: 0, width: viewWidth, height: buttonView.frame.height)
     }
     
     func testPrimaryButton() {
         verifySnapshotfor(view: buttonView)
+    }
+}
+
+extension MLPrimaryButtonSnapshotTests {
+    private struct MultipleButtonsTestView: View {
+        private let buttonLabel = MLLocalizables.SearchView.buttonTitle.localized()
+        private var onButtonPressed: (() -> Void)?
+        var body: some View {
+            VStack {
+                MLButton(label: buttonLabel,
+                         style: .primary) {
+                    onButtonPressed?()
+                }
+                MLButton(label: buttonLabel,
+                         style: .secondary) {
+                    onButtonPressed?()
+                }
+                MLButton(label: buttonLabel,
+                         style: .tertiary) {
+                    onButtonPressed?()
+                }
+            }
+            .padding()
+        }
     }
 }
