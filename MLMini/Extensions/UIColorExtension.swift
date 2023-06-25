@@ -17,6 +17,18 @@ public extension UIColor {
         return UIColor(red: 58.0 / 255.0, green: 131.0 / 255.0, blue: 247.0 / 255.0, alpha: 1.0)
     }
     
+    static var softBlue: UIColor {
+        return UIColor(red: 229.0 / 255.0, green: 237.0 / 255.0, blue: 250.0 / 255.0, alpha: 1.0)
+    }
+    
+    static var intermediateBlue: UIColor {
+        return UIColor(red: 58.0 / 255.0, green: 103.0 / 255.0, blue: 193.0 / 255.0, alpha: 1.0)
+    }
+
+    static var darkBlue: UIColor {
+        return UIColor(red: 58.0 / 255.0, green: 103.0 / 255.0, blue: 193.0 / 255.0, alpha: 1.0)
+    }
+    
     static var activeGreen: UIColor {
         return UIColor(red: 62.0 / 255.0, green: 123.0 / 255.0, blue: 49.0 / 255.0, alpha: 1.0)
     }
@@ -71,6 +83,18 @@ public extension Color {
 
     static var activeBlue: Color {
         return Color(uiColor: .activeBlue)
+    }
+    
+    static var softBlue: Color {
+        return Color(uiColor: .softBlue)
+    }
+    
+    static var intermediateBlue: Color {
+        return Color(uiColor: .intermediateBlue)
+    }
+    
+    static var darkBlue: Color {
+        return Color(uiColor: .darkBlue)
     }
     
     static var activeGreen: Color {

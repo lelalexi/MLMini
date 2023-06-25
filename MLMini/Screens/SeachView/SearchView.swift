@@ -7,7 +7,6 @@ import SwiftUI
 
 struct SearchView: View {
     var viewModel: SearchViewViewModel
-    @EnvironmentObject var parent: SearchViewControllerSwiftUIBridge
     @State var textFieldText: String = ""
     @FocusState private var focusedField: Bool
     var body: some View {
@@ -20,7 +19,8 @@ struct SearchView: View {
                 MLMiniTextField(text: $textFieldText, placeholder: MLLocalizables.SearchView.searchTextFieldHint)
                     .focused($focusedField)
                     .padding(.bottom, 8)
-                PrimaryButton(label: MLLocalizables.SearchView.buttonTitle.localized()) {
+                MLButton(label: MLLocalizables.SearchView.buttonTitle.localized(),
+                         style: .primary) {
                     searchForItems()
                 }
             }
