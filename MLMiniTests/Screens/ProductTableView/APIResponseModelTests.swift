@@ -43,15 +43,13 @@ class APIResponseModelTests: QuickSpec {
                     await expect(item.price).to(equal(0))
                     await expect(item.title).to(equal(""))
                     await expect(item.freeShipping).to(beFalse())
-                    await expect(item.thumbnail).to(equal(MLMiniConstants.Images.PLACEHOLDER_ICON))
+                    await expect(item.thumbnail).to(equal("Placeholder"))
                 }
                 it("Should test itemAt with a fully initialized model and return the item") {
                     let itemIndex: Int = 2
                     let item = parsedModel.itemAt(index: itemIndex)
-                    guard let freeShipping = parsedModel.results[itemIndex].shipping?.freeShipping else {
-                        fail()
-                        return
-                    }
+                    let freeShipping = try XCTUnwrap(parsedModel.results[itemIndex].shipping?.freeShipping)
+                    
                     await expect(item.id).to(equal(parsedModel.results[itemIndex].id))
                     await expect(item.price).to(equal(parsedModel.results[itemIndex].price))
                     await expect(item.title).to(equal(parsedModel.results[itemIndex].title))

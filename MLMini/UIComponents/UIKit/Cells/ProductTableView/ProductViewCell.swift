@@ -9,7 +9,6 @@
 import UIKit
 
 class ProductViewCell: UITableViewCell {
-
     @IBOutlet var productTitle: UILabel!
     @IBOutlet var productImage: UIImageView!
     @IBOutlet var productPrice: UILabel!
@@ -22,24 +21,43 @@ class ProductViewCell: UITableViewCell {
     }
     
     private func initCell(){
-        productFavIcon.image = productFavIcon.image?.withRenderingMode(.alwaysTemplate)
-        productFavIcon.tintColor = .activeBlue
-        productTitle.textColor = UIColor(named: MLMiniConstants.Color.CLEAR_GREY)
+        contentView.backgroundColor = .primaryBackground
+        configureLabels()
+        configureCellImage()
+        configureFreeShippingLabels()
+        configureCellFavIcon()
+    }
+    
+    private func configureLabels() {
+        productTitle.textColor = .secondaryText
+        productPrice.textColor = .primaryText
+    }
+    
+    private func configureCellImage() {
+        productImage.backgroundColor = .clear
         productImage.layer.cornerRadius = 6.0
         productImage.clipsToBounds = true
+    }
+    
+    private func configureFreeShippingLabels() {
+        freeShippingLabel.textColor = .activeGreen
         freeShippingLabel.isHidden = true
         freeShippingLabel.text = MLLocalizables.ProductListView.freeShippingLabel
     }
     
-    func configureCell(item: ItemModel){
+    private func configureCellFavIcon() {
+        productFavIcon.image = productFavIcon.image?.withRenderingMode(.alwaysTemplate)
+        productFavIcon.tintColor = .activeBlue
+    }
+    
+    func configureCell(item: ItemRowDomainModel){
         productTitle.text = item.title
         productPrice.text = "$ " + String(item.price.formattedWithSeparator)
-        productImage.sd_setImage(with: URL(string: item.thumbnail), placeholderImage: UIImage(named: MLMiniConstants.Images.PLACEHOLDER_ICON))
+        productImage.sd_setImage(with: URL(string: item.thumbnail), placeholderImage: MLImage.imagePlaceholder)
         freeShippingLabel.isHidden = !item.freeShipping
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
 }

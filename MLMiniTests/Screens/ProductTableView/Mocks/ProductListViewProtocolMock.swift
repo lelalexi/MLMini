@@ -38,7 +38,7 @@ class ProductListViewProtocolMock: ProductListViewControllerProtocol, Mock {
         didCallReloadView.wasCalled()
     }
     
-    func fillList(model: APIResponseModel) {
+    func fillList(model: ProductListInfraestructureModel) {
         didCallFillList.wasCalled()
     }
 }

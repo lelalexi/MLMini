@@ -14,12 +14,17 @@ public enum MLEnvironment: String, CaseIterable {
 }
 
 extension MLEnvironment {
+    private struct API {
+        static let ML_PRODUCTION_BASE_URL = "https://api.mercadolibre.com"
+        static let ML_STAGING_BASE_URL = "" //To Be Defined
+    }
+
     var baseURL: String {
         switch self {
         case .staging:
-            return "" //To Be Defined
+            return API.ML_STAGING_BASE_URL
         case .production:
-            return "https://" + MLMiniConstants.API.ML_HOST
+            return API.ML_PRODUCTION_BASE_URL
         }
     }
 }

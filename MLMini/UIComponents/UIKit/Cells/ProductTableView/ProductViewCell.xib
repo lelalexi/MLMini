@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="dark"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -19,20 +19,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7o-Vj-sXZ">
-                        <rect key="frame" x="116" y="12" width="27.5" height="19.5"/>
+                        <rect key="frame" x="118" y="12" width="27.5" height="19.5"/>
                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                         <color key="textColor" name="clearGrey"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="DPn-IK-02B">
-                        <rect key="frame" x="10" y="12" width="98" height="98"/>
+                        <rect key="frame" x="12" y="12" width="98" height="98"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="DPn-IK-02B" secondAttribute="height" multiplier="1:1" id="Ehk-cf-SkY"/>
                             <constraint firstAttribute="width" constant="98" id="vz4-mT-NJs"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 199" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDW-sn-cbS">
-                        <rect key="frame" x="116" y="38.5" width="45.5" height="22"/>
+                        <rect key="frame" x="118" y="38.5" width="45.5" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="ahi-SW-kKP"/>
                         </constraints>
@@ -48,7 +48,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Envío Gratis" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDZ-dV-qSo" propertyAccessControl="none">
-                        <rect key="frame" x="116" y="67.5" width="65" height="17"/>
+                        <rect key="frame" x="118" y="67.5" width="65" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="fk6-7b-GiM"/>
                         </constraints>
@@ -66,7 +66,7 @@
                     <constraint firstItem="DPn-IK-02B" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="NWl-JT-aKM"/>
                     <constraint firstItem="W7o-Vj-sXZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="OVK-Nm-Gro"/>
                     <constraint firstItem="W7o-Vj-sXZ" firstAttribute="top" secondItem="DPn-IK-02B" secondAttribute="top" id="SUL-WX-7ht"/>
-                    <constraint firstItem="DPn-IK-02B" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Txb-Ov-A9b"/>
+                    <constraint firstItem="DPn-IK-02B" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="Txb-Ov-A9b"/>
                     <constraint firstItem="fHn-Ff-Bga" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="W7o-Vj-sXZ" secondAttribute="trailing" constant="16" id="VXP-uX-hiR"/>
                     <constraint firstItem="yDZ-dV-qSo" firstAttribute="leading" secondItem="RDW-sn-cbS" secondAttribute="leading" id="Zvf-pq-7cz"/>
                     <constraint firstItem="RDW-sn-cbS" firstAttribute="top" secondItem="W7o-Vj-sXZ" secondAttribute="bottom" constant="7" id="bJm-UM-Qg2"/>
