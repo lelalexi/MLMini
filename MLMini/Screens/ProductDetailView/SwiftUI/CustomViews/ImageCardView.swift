@@ -14,7 +14,6 @@ struct ImageCardView: View {
         ZStack {
             Rectangle()
                 .fill(Color.clear)
-                .border(Color.black)
             AsyncImage(url: url) { image in
                 image
                     .resizable()

@@ -42,12 +42,13 @@ extension ItemDetailInfraestructureModel {
             itemImageArray.append(pic.url)
         }
         return ItemDetailDomainModel(id: id,
-                                    price: Double(price),
-                                    title: title,
-                                    pictures: itemImageArray,
-                                    soldQuantity: soldQuantity,
-                                    thumbnail: thumbnail,
-                                    availableItems: availableQuantity)
+                                     price: Double(price),
+                                     title: title,
+                                     condition: condition,
+                                     pictures: itemImageArray,
+                                     soldQuantity: soldQuantity,
+                                     thumbnail: thumbnail,
+                                     availableItems: availableQuantity)
     }
 }
 

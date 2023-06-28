@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 import UIKit
 
 struct ProductDetailBuilder {
@@ -27,5 +28,16 @@ struct ProductDetailBuilder {
     private func loadProductDetailVCFromStoryboard() -> ProductDetailViewController {
         let storyboard = UIStoryboard(name: Constants.STORYBOARD_NAME, bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: Constants.STORYBOARD_PRODUCT_DETAIL_VC_XIB_NAME) as! ProductDetailViewController
+    }
+}
+
+// MARK: SwiftUI View Builder
+extension ProductDetailBuilder {
+    func getSwiftUIView(forItemId itemId: String) -> ProductDetailView {
+        let service = NetworkServiceManager()
+        let repository = ProductDetailRepository(service)
+        let viewModel = ProductDetailViewModel(repository: repository, itemId: itemId)
+        let view = ProductDetailView(viewModel: viewModel)
+        return view
     }
 }
