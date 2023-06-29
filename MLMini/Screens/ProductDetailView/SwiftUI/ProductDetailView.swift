@@ -27,6 +27,7 @@ struct ProductDetailView: View {
                 ProductDetailCarouselView(images: images)
                 ProductDetailItemPricingSection(model: model)
                 ProductDetailSellerSection()
+                    .frame(height: 80)
                 ProductDetailDescriptionSection()
             }
         }
