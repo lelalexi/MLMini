@@ -45,7 +45,7 @@ class ProductDetailPresenter: ProductDetailPresenterProtocol {
     }
     
     private func getItemDescription(itemId: String) {
-        repository?.getItemDescription(itemId: itemId)
+        repository?.getItemDetail(itemId: itemId)
             .receive(on: DispatchQueue.main)
             .map { $0.toModel() }
             .sink(receiveCompletion: { completion in

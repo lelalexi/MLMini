@@ -18,7 +18,8 @@ class ProductDetailViewModel: ProductDetailViewModelProtocol, ObservableObject {
     // MARK: Properties
     private let repository: ProductDetailRepositoryProtocol
     private var cancellables = Set<AnyCancellable>()
-    @Published var model: ItemDetailDomainModel?
+    @Published var itemDetailModel: ItemDetailDomainModel?
+    @Published var itemDescriptionModel: ItemDescriptionDomainModel?
     
     // MARK: Public available publishers (Not allow users to know about publisher implementation, just knowing that conforms to AnyPublisher protocol)
     let updateDataPublisher: AnyPublisher<ItemDetailDomainModel, Never>
@@ -33,9 +34,11 @@ class ProductDetailViewModel: ProductDetailViewModelProtocol, ObservableObject {
         getItemDescription(itemId: itemId)
     }
     
-    private func onGetDataSuccess(model: ItemDetailDomainModel) {
+    private func onGetDataSuccess(model: ItemDetailDomainModel,
+                                  itemDescriptionModel: ItemDescriptionDomainModel) {
         updateData.send(model)
-        self.model = model
+        self.itemDetailModel = model
+        self.itemDescriptionModel = itemDescriptionModel
     }
     
     private func onGetDataError() {
@@ -43,9 +46,10 @@ class ProductDetailViewModel: ProductDetailViewModelProtocol, ObservableObject {
     }
     
     private func getItemDescription(itemId: String) {
-        repository.getItemDescription(itemId: itemId)
+        repository.getItemDetail(itemId: itemId)
+            .combineLatest(repository.getItemDescription(itemId: itemId))
             .receive(on: DispatchQueue.main)
-            .map { $0.toModel() }
+            .map { (itemDetail: $0.0.toModel(), itemDescription: $0.1.toModel())}
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .failure:
@@ -54,7 +58,8 @@ class ProductDetailViewModel: ProductDetailViewModelProtocol, ObservableObject {
                     break
                 }
             }, receiveValue: { response in
-                self.onGetDataSuccess(model: response)
+                self.onGetDataSuccess(model: response.itemDetail,
+                                      itemDescriptionModel: response.itemDescription)
             }).store(in: &cancellables)
     }
 }

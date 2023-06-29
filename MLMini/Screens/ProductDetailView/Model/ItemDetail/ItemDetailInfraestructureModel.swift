@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - ItemAPIResponseModel
+// MARK: - ItemDetailInfraestructureModel
 struct ItemDetailInfraestructureModel: Codable {
     let id, title: String
     let sellerID: Int

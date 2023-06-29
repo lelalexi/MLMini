@@ -11,8 +11,9 @@ import SwiftUI
 
 struct ProductDetailView: View {
     @ObservedObject var viewModel: ProductDetailViewModel
-    private var model: ItemDetailDomainModel { viewModel.model ?? ItemDetailDomainModel._default }
-    private var images: [URL] { model.pictures.map { URL(string: $0)! } }
+    private var itemDetailModel: ItemDetailDomainModel { viewModel.itemDetailModel ?? ItemDetailDomainModel._default }
+    private var itemDescriptionModel: ItemDescriptionDomainModel { viewModel.itemDescriptionModel ?? ItemDescriptionDomainModel._default }
+    private var images: [URL] { itemDetailModel.pictures.map { URL(string: $0)! } }
     
     init(viewModel: ProductDetailViewModel) {
         self.viewModel = viewModel
@@ -21,14 +22,14 @@ struct ProductDetailView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .center, spacing: 8) {
-                ProductDetailTopRow(itemCondition: model.condition,
-                                    soldItems: String(model.soldQuantity),
-                                    publicationTitle: model.title)
+                ProductDetailTopRow(itemCondition: itemDetailModel.condition,
+                                    soldItems: String(itemDetailModel.soldQuantity),
+                                    publicationTitle: itemDetailModel.title)
                 ProductDetailCarouselView(images: images)
-                ProductDetailItemPricingSection(model: model)
+                ProductDetailItemPricingSection(model: itemDetailModel)
                 ProductDetailSellerSection()
                     .frame(height: 80)
-                ProductDetailDescriptionSection()
+                ProductDetailDescriptionSection(descriptionBody: itemDescriptionModel.description)
             }
         }
     }

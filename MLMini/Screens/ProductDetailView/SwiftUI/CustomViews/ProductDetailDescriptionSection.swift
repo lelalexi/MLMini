@@ -17,7 +17,7 @@ struct ProductDetailDescriptionSection: View {
                 .font(.custom("Avenir-Book", size: 22))
                 .foregroundColor(Color.primaryText)
             Text(descriptionBody)
-                .font(.custom("Avenir-Book", size: 18))
+                .font(.custom("Avenir-Book", size: 16))
                 .foregroundColor(Color.primaryText)
         }.padding()
     }
