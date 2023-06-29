@@ -20,6 +20,7 @@
 "AvailableItemQuantityLabel" = "Cantidad:";
 "BuyButtonLabel" = "Comprar";
 "AddToCartButtonLabel" = "Agregar al carrito";
+"DescriptionSectionTitle" = "Descripción";
 
 // Feedback Screen
 "FeedbackNotFoundTitle" = "No encontramos resultados";
