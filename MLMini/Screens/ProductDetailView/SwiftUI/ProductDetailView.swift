@@ -11,31 +11,46 @@ import SwiftUI
 
 struct ProductDetailView: View {
     @ObservedObject var viewModel: ProductDetailViewModel
-    @State var userInformationModel2: MLUserInformationDomainModel
 
     private var itemDetailModel: ItemDetailDomainModel { viewModel.itemDetailModel }
     private var itemDescriptionModel: ItemDescriptionDomainModel { viewModel.itemDescriptionModel }
-    private var sellerReputationModel: Binding<MLSellerReputationDomainModel> { $viewModel.userInformationModel.sellerReputation }
-    private var images: [URL] { itemDetailModel.pictures.map { URL(string: $0)! } }
     
     init(viewModel: ProductDetailViewModel) {
         self.viewModel = viewModel
-        userInformationModel2 = viewModel.userInformationModel
     }
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading, spacing: 8) {
-                ProductDetailTopRow(itemCondition: itemDetailModel.condition,
-                                    soldItems: String(itemDetailModel.soldQuantity),
-                                    publicationTitle: itemDetailModel.title)
-                ProductDetailCarouselView(images: images)
+                renderTopRowSection(model: itemDetailModel)
+                renderImageCarouselSection(model: itemDetailModel)
                 ProductDetailItemPricingSection(model: itemDetailModel)
-                ProductDetailSellerSection(sellerReputation: sellerReputationModel)
-                    .frame(height: 80)
+                renderSellerReputationSection(model: $viewModel.userInformationModel)
                 ProductDetailDescriptionSection(descriptionBody: itemDescriptionModel.description)
             }
+            .padding(.horizontal, MLSpacings.defaultMargin)
         }
+    }
+}
+
+extension ProductDetailView {
+    @ViewBuilder private func renderTopRowSection(model: ItemDetailDomainModel) -> some View {
+        ProductDetailTopRow(itemCondition: model.condition,
+                            soldItems: String(model.soldQuantity),
+                            publicationTitle: model.title)
+        .padding(.top, 8)
+    }
+    
+    @ViewBuilder private func renderImageCarouselSection(model: ItemDetailDomainModel) -> some View {
+        let images: [URL] = model.pictures.map { URL(string: $0)! }
+        ProductDetailCarouselView(images: images)
+            .frame(height: 300)
+            .padding(.horizontal, -MLSpacings.defaultMargin)
+    }
+    
+    @ViewBuilder private func renderSellerReputationSection(model: Binding<MLUserInformationDomainModel>) -> some View {
+        ProductDetailSellerSection(sellerReputation: model.sellerReputation)
+            .frame(height: 80)
     }
 }
 

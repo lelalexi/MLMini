@@ -22,11 +22,11 @@ class ProductDetailViewModel: ProductDetailViewModelProtocol, ObservableObject {
     @Published var itemDescriptionModel: ItemDescriptionDomainModel = ItemDescriptionDomainModel._default
     @Published var userInformationModel: MLUserInformationDomainModel = MLUserInformationDomainModel._default
     
-    // MARK: Public available publishers (Not allow users to know about publisher implementation, just knowing that conforms to AnyPublisher protocol)
+    // MARK: Public available publishers (Does not allow users to know about publisher implementation, just knowing that conforms to AnyPublisher protocol)
     let updateDataPublisher: AnyPublisher<ItemDetailDomainModel, Never>
     
     // MARK: Private publisher implementation
-    private let updateData = PassthroughSubject<ItemDetailDomainModel, Never>()
+    private let updateData = CurrentValueSubject<ItemDetailDomainModel, Never>(ItemDetailDomainModel._default)
     
     init(repository: ProductDetailRepositoryProtocol,
          itemId: String) {

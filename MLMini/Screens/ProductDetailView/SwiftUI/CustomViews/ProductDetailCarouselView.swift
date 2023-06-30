@@ -12,15 +12,20 @@ struct ProductDetailCarouselView: View {
     var images: [URL]
     @State private var index = 0
     var body: some View {
-        VStack{
-            TabView(selection: $index) {
-                ForEach(images.indices, id: \.self) { index in
-                    ImageCardView(url: images[index])
-                }
+        renderTabView(withIndex: $index,
+                      images: images)
+    }
+}
+
+extension ProductDetailCarouselView {
+    @ViewBuilder private func renderTabView(withIndex index: Binding<Int>, images: [URL]) -> some View {
+        TabView(selection: $index) {
+            ForEach(images.indices, id: \.self) { index in
+                // TODO: Refactor to make the carousel generic to Any Card
+                ImageCardView(url: .constant(images[index]))
             }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
         }
-        .frame(height: 300)
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
     }
 }
 
@@ -31,6 +36,7 @@ struct ProductDetailCarouselView_Previews: PreviewProvider {
                            URL(string: "https://picsum.photos/200/300")!,
                            URL(string: "https://picsum.photos/200/300")!]
         ProductDetailCarouselView(images: imageArray)
+            .frame(height: 300)
             .previewLayout(.sizeThatFits)
     }
 }

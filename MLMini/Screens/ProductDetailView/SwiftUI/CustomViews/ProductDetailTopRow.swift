@@ -22,11 +22,8 @@ struct ProductDetailTopRow: View {
             Text(publicationTitle)
                 .font(.custom("Avenir-Book", size: 16))
                 .foregroundColor(Color.primaryText)
-                
         })
         .multilineTextAlignment(.leading)
-        .padding(.horizontal, 16)
-        .padding(.top, 8)
     }
 }
 
@@ -35,6 +32,7 @@ struct ProductDetailTopRow_Previews: PreviewProvider {
         ProductDetailTopRow(itemCondition: "New",
                             soldItems: "15",
                             publicationTitle: "Ops Vw 4k Sensores De Estacionamiento Scirocco Vento Golf")
+        .padding(.horizontal, MLSpacings.defaultMargin)
         .previewDevice("iPhone 13 mini")
         .previewLayout(.sizeThatFits)
     }

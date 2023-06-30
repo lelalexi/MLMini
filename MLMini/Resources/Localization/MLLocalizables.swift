@@ -26,6 +26,7 @@ struct MLLocalizables {
         static var itemColorLabel: String { "ItemColorLabel".localized() }
         static var availableItemQuantityLabel: String { "AvailableItemQuantityLabel".localized() }
         static var descriptionSectionTitle: String { "DescriptionSectionTitle".localized() }
+        static var sellerSectionTitle: String { "SellerSectionTitle".localized() }
     }
     
     struct ComponentFeedbackView {

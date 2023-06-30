@@ -58,6 +58,8 @@
 		D953FC032A3D654000D2C775 /* SearchViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FC022A3D654000D2C775 /* SearchViewSnapshotTests.swift */; };
 		D953FC072A3D694200D2C775 /* MLButtonSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FC062A3D694200D2C775 /* MLButtonSnapshotTests.swift */; };
 		D953FC0A2A3D6F8000D2C775 /* MLMiniTextFieldSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953FC092A3D6F8000D2C775 /* MLMiniTextFieldSnapshotTests.swift */; };
+		D96DF6742A4E9D84000F40C1 /* MLSpacings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96DF6732A4E9D84000F40C1 /* MLSpacings.swift */; };
+		D96DF6762A4EAE3D000F40C1 /* SellerQualityMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96DF6752A4EAE3D000F40C1 /* SellerQualityMeter.swift */; };
 		D97D62712A465B5300A81D6B /* ProductDetailRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97D62702A465B5300A81D6B /* ProductDetailRepositoryTests.swift */; };
 		D97D62742A465C5E00A81D6B /* ItemResponseModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97D62732A465C5E00A81D6B /* ItemResponseModelMock.swift */; };
 		D97D62762A467D4300A81D6B /* ProductDetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97D62752A467D4300A81D6B /* ProductDetailBuilder.swift */; };
@@ -178,6 +180,8 @@
 		D953FC022A3D654000D2C775 /* SearchViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewSnapshotTests.swift; sourceTree = "<group>"; };
 		D953FC062A3D694200D2C775 /* MLButtonSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLButtonSnapshotTests.swift; sourceTree = "<group>"; };
 		D953FC092A3D6F8000D2C775 /* MLMiniTextFieldSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMiniTextFieldSnapshotTests.swift; sourceTree = "<group>"; };
+		D96DF6732A4E9D84000F40C1 /* MLSpacings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLSpacings.swift; sourceTree = "<group>"; };
+		D96DF6752A4EAE3D000F40C1 /* SellerQualityMeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerQualityMeter.swift; sourceTree = "<group>"; };
 		D97D62702A465B5300A81D6B /* ProductDetailRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailRepositoryTests.swift; sourceTree = "<group>"; };
 		D97D62732A465C5E00A81D6B /* ItemResponseModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemResponseModelMock.swift; sourceTree = "<group>"; };
 		D97D62752A467D4300A81D6B /* ProductDetailBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailBuilder.swift; sourceTree = "<group>"; };
@@ -412,6 +416,7 @@
 				D94DCC772A439F4E00E559AD /* Localization */,
 				E4D052612332538D009B4EDB /* Assets.xcassets */,
 				D953FBDD2A3A7AF400D2C775 /* MLImage.swift */,
+				D96DF6732A4E9D84000F40C1 /* MLSpacings.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -562,6 +567,7 @@
 			isa = PBXGroup;
 			children = (
 				D97D62852A4BEC2B00A81D6B /* ProductDetailSellerSection.swift */,
+				D96DF6752A4EAE3D000F40C1 /* SellerQualityMeter.swift */,
 			);
 			path = SellerSection;
 			sourceTree = "<group>";
@@ -1028,6 +1034,7 @@
 				C6E2C8122512E86E009687CC /* ItemDetailDomainModel.swift in Sources */,
 				E4D0529A23331117009B4EDB /* ProductViewCell.swift in Sources */,
 				D953FBD42A36C71300D2C775 /* MLMiniTextField.swift in Sources */,
+				D96DF6742A4E9D84000F40C1 /* MLSpacings.swift in Sources */,
 				D953FBE82A3BFF2F00D2C775 /* Endpoint.swift in Sources */,
 				D953FBC62A36711F00D2C775 /* SearchViewViewModel.swift in Sources */,
 				C6F6A7E925104FFA00140EAD /* ProductListRepository.swift in Sources */,
@@ -1053,6 +1060,7 @@
 				D97D627E2A4BCCC500A81D6B /* ProductDetailTopRow.swift in Sources */,
 				D953FBC82A36858100D2C775 /* SearchViewBuilder.swift in Sources */,
 				E495DFC3233A4B9A00E3A4C9 /* NetworkServiceManager.swift in Sources */,
+				D96DF6762A4EAE3D000F40C1 /* SellerQualityMeter.swift in Sources */,
 				D97D62802A4BD60500A81D6B /* ProductDetailView.swift in Sources */,
 				E4D5D3562337C94600883E8A /* MainDetailTableViewCell.swift in Sources */,
 				D953FBE62A3BFF0100D2C775 /* HTTPMethod.swift in Sources */,

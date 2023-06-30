@@ -7,15 +7,15 @@
 //
 
 struct ItemDetailDomainModel: Identifiable {
-    let id: String
-    let price: Double
-    let title: String
-    let sellerID: Int
-    let condition: String
-    let pictures: [String]
-    let soldQuantity: Int
-    let thumbnail: String
-    let availableItems: Int
+    var id: String
+    var price: Double
+    var title: String
+    var sellerID: Int
+    var condition: String
+    var pictures: [String]
+    var soldQuantity: Int
+    var thumbnail: String
+    var availableItems: Int
 }
 
 extension ItemDetailDomainModel {

@@ -21,6 +21,7 @@
 "BuyButtonLabel" = "Buy";
 "AddToCartButtonLabel" = "Add to cart";
 "DescriptionSectionTitle" = "Description";
+"SellerSectionTitle" = "Seller's Information";
 
 // Feedback Screen
 "FeedbackNotFoundTitle" = "We could not find any match for your search";

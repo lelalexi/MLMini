@@ -30,12 +30,13 @@ struct ProductDetailItemPricingSection: View {
                      style: .secondary) {
                 secondaryButtonAction?()
             }
-        }.padding(.horizontal, 16)
+        }
     }
 }
 
 struct ProductDetailItemPricingSection_Previews: PreviewProvider {
     static var previews: some View {
         ProductDetailItemPricingSection(model: ItemDetailDomainModel._default)
+            .padding(.horizontal, MLSpacings.defaultMargin)
     }
 }
