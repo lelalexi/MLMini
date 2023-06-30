@@ -23,6 +23,7 @@ class ProductDetailViewModelMock: ProductDetailViewModelProtocol {
         ItemDetailDomainModel(id: "01",
                               price: 1998.9,
                               title: "Ops Vw 4k Sensores De Estacionamiento Scirocco Vento Golf",
+                              sellerID: 0,
                               condition: "New",
                               pictures: ["https://picsum.photos/200/300",
                                          "https://picsum.photos/200/300",

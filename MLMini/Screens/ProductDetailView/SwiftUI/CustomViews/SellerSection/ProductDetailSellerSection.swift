@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ProductDetailSellerSection: View {
-    var level: Int = 3
+    @Binding var sellerReputation: MLSellerReputationDomainModel
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading) {
@@ -18,7 +18,7 @@ struct ProductDetailSellerSection: View {
                         .font(.custom("Avenir-Book", size: 20))
                         .foregroundColor(Color.primaryText)
                         .padding(.bottom, 8)
-                    SellerQualityMeter(widthSize: geometry.size.width, level: level)
+                SellerQualityMeter(widthSize: geometry.size.width, sellerReputation: $sellerReputation)
             }
         }
         .padding(.horizontal)
@@ -26,8 +26,10 @@ struct ProductDetailSellerSection: View {
 }
 
 struct ProductDetailSellerSection_Previews: PreviewProvider {
+    var sellerLevel: MLSellerReputationDomainModel = MLSellerReputationDomainModel(levelId: .Level3)
     static var previews: some View {
-        ProductDetailSellerSection()
+        // ProductDetailSellerSection(sellerReputation: sellerLevel)
+        Rectangle()
     }
 }
 
@@ -36,18 +38,18 @@ struct SellerQualityMeter: View {
     var rectangleColors: [Color] = Constants.RECTANGLE_COLORS
     
     var widthSize: CGFloat
-    var level: Int
+    @Binding var sellerReputation: MLSellerReputationDomainModel
     
     var body: some View {
             HStack(alignment: .center) {
                 ForEach(0..<Constants.RECTANGLE_QUANTITY, id: \.self) { index in
                     Rectangle()
                         .frame(width: rectagleWidth,
-                               height: index == level ?
+                               height: index == sellerReputation.levelId.mLSellerLevel ?
                                Constants.HIGHLIGHTED_RECTANGLE_HEIGHT :
                                 Constants.NORMAL_RECTANGLE_HEIGHT)
                         .foregroundColor(Constants.RECTANGLE_COLORS[index])
-                        .opacity(index == level ?
+                        .opacity(index == sellerReputation.levelId.mLSellerLevel ?
                                  Constants.RECTANGLE_OPACITY_VALUE_WHEN_HIGHLIGHTED :
                                     Constants.RECTANGLE_OPACITY_VALUE_WHEN_NON_HIGHLIGHTED)
                 }

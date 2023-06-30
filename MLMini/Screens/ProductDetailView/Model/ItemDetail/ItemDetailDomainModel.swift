@@ -10,6 +10,7 @@ struct ItemDetailDomainModel: Identifiable {
     let id: String
     let price: Double
     let title: String
+    let sellerID: Int
     let condition: String
     let pictures: [String]
     let soldQuantity: Int
@@ -21,6 +22,7 @@ extension ItemDetailDomainModel {
     static var _default: ItemDetailDomainModel {  ItemDetailDomainModel(id: "01",
                                                                         price: 1998.9,
                                                                         title: "Ops Vw 4k Sensores De Estacionamiento Scirocco Vento Golf",
+                                                                        sellerID: 1234,
                                                                         condition: "New",
                                                                         pictures: ["https://picsum.photos/200/300",
                                                                                    "https://picsum.photos/200/300",

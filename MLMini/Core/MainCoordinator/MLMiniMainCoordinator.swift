@@ -51,7 +51,8 @@ class MLMiniMainCoordinator: Coordinator,
     }
     
     func navigateToProductDetail(itemId: String) {
-        let productDetailVC = ProductDetailBuilder().getView(forItemId: itemId)
+        //let productDetailVC = ProductDetailBuilder().getView(forItemId: itemId)
+        let productDetailVC = ProductDetailViewControllerSwiftUIBridge(coordinator: self, itemId: itemId)
         navController.pushViewController(productDetailVC, animated: true)
     }
 }

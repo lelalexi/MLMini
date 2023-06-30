@@ -24,9 +24,9 @@ struct ProductDetailTopRow: View {
                 .foregroundColor(Color.primaryText)
                 
         })
-        .padding(.horizontal, 2.0)
-        
         .multilineTextAlignment(.leading)
+        .padding(.horizontal, 16)
+        .padding(.top, 8)
     }
 }
 

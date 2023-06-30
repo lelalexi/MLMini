@@ -11,23 +11,27 @@ import SwiftUI
 
 struct ProductDetailView: View {
     @ObservedObject var viewModel: ProductDetailViewModel
-    private var itemDetailModel: ItemDetailDomainModel { viewModel.itemDetailModel ?? ItemDetailDomainModel._default }
-    private var itemDescriptionModel: ItemDescriptionDomainModel { viewModel.itemDescriptionModel ?? ItemDescriptionDomainModel._default }
+    @State var userInformationModel2: MLUserInformationDomainModel
+
+    private var itemDetailModel: ItemDetailDomainModel { viewModel.itemDetailModel }
+    private var itemDescriptionModel: ItemDescriptionDomainModel { viewModel.itemDescriptionModel }
+    private var sellerReputationModel: Binding<MLSellerReputationDomainModel> { $viewModel.userInformationModel.sellerReputation }
     private var images: [URL] { itemDetailModel.pictures.map { URL(string: $0)! } }
     
     init(viewModel: ProductDetailViewModel) {
         self.viewModel = viewModel
+        userInformationModel2 = viewModel.userInformationModel
     }
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            VStack(alignment: .center, spacing: 8) {
+            VStack(alignment: .leading, spacing: 8) {
                 ProductDetailTopRow(itemCondition: itemDetailModel.condition,
                                     soldItems: String(itemDetailModel.soldQuantity),
                                     publicationTitle: itemDetailModel.title)
                 ProductDetailCarouselView(images: images)
                 ProductDetailItemPricingSection(model: itemDetailModel)
-                ProductDetailSellerSection()
+                ProductDetailSellerSection(sellerReputation: sellerReputationModel)
                     .frame(height: 80)
                 ProductDetailDescriptionSection(descriptionBody: itemDescriptionModel.description)
             }

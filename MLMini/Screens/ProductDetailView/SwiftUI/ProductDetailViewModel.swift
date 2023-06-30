@@ -18,8 +18,9 @@ class ProductDetailViewModel: ProductDetailViewModelProtocol, ObservableObject {
     // MARK: Properties
     private let repository: ProductDetailRepositoryProtocol
     private var cancellables = Set<AnyCancellable>()
-    @Published var itemDetailModel: ItemDetailDomainModel?
-    @Published var itemDescriptionModel: ItemDescriptionDomainModel?
+    @Published var itemDetailModel: ItemDetailDomainModel = ItemDetailDomainModel._default
+    @Published var itemDescriptionModel: ItemDescriptionDomainModel = ItemDescriptionDomainModel._default
+    @Published var userInformationModel: MLUserInformationDomainModel = MLUserInformationDomainModel._default
     
     // MARK: Public available publishers (Not allow users to know about publisher implementation, just knowing that conforms to AnyPublisher protocol)
     let updateDataPublisher: AnyPublisher<ItemDetailDomainModel, Never>
@@ -39,6 +40,12 @@ class ProductDetailViewModel: ProductDetailViewModelProtocol, ObservableObject {
         updateData.send(model)
         self.itemDetailModel = model
         self.itemDescriptionModel = itemDescriptionModel
+
+        getUserInformation(userID: itemDetailModel.sellerID)
+    }
+    
+    private func onGetUserInformationSuccess(model: MLUserInformationDomainModel) {
+        self.userInformationModel = model
     }
     
     private func onGetDataError() {
@@ -60,6 +67,22 @@ class ProductDetailViewModel: ProductDetailViewModelProtocol, ObservableObject {
             }, receiveValue: { response in
                 self.onGetDataSuccess(model: response.itemDetail,
                                       itemDescriptionModel: response.itemDescription)
+            }).store(in: &cancellables)
+    }
+    
+    private func getUserInformation(userID: Int) {
+        repository.getUserData(userId: userID)
+            .receive(on: DispatchQueue.main)
+            .map { $0.toModel() }
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .failure:
+                    self.onGetDataError()
+                case .finished:
+                    break
+                }
+            }, receiveValue: { response in
+                self.onGetUserInformationSuccess(model: response)
             }).store(in: &cancellables)
     }
 }

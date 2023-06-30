@@ -69,11 +69,11 @@ extension ProductDetailViewController: UITableViewDelegate, UITableViewDataSourc
     
     private func registerTableCells(){
         // Main cell
-        let detailCell = UINib(nibName: Constants.DETAIL_MAIN_TABLE_VIEW_CELL, bundle: nil)
+        let detailCell = UINib(nibName: Constants.DETAIL_MAIN_TABLE_VIEW_CELL, bundle: .main)
         productDetailTableView.register(detailCell, forCellReuseIdentifier: Constants.DETAIL_MAIN_TABLE_VIEW_CELL)
         
         //Buy cell
-        let buyCell = UINib(nibName: Constants.DETAIL_BUY_TABLE_VIEW_CELL, bundle: nil)
+        let buyCell = UINib(nibName: Constants.DETAIL_BUY_TABLE_VIEW_CELL, bundle: .main)
         productDetailTableView.register(buyCell, forCellReuseIdentifier: Constants.DETAIL_BUY_TABLE_VIEW_CELL)
         
     }

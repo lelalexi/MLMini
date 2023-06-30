@@ -44,6 +44,7 @@ extension ItemDetailInfraestructureModel {
         return ItemDetailDomainModel(id: id,
                                      price: Double(price),
                                      title: title,
+                                     sellerID: sellerID,
                                      condition: condition,
                                      pictures: itemImageArray,
                                      soldQuantity: soldQuantity,
