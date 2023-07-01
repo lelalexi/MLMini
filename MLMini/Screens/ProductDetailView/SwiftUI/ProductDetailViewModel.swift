@@ -21,6 +21,8 @@ class ProductDetailViewModel: ProductDetailViewModelProtocol, ObservableObject {
     @Published var itemDetailModel: ItemDetailDomainModel = ItemDetailDomainModel._default
     @Published var itemDescriptionModel: ItemDescriptionDomainModel = ItemDescriptionDomainModel._default
     @Published var userInformationModel: MLUserInformationDomainModel = MLUserInformationDomainModel._default
+    var isMainSectionLoading: Bool = true
+    var isSellerSectionLoading: Bool = true
     
     // MARK: Public available publishers (Does not allow users to know about publisher implementation, just knowing that conforms to AnyPublisher protocol)
     let updateDataPublisher: AnyPublisher<ItemDetailDomainModel, Never>
@@ -37,6 +39,7 @@ class ProductDetailViewModel: ProductDetailViewModelProtocol, ObservableObject {
     
     private func onGetDataSuccess(model: ItemDetailDomainModel,
                                   itemDescriptionModel: ItemDescriptionDomainModel) {
+        isMainSectionLoading = false
         updateData.send(model)
         self.itemDetailModel = model
         self.itemDescriptionModel = itemDescriptionModel
@@ -45,6 +48,7 @@ class ProductDetailViewModel: ProductDetailViewModelProtocol, ObservableObject {
     }
     
     private func onGetUserInformationSuccess(model: MLUserInformationDomainModel) {
+        isSellerSectionLoading = false
         self.userInformationModel = model
     }
     
@@ -53,6 +57,7 @@ class ProductDetailViewModel: ProductDetailViewModelProtocol, ObservableObject {
     }
     
     private func getItemDescription(itemId: String) {
+        isMainSectionLoading = true
         repository.getItemDetail(itemId: itemId)
             .combineLatest(repository.getItemDescription(itemId: itemId))
             .receive(on: DispatchQueue.main)
@@ -71,6 +76,7 @@ class ProductDetailViewModel: ProductDetailViewModelProtocol, ObservableObject {
     }
     
     private func getUserInformation(userID: Int) {
+        isSellerSectionLoading = true
         repository.getUserData(userId: userID)
             .receive(on: DispatchQueue.main)
             .map { $0.toModel() }

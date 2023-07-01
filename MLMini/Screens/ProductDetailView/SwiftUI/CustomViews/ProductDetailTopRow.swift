@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct ProductDetailTopRow: View {
+    @Binding var isLoading: Bool
     var itemCondition: String
     var soldItems: String
     var publicationTitle: String
@@ -24,12 +25,14 @@ struct ProductDetailTopRow: View {
                 .foregroundColor(Color.primaryText)
         })
         .multilineTextAlignment(.leading)
+        .redacted(reason: isLoading ? .placeholder : [])
     }
 }
 
 struct ProductDetailTopRow_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailTopRow(itemCondition: "New",
+        ProductDetailTopRow(isLoading: .constant(false),
+                            itemCondition: "New",
                             soldItems: "15",
                             publicationTitle: "Ops Vw 4k Sensores De Estacionamiento Scirocco Vento Golf")
         .padding(.horizontal, MLSpacings.defaultMargin)

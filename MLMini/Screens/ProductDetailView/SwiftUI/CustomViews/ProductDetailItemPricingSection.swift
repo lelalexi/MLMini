@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct ProductDetailItemPricingSection: View {
+    @Binding var isLoading: Bool
     var model: ItemDetailDomainModel
     var primaryButtonAction: (() -> Void)?
     var secondaryButtonAction: (() -> Void)?
@@ -30,13 +31,14 @@ struct ProductDetailItemPricingSection: View {
                      style: .secondary) {
                 secondaryButtonAction?()
             }
-        }
+        }.redacted(reason: isLoading ? .placeholder : [])
     }
 }
 
 struct ProductDetailItemPricingSection_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailItemPricingSection(model: ItemDetailDomainModel._default)
+        ProductDetailItemPricingSection(isLoading: .constant(true),
+                                        model: ItemDetailDomainModel._default)
             .padding(.horizontal, MLSpacings.defaultMargin)
     }
 }

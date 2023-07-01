@@ -24,9 +24,9 @@ struct ProductDetailView: View {
             VStack(alignment: .leading, spacing: 8) {
                 renderTopRowSection(model: itemDetailModel)
                 renderImageCarouselSection(model: itemDetailModel)
-                ProductDetailItemPricingSection(model: itemDetailModel)
+                ProductDetailItemPricingSection(isLoading: $viewModel.isMainSectionLoading, model: itemDetailModel)
                 renderSellerReputationSection(model: $viewModel.userInformationModel)
-                ProductDetailDescriptionSection(descriptionBody: itemDescriptionModel.description)
+                ProductDetailDescriptionSection(isLoading: $viewModel.isMainSectionLoading, descriptionBody: itemDescriptionModel.description)
             }
             .padding(.horizontal, MLSpacings.defaultMargin)
         }
@@ -35,7 +35,8 @@ struct ProductDetailView: View {
 
 extension ProductDetailView {
     @ViewBuilder private func renderTopRowSection(model: ItemDetailDomainModel) -> some View {
-        ProductDetailTopRow(itemCondition: model.condition,
+        ProductDetailTopRow(isLoading: $viewModel.isMainSectionLoading,
+                            itemCondition: model.condition,
                             soldItems: String(model.soldQuantity),
                             publicationTitle: model.title)
         .padding(.top, 8)
@@ -61,5 +62,6 @@ struct ProductDetailView_Previews: PreviewProvider {
         let repository = ProductDetailRepository(service)
         ProductDetailView(viewModel: ProductDetailViewModel(repository: repository,
                                                             itemId: itemToSearch))
+        
     }
 }
