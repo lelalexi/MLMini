@@ -9,34 +9,49 @@
 import SwiftUI
 
 struct ProductDetailTopRow: View {
-    @Binding var isLoading: Bool
-    var itemCondition: String
-    var soldItems: String
-    var publicationTitle: String
-    private var itemConditionAndSoldItems: String { itemCondition + " | " + soldItems + " " + MLLocalizables.ProductDetailView.soldItemsLabel }
+    var viewState: MLDataState<ItemDetailDomainModel>
     
     var body: some View {
+        switch viewState {
+        case .isLoading:
+            topRowSectionContent(model: ItemDetailDomainModel._default)
+                .redacted(reason: .placeholder)
+        case .success(let itemConditionAndSoldItemsModel):
+            topRowSectionContent(model: itemConditionAndSoldItemsModel)
+        case .error:
+            EmptyView()
+        }
+    }
+}
+
+extension ProductDetailTopRow {
+    private func calculateItemConditionAndSoldItems(withModel model: ItemDetailDomainModel) -> String {
+        return model.condition + " | " + String(model.soldQuantity) + " " + MLLocalizables.ProductDetailView.soldItemsLabel
+    }
+    
+    @ViewBuilder private func topRowSectionContent(model: ItemDetailDomainModel) -> some View {
         VStack (alignment: .leading, spacing: 4.0, content: {
-            Text(itemConditionAndSoldItems)
+            Text(calculateItemConditionAndSoldItems(withModel: model))
                 .font(.custom("Avenir-Light", size: 12))
                 .foregroundColor(Color.terciaryText)
-            Text(publicationTitle)
+            Text(model.title)
                 .font(.custom("Avenir-Book", size: 16))
                 .foregroundColor(Color.primaryText)
         })
         .multilineTextAlignment(.leading)
-        .redacted(reason: isLoading ? .placeholder : [])
     }
 }
 
 struct ProductDetailTopRow_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailTopRow(isLoading: .constant(false),
-                            itemCondition: "New",
-                            soldItems: "15",
-                            publicationTitle: "Ops Vw 4k Sensores De Estacionamiento Scirocco Vento Golf")
-        .padding(.horizontal, MLSpacings.defaultMargin)
-        .previewDevice("iPhone 13 mini")
-        .previewLayout(.sizeThatFits)
+        Group {
+            ProductDetailTopRow(viewState: .isLoading)
+                .previewDisplayName("Loading State")
+            ProductDetailTopRow(viewState: .success(model: ItemDetailDomainModel._default))
+                .previewDisplayName("Loaded Data")
+            ProductDetailTopRow(viewState: .error)
+                .previewDisplayName("With Error")
+        }
+        .toPreviewFormat()
     }
 }

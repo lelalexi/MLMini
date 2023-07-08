@@ -14,5 +14,5 @@ struct ItemDescriptionDomainModel: Identifiable {
 }
 
 extension ItemDescriptionDomainModel {
-    static var _default: ItemDescriptionDomainModel { ItemDescriptionDomainModel(description: "") }
+    static var _default: ItemDescriptionDomainModel { ItemDescriptionDomainModel(description: "This is an item description provided to have a nice placeholder size while this view data loads.\n\nSwiftUI is nice to work with") }
 }

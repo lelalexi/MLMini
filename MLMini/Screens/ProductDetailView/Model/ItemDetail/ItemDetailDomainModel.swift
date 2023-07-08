@@ -20,14 +20,11 @@ struct ItemDetailDomainModel: Identifiable {
 
 extension ItemDetailDomainModel {
     static var _default: ItemDetailDomainModel {  ItemDetailDomainModel(id: "01",
-                                                                        price: 1998.9,
+                                                                        price: 19989,
                                                                         title: "Ops Vw 4k Sensores De Estacionamiento Scirocco Vento Golf",
                                                                         sellerID: 1234,
                                                                         condition: "New",
-                                                                        pictures: ["https://picsum.photos/200/300",
-                                                                                   "https://picsum.photos/200/300",
-                                                                                   "https://picsum.photos/200/300",
-                                                                                   "https://picsum.photos/200/300"],
+                                                                        pictures: [""],
                                                                         soldQuantity: 10,
                                                                         thumbnail: "https://picsum.photos/200/300",
                                                                         availableItems: 5) }

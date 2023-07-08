@@ -9,11 +9,15 @@
 import SwiftUI
 
 struct ProductDetailCarouselView: View {
-    var images: [URL]
+    var images: [URL]?
     @State private var index = 0
     var body: some View {
-        renderTabView(withIndex: $index,
-                      images: images)
+        if let images = images {
+            renderTabView(withIndex: $index,
+                          images: images)
+        } else {
+            EmptyView()
+        }
     }
 }
 
@@ -35,8 +39,11 @@ struct ProductDetailCarouselView_Previews: PreviewProvider {
                            URL(string: "https://picsum.photos/200/300")!,
                            URL(string: "https://picsum.photos/200/300")!,
                            URL(string: "https://picsum.photos/200/300")!]
-        ProductDetailCarouselView(images: imageArray)
-            .frame(height: 300)
-            .previewLayout(.sizeThatFits)
+        Group {
+            ProductDetailCarouselView(images: imageArray)
+            ProductDetailCarouselView(images: nil)
+        }
+        .frame(height: 300)
+        .previewLayout(.sizeThatFits)
     }
 }

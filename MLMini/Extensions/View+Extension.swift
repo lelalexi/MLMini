@@ -17,4 +17,10 @@ extension View {
                 self
             }
         }
+    
+    /// View Formatter for SwiftUI previews
+    /// - Returns: a new View with correct format to be shown at SwiftUI previews
+    func toPreviewFormat() -> some View {
+        return modifier(MLPreviewFormat())
+    }
 }

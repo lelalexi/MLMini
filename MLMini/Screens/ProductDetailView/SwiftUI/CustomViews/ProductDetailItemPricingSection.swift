@@ -9,11 +9,23 @@
 import SwiftUI
 
 struct ProductDetailItemPricingSection: View {
-    @Binding var isLoading: Bool
-    var model: ItemDetailDomainModel
+    var viewState: MLDataState<ItemDetailDomainModel>
     var primaryButtonAction: (() -> Void)?
     var secondaryButtonAction: (() -> Void)?
     var body: some View {
+        switch viewState {
+        case .isLoading:
+            productDetailItemPricingSection()
+                .redacted(reason: .placeholder)
+                .allowsHitTesting(false)
+        case .success(let model):
+            productDetailItemPricingSection(model: model)
+        case .error:
+            EmptyView()
+        }
+    }
+    
+    @ViewBuilder func productDetailItemPricingSection(model: ItemDetailDomainModel = ._default) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("$ " + String(model.price.formattedWithSeparator))
                 .font(.custom("Avenir-Book", size: 26))
@@ -31,14 +43,18 @@ struct ProductDetailItemPricingSection: View {
                      style: .secondary) {
                 secondaryButtonAction?()
             }
-        }.redacted(reason: isLoading ? .placeholder : [])
+        }
     }
 }
 
 struct ProductDetailItemPricingSection_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailItemPricingSection(isLoading: .constant(true),
-                                        model: ItemDetailDomainModel._default)
-            .padding(.horizontal, MLSpacings.defaultMargin)
+        Group {
+            ProductDetailItemPricingSection(viewState: .isLoading)
+                .previewDisplayName("Loading State")
+            ProductDetailItemPricingSection(viewState: .success(model: ItemDetailDomainModel._default))
+                .previewDisplayName("Data Loaded")
+        }
+        .toPreviewFormat()
     }
 }

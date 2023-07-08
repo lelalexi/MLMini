@@ -33,10 +33,10 @@ struct ProductDetailBuilder {
 
 // MARK: SwiftUI View Builder
 extension ProductDetailBuilder {
-    func getSwiftUIView(forItemId itemId: String) -> ProductDetailView {
+    func getSwiftUIView(forItemId itemId: String) -> ProductDetailView<ProductDetailViewModelDefault> {
         let service = NetworkServiceManager()
         let repository = ProductDetailRepository(service)
-        let viewModel = ProductDetailViewModel(repository: repository, itemId: itemId)
+        let viewModel = ProductDetailViewModelDefault(repository: repository, itemId: itemId)
         let view = ProductDetailView(viewModel: viewModel)
         return view
     }

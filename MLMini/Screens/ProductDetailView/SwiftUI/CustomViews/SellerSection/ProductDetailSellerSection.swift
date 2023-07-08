@@ -9,19 +9,31 @@
 import SwiftUI
 
 struct ProductDetailSellerSection: View {
-    @Binding var sellerReputation: MLSellerReputationDomainModel
+    @Binding var viewState: MLDataState<MLSellerReputationDomainModel>
     var body: some View {
-        GeometryReader { geometry in
-            VStack(alignment: .leading) {
-                Divider()
-                renderTopLabel
-                SellerQualityMeter(widthSize: geometry.size.width, sellerReputation: $sellerReputation)
-            }
+        switch viewState {
+        case .isLoading:
+            detailSellerSection(withSellerReputation: .constant(._default))
+                .redacted(reason: .placeholder)
+        case .success(let sellerReputation):
+            detailSellerSection(withSellerReputation: .constant(sellerReputation))
+        case .error:
+            EmptyView()
         }
     }
 }
 
 extension ProductDetailSellerSection {
+    @ViewBuilder private func detailSellerSection(withSellerReputation sellerReputation: Binding<MLSellerReputationDomainModel>) -> some View {
+        GeometryReader { geometry in
+            VStack(alignment: .leading) {
+                Divider()
+                renderTopLabel
+                SellerQualityMeter(widthSize: geometry.size.width, sellerReputation: sellerReputation)
+            }
+        }
+    }
+    
     @ViewBuilder private var renderTopLabel: some View {
         Text(MLLocalizables.ProductDetailView.sellerSectionTitle)
             .font(.custom("Avenir-Book", size: 20))
@@ -33,8 +45,10 @@ extension ProductDetailSellerSection {
 struct ProductDetailSellerSection_Previews: PreviewProvider {
     var sellerLevel: MLSellerReputationDomainModel = MLSellerReputationDomainModel(levelId: .Level3)
     static var previews: some View {
-        let sellerLevel: Binding<MLSellerReputationDomainModel> = .constant(MLSellerReputationDomainModel(levelId: .Level3))
-         ProductDetailSellerSection(sellerReputation: sellerLevel)
-            .padding(.horizontal, MLSpacings.defaultMargin)
+        Group {
+            ProductDetailSellerSection(viewState: .constant(.isLoading))
+            ProductDetailSellerSection(viewState: .constant(.success(model: MLSellerReputationDomainModel(levelId: .Level4))))
+        }
+        .padding(.horizontal, MLSpacings.defaultMargin)
     }
 }

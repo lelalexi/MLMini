@@ -6,9 +6,11 @@
 //  Copyright © 2023 ale. All rights reserved.
 //
 
+
+/*
 import Combine
 #warning("this should be a ProductDetailViewModel override instead")
-class ProductDetailViewModelMock: ProductDetailViewModelProtocol {
+class ProductDetailViewModelMock: ProductDetailViewModel {
     let updateDataPublisher: AnyPublisher<ItemDetailDomainModel, Never>
     
     private let updateData = PassthroughSubject<ItemDetailDomainModel, Never>()
@@ -41,3 +43,4 @@ extension ProductDetailViewModelMock {
         case api
     }
 }
+*/

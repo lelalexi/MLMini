@@ -10,54 +10,50 @@ import Foundation
 import SwiftUI
 import Combine
 
-protocol ProductDetailViewModelProtocol: ObservableObject {
-    var updateDataPublisher: AnyPublisher<ItemDetailDomainModel, Never> { get }
+protocol ProductDetailViewModel: ObservableObject {
+    var itemDetailState: MLDataState<ItemDetailDomainModel> { get set }
+    var itemDescriptionState: MLDataState<ItemDescriptionDomainModel> { get set }
+    var sellerInformationState: MLDataState<MLSellerReputationDomainModel> { get set }
 }
 
-class ProductDetailViewModel: ProductDetailViewModelProtocol, ObservableObject {
+class ProductDetailViewModelDefault: ProductDetailViewModel, ObservableObject {
     // MARK: Properties
     private let repository: ProductDetailRepositoryProtocol
     private var cancellables = Set<AnyCancellable>()
-    @Published var itemDetailModel: ItemDetailDomainModel = ItemDetailDomainModel._default
-    @Published var itemDescriptionModel: ItemDescriptionDomainModel = ItemDescriptionDomainModel._default
-    @Published var userInformationModel: MLUserInformationDomainModel = MLUserInformationDomainModel._default
-    var isMainSectionLoading: Bool = true
-    var isSellerSectionLoading: Bool = true
     
-    // MARK: Public available publishers (Does not allow users to know about publisher implementation, just knowing that conforms to AnyPublisher protocol)
-    let updateDataPublisher: AnyPublisher<ItemDetailDomainModel, Never>
-    
-    // MARK: Private publisher implementation
-    private let updateData = CurrentValueSubject<ItemDetailDomainModel, Never>(ItemDetailDomainModel._default)
+    @Published var itemDetailState: MLDataState<ItemDetailDomainModel> = MLDataState.isLoading
+    @Published var itemDescriptionState: MLDataState<ItemDescriptionDomainModel> = MLDataState.isLoading
+    @Published var sellerInformationState: MLDataState<MLSellerReputationDomainModel> = MLDataState.isLoading
     
     init(repository: ProductDetailRepositoryProtocol,
          itemId: String) {
         self.repository = repository
-        updateDataPublisher = updateData.eraseToAnyPublisher()
         getItemDescription(itemId: itemId)
     }
     
     private func onGetDataSuccess(model: ItemDetailDomainModel,
                                   itemDescriptionModel: ItemDescriptionDomainModel) {
-        isMainSectionLoading = false
-        updateData.send(model)
-        self.itemDetailModel = model
-        self.itemDescriptionModel = itemDescriptionModel
-
-        getUserInformation(userID: itemDetailModel.sellerID)
+        itemDetailState = .success(model: model)
+        itemDescriptionState = .success(model: itemDescriptionModel)
+        
+        getUserInformation(userID: model.sellerID)
     }
     
     private func onGetUserInformationSuccess(model: MLUserInformationDomainModel) {
-        isSellerSectionLoading = false
-        self.userInformationModel = model
+        sellerInformationState = .success(model: model.sellerReputation)
     }
     
     private func onGetDataError() {
         //TODO: SHOW THE USER AN ERROR SCREEN
+        itemDetailState = .error
+        itemDescriptionState = .error
+        sellerInformationState = .error
     }
     
     private func getItemDescription(itemId: String) {
-        isMainSectionLoading = true
+        itemDetailState = .isLoading
+        itemDescriptionState = .isLoading
+
         repository.getItemDetail(itemId: itemId)
             .combineLatest(repository.getItemDescription(itemId: itemId))
             .receive(on: DispatchQueue.main)
@@ -76,7 +72,7 @@ class ProductDetailViewModel: ProductDetailViewModelProtocol, ObservableObject {
     }
     
     private func getUserInformation(userID: Int) {
-        isSellerSectionLoading = true
+        sellerInformationState = .isLoading
         repository.getUserData(userId: userID)
             .receive(on: DispatchQueue.main)
             .map { $0.toModel() }

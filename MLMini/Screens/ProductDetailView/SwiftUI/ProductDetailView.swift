@@ -9,24 +9,21 @@
 import Combine
 import SwiftUI
 
-struct ProductDetailView: View {
-    @ObservedObject var viewModel: ProductDetailViewModel
-
-    private var itemDetailModel: ItemDetailDomainModel { viewModel.itemDetailModel }
-    private var itemDescriptionModel: ItemDescriptionDomainModel { viewModel.itemDescriptionModel }
+struct ProductDetailView<ViewModel>: View where ViewModel: ProductDetailViewModel {
+    @ObservedObject var viewModel: ViewModel
     
-    init(viewModel: ProductDetailViewModel) {
+    init(viewModel: ViewModel) {
         self.viewModel = viewModel
     }
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading, spacing: 8) {
-                renderTopRowSection(model: itemDetailModel)
-                renderImageCarouselSection(model: itemDetailModel)
-                ProductDetailItemPricingSection(isLoading: $viewModel.isMainSectionLoading, model: itemDetailModel)
-                renderSellerReputationSection(model: $viewModel.userInformationModel)
-                ProductDetailDescriptionSection(isLoading: $viewModel.isMainSectionLoading, descriptionBody: itemDescriptionModel.description)
+                renderTopRowSection()
+                renderImageCarouselSection(itemDetailViewState: viewModel.itemDetailState)
+                ProductDetailItemPricingSection(viewState: viewModel.itemDetailState)
+                renderSellerReputationSection()
+                ProductDetailDescriptionSection(viewState: viewModel.itemDescriptionState)
             }
             .padding(.horizontal, MLSpacings.defaultMargin)
         }
@@ -34,23 +31,32 @@ struct ProductDetailView: View {
 }
 
 extension ProductDetailView {
-    @ViewBuilder private func renderTopRowSection(model: ItemDetailDomainModel) -> some View {
-        ProductDetailTopRow(isLoading: $viewModel.isMainSectionLoading,
-                            itemCondition: model.condition,
-                            soldItems: String(model.soldQuantity),
-                            publicationTitle: model.title)
+    @ViewBuilder private func renderTopRowSection() -> some View {
+        ProductDetailTopRow(viewState: viewModel.itemDetailState)
         .padding(.top, 8)
     }
     
-    @ViewBuilder private func renderImageCarouselSection(model: ItemDetailDomainModel) -> some View {
-        let images: [URL] = model.pictures.map { URL(string: $0)! }
+    @ViewBuilder private func renderImageCarouselSection(itemDetailViewState: MLDataState<ItemDetailDomainModel>) -> some View {
+        switch itemDetailViewState {
+        case .isLoading:
+            imageCarousel()
+                .redacted(reason: .placeholder)
+        case .success(let model):
+            imageCarousel(imagesLinkArray: model.pictures)
+        case .error:
+            EmptyView()
+        }
+    }
+    
+    @ViewBuilder private func imageCarousel(imagesLinkArray: [String] = []) -> some View {
+        let images: [URL] = imagesLinkArray.map { URL(string: $0)! }
         ProductDetailCarouselView(images: images)
             .frame(height: 300)
             .padding(.horizontal, -MLSpacings.defaultMargin)
     }
     
-    @ViewBuilder private func renderSellerReputationSection(model: Binding<MLUserInformationDomainModel>) -> some View {
-        ProductDetailSellerSection(sellerReputation: model.sellerReputation)
+    @ViewBuilder private func renderSellerReputationSection() -> some View {
+        ProductDetailSellerSection(viewState: $viewModel.sellerInformationState)
             .frame(height: 80)
     }
 }
@@ -60,8 +66,14 @@ struct ProductDetailView_Previews: PreviewProvider {
         let itemToSearch = "MLA1388405828"
         let service = NetworkServiceManager()
         let repository = ProductDetailRepository(service)
-        ProductDetailView(viewModel: ProductDetailViewModel(repository: repository,
-                                                            itemId: itemToSearch))
-        
+        ProductDetailView(viewModel: ProductDetailViewModelDefault(repository: repository,
+                                                                   itemId: itemToSearch))
+        .previewDevice("iPhone 13 mini")
     }
+}
+
+enum MLDataState<Model> {
+    case isLoading
+    case success(model: Model)
+    case error
 }
